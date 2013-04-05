@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.myapp.admin.User" table="USER">
+        <id column="user_id" name="userId" type="int">
+            <generator class="increment"/>
+        </id>
+        <property column="first_name" name="firstName" type="string"/>
+        <property column="middle_name" name="middleName" type="string"/>
+        <property column="last_name" name="lastName" type="string"/>
+        <property column="gender" name="gender" type="string"/>
+        <property column="DOB" name="DOB" type="string"/>
+        <property column="status" name="status" type="string"/>
+        <property name="createDate" column="create_date" type="string" />
+        <property name="endDate" column="end_date" type="string" />
+        <property name="lastModifiedDate" column="last_modified_date" type="string" />
+        <set name="userAddresses" table="UserAddress" cascade="all" lazy="false">
+            <key column="user_id"/>
+            <many-to-many class="com.myapp.admin.Address" column="address_id" unique="true"/>
+        </set>
+        <set name="userEmails" table="UserEmail" cascade="all" lazy="false">
+            <key column="user_id"/>
+            <many-to-many class="com.myapp.admin.Email" column="email_id" unique="true"/>
+        </set>
+        <set name="userPhones" table="UserPhone" cascade="all" lazy="false">
+            <key column="user_id"/>
+            <many-to-many class="com.myapp.admin.Phone" column="phone_id" unique="true"/>
+        </set>
+        <set name="userCredentials" table="UserCredential" cascade="all" lazy="false">
+            <key column="user_id"/>
+            <many-to-many class="com.myapp.admin.Credential" column="credential_id" unique="true"/>
+        </set>
+        <set name="userCategories" table="UserCategory" cascade="all" lazy="false">
+            <key column="user_id"/>
+            <many-to-many class="com.myapp.main.Category" column="category_id" unique="true"/>
+        </set>
+    </class>
+</hibernate-mapping>

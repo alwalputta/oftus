@@ -1,0 +1,1 @@
+LOAD DATA LOCAL INFILE '/Users/palwal/Documents/NetBeansProjects/myapp/src/java/sql/categorybookmark.txt'INTO TABLE categorybookmarkFIELDS TERMINATED BY '\t'LINES TERMINATED BY '\n'(category_id, bookmark_id, bookmark_order);

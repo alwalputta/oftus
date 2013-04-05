@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.myapp.admin.Gender" table="GENDER">
+        <id name="genderId" type="int" column="gender_id">
+            <generator class="increment"/>
+        </id>
+        <property name="genderCode" column="gender_code" type="string"></property>
+        <property name="genderName" column="gender_name" type="string"></property>
+        <property name="status" column="status" type="string"></property>
+        <property name="createDate" column="create_date" type="string"></property>
+        <property name="endDate" column="end_date" type="string"></property>
+        <property name="lastModifiedDate" column="last_modified_date" type="string"></property>
+    </class>
+</hibernate-mapping>

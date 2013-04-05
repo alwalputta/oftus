@@ -1,0 +1,59 @@
+1	AL	Alabama
+2	AK	Alaska
+3	AS	American Samoa
+4	AZ	Arizona
+5	AR	Arkansas
+6	CA	California
+7	CO	Colorado
+8	CT	Connecticut
+9	DE	Delaware
+10	DC	Dist. of Columbia
+11	FL	Florida
+12	GA	Georgia
+13	GU	Guam
+14	HI	Hawaii
+15	ID	Idaho
+16	IL	Illinois
+17	IN	Indiana
+18	IA	Iowa
+19	KS	Kansas
+20	KY	Kentucky
+21	LA	Louisiana
+22	ME	Maine
+23	MD	Maryland
+24	MH	Marshall Islands
+25	MA	Massachusetts
+26	MI	Michigan
+27	FM	Micronesia
+28	MN	Minnesota
+29	MS	Mississippi
+30	MO	Missouri
+31	MT	Montana
+32	NE	Nebraska
+33	NV	Nevada
+34	NH	New Hampshire
+35	NJ	New Jersey
+36	NM	New Mexico
+37	NY	New York
+38	NC	North Carolina
+39	ND	North Dakota
+40	MP	Northern Marianas
+41	OH	Ohio
+42	OK	Oklahoma
+43	OR	Oregon
+44	PW	Palau
+45	PA	Pennsylvania
+46	PR	Puerto Rico
+47	RI	Rhode Island
+48	SC	South Carolina
+49	SD	South Dakota
+50	TN	Tennessee
+51	TX	Texas
+52	UT	Utah
+53	VT	Vermont
+54	VA	Virginia
+55	VI	Virgin Islands
+56	WA	Washington
+57	WV	West Virginia
+58	WI	Wisconsin
+59	WY	Wyoming

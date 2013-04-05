@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.myapp.main.Bookmark" table="BOOKMARK">
+        <id column="bookmark_id" name="bookmarkId" type="int">
+            <generator class="increment"/>
+        </id>
+        <property name="bookmarkName" column="bookmark_name" type="string"></property>
+        <property name="description" column="description" type="string"></property>
+        <property name="hiperLink" column="hiper_link" type="string"></property>
+        <property name="status" column="status" type="string"></property>
+        <property name="bookmarkOrder" column="bookmark_order" type="int"></property>
+        <!--property name="bookmarkOrder" formula="select cb.bookmark_order from CategoryBookmark cb where cb.bookmark_id = bookmark_id" type="int"/-->
+        <property name="createDate" column="create_date" type="string"></property>
+        <property name="endDate" column="end_date" type="string"></property>
+        <property name="lastModifiedDate" column="last_modified_date" type="string"></property>
+        <set name="categories" table="CategoryBookmark" cascade="all" lazy="false" order-by="bookmark_order1 asc">
+            <key column="bookmark_id"/>
+            <many-to-many class="com.myapp.main.Category" column="category_id" unique="true"/>
+        </set>
+    </class>
+</hibernate-mapping>

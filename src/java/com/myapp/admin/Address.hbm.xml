@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.myapp.admin.Address" table="ADDRESS">
+        <id name="addressId" type="int" column="address_id">
+            <generator class="increment"/>
+        </id>
+        <property name="address1" column="address1" type="string"></property>
+        <property name="address2" column="address2" type="string"></property>
+        <property name="city" column="city" type="string"></property>
+        <property name="state" column="state_code" type="string"></property>
+        <property name="zip" column="zip" type="string"></property>
+        <property name="createDate" column="create_date" type="string"></property>
+        <property name="status" column="status" type="string"></property>
+        <property name="endDate" column="end_date" type="string"></property>
+        <property name="lastModifiedDate" column="last_modified_date" type="string"></property>
+        <set name="users" table="UserAddress" cascade="all" lazy="false">
+            <key column="address_id" />
+            <many-to-many column="user_id" unique="true" class="com.myapp.admin.User"/>
+        </set>        
+    </class>
+</hibernate-mapping>

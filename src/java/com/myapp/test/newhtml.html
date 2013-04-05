@@ -1,0 +1,187 @@
+
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+    <head>
+
+        <title>Development</title>
+
+        <link rel="shortcut icon" type="image/x-icon" class="header-icon" href="images/favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="css/HomeStuff.css"/>
+        <link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/sunny/jquery-ui.css"/>
+
+        <script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
+        <script type="text/javascript" src="js/jquery.highlight-3.js"></script>
+        <script type="text/javascript" src="js/constants.js"></script>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <script type="text/javascript">
+            $(function() {
+                $("#datepicker").datepicker();
+            });
+        </script>
+
+        <style type="text/css">
+        </style>
+    </head>
+
+
+    <body>
+
+
+
+
+        <div class="welcome">
+            <ul class="actionMessage">
+                <li><span>In the GeneralAction1cf6711f-8895-4c65-9d92-329a26e04ef1</span></li>
+            </ul>
+
+        </div>
+
+
+        <div class="register-modal">
+            <div class="register-register">
+                <div>REGISTER:</div>
+                <form id="register" name="register" action="/myapp/register" method="post">
+                    <table class="wwFormTable">
+
+                        <input type="hidden" name="userid" value="" id="register_userid"/>
+
+                        <tr>
+                            <td class="tdLabel"><label for="register_username" class="label">Username:</label></td>
+                            <td
+                                ><input type="text" name="username" size="25" maxlength="200" value="" id="register_username"/></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tdLabel"><label for="register_password" class="label">Password:</label></td>
+                            <td
+                                ><input type="password" name="password" size="25" id="register_password"/></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tdLabel"><label for="register_password2" class="label">Re-enter Password:</label></td>
+                            <td
+                                ><input type="password" name="password2" size="25" id="register_password2"/></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tdLabel"><label for="register_emailAddress" class="label">Email:</label></td>
+                            <td
+                                ><input type="text" name="emailAddress" size="35" maxlength="200" value="" id="register_emailAddress"/></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tdLabel"><label for="register_phoneNumber" class="label">Phone Number:</label></td>
+                            <td
+                                ><input type="text" name="phoneNumber" size="35" maxlength="200" value="" id="register_phoneNumber"/></td>
+                        </tr>
+
+
+                        <tr>
+                            <td class="tdLabel"><label for="register_firstname" class="label">First Name:</label></td>
+                            <td
+                                ><input type="text" name="firstname" size="30" maxlength="200" value="" id="register_firstname"/></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tdLabel"><label for="register_middlename" class="label">Middle Name:</label></td>
+                            <td
+                                ><input type="text" name="middlename" size="30" maxlength="200" value="" id="register_middlename"/></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tdLabel"><label for="register_lastname" class="label">Last Name:</label></td>
+                            <td
+                                ><input type="text" name="lastname" size="30" maxlength="200" value="" id="register_lastname"/></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tdLabel"><label for="register_gender" class="label">Gender:</label></td>
+                            <td
+                                >
+                                <input type="radio" name="gender" id="register_genderF" value="F"/><label for="register_genderF">Female</label>
+                                <input type="radio" name="gender" id="register_genderM" value="M"/><label for="register_genderM">Male</label>
+                                <input type="radio" name="gender" id="register_genderU" value="U"/><label for="register_genderU">Unknown</label>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td class="tdLabel"><label for="datepicker" class="label">Date of Birth:</label></td>
+                            <td
+                                ><input type="text" name="DOB" value="" id="datepicker"/></td>
+                        </tr>
+
+
+                        <tr>
+                            <td class="tdLabel"><label for="register_address1" class="label">Address1:</label></td>
+                            <td
+                                ><input type="text" name="address1" size="50" maxlength="200" value="" id="register_address1"/></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tdLabel"><label for="register_address2" class="label">Address2:</label></td>
+                            <td
+                                ><input type="text" name="address2" size="50" maxlength="200" value="" id="register_address2"/></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tdLabel"><label for="register_city" class="label">City:</label></td>
+                            <td
+                                ><input type="text" name="city" size="30" maxlength="200" value="" id="register_city"/></td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2" align="center">
+                                State:   <select name="state" id="register_state">
+                                    <option value="-1"
+                                            >Select State...</option>
+                                    <option value="AR">Arizona</option>
+                                    <option value="CA">California</option>
+                                    <option value="CO">Colarado</option>
+                                    <option value="NB">Nebraska</option>
+                                    <option value="NE">Nevada</option>
+                                    <option value="PA">Pensylvania</option>
+                                    <option value="TX">Texas</option>
+
+
+                                </select>
+
+                                ZIP Code:   <input type="text" name="zip" size="10" maxlength="20" value="" id="register_zip"/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2" align="center">
+                                <input type="submit" id="register_register" name="register" value="Register User"/>
+
+                                <input type="reset" name="cancel" value="Cancel"/>
+
+                                <input type="submit" id="register_close" name="close" value="Close Window"/>
+
+                            </td>
+                        </tr>
+
+                    </table></form>
+
+
+
+
+                <a href="register_faq">Register FAQ</a>
+            </div>
+            <form action="index">
+                <div class="register-login">
+                    <br></br>Already have an account? <a href="index">Login now</a>
+                </div>
+            </form>
+        </div>
+
+        <script type="text/javascript" src="js/HomeStuff.js"></script>
+
+    </body>
+</html>
+
