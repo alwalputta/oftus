@@ -10,6 +10,7 @@ import com.myapp.admin.User;
 import com.myapp.admin.UserDAO;
 import com.myapp.main.Bookmark;
 import com.myapp.main.Category;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Iterator;
 import java.util.Set;
@@ -50,4 +51,10 @@ public class BookmarkAction extends ActionSupport {
 
         logger.debug("in the validate of BookmarkAction");
     }
+    
+    public String getActionName() {
+        ActionContext context = ActionContext.getContext();
+        return context.getName();
+    }
+
 }

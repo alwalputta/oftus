@@ -5,6 +5,7 @@
 package com.myapp.action;
 
 import com.myapp.admin.User;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +41,7 @@ public class LogoutAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         session.removeAttribute("user");
-        
+
         User user = (User) session.getAttribute("user");
 
         if (user == null) {
@@ -58,5 +59,10 @@ public class LogoutAction extends ActionSupport {
         System.out.println("in the validate of LogoutAction");
         logger.debug("in the validate of LogoutAction");
         addActionMessage("In the LogoutAction");
+    }
+
+    public String getActionAction() {
+        ActionContext context = ActionContext.getContext();
+        return context.getName();
     }
 }

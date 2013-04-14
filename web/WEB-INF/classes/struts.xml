@@ -13,6 +13,10 @@
             <result>/WEB-INF/results/index.jsp</result>
         </action>
 
+        <action name="welcome">
+            <result>/WEB-INF/results/welcome.html</result>
+        </action>
+
         <action name="login_faq">
             <result>/WEB-INF/results/login_faq.html</result>
         </action>
@@ -35,6 +39,18 @@
 
         <action name="forgot_password_form">
             <result>/WEB-INF/results/forgot_password.html</result>
+        </action>
+
+        <action name="release_notes">
+            <result>/WEB-INF/results/release_notes.html</result>
+        </action>
+
+        <action name="quick_guide">
+            <result>/WEB-INF/results/quick_guide.html</result>
+        </action>
+
+        <action name="user_guide">
+            <result>/WEB-INF/results/user_guide.html</result>
         </action>
 
         <action name="" class="com.myapp.action.IndexAction" method="execute">
@@ -62,7 +78,7 @@
             <result name="input">/WEB-INF/results/register.jsp</result>
         </action>
 
-        <action name="edit_profile" class="com.myapp.action.GeneralAction" method="editProfile">
+        <action name="edit_profile" class="com.myapp.action.RegisterAction" method="editProfile">
             <result name="success">/WEB-INF/results/edit_profile.jsp</result>
             <result name="input">/WEB-INF/results/mainpage.jsp</result>
         </action>

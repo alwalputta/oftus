@@ -11,6 +11,7 @@ import com.myapp.admin.StateDAO;
 import com.myapp.admin.User;
 import com.myapp.main.Category;
 import com.myapp.util.Utils;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import java.util.Set;
@@ -125,6 +126,11 @@ public class GeneralAction extends ActionSupport {
     @Override
     public void validate() {
         logger.debug("GeneralAction validate");
-        addActionMessage("In the GeneralAction" + Utils.getUuid());
+        //addActionMessage("In the GeneralAction" + Utils.getUuid());
+    }
+
+    public String getActionName() {
+        ActionContext context = ActionContext.getContext();
+        return context.getName();
     }
 }

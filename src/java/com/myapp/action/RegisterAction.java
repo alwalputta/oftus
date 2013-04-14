@@ -9,15 +9,20 @@ import com.myapp.admin.Credential;
 import com.myapp.admin.CredentialDAO;
 import com.myapp.admin.Email;
 import com.myapp.admin.EmailDAO;
+import com.myapp.admin.Gender;
+import com.myapp.admin.GenderDAO;
 import com.myapp.admin.Phone;
+import com.myapp.admin.State;
+import com.myapp.admin.StateDAO;
 import com.myapp.admin.User;
 import com.myapp.admin.UserDAO;
 import com.myapp.main.Bookmark;
 import com.myapp.main.Category;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import java.util.LinkedHashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -45,6 +50,8 @@ public class RegisterAction extends ActionSupport {
     private String city;
     private String state;
     private String zip;
+    private List<Gender> genders;
+    private List<State> states;
     static final Logger logger = Logger.getLogger(RegisterAction.class);
 
     //business logic
@@ -134,6 +141,61 @@ public class RegisterAction extends ActionSupport {
         return "success";
     }
 
+    @SuppressWarnings("unchecked")
+    public String editProfile() {
+        logger.debug("RegisterAction editProfile!");
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        genders = (List<Gender>) session.getAttribute("genders");
+        states = (List<State>) session.getAttribute("states");
+
+        if (genders == null) {
+            GenderDAO genderDAO = new GenderDAO();
+            genders = genderDAO.listGenders();
+        }
+
+        logger.debug("before state DAO!");
+
+        if (states == null) {
+            StateDAO stateDAO = new StateDAO();
+            states = stateDAO.listStates();
+        }
+
+        session.setAttribute("genders", genders);
+        session.setAttribute("states", states);
+
+        User user = (User) session.getAttribute("user");
+        logger.debug("RegisterAction editProfile, userid:" + user.getUserId());
+
+        return "success";
+    }
+
+    @Override
+    public String execute() {
+
+        logger.debug("GeneralAction execute!");
+
+        logger.debug("before gender DAO!");
+
+        GenderDAO genderDAO = new GenderDAO();
+        genders = genderDAO.listGenders();
+
+        logger.debug("before state DAO!");
+
+        StateDAO stateDAO = new StateDAO();
+        states = stateDAO.listStates();
+
+        logger.debug("after state DAO!");
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        session.setAttribute("genders", genders);
+        session.setAttribute("states", states);
+
+        return "success";
+    }
+
     public String updateProfile() {
         logger.debug("RegisterAction updateProfile!");
 
@@ -190,7 +252,6 @@ public class RegisterAction extends ActionSupport {
 
         user.setUserCredentials(userCredentials);
 
-
         logger.debug("Address Set Size:" + userAddresses.size());
         logger.debug("Email Set Size:" + userEmails.size());
         logger.debug("Phone Set Size:" + userPhones.size());
@@ -231,12 +292,28 @@ public class RegisterAction extends ActionSupport {
                 addFieldError("username", "Username already registered.");
             }
 
+            if (getPassword() == null || "".equals(getPassword())) {
+                addFieldError("password", "Password cant be empty");
+            }
+
+            if (getPassword2() == null || "".equals(getPassword2())) {
+                addFieldError("password2", "Password2 cant be empty");
+            }
+
             if (getPassword().equals(getPassword2())) {
 //            addActionMessage("Both passwords match.");
             } else {
                 addFieldError("password2", "Both passwords dont match");
             }
         } else if ("update_profile".equals(getActionName())) {
+            if (getPassword() != null || "".equals(getPassword())) {
+                logger.debug("Username not available for Registration:");
+                if (getPassword().equals(getPassword2())) {
+//                  addActionMessage("Both passwords match.");
+                } else {
+                    addFieldError("password2", "Both passwords dont match");
+                }
+            }
         } else {
         }
     }
@@ -359,6 +436,22 @@ public class RegisterAction extends ActionSupport {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<Gender> getGenders() {
+        return genders;
+    }
+
+    public void setGenders(List<Gender> genders) {
+        this.genders = genders;
+    }
+
+    public List<State> getStates() {
+        return states;
+    }
+
+    public void setStates(List<State> states) {
+        this.states = states;
     }
 
     public String getActionName() {

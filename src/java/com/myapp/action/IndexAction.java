@@ -5,6 +5,7 @@
 package com.myapp.action;
 
 import com.myapp.admin.User;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -43,5 +44,9 @@ public class IndexAction extends ActionSupport {
     @Override
     public void validate() {
         logger.debug("in the validate");
+    }
+    public String getActionName() {
+        ActionContext context = ActionContext.getContext();
+        return context.getName();
     }
 }

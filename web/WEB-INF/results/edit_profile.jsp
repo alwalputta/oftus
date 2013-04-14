@@ -70,8 +70,7 @@
                     </s:iterator>
                     -->
                     <s:iterator value="%{#session.user.userCredentials}" id="credential">
-                        CCCC<s:property value="#credential.username"/>
-                        <s:textfield name="username" value="%{#credential.username}" size="25" maxlength="200" key="register.username-label"/>
+                        <s:textfield name="username" value="%{#credential.username}" size="25" maxlength="200" key="register.username-label" readonly="true"/>
                         <s:password name="password" value="" size="25" key="register.password-label"/>
                         <s:password name="password2" value="" size="25" key="register.password2-label"/>
                     </s:iterator>
@@ -100,7 +99,7 @@
 
                     <tr>
                         <td colspan="2" align="center">
-                            <s:submit name="register" key="register.register-label" theme="simple" onclick="alert('alwal');"/>
+                            <s:submit name="register" key="register.update-label" theme="simple" onclick="alert('alwal');"/>
                             <s:reset name="cancel" key="register.cancel-label" theme="simple"/>
                             <s:submit name="close" key="register.close-label" theme="simple"/>
                         </td>

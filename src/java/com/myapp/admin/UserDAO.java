@@ -52,25 +52,8 @@ public class UserDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
         try {
-            transaction = session.beginTransaction();
-            User u = (User)session.get(User.class, user.getUserId());
-            
-            u.setCreateDate(user.getCreateDate());
-            u.setDOB(user.getDOB());
-            u.setEndDate(user.getEndDate());
-            u.setFirstName(user.getFirstName());
-            u.setGender(user.getGender());
-            u.setLastModifiedDate(user.getLastModifiedDate());
-            u.setLastName(user.getLastName());
-            u.setMiddleName(user.getMiddleName());
-            u.setStatus(user.getStatus());
-            u.setUserAddresses(user.getUserAddresses());
-            u.setUserCategories(user.getUserCategories());
-            u.setUserCredentials(user.getUserCredentials());
-            u.setUserEmails(user.getUserEmails());
-            u.setUserPhones(user.getUserPhones());
-
-            session.saveOrUpdate(u);
+            transaction = session.beginTransaction();            
+            session.update(user);
 
             transaction.commit();
         } catch (HibernateException e) {

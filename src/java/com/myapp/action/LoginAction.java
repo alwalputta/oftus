@@ -7,6 +7,7 @@ package com.myapp.action;
 import com.myapp.admin.Credential;
 import com.myapp.admin.CredentialDAO;
 import com.myapp.admin.User;
+import com.myapp.main.Bookmark;
 import com.myapp.main.Category;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -26,7 +27,6 @@ public class LoginAction extends ActionSupport {
     private String username;
     private String password;
     private String rememberme;
-    private String action;
     boolean loggedIn = false;
     Credential credential = null;
     User user = null;
@@ -66,11 +66,10 @@ public class LoginAction extends ActionSupport {
     }
 
     public String getActionAction() {
-                ActionContext context = ActionContext.getContext();
+        ActionContext context = ActionContext.getContext();
         return context.getName();
     }
 
-    
     //business logic
     @Override
     public String execute() {
@@ -93,7 +92,7 @@ public class LoginAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
-        
+
 //        logger.debug("Session ID:" + request.getRequestedSessionId());
 //        logger.debug("getContextPath ID:" + request.getContextPath());
 //        logger.debug("getAuthType ID:" + request.getAuthType());
@@ -107,17 +106,19 @@ public class LoginAction extends ActionSupport {
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
 
-//        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
-//            logger.debug("222222222222");
-//            Category c = (Category) iterator.next();
-//            logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
-//            Set<Bookmark> bookmarks = c.getBookmarks();
-//
-//            for (Iterator i = bookmarks.iterator(); i.hasNext();) {
-//                Bookmark b = (Bookmark) i.next();
-//                logger.debug("bookmarkId value:" + b.getBookmarkId() + ":" + b.getBookmarkName() + ":" + b.getHiperLink());
-//            }
-//        }
+        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
+            logger.debug("222222222222");
+            Category c = (Category) iterator.next();
+            logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
+            Set<Bookmark> bookmarks = c.getBookmarks();
+
+            for (Iterator i = bookmarks.iterator(); i.hasNext();) {
+                Bookmark b = (Bookmark) i.next();
+                logger.debug("bookmarkId value:" + b.getBookmarkId() + ":" + b.getBookmarkName() + ":" + b.getHiperLink());
+            }
+        }
+
+
         return returnVal;
     }
 
