@@ -78,7 +78,7 @@
             <result name="input">/WEB-INF/results/register.jsp</result>
         </action>
 
-        <action name="edit_profile" class="com.myapp.action.RegisterAction" method="editProfile">
+        <action name="edit_profile" class="com.myapp.action.GeneralAction" method="editProfile">
             <result name="success">/WEB-INF/results/edit_profile.jsp</result>
             <result name="input">/WEB-INF/results/mainpage.jsp</result>
         </action>

@@ -53,7 +53,12 @@ public class CategoryAction extends ActionSupport {
         this.description = description;
     }
 
-    //business logic
+    public String getActionName() {
+        ActionContext context = ActionContext.getContext();
+        return context.getName();
+    }
+
+//business logic
 //    @Override
     public String editCategory() {
         logger.debug("editCategory!" + getCategoryId());
@@ -91,8 +96,8 @@ public class CategoryAction extends ActionSupport {
         for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
             logger.debug("222222222222");
             Category c = (Category) iterator.next();
-            
-            if(c.getCategoryId() == new Integer(categoryId).intValue()) {
+
+            if (c.getCategoryId() == new Integer(categoryId).intValue()) {
                 c.setCategoryName(categoryName);
                 c.setDescription(description);
             }
@@ -149,10 +154,5 @@ public class CategoryAction extends ActionSupport {
         logger.debug("editCategory!" + getCategoryId());
 
 //        addFieldError("categoryname", getText("categorynameisempty1"));
-    }
-
-    public String getActionName() {
-        ActionContext context = ActionContext.getContext();
-        return context.getName();
     }
 }
