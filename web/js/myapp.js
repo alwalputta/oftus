@@ -148,13 +148,14 @@ $('.middle-row-element').dblclick(function(){
 });
 
 
-
+/*
+ *Commented, moved the div to a new jsp
 $('.middle-row-new-element').click(function(){
     var element = $(this);
     column_element = element.parent('middle-column-element');
     show_add_element_window('new', element);
 });
-
+*/
 
 
 //$('.new-category-modal').click(function(){
@@ -173,7 +174,7 @@ $(document).keyup(function(e) {
         $('.register-modal').hide();
         $('.forgot-password-modal').hide();
         $('.new-category-modal').hide();
-        $('.new-element-modal').hide();
+/*        $('.new-element-modal').hide();*/
         $('.edit-element-modal').hide();
         $('.middle-column-element-edit-icons').hide();
         $('.middle-row-element-edit-icons').hide();
@@ -240,20 +241,14 @@ $('.register-login').click(function(){
 });
 
 
-
-
 $('.login-register').click(function(){
     show_register_window();
 });
 
 
-
-
 $('.forgot_password').click(function(){
     show_forgot_password_window();
 });
-
-
 
 
 $('.middle-column-element-heading').hover(function(ev){
@@ -271,8 +266,6 @@ $('.middle-column-element-heading').hover(function(ev){
     
     active_column_element = element;
 });
-
-
 
 
 //$('.middle-column-element').on('click', '.middle-column-element-delete-icon', function(ev){
@@ -546,7 +539,7 @@ function show_forgot_password_window () {
     $('.forgot-password-modal input:first').focus();
 }
 
-
+//Delete if not used
 function show_add_element_window(action, element) {
     //    alert ('cccc'+column_element.html());
     $('.mask').fadeIn(300);
@@ -558,19 +551,19 @@ function show_add_element_window(action, element) {
     $('.new-element-modal').css("visibility", "visible");
     $('.new-element-modal').css("top", $(window).height()/2-$('.new-element-modal').height()/2-50);
     $('.new-element-modal').css("left", $(window).width()/2-$('.new-element-modal').width()/2);
-    alert('1111');
+    alert('11112222');
     if (action == 'ctrl_v' || action == 'paste') {
         $('.new-element-modal input[name=hiperLink]').focus();
     } else {
         $('.new-element-modal input[name=bookmarkname]').focus();
     }
 
-    alert('1111');
+    alert('1111222333');
     column_element = element.parent('.middle-column-element');
     column_id = column_element.attr('id');
     
     if(column_id != null || trim(column_id) != '') {
-        $("#addBookmark_groupId").val(column_id).attr('selected', true);
+        $("#add_bookmark_categoryId").val(column_id).attr('selected', true);
     }
 
 

@@ -106,12 +106,38 @@
             <result name="input">/WEB-INF/results/edit_category.jsp</result>
         </action>
 
+        <action name="delete_category" class="com.myapp.action.CategoryAction" method="deleteCategory">
+            <result name="success">/WEB-INF/results/list_categories.jsp</result>
+            <result name="input">/WEB-INF/results/list_categories.jsp</result>
+        </action>
+
+        <action name="list_bookmarks">
+            <result>/WEB-INF/results/list_bookmarks.jsp</result>
+        </action>
+
+        <action name="add_bookmark" class="com.myapp.action.BookmarkAction" method="addBookmark">
+            <result name="success">/WEB-INF/results/new_bookmark.jsp</result>
+            <result name="input">/WEB-INF/results/new_bookmark.jsp</result>
+        </action>
+
+        <action name="save_bookmark" class="com.myapp.action.BookmarkAction" method="saveBookmark">
+            <result name="success">/WEB-INF/results/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/new_bookmark.jsp</result>
+        </action>
+
+        <action name="delete_bookmark" class="com.myapp.action.BookmarkAction" method="deleteBookmark">
+            <result name="success">/WEB-INF/results/list_bookmarks.jsp</result>
+            <result name="input">/WEB-INF/results/list_bookmarks.jsp</result>
+        </action>
+
         <action name="test">
             <result>/WEB-INF/results/header.jsp</result>
         </action>
+
         <action name="test1">
             <result>/WEB-INF/results/mainpage.jsp</result>
         </action>
+
         <action name="test2">
             <result>/WEB-INF/results/HomeStuffMaster.jsp</result>
         </action>

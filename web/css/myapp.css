@@ -519,7 +519,7 @@ sup {
 
 
 .new-element-modal {
-    display: none;
+    display: block;
     position: fixed;
     background: teal;
     color: white;

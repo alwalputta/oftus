@@ -22,7 +22,6 @@
         <level value="DEBUG" />
     </logger>
 
-<!--
     <category name="org.hibernate.SQL">  
         <priority value="TRACE"/>  
     </category>
@@ -30,7 +29,6 @@
     <category name="org.hibernate.type">  
         <priority value="TRACE"/>  
     </category>
--->
   
     <!-- for all other loggers log only debug and above log messages -->
     <root>

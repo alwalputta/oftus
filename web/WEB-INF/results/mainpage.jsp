@@ -87,7 +87,7 @@
                     <li><a href="options">Options</a>
                         <ul>
                             <li><a href="list_categories">Manage Categories</a></li>
-                            <li><a href="add_bookmark">Manage Bookmarks</a></li>
+                            <li><a href="list_bookmarks">Manage Bookmarks</a></li>
                             <li><a href="import_bookmarks">Import Bookmarks</a></li>
                             <li><a href="industry_trends">Industry Trends</a></li>
                             <li><a href="personal_reports">Personal Reports</a></li>
@@ -176,27 +176,6 @@
         </div>
 
 
-        <div class="new-element-modal">
-            <div class="new-element">
-                <div>Add New Bookmark</div>
-
-                <s:form action="addBookmark">
-                    <s:select name="categoryId" list="%{#session.user.userCategories}" headerKey="-1" headerValue="Select Category..." key="new.categoryname-label" listKey="categoryId" listValue="categoryName"/>
-                    <s:textfield name="bookmarkname" size="60" maxlength="200" key="new.bookmark-label"/>
-                    <s:textfield name="hiperLink" size="60" maxlength="200" key="new.hiperlink-label"/>
-                    <s:textarea name="description" rows="5" cols="60" key="new.bookmark-description-label"/>
-                    <tr>
-                        <td colspan="2" align="center">
-                            <s:submit align="center" key="new.submit-label" theme="simple"/>
-                            <s:reset align="center" key="new.reset-label" theme="simple"/>
-                        </td>
-                    </tr>
-                </s:form>
-                <a href="#new_bookmark_faq" class="new-element-links">Add/Edit Bookmark FAQ</a>
-            </div>
-        </div>
-
-
         <div class="mainTable">
             <div class="middle-column-element-import"></div>
             <ul id="middle-column-sortable">
@@ -221,8 +200,8 @@
                             </ul>
 
                             <div class="middle-row-new-element">
-                                <span> <a href="#">
-                                        + Add bookmark +
+                                <span> <a href="add_bookmark?categoryId=<s:property value="#category.categoryId"/>">
+                                        + Add Bookmark +
                                     </a>
                                 </span>
                             </div>
