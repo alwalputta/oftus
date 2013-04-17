@@ -134,6 +134,7 @@ public class RegisterAction extends ActionSupport {
         return "success";
     }
 
+    //Update the user profile
     public String updateProfile() {
         logger.debug("RegisterAction updateProfile!");
 
@@ -162,41 +163,34 @@ public class RegisterAction extends ActionSupport {
         address.setState(state);
         address.setZip(zip);
 
-        userAddresses.add(address);
-        user.setUserAddresses(userAddresses);
+        Set<Email> userEmails = user.getUserEmails();
+        Email email = null;
+        for (Iterator iterator = userEmails.iterator(); iterator.hasNext();) {
+            email = (Email) iterator.next();
+        }
+        email.setEmailAddress(getEmailAddress());
 
-        logger.debug("RegisterAction execute!3");
-        Email email = new Email(getEmailAddress());
-        Set<Email> userEmails = new LinkedHashSet<Email>();
-        userEmails.add(email);
+        Set<Phone> userPhones = user.getUserPhones();
+        Phone phone = null;
+        for (Iterator iterator = userPhones.iterator(); iterator.hasNext();) {
+            phone = (Phone) iterator.next();
+        }
+        phone.setPhoneNumber(getPhoneNumber());
+        phone.setPhoneType("M");
 
-        user.setUserEmails(userEmails);
-
-        logger.debug("RegisterAction execute!4");
-        //Phone object being created
-        Phone phone = new Phone(getPhoneNumber());
-        Set<Phone> userPhones = new LinkedHashSet<Phone>();
-        userPhones.add(phone);
-
-        user.setUserPhones(userPhones);
-
-        logger.debug("RegisterAction execute!5");
-        //Credential object being created
-        Credential credential = new Credential(getUsername(), getPassword());
-        Set<Credential> userCredentials = new LinkedHashSet<Credential>();
-        userCredentials.add(credential);
-
-        user.setUserCredentials(userCredentials);
-
-        logger.debug("Address Set Size:" + userAddresses.size());
-        logger.debug("Email Set Size:" + userEmails.size());
-        logger.debug("Phone Set Size:" + userPhones.size());
-        logger.debug("Credential Set Size:" + userCredentials.size());
+        if (getPassword() != null && !"".equals(getPassword())) {
+            Set<Credential> userCredentials = user.getUserCredentials();
+            Credential credential = null;
+            for (Iterator iterator = userCredentials.iterator(); iterator.hasNext();) {
+                credential = (Credential) iterator.next();
+            }
+            credential.setPassword(getPassword());
+        }
 
         UserDAO userDAO = new UserDAO();
         userDAO.updateUser(user);
 
-        logger.debug("RegisterAction execute, userid:" + user.getUserId());
+        logger.debug("userid:" + user.getUserId());
 
         return "success";
     }

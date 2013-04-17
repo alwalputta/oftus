@@ -22,27 +22,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
         <script type="text/javascript">
-            
-            /*
-             *$('#c2').data ({colId:"c2", position:2, title: "Column 2"});
-              $('#c2r1').data ({linkId:"c2r1", position:1, hiperLink:"www.yahoo.com", title: "Yahoo!", comments:"my favotite for news"});
-             */
-           
             function loadData () {
-                //alert ('aaaaa');
-                //columns
-                $('#c1').data({colId:"1", title:"Builder"});
-
             <s:iterator value="userCategories" id="category">
-                    $('#<s:property value="#category.categoryId"/>').data({colId:"<s:property value="#category.categoryId"/>", title:"<s:property value="#category.categoryName"/>"});
+                    $('#C<s:property value="#category.categoryId"/>').data({colId:"<s:property value="#category.categoryId"/>", title:"<s:property value="#category.categoryName"/>", description:"<s:property value="#category.description:"/>"});
                 <s:iterator value="#category.bookmarks" id="bookmark">
-                        $('#<s:property value="#bookmark.bookmarkId"/>').data({linkId:"<s:property value="#bookmark.bookmarkId"/>", title:"<s:property value="#bookmark.bookmarkName"/>", hiperLink:"<s:property value="#bookmark.hiperLink"/>", description:"<s:property value="#bookmark.description"/>"});
+                        $('#R<s:property value="#bookmark.bookmarkId"/>').data({linkId:"<s:property value="#bookmark.bookmarkId"/>", title:"<s:property value="#bookmark.bookmarkName"/>", hiperLink:"<s:property value="#bookmark.hiperLink"/>", description:"<s:property value="#bookmark.description"/>"});
                 </s:iterator>
             </s:iterator>
-
-                    //$('#c2r1').data({linkId:"c2r1", hiperLink:"http://www.yahoo.com", title: "Yahoo!", comments:"my favotite for news"});
-                    //rows
-                    $('#c1r1').data({linkId:"c1r1", title:"Braddock And Logan Homes", hiperLink:"http://www.braddockandloganhomes.com/", description:"test link"});
                 }
         </script>
     </head>
@@ -66,7 +52,7 @@
 
             <div class="top-column-element-right">
 
-                <img class ="photo-box" src="images/user.jpg" alt="Welcome, Alwal Putta"/>
+                <img class ="photo-box" src="images/user.jpg" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
                 <ul id="menu">
                     <li>
                         <s:if test="%{#session.user.firstName} == null">
@@ -182,25 +168,33 @@
 
                 <s:iterator value="%{#session.user.userCategories}" id="category">
                     <li>
-                        <div class="middle-column-element" id="<s:property value="#category.categoryId"/>">
+                        <div class="middle-column-element" id="C<s:property value="#category.categoryId"/>">
                             <div class="middle-column-element-heading">
                                 <s:property value="#category.categoryName"/>
                             </div>
                             <ul id="middle-row-sortable" class="connectedSortable">
                                 <s:iterator value="#category.bookmarks" id="bookmark">
                                     <li>
-                                        <div class ="middle-row-element" id="<s:property value="#bookmark.bookmarkId"/>">
+                                        <div class ="middle-row-element" id="R<s:property value="#bookmark.bookmarkId"/>">
                                             <img class="favicon" src="images/favicon.ico"/>
                                             <div class="middle-row-element-text">
                                                 <s:property value="#bookmark.bookmarkName"/>
                                             </div> 
+                                            <div class="middle-row-element-edit-icons">
+                                                <a href="edit_bookmark?bookmarkId=<s:property value="#bookmark.bookmarkId"/>">
+                                                    <img class="ui-icon ui-icon-pencil middle-row-element-edit-icon"/>
+                                                </a>
+                                                <a href="delete_bookmark?bookmarkId=<s:property value="#bookmark.bookmarkId"/>">
+                                                    <img class="ui-icon ui-icon-trash middle-row-element-delete-icon"/>
+                                                </a>
+                                            </div>
                                         </div>
                                     </li>
                                 </s:iterator>
                             </ul>
 
                             <div class="middle-row-new-element">
-                                <span> <a href="add_bookmark?categoryId=<s:property value="#category.categoryId"/>">
+                                <span><a href="add_bookmark?categoryId=<s:property value="#category.categoryId"/>">
                                         + Add Bookmark +
                                     </a>
                                 </span>

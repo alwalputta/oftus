@@ -61,7 +61,7 @@ public class LogoutAction extends ActionSupport {
         addActionMessage("In the LogoutAction");
     }
 
-    public String getActionAction() {
+    public String getActionName() {
         ActionContext context = ActionContext.getContext();
         return context.getName();
     }

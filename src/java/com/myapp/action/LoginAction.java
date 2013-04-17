@@ -65,7 +65,7 @@ public class LoginAction extends ActionSupport {
         this.userCategories = userCategories;
     }
 
-    public String getActionAction() {
+    public String getActionName() {
         ActionContext context = ActionContext.getContext();
         return context.getName();
     }
@@ -118,7 +118,6 @@ public class LoginAction extends ActionSupport {
             }
         }
 
-
         return returnVal;
     }
 
@@ -126,27 +125,26 @@ public class LoginAction extends ActionSupport {
     @Override
     public void validate() {
 
-        logger.debug("before state DAO1:" + getUsername());
-        logger.debug("before state DAO1:" + getActionAction());
+        if (getActionName().equals("login")) {
+            logger.debug("before state DAO1:" + getUsername());
+            logger.debug("before state DAO1:" + getActionName());
 
-        CredentialDAO credentialDAO = new CredentialDAO();
-        credential = credentialDAO.selectCredential(getUsername());
+            CredentialDAO credentialDAO = new CredentialDAO();
+            credential = credentialDAO.selectCredential(getUsername());
 
-        if (credential == null) {
-            addActionMessage("This user does not exist. Do you want to register?");
-            addFieldError("username", getText("userdoesnotexist"));
-            credential = new Credential();
-        } else if ((getUsername().equals(credential.getUsername())) && getPassword().equals(credential.getPassword())) {
-            logger.debug("before state DAO2:" + credential.getUsername());
-        } else {
-            addActionMessage("This username and password is not registered.");
-            addFieldError("username", getText("userdoesnotexist"));
+            if (credential == null) {
+                addActionMessage("This user does not exist. Do you want to register?");
+                addFieldError("username", getText("userdoesnotexist"));
+                credential = new Credential();
+            } else if ((getUsername().equals(credential.getUsername())) && getPassword().equals(credential.getPassword())) {
+                logger.debug("before state DAO2:" + credential.getUsername());
+            } else {
+                addActionMessage("This username and password is not registered.");
+                addFieldError("username", getText("userdoesnotexist"));
+            }
+        } else if (getActionName().equals("add_bookmark")) {
         }
 
-//        if (getPassword().length() == 0) {
-//            addFieldError("password", getText("password.empty"));
-//        }
-//        addActionMessage("In the LoginAction");
         logger.debug("in the validate of LoginAction");
     }
 }

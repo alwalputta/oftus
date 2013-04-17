@@ -4,12 +4,11 @@
  */
 package com.myapp.action;
 
-import com.myapp.admin.Credential;
-import com.myapp.admin.CredentialDAO;
 import com.myapp.admin.User;
 import com.myapp.admin.UserDAO;
 import com.myapp.main.Bookmark;
 import com.myapp.main.Category;
+import com.myapp.main.CategoryDAO;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Iterator;
@@ -26,19 +25,72 @@ import org.apache.struts2.ServletActionContext;
 public class BookmarkAction extends ActionSupport {
 
     private String categoryId;
-    private String bookmarkname;
+    private String bookmarkName;
     private String hiperLink;
     private String description;
-
+    User user = null;
     static final Logger logger = Logger.getLogger(BookmarkAction.class);
+    private Set<Category> userCategories;
 
+    //business logic
+    @Override
+    public String execute() {
+        logger.debug("BookmarkAction newBookmark!");
+        return "success";
+    }
     
     //business logic
     public String addBookmark() {
-
-        logger.debug("BookmarkAction addBookmark!");
-
+        logger.debug("addBookmark!" + getCategoryId());
         String returnVal = "success";
+
+//        HttpServletRequest request = ServletActionContext.getRequest();
+//        HttpSession session = request.getSession();
+//
+//        CategoryDAO categoryDAO = new CategoryDAO();
+//        Category category = categoryDAO.selectCategory(new Integer(categoryId).intValue());
+//
+//        session.setAttribute("category", category);
+
+        return returnVal;
+    }
+
+    //business logic
+    public String saveBookmark() {
+        logger.debug("BookmarkAction saveBookmark!");
+        String returnVal = "success";
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        user = (User) session.getAttribute("user");
+
+        logger.debug("category id:" + getCategoryId());
+
+        userCategories = user.getUserCategories();
+        logger.debug("userCategories size:" + userCategories.size());
+
+        Bookmark bookmark = new Bookmark();
+        bookmark.setBookmarkName(getBookmarkName());
+        bookmark.setHiperLink(hiperLink);
+        bookmark.setBookmarkOrder(10000); //modify this later//
+
+        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
+            logger.debug("222222222222");
+            Category c = (Category) iterator.next();
+            logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
+
+            if (c.getCategoryId() == new Integer(getCategoryId()).intValue()) {
+                Set<Bookmark> bookmarks = c.getBookmarks();
+                logger.debug("bookmarks size1:" + bookmarks.size());
+                bookmarks.add(bookmark);
+                logger.debug("bookmarks size2:" + bookmarks.size());
+            }
+        }
+        user.setUserCategories(userCategories);
+
+        UserDAO userDAO = new UserDAO();
+        userDAO.updateUser(user);
 
         return returnVal;
     }
@@ -46,15 +98,63 @@ public class BookmarkAction extends ActionSupport {
     //simple validation
     @Override
     public void validate() {
-
-        logger.debug("before state DAO1:");
-
         logger.debug("in the validate of BookmarkAction");
+        if (getActionName().equals("new_bookmark")) {
+            logger.debug("in new_bookmark");
+        } else if (getActionName().equals("save_bookmark")) {
+            logger.debug("in save_bookmark1");
+            if (getBookmarkName() == null || "".equals(getBookmarkName())) {
+                logger.debug("in save_bookmark2");
+                addFieldError("bookmarkName", "Bookmark title cant be empty");
+                logger.debug("in save_bookmark3");
+            }
+
+            logger.debug("in save_bookmark4");
+            if (getHiperLink() == null || "".equals(getHiperLink())) {
+                logger.debug("in save_bookmark5");
+                addFieldError("hiperLink", "Bookmark/URL cant be empty");
+                logger.debug("in save_bookmark6");
+            }
+        } else {
+            logger.debug("in else action");
+        }
+        logger.debug("action");
     }
-    
+
     public String getActionName() {
         ActionContext context = ActionContext.getContext();
         return context.getName();
     }
 
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getBookmarkName() {
+        return bookmarkName;
+    }
+
+    public void setBookmarkName(String bookmarkName) {
+        this.bookmarkName = bookmarkName;
+    }
+
+    public String getHiperLink() {
+        return hiperLink;
+    }
+
+    public void setHiperLink(String hiperLink) {
+        this.hiperLink = hiperLink;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

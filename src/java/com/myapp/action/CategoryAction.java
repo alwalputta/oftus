@@ -29,6 +29,89 @@ public class CategoryAction extends ActionSupport {
     Set<Category> userCategories = null;
     static final Logger logger = Logger.getLogger(CategoryAction.class);
 
+//business logic to fetch the category details
+//    @Override
+    public String editCategory() {
+        logger.debug("editCategory!" + getCategoryId());
+        String returnVal = "success";
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        CategoryDAO categoryDAO = new CategoryDAO();
+        Category category = categoryDAO.selectCategory(new Integer(categoryId).intValue());
+
+        session.setAttribute("category", category);
+
+        return returnVal;
+    }
+
+    //business logic to update the category
+    public String updateCategory() {
+        logger.debug("updateCategory!" + getCategoryId());
+        String returnVal = "success";
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        User user = (User) session.getAttribute("user");
+
+        userCategories = user.getUserCategories();
+        logger.debug("userCategories size:" + userCategories.size());
+
+        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
+            logger.debug("222222222222");
+            Category c = (Category) iterator.next();
+
+            if (c.getCategoryId() == new Integer(categoryId).intValue()) {
+                c.setCategoryName(categoryName);
+                c.setDescription(description);
+            }
+        }
+        user.setUserCategories(userCategories);
+
+        UserDAO userDAO = new UserDAO();
+        userDAO.updateUser(user);
+
+        return returnVal;
+    }
+
+    //Business logic to delete a category
+    public String deleteCategory() {
+        logger.debug("deleteCategory!" + getCategoryId());
+        String returnVal = "success";
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        User user = (User) session.getAttribute("user");
+
+        userCategories = user.getUserCategories();
+        logger.debug("userCategories size:" + userCategories.size());
+
+        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
+            logger.debug("222222222222");
+            Category c = (Category) iterator.next();
+            if (c.getCategoryId() == new Integer(categoryId).intValue()) {
+                c.setStatus("D");
+//                userCategories.remove(c);
+            }
+        }
+        UserDAO userDAO = new UserDAO();
+        userDAO.updateUser(user);
+
+        return returnVal;
+    }
+
+    //simple validation
+    @Override
+    public void validate() {
+        logger.debug("in the validate");
+        logger.debug("editCategory!" + getCategoryId());
+
+//        addFieldError("categoryname", getText("categorynameisempty1"));
+    }
+
     public String getCategoryId() {
         return categoryId;
     }
@@ -56,103 +139,5 @@ public class CategoryAction extends ActionSupport {
     public String getActionName() {
         ActionContext context = ActionContext.getContext();
         return context.getName();
-    }
-
-//business logic
-//    @Override
-    public String editCategory() {
-        logger.debug("editCategory!" + getCategoryId());
-        String returnVal = "success";
-
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-
-        CategoryDAO categoryDAO = new CategoryDAO();
-        Category category = categoryDAO.selectCategory(new Integer(categoryId).intValue());
-
-        session.setAttribute("category", category);
-
-        return returnVal;
-    }
-
-    public String updateCategory() {
-        logger.debug("updateCategory!" + getCategoryId());
-        String returnVal = "success";
-
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-
-        User user = (User) session.getAttribute("user");
-
-        userCategories = user.getUserCategories();
-        logger.debug("userCategories size:" + userCategories.size());
-
-//        Category category = new Category();
-//        category.setCategoryId(new Integer(categoryId).intValue());
-//        category.setCategoryName(categoryName);
-//        category.setDescription(description);
-//        userCategories.add(category);
-
-        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
-            logger.debug("222222222222");
-            Category c = (Category) iterator.next();
-
-            if (c.getCategoryId() == new Integer(categoryId).intValue()) {
-                c.setCategoryName(categoryName);
-                c.setDescription(description);
-            }
-        }
-
-        user.setUserCategories(userCategories);
-
-        UserDAO userDAO = new UserDAO();
-        userDAO.updateUser(user);
-
-//        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
-//            logger.debug("222222222222");
-//            Category c = (Category) iterator.next();
-//            if (c.getCategoryId() == new Integer(categoryId).intValue()) {
-//                c.setCategoryName(categoryName);
-//                c.setDescription(description);
-//                CategoryDAO categoryDAO = new CategoryDAO();
-//                categoryDAO.updateCategory(c);
-//            }
-//        }
-
-        return returnVal;
-    }
-
-    public String deleteCategory() {
-        logger.debug("deleteCategory!" + getCategoryId());
-        String returnVal = "success";
-
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-
-        User user = (User) session.getAttribute("user");
-
-        userCategories = user.getUserCategories();
-        logger.debug("userCategories size:" + userCategories.size());
-
-        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
-            logger.debug("222222222222");
-            Category c = (Category) iterator.next();
-            if (c.getCategoryId() == new Integer(categoryId).intValue()) {
-                c.setStatus("D");
-                CategoryDAO categoryDAO = new CategoryDAO();
-                categoryDAO.updateCategory(c);
-            }
-        }
-
-        return returnVal;
-    }
-
-    //simple validation
-    @Override
-    public void validate() {
-        logger.debug("in the validate");
-        logger.debug("editCategory!" + getCategoryId());
-
-//        addFieldError("categoryname", getText("categorynameisempty1"));
     }
 }

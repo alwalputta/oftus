@@ -174,7 +174,7 @@ $(document).keyup(function(e) {
         $('.register-modal').hide();
         $('.forgot-password-modal').hide();
         $('.new-category-modal').hide();
-/*        $('.new-element-modal').hide();*/
+        /*        $('.new-element-modal').hide();*/
         $('.edit-element-modal').hide();
         $('.middle-column-element-edit-icons').hide();
         $('.middle-row-element-edit-icons').hide();
@@ -330,7 +330,7 @@ $('.middle-row-element-delete-icon').click(function(ev){
 
 
 
-$('.middle-row-element-text').hover(function(ev){
+$('.middle-row-element-text').hover(function(){
 
     var element = $(this).parent('.middle-row-element');
     var position = element.position();
@@ -345,11 +345,21 @@ $('.middle-row-element-text').hover(function(ev){
     //    alert ('left:' + left);
     //    alert ('width:' + width);
 
+    /*
     $('.middle-row-element-edit-icons').show();
     $('.middle-row-element-edit-icons').css('top', top);
     $('.middle-row-element-edit-icons').css('left', (left+width-30));
+*/
+
+    element.children('.middle-row-element-edit-icons').show();
+    element.children('.middle-row-element-edit-icons').css('top', top);
+    element.children('.middle-row-element-edit-icons').css('left', (left+width-30));
 
     active_row_element = element;
+},
+function(){
+    var element = $(this).parent('.middle-row-element');
+    element.children('.middle-row-element-edit-icons').hide();
 });
 
 
@@ -610,8 +620,12 @@ function inline_edit_row_element (element) {
     var hiperLink = element.data('hiperLink');
     var description = element.data('description');
 
-
-    alert ('2222' + element.data('edit_status'));
+    alert ('2222:' + element.data('edit_status'));
+    alert ('2222:' + element.value());
+    alert ('linkId:' + linkId);
+    alert ('title:' + title);
+    alert ('hiperLink:' + hiperLink);
+    alert ('description:' + description);
 
     var position = element.position();
 
@@ -628,7 +642,6 @@ function inline_edit_row_element (element) {
     $('.inline-row-element-edit').show();
     $('.inline-row-element-edit').css('top', top);
     $('.inline-row-element-edit').css('left', (left+width-200));
-
 }
 
 
@@ -648,9 +661,7 @@ $('.middle-row-element').on('click', '#inline-save', function(ev){
     element.children('.middle-row-element-text').show();
     $('#inline-element-edit').hide();
 
-    //    if (element.data('edit_status') == 'E') {
     element.data('edit_status', 'C');
-//    }
 });
 
 
