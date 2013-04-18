@@ -105,7 +105,8 @@
                                         <td>
                                             <s:property value="#bookmark.description"/>
                                         </td>
-                                        <td><s:url id="editBookmark" action="edit_bookmark">
+                                        <td>
+                                            <s:url id="editBookmark" action="edit_bookmark">
                                                 <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
                                             </s:url>
                                             <a href="<s:property value="#editBookmark"/>">Edit</a>

@@ -120,9 +120,19 @@
             <result name="input">/WEB-INF/results/new_bookmark.jsp</result>
         </action>
 
+        <action name="edit_bookmark" class="com.myapp.action.BookmarkAction" method="editBookmark">
+            <result name="success">/WEB-INF/results/edit_bookmark.jsp</result>
+            <result name="input">/WEB-INF/results/edit_bookmark.jsp</result>
+        </action>
+
         <action name="save_bookmark" class="com.myapp.action.BookmarkAction" method="saveBookmark">
             <result name="success">/WEB-INF/results/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/new_bookmark.jsp</result>
+        </action>
+
+        <action name="update_bookmark" class="com.myapp.action.BookmarkAction" method="updateBookmark">
+            <result name="success">/WEB-INF/results/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/edit_bookmark.jsp</result>
         </action>
 
         <action name="delete_bookmark" class="com.myapp.action.BookmarkAction" method="deleteBookmark">

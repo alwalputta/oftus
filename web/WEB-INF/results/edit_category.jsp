@@ -44,7 +44,7 @@
                         </td>
                     </tr>
                 </s:form>
-                <a href="#new_category_faq" class="new-element-links">Add/Edit Category FAQ</a>
+                <s:a href="#new_category_faq" class="new-element-links">Add/Edit Category FAQ</s:a>
             </div>
         </div>
 

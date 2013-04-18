@@ -181,12 +181,21 @@
                                                 <s:property value="#bookmark.bookmarkName"/>
                                             </div> 
                                             <div class="middle-row-element-edit-icons">
-                                                <a href="edit_bookmark?bookmarkId=<s:property value="#bookmark.bookmarkId"/>">
+                                                <s:url id="editBookmark" action="edit_bookmark" escapeAmp="false">
+                                                    <s:param name="categoryId" value="#category.categoryId"></s:param>
+                                                    <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
+                                                </s:url>
+                                                <a href="<s:property value="#editBookmark"/>">
                                                     <img class="ui-icon ui-icon-pencil middle-row-element-edit-icon"/>
                                                 </a>
-                                                <a href="delete_bookmark?bookmarkId=<s:property value="#bookmark.bookmarkId"/>">
+
+                                                <s:url id="deleteBookmark" action="delete_bookmark">
+                                                    <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
+                                                </s:url>
+                                                <a href="<s:property value="#deleteBookmark"/>">
                                                     <img class="ui-icon ui-icon-trash middle-row-element-delete-icon"/>
                                                 </a>
+
                                             </div>
                                         </div>
                                     </li>

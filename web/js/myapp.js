@@ -330,8 +330,7 @@ $('.middle-row-element-delete-icon').click(function(ev){
 
 
 
-$('.middle-row-element-text').hover(function(){
-
+$('.middle-row-element-text').mouseenter(function(){
     var element = $(this).parent('.middle-row-element');
     var position = element.position();
 
@@ -344,7 +343,6 @@ $('.middle-row-element-text').hover(function(){
     //    alert ('top:' + top);
     //    alert ('left:' + left);
     //    alert ('width:' + width);
-
     /*
     $('.middle-row-element-edit-icons').show();
     $('.middle-row-element-edit-icons').css('top', top);
@@ -352,12 +350,13 @@ $('.middle-row-element-text').hover(function(){
 */
 
     element.children('.middle-row-element-edit-icons').show();
-    element.children('.middle-row-element-edit-icons').css('top', top);
+    element.children('.middle-row-element-edit-icons').css('top', top+5);
     element.children('.middle-row-element-edit-icons').css('left', (left+width-30));
 
     active_row_element = element;
-},
-function(){
+});
+
+$('.middle-row-element-text').mouseout(function(){
     var element = $(this).parent('.middle-row-element');
     element.children('.middle-row-element-edit-icons').hide();
 });

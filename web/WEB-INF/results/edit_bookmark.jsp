@@ -43,11 +43,11 @@
         <div class="new-element-modal">
             <div class="new-element">
                 <div>Add New Bookmark</div>
-
-                <s:form action="save_bookmark">
-                    <s:select name="categoryId" list="%{#session.user.userCategories}" listKey="categoryId" listValue="categoryName" headerKey="-1" headerValue="Select Category..." key="new.categoryname-label"/>
-                    <s:textfield name="bookmarkName" size="60" maxlength="200" key="new.bookmark-label"/>
-                    <s:textfield name="hiperLink" size="60" maxlength="200" key="new.hiperlink-label"/>
+                <s:form action="update_bookmark">
+                    <s:hidden name="bookmarkId" value="%{#session.bookmark.bookmarkId}"/>
+                    <s:select name="categoryId" list="%{#session.user.userCategories}" listKey="categoryId" listValue="categoryName" value="%{categoryId}" headerKey="-1" headerValue="Select Category..." key="new.categoryname-label"/>
+                    <s:textfield name="bookmarkName" value="%{#session.bookmark.bookmarkName}" size="60" maxlength="200" key="new.bookmark-label"/>
+                    <s:textfield name="hiperLink" value="%{#session.bookmark.description}" size="60" maxlength="200" key="new.hiperlink-label"/>
                     <s:textarea name="description" rows="5" cols="60" key="new.bookmark-description-label"/>
                     <tr>
                         <td colspan="2" align="center">
@@ -56,7 +56,7 @@
                         </td>
                     </tr>
                 </s:form>
-                <a href="new_bookmark_faq" class="new-element-links">Add Bookmark FAQ</a>
+                <s:a href="new_bookmark_faq" class="new-element-links">Edit Bookmark FAQ</s:a>
             </div>
         </div>
 

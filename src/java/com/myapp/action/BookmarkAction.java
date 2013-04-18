@@ -25,6 +25,7 @@ import org.apache.struts2.ServletActionContext;
 public class BookmarkAction extends ActionSupport {
 
     private String categoryId;
+    private String bookmarkId;
     private String bookmarkName;
     private String hiperLink;
     private String description;
@@ -38,19 +39,47 @@ public class BookmarkAction extends ActionSupport {
         logger.debug("BookmarkAction newBookmark!");
         return "success";
     }
-    
+
     //business logic
     public String addBookmark() {
         logger.debug("addBookmark!" + getCategoryId());
         String returnVal = "success";
 
-//        HttpServletRequest request = ServletActionContext.getRequest();
-//        HttpSession session = request.getSession();
-//
-//        CategoryDAO categoryDAO = new CategoryDAO();
-//        Category category = categoryDAO.selectCategory(new Integer(categoryId).intValue());
-//
-//        session.setAttribute("category", category);
+        return returnVal;
+    }
+
+    //business logic
+    public String editBookmark() {
+        logger.debug("editBookmark!" + getBookmarkId());
+        String returnVal = "success";
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        user = (User) session.getAttribute("user");
+
+        logger.debug("category id:" + getCategoryId());
+
+        userCategories = user.getUserCategories();
+        logger.debug("userCategories size:" + userCategories.size());
+
+        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
+            logger.debug("222222222222");
+            Category c = (Category) iterator.next();
+            logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
+
+            Set<Bookmark> bookmarks = c.getBookmarks();
+
+            for (Iterator i = bookmarks.iterator(); i.hasNext();) {
+                Bookmark b = (Bookmark) i.next();
+
+                if (b.getBookmarkId() == new Integer(getBookmarkId()).intValue()) {
+                    logger.debug("bookmarkId value:" + b.getBookmarkId() + ":" + b.getBookmarkName() + ":" + b.getHiperLink());
+                    session.setAttribute("bookmark", b);
+                    session.setAttribute("categoryId", c.getCategoryId());
+                }
+            }
+        }
 
         return returnVal;
     }
@@ -85,6 +114,86 @@ public class BookmarkAction extends ActionSupport {
                 logger.debug("bookmarks size1:" + bookmarks.size());
                 bookmarks.add(bookmark);
                 logger.debug("bookmarks size2:" + bookmarks.size());
+            }
+        }
+        user.setUserCategories(userCategories);
+
+        UserDAO userDAO = new UserDAO();
+        userDAO.updateUser(user);
+
+        return returnVal;
+    }
+
+    //business logic
+    public String updateBookmark() {
+        logger.debug("BookmarkAction updateBookmark!");
+        String returnVal = "success";
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        user = (User) session.getAttribute("user");
+
+        logger.debug("category id:" + getCategoryId());
+
+        userCategories = user.getUserCategories();
+        logger.debug("userCategories size:" + userCategories.size());
+
+        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
+            logger.debug("222222222222");
+            Category c = (Category) iterator.next();
+            logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
+
+            Set<Bookmark> bookmarks = c.getBookmarks();
+
+            for (Iterator i = bookmarks.iterator(); i.hasNext();) {
+                Bookmark b = (Bookmark) i.next();
+
+                if (b.getBookmarkId() == new Integer(getBookmarkId()).intValue()) {
+                    logger.debug("bookmarkId value:" + b.getBookmarkId() + ":" + b.getBookmarkName() + ":" + b.getHiperLink());
+                    b.setBookmarkName(getBookmarkName());
+                    b.setHiperLink(hiperLink);
+                    b.setBookmarkOrder(10000); //modify this later//
+                }
+            }
+        }
+        user.setUserCategories(userCategories);
+
+        UserDAO userDAO = new UserDAO();
+        userDAO.updateUser(user);
+
+        return returnVal;
+    }
+
+    //business logic
+    public String deleteBookmark() {
+        logger.debug("BookmarkAction deleteBookmark!");
+        String returnVal = "success";
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        user = (User) session.getAttribute("user");
+
+        logger.debug("category id:" + getCategoryId());
+
+        userCategories = user.getUserCategories();
+        logger.debug("userCategories size:" + userCategories.size());
+
+        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
+            logger.debug("222222222222");
+            Category c = (Category) iterator.next();
+            logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
+
+            Set<Bookmark> bookmarks = c.getBookmarks();
+
+            for (Iterator i = bookmarks.iterator(); i.hasNext();) {
+                Bookmark b = (Bookmark) i.next();
+
+                if (b.getBookmarkId() == new Integer(getBookmarkId()).intValue()) {
+                    logger.debug("bookmarkId value:" + b.getBookmarkId() + ":" + b.getBookmarkName() + ":" + b.getHiperLink());
+                    b.setStatus("D");
+                }
             }
         }
         user.setUserCategories(userCategories);
@@ -132,6 +241,14 @@ public class BookmarkAction extends ActionSupport {
 
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public String getBookmarkId() {
+        return bookmarkId;
+    }
+
+    public void setBookmarkId(String bookmarkId) {
+        this.bookmarkId = bookmarkId;
     }
 
     public String getBookmarkName() {

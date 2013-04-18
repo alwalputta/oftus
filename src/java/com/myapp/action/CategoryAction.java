@@ -30,7 +30,22 @@ public class CategoryAction extends ActionSupport {
     static final Logger logger = Logger.getLogger(CategoryAction.class);
 
 //business logic to fetch the category details
-//    @Override
+    public String addCategory() {
+        logger.debug("addCategory!" + getCategoryId());
+        String returnVal = "success";
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        CategoryDAO categoryDAO = new CategoryDAO();
+        Category category = categoryDAO.selectCategory(new Integer(categoryId).intValue());
+
+        session.setAttribute("category", category);
+
+        return returnVal;
+    }
+
+//business logic to fetch the category details
     public String editCategory() {
         logger.debug("editCategory!" + getCategoryId());
         String returnVal = "success";
@@ -42,6 +57,34 @@ public class CategoryAction extends ActionSupport {
         Category category = categoryDAO.selectCategory(new Integer(categoryId).intValue());
 
         session.setAttribute("category", category);
+
+        return returnVal;
+    }
+
+    
+    //business logic to update the category
+    public String saveCategory() {
+        logger.debug("saveCategory!" + getCategoryId());
+        String returnVal = "success";
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        User user = (User) session.getAttribute("user");
+
+        userCategories = user.getUserCategories();
+        logger.debug("userCategories size:" + userCategories.size());
+        
+        Category category = new Category();
+        category.setCategoryName(getCategoryName());
+        category.setDescription(getDescription());
+
+        userCategories.add(category);
+
+        user.setUserCategories(userCategories);
+
+        UserDAO userDAO = new UserDAO();
+        userDAO.updateUser(user);
 
         return returnVal;
     }
@@ -76,6 +119,7 @@ public class CategoryAction extends ActionSupport {
         return returnVal;
     }
 
+    
     //Business logic to delete a category
     public String deleteCategory() {
         logger.debug("deleteCategory!" + getCategoryId());
