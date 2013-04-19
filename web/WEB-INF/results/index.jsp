@@ -15,21 +15,11 @@
                 margin-bottom:8px;
             }
             .errors li{ 
-                list-style: none; 
+                list-style: none;
             }
         </style>
 
-        <link rel="shortcut icon" type="image/x-icon" class="header-icon" href="images/favicon.ico"/>
-        <link rel="stylesheet" type="text/css" href="css/myapp.css"/>
-        <link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/sunny/jquery-ui.css"/>
-
-        <script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
-        <script type="text/javascript" src="js/jquery.highlight-3.js"></script>
-        <script type="text/javascript" src="js/constants.js"></script>
-
-        <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <%@include file="/WEB-INF/results/imports.jsp"%>
 
     </head>
 
@@ -54,7 +44,7 @@
         <s:a href="%{localeEN}" >English</s:a>
         <s:a href="%{localeDE}" >German</s:a>
     </p-->
-
+        <%@include file="/WEB-INF/results/header.jsp"%>
         <div class="login-modal">
 
             <s:if test="hasActionErrors()">
@@ -91,14 +81,15 @@
                 <s:a href="test">Test</s:a> |
                 <s:a href="test2">Test</s:a> |
                 <s:a href="test3">Test</s:a>
-                </div>
-                <div class="login-register">
-                    <br></br>
-    <!--                Don't have an account yet? <s:a href="register_form?debug=xml">Create one</s:a>
-                    -->
-                    Don't have an account yet? <s:a href="register_form">Create one</s:a>
+            </div>
+            <div class="login-register">
+                <br></br>
+<!--                Don't have an account yet? <s:a href="register_form?debug=xml">Create one</s:a>
+                -->
+                Don't have an account yet? <s:a href="register_form">Create one</s:a>
             </div>
         </div>
+        <%@include file="/WEB-INF/results/footer.jsp"%>
 
         <script type="text/javascript" src="js/myapp.js"></script>
 

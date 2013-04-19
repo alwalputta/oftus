@@ -32,7 +32,7 @@ body {
     padding:0px;
     border: 0px dashed #007182;
     height: 100%;
-/*    background: url(../images/background.JPG) no-repeat;*/
+    /*    background: url(../images/background.JPG) no-repeat;*/
 }
 
 /* This will be used for setting any system messages */
@@ -84,9 +84,8 @@ body {
     background: teal;
     color: white;
     width: 60%;
-    height: 90%;
+    height: 80%;
     opacity: 1;
-    z-index: 90;
     margin: 10px;
     border: 1px solid #20548E;
     padding: 10px;
@@ -173,7 +172,7 @@ body {
 
 
 .forgot-password-modal {
- /*   display: none;*/
+    /*   display: none;*/
     position: fixed;
     background: teal;
     color: white;

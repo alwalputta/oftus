@@ -114,7 +114,8 @@ public class LoginAction extends ActionSupport {
 
             for (Iterator i = bookmarks.iterator(); i.hasNext();) {
                 Bookmark b = (Bookmark) i.next();
-                logger.debug("bookmarkId value:" + b.getBookmarkId() + ":" + b.getBookmarkName() + ":" + b.getHiperLink());
+                logger.debug("bookmarkId value:" + b.getBookmarkId() + ":" + b.getBookmarkName() + ":" 
+                        + b.getHiperLink() + ":" + b.getDescription());
             }
         }
 

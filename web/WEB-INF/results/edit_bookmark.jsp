@@ -7,19 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
     <head>
 
-        <title>Oftus&reg; - Development</title>
-
-        <link rel="shortcut icon" type="image/x-icon" class="header-icon" href="images/favicon.ico"/>
-        <link rel="stylesheet" type="text/css" href="css/myapp.css"/>
-        <link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/sunny/jquery-ui.css"/>
-
-        <script type="text/javascript" src="js/jquery.highlight-3.js"></script>
-        <script type="text/javascript" src="js/constants.js"></script>
-
-        <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-        <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<%@include file="/WEB-INF/results/imports.jsp"%>
 
         <script type="text/javascript">
            
@@ -47,8 +35,8 @@
                     <s:hidden name="bookmarkId" value="%{#session.bookmark.bookmarkId}"/>
                     <s:select name="categoryId" list="%{#session.user.userCategories}" listKey="categoryId" listValue="categoryName" value="%{categoryId}" headerKey="-1" headerValue="Select Category..." key="new.categoryname-label"/>
                     <s:textfield name="bookmarkName" value="%{#session.bookmark.bookmarkName}" size="60" maxlength="200" key="new.bookmark-label"/>
-                    <s:textfield name="hiperLink" value="%{#session.bookmark.description}" size="60" maxlength="200" key="new.hiperlink-label"/>
-                    <s:textarea name="description" rows="5" cols="60" key="new.bookmark-description-label"/>
+                    <s:textfield name="hiperLink" value="%{#session.bookmark.hiperLink}" size="60" maxlength="200" key="new.hiperlink-label"/>
+                    <s:textarea name="description" value="%{#session.bookmark.description}" rows="5" cols="60" key="new.bookmark-description-label"/>
                     <tr>
                         <td colspan="2" align="center">
                             <s:submit align="center" key="new.submit-bookmark-label" theme="simple"/>
@@ -59,7 +47,7 @@
                 <s:a href="new_bookmark_faq" class="new-element-links">Edit Bookmark FAQ</s:a>
             </div>
         </div>
-
+<%@include file="/WEB-INF/results/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
 
     </body>

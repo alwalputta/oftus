@@ -7,19 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
     <head>
 
-        <title>Oftus&reg; - Development</title>
-
-        <link rel="shortcut icon" type="image/x-icon" class="header-icon" href="images/favicon.ico"/>
-        <link rel="stylesheet" type="text/css" href="css/myapp.css"/>
-        <link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/sunny/jquery-ui.css"/>
-
-        <script type="text/javascript" src="js/jquery.highlight-3.js"></script>
-        <script type="text/javascript" src="js/constants.js"></script>
-
-        <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-        <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <%@include file="/WEB-INF/results/imports.jsp"%>
 
         <script type="text/javascript">
             function loadData () {
@@ -36,76 +24,7 @@
 
     <body>
 
-        <div class="dockingBarTop">
-            <div class="top-column-element-left">
-                <div class="company-logo">
-                    <img id="logo" src="images/bukmarcs.png"/>
-                    OFTUS<sup>&reg;</sup>
-                </div>
-                <div class="company-logo-punchline">
-                    Entire World. One Link.
-                </div>
-            </div>
-            <div class="top-column-element-middle">
-                Buy Samsung TV Today!
-            </div>
-
-            <div class="top-column-element-right">
-
-                <img class ="photo-box" src="images/user.jpg" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
-                <ul id="menu">
-                    <li>
-                        <s:if test="%{#session.user.firstName} == null">
-                            <a href="login">Login</a>
-                        </s:if>
-                        <s:else>
-                            <a href="login">
-                                Hi, <s:property value="%{#session.user.firstName}"/>
-                            </a>
-                        </s:else>
-                        <ul>
-                            <li><a href="welcome">Welcome!</a></li>
-                            <li><a href="edit_profile">Manage Profile</a></li>
-                            <li><a href="edit_preferences">Manage Preferences</a></li>
-                            <li><a href="refer_friends">Refer Friends</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="options">Options</a>
-                        <ul>
-                            <li><a href="list_categories">Manage Categories</a></li>
-                            <li><a href="list_bookmarks">Manage Bookmarks</a></li>
-                            <li><a href="import_bookmarks">Import Bookmarks</a></li>
-                            <li><a href="industry_trends">Industry Trends</a></li>
-                            <li><a href="personal_reports">Personal Reports</a></li>
-                            <li><a href="our_recommendations">Our Recommendations</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="help">Help</a> 
-                        <ul>
-                            <li><a href="release_notes">Release Notes</a></li>
-                            <li><a href="quick_guide">Quick Guide</a></li>
-                            <li><a href="user_guide">User Guide</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="logout">Logout</a>
-                        <ul>
-                            <li>
-                                <a href="logout">LogouT</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <br></br>
-                <form id="searchForm">
-                    <fieldset title="Search Form" id="search-form-fieldset">
-                        <div class="search-box">
-                            <input type="text" id="search-input" name="search-input"/>
-                            <input type="button" id="search-button" name="search-button"/>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-        </div>
+        <%@include file="/WEB-INF/results/header.jsp"%>
 
 
         <div class="mask"></div>
@@ -172,6 +91,20 @@
                             <div class="middle-column-element-heading">
                                 <s:property value="#category.categoryName"/>
                             </div>
+                            <div class="middle-column-element-edit-icons">
+                                <s:url id="editCategory" action="edit_category">
+                                    <s:param name="categoryId" value="#category.categoryId"></s:param>
+                                </s:url>
+                                <a href="<s:property value="#editCategory"/>">
+                                    <img class="ui-icon ui-icon-pencil middle-column-element-edit-icon"/>
+                                </a>
+                                <s:url id="deleteCategory" action="delete_category_mainpage">
+                                    <s:param name="categoryId" value="#category.categoryId"></s:param>
+                                </s:url>
+                                <a href="<s:property value="#deleteCategory"/>">
+                                    <img class="ui-icon ui-icon-trash middle-column-element-delete-icon"/>
+                                </a>
+                            </div>
                             <ul id="middle-row-sortable" class="connectedSortable">
                                 <s:iterator value="#category.bookmarks" id="bookmark">
                                     <li>
@@ -189,7 +122,7 @@
                                                     <img class="ui-icon ui-icon-pencil middle-row-element-edit-icon"/>
                                                 </a>
 
-                                                <s:url id="deleteBookmark" action="delete_bookmark">
+                                                <s:url id="deleteBookmark" action="delete_bookmark_mainpage">
                                                     <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
                                                 </s:url>
                                                 <a href="<s:property value="#deleteBookmark"/>">
@@ -217,16 +150,7 @@
             </ul>
         </div>
 
-        <div class="dockingBarBottom">
-            <!--ul class="bottom-row-item"-->
-            <div class="bottom-row-item" onclick="load_bottom_bar('1')">
-                About Links Oasis &reg;
-            </div>
-            <div class="bottom-row-item" onclick="load_bottom_bar('2')">EULA</div>
-            <div class="bottom-row-item" onclick="load_bottom_bar('3')">User Guide/Help</div>
-            <div class="bottom-row-item" onclick="load_bottom_bar('4')"><a href="#">Feedback</a></div>
-            <div class="bottom-row-item" onclick="load_bottom_bar('5')"><a href="#">Refer Friends</a></div>
-        </div>
+        <%@include file="/WEB-INF/results/footer.jsp"%>
 
         <script type="text/javascript" src="js/myapp.js"></script>
 

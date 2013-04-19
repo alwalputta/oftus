@@ -6,28 +6,7 @@
 <html>
     <head>
 
-        <title>Development</title>
-
-        <link rel="shortcut icon" type="image/x-icon" class="header-icon" href="images/favicon.ico"/>
-        <link rel="stylesheet" type="text/css" href="css/myapp.css"/>
-        <link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/sunny/jquery-ui.css"/>
-
-        <script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
-        <script type="text/javascript" src="js/jquery.highlight-3.js"></script>
-        <script type="text/javascript" src="js/myapp.js"></script>
-
-
-        <!--script src="http://code.jquery.com/jquery-1.8.3.js"></script-->
-        <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-
-        <!--
-        This combination works for date picker
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-        <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-        -->
-
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<%@include file="/WEB-INF/results/imports.jsp"%>
 
         <style type="text/css">
         </style>
@@ -53,18 +32,12 @@
             </s:if>
 
             <div class="register-register">
-                <div>User Categories</div>
+                <div>
+                    User Categories:::::
+                    <a href="add_category">Add New Category</a>
+                </div>
                 <s:form action="update_profile">
-
                     <s:hidden name="userid" value="%{#session.user.userId}"/>
-                    <!--
-                    <s:iterator value="%{#session.user.userCategories}" id="category">
-                        AAAAA<s:property value="#category.categoryName"/>
-                        <s:iterator value="#category.bookmarks" id="bookmark">
-                            BBBBB<s:property value="#bookmark.bookmarkName"/>
-                        </s:iterator>
-                    </s:iterator>
-                    -->
                     <tr>
                         <td>Id</td>
                         <td>Category Name</td>
@@ -97,7 +70,7 @@
                 </s:form>
             </div>
         </div>
-
+<%@include file="/WEB-INF/results/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
 
     </body>

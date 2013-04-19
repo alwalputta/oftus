@@ -92,6 +92,16 @@
             <result>/WEB-INF/results/list_categories.jsp</result>
         </action>
 
+        <action name="add_category" class="com.myapp.action.CategoryAction" method="addCategory">
+            <result name="success">/WEB-INF/results/new_category.jsp</result>
+            <result name="input">/WEB-INF/results/new_category.jsp</result>
+        </action>
+
+        <action name="save_category" class="com.myapp.action.CategoryAction" method="saveCategory">
+            <result name="success">/WEB-INF/results/list_categories.jsp</result>
+            <result name="input">/WEB-INF/results/new_category.jsp</result>
+        </action>
+
         <action name="edit_category" class="com.myapp.action.CategoryAction" method="editCategory">
             <interceptor-ref name="validation">
                 <param name="excludeMethods">validate, editCategory</param>
@@ -111,6 +121,11 @@
             <result name="input">/WEB-INF/results/list_categories.jsp</result>
         </action>
 
+        <action name="delete_category_mainpage" class="com.myapp.action.CategoryAction" method="deleteCategory">
+            <result name="success">/WEB-INF/results/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/mainpage.jsp</result>
+        </action>
+
         <action name="list_bookmarks">
             <result>/WEB-INF/results/list_bookmarks.jsp</result>
         </action>
@@ -120,14 +135,14 @@
             <result name="input">/WEB-INF/results/new_bookmark.jsp</result>
         </action>
 
-        <action name="edit_bookmark" class="com.myapp.action.BookmarkAction" method="editBookmark">
-            <result name="success">/WEB-INF/results/edit_bookmark.jsp</result>
-            <result name="input">/WEB-INF/results/edit_bookmark.jsp</result>
-        </action>
-
         <action name="save_bookmark" class="com.myapp.action.BookmarkAction" method="saveBookmark">
             <result name="success">/WEB-INF/results/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/new_bookmark.jsp</result>
+        </action>
+
+        <action name="edit_bookmark" class="com.myapp.action.BookmarkAction" method="editBookmark">
+            <result name="success">/WEB-INF/results/edit_bookmark.jsp</result>
+            <result name="input">/WEB-INF/results/edit_bookmark.jsp</result>
         </action>
 
         <action name="update_bookmark" class="com.myapp.action.BookmarkAction" method="updateBookmark">
@@ -138,6 +153,11 @@
         <action name="delete_bookmark" class="com.myapp.action.BookmarkAction" method="deleteBookmark">
             <result name="success">/WEB-INF/results/list_bookmarks.jsp</result>
             <result name="input">/WEB-INF/results/list_bookmarks.jsp</result>
+        </action>
+
+        <action name="delete_bookmark_mainpage" class="com.myapp.action.BookmarkAction" method="deleteBookmark">
+            <result name="success">/WEB-INF/results/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/mainpage.jsp</result>
         </action>
 
         <action name="test">

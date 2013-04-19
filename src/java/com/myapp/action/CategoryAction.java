@@ -31,16 +31,8 @@ public class CategoryAction extends ActionSupport {
 
 //business logic to fetch the category details
     public String addCategory() {
-        logger.debug("addCategory!" + getCategoryId());
+        logger.debug("addCategory!");
         String returnVal = "success";
-
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-
-        CategoryDAO categoryDAO = new CategoryDAO();
-        Category category = categoryDAO.selectCategory(new Integer(categoryId).intValue());
-
-        session.setAttribute("category", category);
 
         return returnVal;
     }
@@ -61,7 +53,6 @@ public class CategoryAction extends ActionSupport {
         return returnVal;
     }
 
-    
     //business logic to update the category
     public String saveCategory() {
         logger.debug("saveCategory!" + getCategoryId());
@@ -74,10 +65,11 @@ public class CategoryAction extends ActionSupport {
 
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
-        
+
         Category category = new Category();
         category.setCategoryName(getCategoryName());
         category.setDescription(getDescription());
+        category.setStatus("A");
 
         userCategories.add(category);
 
@@ -119,7 +111,6 @@ public class CategoryAction extends ActionSupport {
         return returnVal;
     }
 
-    
     //Business logic to delete a category
     public String deleteCategory() {
         logger.debug("deleteCategory!" + getCategoryId());
@@ -133,14 +124,18 @@ public class CategoryAction extends ActionSupport {
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
 
+        Category c = null;
         for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
-            logger.debug("222222222222");
-            Category c = (Category) iterator.next();
+            c = (Category) iterator.next();
+            logger.debug("222222222222:" + c.getCategoryId());
             if (c.getCategoryId() == new Integer(categoryId).intValue()) {
-                c.setStatus("D");
-//                userCategories.remove(c);
+//                c.setStatus("D");
+                break;
             }
         }
+        userCategories.remove(c);
+        user.setUserCategories(userCategories);
+
         UserDAO userDAO = new UserDAO();
         userDAO.updateUser(user);
 
@@ -152,6 +147,18 @@ public class CategoryAction extends ActionSupport {
     public void validate() {
         logger.debug("in the validate");
         logger.debug("editCategory!" + getCategoryId());
+
+        if (getActionName().equals("new_bookmark")) {
+            logger.debug("in new_bookmark");
+        } else if (getActionName().equals("save_category")) {
+            if (getCategoryName() == null || "".equals(getCategoryName())) {
+                addFieldError("categoryName", "Category title cant be empty");
+            }
+        } else if (getActionName().equals("update_category")) {
+            if (getCategoryName() == null || "".equals(getCategoryName())) {
+                addFieldError("categoryName", "Category title cant be empty");
+            }
+        }
 
 //        addFieldError("categoryname", getText("categorynameisempty1"));
     }
