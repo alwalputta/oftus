@@ -112,7 +112,7 @@ Input.focus(function() {
     }
 });
 
-$('.middle-column-element-heading').hover(function(ev){
+$('.middle-column-element-heading').mouseenter(function(){
     var element = $(this).parent('.middle-column-element');
     var position = element.position();
 
@@ -124,6 +124,12 @@ $('.middle-column-element-heading').hover(function(ev){
     element.children('.middle-column-element-edit-icons').css('top', top);
     element.children('.middle-column-element-edit-icons').css('left', (left+width-30));
     
+    active_column_element = element;
+});
+
+$('.middle-column-element-heading').mouseout(function(){
+    var element = $(this).parent('.middle-column-element');
+    element.children('.middle-column-element-edit-icons').hide();
     active_column_element = element;
 });
 

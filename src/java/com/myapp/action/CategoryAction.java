@@ -101,6 +101,7 @@ public class CategoryAction extends ActionSupport {
             if (c.getCategoryId() == new Integer(categoryId).intValue()) {
                 c.setCategoryName(categoryName);
                 c.setDescription(description);
+                break;
             }
         }
         user.setUserCategories(userCategories);
@@ -130,10 +131,10 @@ public class CategoryAction extends ActionSupport {
             logger.debug("222222222222:" + c.getCategoryId());
             if (c.getCategoryId() == new Integer(categoryId).intValue()) {
 //                c.setStatus("D");
+                userCategories.remove(c);
                 break;
             }
         }
-        userCategories.remove(c);
         user.setUserCategories(userCategories);
 
         UserDAO userDAO = new UserDAO();

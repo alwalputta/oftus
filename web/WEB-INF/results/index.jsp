@@ -4,7 +4,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
     <head>
-        <title>Welcome to HomeStuff!</title>
         <s:head/>
 
         <style type="text/css">
@@ -44,9 +43,9 @@
         <s:a href="%{localeEN}" >English</s:a>
         <s:a href="%{localeDE}" >German</s:a>
     </p-->
-        
+
         <%@include file="/WEB-INF/results/header.jsp"%>
-        
+
         <div class="login-modal">
 
             <s:if test="hasActionErrors()">
@@ -85,19 +84,19 @@
                     <s:a href="test">Test</s:a> |
                     <s:a href="test2">Test</s:a> |
                     <s:a href="test3">Test</s:a>
-                </div>
-                <div class="login-register">
-                    <br></br>
-                    <!--
-                    Don't have an account yet? <s:a href="register_form?debug=xml">Create one</s:a>
-                    -->
-                    Don't have an account yet? <s:a href="register_form">Create one</s:a>
+                    </div>
+                    <div class="login-register">
+                        <br></br>
+                        <!--
+                        Don't have an account yet? <s:a href="register_form?debug=xml">Create one</s:a>
+                        -->
+                        Don't have an account yet? <s:a href="register_form">Create one</s:a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-            <%@include file="/WEB-INF/results/footer.jsp"%>
-            <script type="text/javascript" src="js/myapp.js"></script>
+        <%@include file="/WEB-INF/results/footer.jsp"%>
+        <script type="text/javascript" src="js/myapp.js"></script>
     </body>
 
 </html>

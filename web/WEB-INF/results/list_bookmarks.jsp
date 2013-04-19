@@ -6,13 +6,14 @@
 <html>
     <head>
 
-<%@include file="/WEB-INF/results/imports.jsp"%>
+        <%@include file="/WEB-INF/results/imports.jsp"%>
 
         <style type="text/css">
         </style>
 
         <script type="text/javascript">
         </script>
+
     </head>
 
 
@@ -35,16 +36,7 @@
             <div class="register-register">
                 <div>User Bookmarks</div>
                 <s:form action="update_profile">
-
                     <s:hidden name="userid" value="%{#session.user.userId}"/>
-                    <!--
-                    <s:iterator value="%{#session.user.userCategories}" id="category">
-                        AAAAA<s:property value="#category.categoryName"/>
-                        <s:iterator value="#category.bookmarks" id="bookmark">
-                            BBBBB<s:property value="#bookmark.bookmarkName"/>
-                        </s:iterator>
-                    </s:iterator>
-                    -->
                     <tr>
                         <td>Id</td>
                         <td>Category Name</td>
@@ -72,7 +64,7 @@
                                 <a href="<s:property value="#deleteCategory"/>">Delete</a>
                             </td>
                         </tr>
-                        <tr>
+                        <tr colspan="5" width="100%">
                             <table>
                                 <s:iterator value="#category.bookmarks" id="bookmark">
                                     <tr>
@@ -105,7 +97,7 @@
                 </s:form>
             </div>
         </div>
-<%@include file="/WEB-INF/results/footer.jsp"%>
+        <%@include file="/WEB-INF/results/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
 
     </body>

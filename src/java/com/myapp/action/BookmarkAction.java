@@ -61,14 +61,6 @@ public class BookmarkAction extends ActionSupport {
 
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
-        
-//////Delete
-//        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
-//            Category c = (Category) iterator.next();
-//            logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
-//            Set<User> us = c.getUsers();
-//            logger.debug("USER SET SIZE::" + us.size());
-//        }
 
         for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
             Category c = (Category) iterator.next();
@@ -78,15 +70,12 @@ public class BookmarkAction extends ActionSupport {
 
             for (Iterator i = bookmarks.iterator(); i.hasNext();) {
                 Bookmark b = (Bookmark) i.next();
-                
-//////Delete
-//                Set<Category> uc = b.getCategories();
-//                logger.debug("USER CATEGORY SET SIZE::" + uc.size());
 
                 if (b.getBookmarkId() == new Integer(getBookmarkId()).intValue()) {
                     logger.debug("bbbbbbbbbbbbbookmarkId value:" + b.getBookmarkId() + ":" + b.getBookmarkName()
                             + ":" + b.getHiperLink() + ":" + b.getDescription());
                     session.setAttribute("bookmark", b);
+                    break;
                 }
             }
         }
@@ -122,6 +111,7 @@ public class BookmarkAction extends ActionSupport {
                 logger.debug("bookmarks size1:" + bookmarks.size());
                 bookmarks.add(bookmark);
                 logger.debug("bookmarks size2:" + bookmarks.size());
+                break;
             }
         }
         user.setUserCategories(userCategories);
@@ -136,6 +126,7 @@ public class BookmarkAction extends ActionSupport {
     public String updateBookmark() {
         logger.debug("BookmarkAction updateBookmark!");
         String returnVal = "success";
+        String categoryChanged = "no";
 
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
@@ -147,6 +138,7 @@ public class BookmarkAction extends ActionSupport {
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
 
+        Bookmark b = null;
         for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
             Category c = (Category) iterator.next();
             logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
@@ -154,7 +146,7 @@ public class BookmarkAction extends ActionSupport {
             Set<Bookmark> bookmarks = c.getBookmarks();
 
             for (Iterator i = bookmarks.iterator(); i.hasNext();) {
-                Bookmark b = (Bookmark) i.next();
+                b = (Bookmark) i.next();
 
                 if (b.getBookmarkId() == new Integer(getBookmarkId()).intValue()) {
                     logger.debug("cccccccccbookmarkId value:" + getBookmarkId() + ":" + getBookmarkName() + ":"
@@ -163,9 +155,22 @@ public class BookmarkAction extends ActionSupport {
                     b.setHiperLink(getHiperLink());
                     b.setDescription(getDescription());
                     b.setBookmarkOrder(10000); //modify this later//
+
+                    if (c.getCategoryId() == new Integer(getCategoryId()).intValue()) {
+                        ;
+                    } else {
+                        Set<Category> categories = b.getCategories();
+                        for (Iterator ii = categories.iterator(); ii.hasNext();) {
+                            Category cc = (Category) ii.next();
+                            cc.setCategoryId(new Integer(getCategoryId()).intValue());
+                            logger.debug("cccccccccategoryId value:" + getCategoryId() + ":" + cc.getCategoryName());
+                        }
+                    }
+                    break;
                 }
             }
         }
+
         user.setUserCategories(userCategories);
 
         UserDAO userDAO = new UserDAO();
@@ -203,6 +208,7 @@ public class BookmarkAction extends ActionSupport {
                             + b.getHiperLink() + ":" + b.getDescription());
 //                    b.setStatus("D");
                     bookmarks.remove(b);
+                    break;
                 }
             }
         }
