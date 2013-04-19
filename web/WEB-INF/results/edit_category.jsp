@@ -17,6 +17,8 @@
 
     <body>
 
+        <%@include file="/WEB-INF/results/header.jsp"%>
+
         <div class="new-category-modal">
             <div class="new-category">
                 <div>Add New Category</div>

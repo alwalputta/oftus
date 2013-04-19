@@ -17,6 +17,7 @@
 
 
     <body>
+        <%@include file="/WEB-INF/results/header.jsp"%>
 
         <div class="register-modal">
             <s:if test="hasActionErrors()">

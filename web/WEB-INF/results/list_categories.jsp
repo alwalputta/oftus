@@ -6,7 +6,7 @@
 <html>
     <head>
 
-<%@include file="/WEB-INF/results/imports.jsp"%>
+        <%@include file="/WEB-INF/results/imports.jsp"%>
 
         <style type="text/css">
         </style>
@@ -17,6 +17,8 @@
 
 
     <body>
+
+        <%@include file="/WEB-INF/results/header.jsp"%>
 
         <div class="register-modal">
             <s:if test="hasActionErrors()">
@@ -32,10 +34,10 @@
             </s:if>
 
             <div class="register-register">
-                <div>
+                
                     User Categories:::::
                     <a href="add_category">Add New Category</a>
-                </div>
+                
                 <s:form action="update_profile">
                     <s:hidden name="userid" value="%{#session.user.userId}"/>
                     <tr>
@@ -70,7 +72,7 @@
                 </s:form>
             </div>
         </div>
-<%@include file="/WEB-INF/results/footer.jsp"%>
+        <%@include file="/WEB-INF/results/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
 
     </body>

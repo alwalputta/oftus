@@ -44,7 +44,9 @@
         <s:a href="%{localeEN}" >English</s:a>
         <s:a href="%{localeDE}" >German</s:a>
     </p-->
+        
         <%@include file="/WEB-INF/results/header.jsp"%>
+        
         <div class="login-modal">
 
             <s:if test="hasActionErrors()">
@@ -61,38 +63,41 @@
 
             <s:fielderror/>
 
-            <div class="login-login">
-                <div>Login:</div>
+            <div class="mainTable">
 
-                <s:form action="login">
-                    <s:textfield name="username" size="25" maxlength="200" key="index.username-label"/>
-                    <s:password name="password" size="25" maxlength="200" key="index.password-label"/>
-                    <s:checkbox name="rememberme" key="index.rememberme-label"/>
+                <div class="login-login">
+                    <div>Login:</div>
 
-                    <tr>
-                        <td colspan="2" align="center">
-                            <s:submit align="center" key="index.submit-label" theme="simple"/>
-                            <s:reset align="center" key="index.reset-label" theme="simple"/>
-                        </td>
-                    </tr>
-                </s:form>
-                <s:a href="forgot_password_form">Forgot Password?</s:a> |
-                <s:a href="login_faq">Login FAQ</s:a> |
-                <s:a href="test">Test</s:a> |
-                <s:a href="test2">Test</s:a> |
-                <s:a href="test3">Test</s:a>
-            </div>
-            <div class="login-register">
-                <br></br>
-<!--                Don't have an account yet? <s:a href="register_form?debug=xml">Create one</s:a>
-                -->
-                Don't have an account yet? <s:a href="register_form">Create one</s:a>
+                    <s:form action="login">
+                        <s:textfield name="username" size="25" maxlength="200" key="index.username-label"/>
+                        <s:password name="password" size="25" maxlength="200" key="index.password-label"/>
+                        <s:checkbox name="rememberme" key="index.rememberme-label"/>
+
+                        <tr>
+                            <td colspan="2" align="center">
+                                <s:submit align="center" key="index.submit-label" theme="simple"/>
+                                <s:reset align="center" key="index.reset-label" theme="simple"/>
+                            </td>
+                        </tr>
+                    </s:form>
+                    <s:a href="forgot_password_form">Forgot Password?</s:a> |
+                    <s:a href="login_faq">Login FAQ</s:a> |
+                    <s:a href="test">Test</s:a> |
+                    <s:a href="test2">Test</s:a> |
+                    <s:a href="test3">Test</s:a>
+                </div>
+                <div class="login-register">
+                    <br></br>
+                    <!--
+                    Don't have an account yet? <s:a href="register_form?debug=xml">Create one</s:a>
+                    -->
+                    Don't have an account yet? <s:a href="register_form">Create one</s:a>
+                </div>
             </div>
         </div>
-        <%@include file="/WEB-INF/results/footer.jsp"%>
 
-        <script type="text/javascript" src="js/myapp.js"></script>
-
+            <%@include file="/WEB-INF/results/footer.jsp"%>
+            <script type="text/javascript" src="js/myapp.js"></script>
     </body>
 
 </html>

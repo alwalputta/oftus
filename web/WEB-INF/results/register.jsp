@@ -25,6 +25,9 @@
 
 
     <body>
+
+        <%@include file="/WEB-INF/results/header.jsp"%>
+
         <div class="register-modal">
 
             <s:if test="hasActionErrors()">
@@ -38,8 +41,6 @@
                     <s:actionmessage/>
                 </div>
             </s:if>
-
-
 
             <div class="register-register">
                 <div>Register User:</div>

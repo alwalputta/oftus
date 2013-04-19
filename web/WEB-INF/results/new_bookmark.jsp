@@ -27,6 +27,7 @@
     </head>
 
     <body>
+        <%@include file="/WEB-INF/results/header.jsp"%>
 
         <div class="new-element-modal">
             <div class="new-element">

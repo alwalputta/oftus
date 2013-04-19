@@ -1,5 +1,5 @@
 /* 
- Document: HomeStuff.css
+ Document: oftus.css
  Created on: Apr 9, 2012, 3:45:43 PM
  Author: Alwal Putta
  Description: Main stylesheet
@@ -64,10 +64,9 @@ body {
     position: fixed;
     background: teal;
     color: white;
-    width: 1000px;
+    width: 100%;
     height: 600px;
     opacity: 1;
-    z-index: 90;
     margin: 0px;
     border: 20px solid darkgreen;
     padding: 20px;
@@ -104,7 +103,6 @@ body {
     width: 18%;
     height: 90%;
     opacity: 1;
-    z-index: 90;
     margin: 10px;
     border: 1px solid #20548E;
     padding: 10px;
@@ -119,10 +117,8 @@ body {
     /*    position: fixed;*/
     background: #aabbaa;
     color: white;
-    width: 1000px;
-    height: 600px;
+    width: 90%;
     opacity: 1;
-    z-index: 90;
     margin: 0px;
     border: 20px solid darkgoldenrod;
     padding: 20px;
@@ -138,10 +134,9 @@ body {
     position: relative;
     background: #aabbaa;
     color: white;
-    width: 60%;
-    height: 90%;
+    width: 90%;
+    height: 100%;
     opacity: 1;
-    z-index: 90;
     margin: 10px;
     border: 1px solid #20548E;
     padding: 10px;
@@ -160,7 +155,6 @@ body {
     width: 18%;
     height: 90%;
     opacity: 1;
-    z-index: 90;
     margin: 10px;
     border: 1px solid #20548E;
     padding: 10px;
@@ -170,16 +164,14 @@ body {
     font: 15px tahoma;
 }
 
-
 .forgot-password-modal {
     /*   display: none;*/
     position: fixed;
     background: teal;
     color: white;
-    width: 1000px;
+    width: 90%;
     height: 600px;
     opacity: 1;
-    z-index: 90;
     margin: 0px;
     border: 20px solid #20548E;
     padding: 20px;
@@ -189,17 +181,15 @@ body {
     font: 15px tahoma;
 }
 
-
 .forgot-password {
     display: block;
     float: left;
     position: relative;
     background: teal;
     color: white;
-    width: 60%;
+    width: 90%;
     height: 90%;
     opacity: 1;
-    z-index: 90;
     margin: 10px;
     border: 1px solid #20548E;
     padding: 10px;
@@ -208,7 +198,6 @@ body {
     text-align: left;
     font: 15px tahoma;
 }
-
 
 .login-login input, .register-register input, .forgot-password input, .new-element input {
     border-radius: 5px;
@@ -222,7 +211,6 @@ body {
     margin: 5px;
     margin-left: 0px;
 }
-
 
 .login-button, .new-element-button {
     border-radius: 5px;
@@ -243,7 +231,6 @@ body {
     background: blue;
     border: 2px black solid;
 }
-
 
 .login-links, .new-element-links {
     border-radius: 5px;
@@ -268,7 +255,6 @@ body {
     text-align: center;
     font: 25px tahoma;
 }
-
 
 .highlight {
     background:gold;
@@ -341,7 +327,6 @@ body {
     padding: 0px;
     vertical-align: central;
 }
-
 
 .company-logo {
     margin: 0px;
@@ -418,12 +403,10 @@ sup {
     width: 5px;
 }
 
-
 .middle-column-element-import:hover {
     border: 2px solid blue;
     background: #42440d;
 }
-
 
 .middle-column-element {
     position: relative;
@@ -482,11 +465,9 @@ sup {
     border-radius: 5px;
 }
 
-
 .middle-row-element span {
     text-align: left;
 }
-
 
 .middle-row-new-element {
     border: 1px solid #0f0f0f;
@@ -516,16 +497,14 @@ sup {
     font: 12px tahoma;
 }
 
-
 .new-element-modal {
     display: block;
     position: fixed;
     background: teal;
     color: white;
-    width: 650px;
+    width: 100%;
     height: 400px;
     opacity: 1;
-    z-index: 90;
     margin: 0px;
     border: 20px solid darkgreen;
     padding: 20px;
@@ -534,7 +513,6 @@ sup {
     text-align: center;
     font: 15px tahoma;
 }
-
 
 .new-element {
     display: block;
@@ -545,7 +523,6 @@ sup {
     width: 90%;
     height: 90%;
     opacity: 1;
-    z-index: 90;
     margin: 10px;
     border: 1px solid #20548E;
     padding: 10px;
@@ -555,16 +532,14 @@ sup {
     font: 15px tahoma;
 }
 
-
 .new-category-modal {
     display: block;
     position: fixed;
     background: teal;
     color: white;
-    width: 650px;
+    width: 100%;
     height: 400px;
     opacity: 1;
-    z-index: 90;
     margin: 0px;
     border: 20px solid darkgreen;
     padding: 20px;
@@ -573,7 +548,6 @@ sup {
     text-align: center;
     font: 15px tahoma;
 }
-
 
 .new-category {
     display: block;
@@ -584,7 +558,6 @@ sup {
     width: 90%;
     height: 90%;
     opacity: 1;
-    z-index: 90;
     margin: 10px;
     border: 1px solid #20548E;
     padding: 10px;
@@ -594,16 +567,14 @@ sup {
     font: 15px tahoma;
 }
 
-
 .edit-element-modal {
     display: none;
     position: fixed;
     background: teal;
     color: white;
-    width: 500px;
+    width: 90%;
     height: 500px;
     opacity: 1;
-    z-index: 90;
     margin: 0px;
     border: 20px solid darkgreen;
     padding: 20px;
@@ -612,7 +583,6 @@ sup {
     text-align: center;
     font: 15px tahoma;
 }
-
 
 .edit-element {
     display: block;
@@ -623,7 +593,6 @@ sup {
     width: 90%;
     height: 90%;
     opacity: 1;
-    z-index: 90;
     margin: 10px;
     border: 1px solid #20548E;
     padding: 10px;
@@ -632,7 +601,6 @@ sup {
     text-align: left;
     font: 15px tahoma;
 }
-
 
 .middle-row-bottom-spacer {
     width: 100%;
@@ -687,7 +655,6 @@ p.spacer {
     height: 5px;
     margin: 0px;
 }
-
 
 #middle-column-sortable {
     list-style: none;
@@ -755,7 +722,6 @@ img.photo-box {
     width: 70px;
 }
 
-
 #menu li a {
     display: block;
     background: #6699aa;
@@ -773,7 +739,6 @@ img.photo-box {
     font-weight: bold;
 }
 
-
 #menu li ul {
     width: auto;
     margin-left: 5px;
@@ -786,9 +751,8 @@ img.photo-box {
     text-align: left;
     border-radius: 5px;
     border: 2px solid cornflowerblue;
-    background-color:
+    background-color: blue;
 }
-
 
 #menu li ul li {
     width: 100%;
@@ -801,7 +765,6 @@ img.photo-box {
     margin-right: 5px;
     border: 0.5px solid #007182;
 }
-
 
 #menu li ul li:hover {
     width: 100%;
@@ -817,19 +780,15 @@ img.photo-box {
     margin-right: 5px;
 }
 
-
 #menu li ul li a {
     width: 100%;
     background: #9F1B1B;
 }
 
-
 #menu span {
     padding: 0;
     /* float: left;*/
 }
-
-
 
 .left {
     float: left;
@@ -844,7 +803,6 @@ img.photo-box {
     padding: 0px;
     width: 20px;
 }
-
 
 div.search-box {
     width: 320px;
@@ -880,7 +838,6 @@ input#search-input {
     float: left;
     font: 14px tahoma;
 }
-
 
 input#search-input:focus {
     outline:none;
@@ -923,7 +880,6 @@ input#search-button {
     font: 12px Tahoma;
     text-align: left;
     overflow: auto;
-    /*    text-transform:capitalize;*/
     vertical-align: middle; 
     height: auto;
     border: 0px black solid;
@@ -932,7 +888,6 @@ input#search-button {
     width: 100%;
     display: inline;
 }
-
 
 .middle-column-element-edit-icons {
     display: none;
@@ -947,7 +902,6 @@ input#search-button {
     z-index: 200;
 }
 
-
 .middle-row-element-edit-icons {
     display: none;
     position: fixed;
@@ -961,25 +915,19 @@ input#search-button {
     z-index: 200;
 }
 
-
-
 .middle-column-element-edit-icon, .middle-column-element-delete-icon {
     float: left;
 }
 
-
 .middle-row-element-edit-icon, .middle-row-element-delete-icon {
     float: left;
 }
-
-
 
 .bottom-row-item span {
     float: left;
     color: black;
     font: 14px Tahoma;
 }
-
 
 .inline-column-edit-input {
     text-decoration: none;
@@ -996,7 +944,6 @@ input#search-button {
     border-radius: 20px;
 }
 
-
 .inline-row-edit-input {
     text-decoration: none;
     font: 11px Tahoma;
@@ -1012,7 +959,6 @@ input#search-button {
     border-radius: 20px;
 }
 
-
 .inline-row-edit-text {
     text-decoration: none;
     font: 11px Tahoma;
@@ -1027,7 +973,6 @@ input#search-button {
     height: 60px;
     border-radius: 20px;
 }
-
 
 .inline-column-element-edit {
     text-decoration: none;
@@ -1046,7 +991,6 @@ input#search-button {
     z-index: 100;
 }
 
-
 .inline-row-element-edit {
     text-decoration: none;
     font: 11px Tahoma;
@@ -1056,7 +1000,6 @@ input#search-button {
     margin: 0px;
     padding: 0px;
     display: none;
-
     position: fixed;
     top: 200px;
     left: 200px;
@@ -1068,12 +1011,9 @@ input#search-button {
     z-index: 100;
 }
 
-
 input[type=button], input[type=reset]{
     border-radius: 2px;
     border: 1px solid black;
     height: 20px;
 }
-
-
 
