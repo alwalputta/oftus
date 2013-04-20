@@ -12,6 +12,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.StringTokenizer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
@@ -26,6 +27,7 @@ public class CategoryAction extends ActionSupport {
     private String categoryId;
     private String categoryName;
     private String description;
+    private String categoryOrder;
     Set<Category> userCategories = null;
     static final Logger logger = Logger.getLogger(CategoryAction.class);
 
@@ -143,6 +145,23 @@ public class CategoryAction extends ActionSupport {
         return returnVal;
     }
 
+    //business logic to update the category
+    public String updateCategoryOrder() {
+        logger.debug("updateCategoryOrder!" + getCategoryOrder());
+        String returnVal = "success";
+        int updated = 0;
+
+        StringTokenizer st = new StringTokenizer(getCategoryOrder(), ":");
+        for (int i = 0; st.hasMoreTokens(); i++) {
+            categoryId = st.nextToken();
+            logger.debug("category ID" + categoryId);
+            CategoryDAO categoryDAO = new CategoryDAO();
+            updated = categoryDAO.updateCategoryOrder(categoryId, i);
+            logger.debug("Records Updated" + updated);
+        }
+        return returnVal;
+    }
+
     //simple validation
     @Override
     public void validate() {
@@ -159,9 +178,9 @@ public class CategoryAction extends ActionSupport {
             if (getCategoryName() == null || "".equals(getCategoryName())) {
                 addFieldError("categoryName", "Category title cant be empty");
             }
+        } else if (getActionName().equals("update_category_order")) {
+            logger.debug("in update_category_order");
         }
-
-//        addFieldError("categoryname", getText("categorynameisempty1"));
     }
 
     public String getCategoryId() {
@@ -186,6 +205,14 @@ public class CategoryAction extends ActionSupport {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCategoryOrder() {
+        return categoryOrder;
+    }
+
+    public void setCategoryOrder(String categoryOrder) {
+        this.categoryOrder = categoryOrder;
     }
 
     public String getActionName() {

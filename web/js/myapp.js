@@ -5,7 +5,6 @@ $(document).ready(function() {
     // show_page_loading_message();
     
     categories = [];
-    column_element = null;
     max_row_element_id = 0;
 
     search_box_default_text = "Enter Your Search ...";
@@ -49,7 +48,6 @@ $(document).keydown(function(e){
 });
 
 $(document).bind('paste', (function(e){
-    var element = $(this);
     // var $this = $(this); //save reference to element for use laster
     // setTimeout(function(){ //break the callstack to let the event finish
     // alert(e.clipboardData.getData('text/plain')); //read the value of the input field 
@@ -136,10 +134,6 @@ $('.middle-row-element-text').mouseenter(function(){
     var left = element.closest('.middle-column-element').position().left;    
     var width = parseInt(element.css('width').replace('px',''));
 
-    //    alert ('top:' + top);
-    //    alert ('left:' + left);
-    //    alert ('width:' + width);
-    
     element.children('.middle-row-element-edit-icons').show();
     element.children('.middle-row-element-edit-icons').css('top', top);
     element.children('.middle-row-element-edit-icons').css('left', (left+width-30));
@@ -177,6 +171,7 @@ function set_sortable(){
         },
         stop: function(event, ui){
             alert ('stop1');
+            update_column_order();
         },
         receive: function(event, ui) {
             //Run this code whenever an item is dragged and dropped into this list
@@ -209,6 +204,17 @@ function set_sortable(){
             alert("remove just left this list");	
         }
     }).disableSelection();
+}
+
+function update_column_order() {
+    column_order = "";
+    targetUrl = "update_category_order?categoryOrder=";
+    $('.middle-column-element').each(function(){
+        column_order = column_order + $(this).attr('id') + ':';
+    });
+    alert ('category_order:'+column_order);
+    targetUrl = targetUrl + column_order;
+    window.location = targetUrl;
 }
 
 function search_and_hide (search_text) {

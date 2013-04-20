@@ -20,7 +20,6 @@ public class Category implements Serializable {
     private String categoryName;
     private String description;
     private String status;
-    private int categoryOrder;
     private String createDate;
     private String endDate;
     private String lastModifiedDate;
@@ -74,14 +73,6 @@ public class Category implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public int getCategoryOrder() {
-        return categoryOrder;
-    }
-
-    public void setCategoryOrder(int categoryOrder) {
-        this.categoryOrder = categoryOrder;
     }
 
     public String getEndDate() {

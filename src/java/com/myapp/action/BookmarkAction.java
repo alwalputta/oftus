@@ -100,7 +100,7 @@ public class BookmarkAction extends ActionSupport {
         Bookmark bookmark = new Bookmark();
         bookmark.setBookmarkName(getBookmarkName());
         bookmark.setHiperLink(hiperLink);
-        bookmark.setBookmarkOrder(10000); //modify this later//
+//        bookmark.setBookmarkOrder(10000); //modify this later//
 
         for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
             Category c = (Category) iterator.next();
@@ -153,7 +153,7 @@ public class BookmarkAction extends ActionSupport {
                     b.setBookmarkName(getBookmarkName());
                     b.setHiperLink(getHiperLink());
                     b.setDescription(getDescription());
-                    b.setBookmarkOrder(10000); //modify this later//
+//                    b.setBookmarkOrder(10000); //modify this later//
 
                     if (c.getCategoryId() == new Integer(getCategoryId()).intValue()) {
                         ;
@@ -177,7 +177,7 @@ public class BookmarkAction extends ActionSupport {
             b.setBookmarkName(getBookmarkName());
             b.setHiperLink(getHiperLink());
             b.setDescription(getDescription());
-            b.setBookmarkOrder(10000); //modify this later//
+//            b.setBookmarkOrder(10000); //modify this later//
 
             for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
                 Category c = (Category) iterator.next();

@@ -100,7 +100,6 @@ public class RegisterAction extends ActionSupport {
         //Credential object being created
         Bookmark bookmark = new Bookmark("OFTUS", "OFTUS bookmark", "http://www.oftus.com/");
         bookmark.setStatus("A");
-        bookmark.setBookmarkOrder(1);
         Set<Bookmark> userBookmarks = new LinkedHashSet<Bookmark>();
         userBookmarks.add(bookmark);
 
@@ -108,7 +107,6 @@ public class RegisterAction extends ActionSupport {
         //Credential object being created
         Category category = new Category("OFTUS", "OFTUS bookmarks");
         category.setStatus("A");
-        category.setCategoryOrder(1);
         category.setBookmarks(userBookmarks);
         Set<Category> userCategories = new LinkedHashSet<Category>();
         userCategories.add(category);
@@ -191,7 +189,6 @@ public class RegisterAction extends ActionSupport {
         userDAO.updateUser(user);
 
         logger.debug("userid:" + user.getUserId());
-
         return "success";
     }
 

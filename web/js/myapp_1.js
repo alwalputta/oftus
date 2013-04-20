@@ -669,7 +669,6 @@ function update_categories() {
     //    alert ($('.middle-column-element-heading').text());
     $('.middle-column-element-heading').each(function(){
         var text = $.trim($(this).text());
-        //        alert (text);
         categories.push(text);
     });
 }

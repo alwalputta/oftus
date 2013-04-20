@@ -4,13 +4,12 @@
  */
 package com.myapp.main;
 
-import com.myapp.admin.State;
 import com.myapp.admin.StateDAO;
-import com.myapp.admin.User;
 import com.myapp.util.HibernateUtil;
 import java.util.ArrayList;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -86,6 +85,32 @@ public class CategoryDAO {
             logger.debug("finally block");
             session.close();
         }
-        return;
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public int updateCategoryOrder(String categoryId, int categoryOrder) {
+        logger.debug("categoryId:" + categoryId);
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction;
+        int returnVal = 0;
+        try {
+            transaction = session.beginTransaction();
+            SQLQuery query = session.createSQLQuery("update usercategory set category_order = ? where category_id = ?");
+            query.setInteger(0, categoryOrder);
+            query.setInteger(1, new Integer(categoryId).intValue());
+            returnVal = query.executeUpdate();
+            transaction.commit();
+        } catch (HibernateException e) {
+            logger.debug("HibernateException");
+            e.printStackTrace();
+        } catch (Exception e) {
+            logger.debug("Exception");
+            e.printStackTrace();
+        } finally {
+            logger.debug("finally block");
+            session.close();
+        }
+        return returnVal;
     }
 }

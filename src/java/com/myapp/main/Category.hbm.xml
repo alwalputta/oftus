@@ -10,15 +10,13 @@
         <property name="description" column="description" type="string"/>
         <property name="status" column="status" type="string"/>
         <property name="createDate" column="create_date" type="string"/>
-        <property name="categoryOrder" column="category_order" type="int"/>
-        <!--property name="categoryOrder" formula="select uc.category_order from UserCategory uc where uc.category_id = category_id" type="int"/-->
         <property name="endDate" column="end_date" type="string" />
         <property name="lastModifiedDate" column="last_modified_date" type="string"/>
-        <set name="users" table="UserCategory" cascade="all" lazy="false" order-by="category_order1 asc">
+        <set name="users" table="UserCategory" cascade="all" lazy="false" order-by="category_order asc">
             <key column="category_id"/>
             <many-to-many class="com.myapp.admin.User" column="user_id" unique="true"/>
         </set>
-        <set name="bookmarks" table="CategoryBookmark" cascade="all" lazy="false" order-by="bookmark_order1 asc">
+        <set name="bookmarks" table="CategoryBookmark" cascade="all" lazy="false" order-by="bookmark_order asc">
             <key column="category_id"/>
             <many-to-many class="com.myapp.main.Bookmark" column="bookmark_id" unique="true"/>
         </set>

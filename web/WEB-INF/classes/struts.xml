@@ -142,6 +142,11 @@
             <result name="input">/WEB-INF/results/mainpage.jsp</result>
         </action>
 
+        <action name="update_category_order" class="com.myapp.action.CategoryAction" method="updateCategoryOrder">
+            <result name="success">/WEB-INF/results/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/mainpage.jsp</result>
+        </action>
+
         <action name="list_bookmarks">
             <result>/WEB-INF/results/list_bookmarks.jsp</result>
         </action>

@@ -54,7 +54,7 @@ public class UserDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
         try {
-            transaction = session.beginTransaction();            
+            transaction = session.beginTransaction();
             session.update(user);
             session.flush();
             session.refresh(user);
@@ -117,6 +117,8 @@ public class UserDAO {
         User user = new User();
         try {
             user = (User) session.get(User.class, userId);
+            session.flush();
+            session.refresh(user);
         } catch (HibernateException e) {
             logger.debug("HibernateException");
             e.printStackTrace();
