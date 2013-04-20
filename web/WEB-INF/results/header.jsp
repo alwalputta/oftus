@@ -2,7 +2,7 @@
 <div class="dockingBarTop">
     <div class="top-column-element-left">
         <div class="company-logo">
-            <img id="logo" src="images/bukmarcs.png"/>
+            <img id="logo" src="images/logo.png"/>
             OFTUS<sup>&reg;</sup>
         </div>
         <div class="company-logo-punchline">
