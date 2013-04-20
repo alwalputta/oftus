@@ -31,7 +31,7 @@
 
     <body>
 
-        <!--h1><s:text name="welcome" /></h1>
+        <!--h1><s:text name="welcome"/></h1>
 
         <p>
         <s:url id="localeEN" namespace="/" action="" >
@@ -42,7 +42,7 @@
         </s:url>
         <s:a href="%{localeEN}" >English</s:a>
         <s:a href="%{localeDE}" >German</s:a>
-    </p-->
+        </p-->
 
         <%@include file="/WEB-INF/results/header.jsp"%>
 
@@ -78,27 +78,26 @@
                                 <s:reset align="center" key="index.reset-label" theme="simple"/>
                             </td>
                         </tr>
+
                     </s:form>
                     <s:a href="forgot_password_form">Forgot Password?</s:a> |
                     <s:a href="login_faq">Login FAQ</s:a> |
                     <s:a href="test">Test</s:a> |
                     <s:a href="test2">Test</s:a> |
                     <s:a href="test3">Test</s:a>
-                    </div>
-                    <div class="login-register">
-                        <br></br>
-                        <!--
-                        Don't have an account yet? <s:a href="register_form?debug=xml">Create one</s:a>
-                        -->
-                        Don't have an account yet? <s:a href="register_form">Create one</s:a>
-                    </div>
+                </div>
+                <div class="login-register">
+                    <br></br>
+                    <!--
+                    Don't have an account yet? <s:a href="register_form?debug=xml">Create one</s:a>
+                    -->
+                    Don't have an account yet? <s:a href="register_form">Create one</s:a>
                 </div>
             </div>
+        </div>
 
         <%@include file="/WEB-INF/results/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
     </body>
 
 </html>
-
-

@@ -26,7 +26,6 @@
 
         <%@include file="/WEB-INF/results/header.jsp"%>
 
-
         <div class="mask"></div>
 
         <div class="message"></div>
@@ -87,7 +86,7 @@
 
                 <s:iterator value="%{#session.user.userCategories}" id="category">
                     <li>
-                        <div class="middle-column-element" id="C<s:property value="#category.categoryId"/>">
+                        <div class="middle-column-element" id="<s:property value="#category.categoryId"/>">
                             <div class="middle-column-element-heading">
                                 <s:property value="#category.categoryName"/>
                             </div>
@@ -108,7 +107,7 @@
                             <ul id="middle-row-sortable" class="connectedSortable">
                                 <s:iterator value="#category.bookmarks" id="bookmark">
                                     <li>
-                                        <div class ="middle-row-element" id="R<s:property value="#bookmark.bookmarkId"/>">
+                                        <div class="middle-row-element" id="<s:property value="#bookmark.bookmarkId"/>">
                                             <img class="favicon" src="images/favicon.ico"/>
                                             <div class="middle-row-element-text">
                                                 <s:property value="#bookmark.bookmarkName"/>
@@ -157,6 +156,4 @@
     </body>
 </html>
 
-
-
-
+        

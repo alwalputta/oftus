@@ -6,7 +6,7 @@
 <html>
     <head>
 
-<%@include file="/WEB-INF/results/imports.jsp"%>
+        <%@include file="/WEB-INF/results/imports.jsp"%>
 
         <style type="text/css">
         </style>
@@ -43,14 +43,6 @@
                 <s:form action="update_profile">
 
                     <s:hidden name="userid" value="%{#session.user.userId}"/>
-                    <!--
-                    <s:iterator value="%{#session.user.userCategories}" id="category">
-                        AAAAA<s:property value="#category.categoryName"/>
-                        <s:iterator value="#category.bookmarks" id="bookmark">
-                            BBBBB<s:property value="#bookmark.bookmarkName"/>
-                        </s:iterator>
-                    </s:iterator>
-                    -->
                     <s:iterator value="%{#session.user.userCredentials}" id="credential">
                         <s:textfield name="username" value="%{#credential.username}" size="25" maxlength="200" key="register.username-label" readonly="true"/>
                         <s:password name="password" value="" size="25" key="register.password-label"/>
@@ -89,9 +81,9 @@
 
                 </s:form>
                 <s:a href="register_faq">Register FAQ</s:a>
+                </div>
             </div>
-        </div>
-<%@include file="/WEB-INF/results/footer.jsp"%>
+        <%@include file="/WEB-INF/results/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
 
     </body>

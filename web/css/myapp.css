@@ -392,7 +392,10 @@ sup {
 }
 
 .middle-column-element-import {
-    /*    display: none;*/
+    /*
+    display: none; hides and does not occupy any space
+    */
+    display: none;
     position: relative;
     float: left;
     border: 2px solid black;
@@ -401,6 +404,10 @@ sup {
     background: #007182;
     height: 1000px;
     width: 5px;
+    /*
+    This keeps the space but hides it
+    visibility: hidden;
+    */
 }
 
 .middle-column-element-import:hover {

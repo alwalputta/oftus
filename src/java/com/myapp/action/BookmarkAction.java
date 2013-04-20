@@ -138,7 +138,6 @@ public class BookmarkAction extends ActionSupport {
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
 
-        Bookmark b = null;
         for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
             Category c = (Category) iterator.next();
             logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
@@ -146,7 +145,7 @@ public class BookmarkAction extends ActionSupport {
             Set<Bookmark> bookmarks = c.getBookmarks();
 
             for (Iterator i = bookmarks.iterator(); i.hasNext();) {
-                b = (Bookmark) i.next();
+                Bookmark b = (Bookmark) i.next();
 
                 if (b.getBookmarkId() == new Integer(getBookmarkId()).intValue()) {
                     logger.debug("cccccccccbookmarkId value:" + getBookmarkId() + ":" + getBookmarkName() + ":"
@@ -159,27 +158,44 @@ public class BookmarkAction extends ActionSupport {
                     if (c.getCategoryId() == new Integer(getCategoryId()).intValue()) {
                         ;
                     } else {
-                        Set<Category> categories = b.getCategories();
-                        for (Iterator ii = categories.iterator(); ii.hasNext();) {
-                            Category cc = (Category) ii.next();
-                            cc.setCategoryId(new Integer(getCategoryId()).intValue());
-                            logger.debug("cccccccccategoryId value:" + getCategoryId() + ":" + cc.getCategoryName());
-                        }
+                        categoryChanged = "yes";
+                        bookmarks.remove(b);
+//                        Set<Category> categories = b.getCategories();
+//                        for (Iterator ii = categories.iterator(); ii.hasNext();) {
+//                            Category cc = (Category) ii.next();
+//                            cc.setCategoryId(new Integer(getCategoryId()).intValue());
+//                            logger.debug("cccccccccategoryId value:" + getCategoryId() + ":" + cc.getCategoryName());
+//                        }
                     }
                     break;
                 }
             }
         }
 
+        if (categoryChanged.equals("yes")) {
+            Bookmark b = new Bookmark();
+            b.setBookmarkName(getBookmarkName());
+            b.setHiperLink(getHiperLink());
+            b.setDescription(getDescription());
+            b.setBookmarkOrder(10000); //modify this later//
+
+            for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
+                Category c = (Category) iterator.next();
+                if (c.getCategoryId() == new Integer(getCategoryId()).intValue()) {
+                    Set<Bookmark> bookmarks = c.getBookmarks();
+                    bookmarks.add(b);
+                }
+            }
+        }
+
         user.setUserCategories(userCategories);
-
         UserDAO userDAO = new UserDAO();
-        userDAO.updateUser(user);
 
+        userDAO.updateUser(user);
         return returnVal;
     }
+//business logic
 
-    //business logic
     public String deleteBookmark() {
         logger.debug("BookmarkAction deleteBookmark!");
         String returnVal = "success";
@@ -234,6 +250,10 @@ public class BookmarkAction extends ActionSupport {
             if (getHiperLink() == null || "".equals(getHiperLink())) {
                 addFieldError("hiperLink", "Bookmark/URL cant be empty");
             }
+
+            if (getCategoryId().equals("-1")) {
+                addFieldError("categoryId", "Please select a category");
+            }
         } else if (getActionName().equals("update_bookmark")) {
             if (getBookmarkName() == null || "".equals(getBookmarkName())) {
                 addFieldError("bookmarkName", "Bookmark title cant be empty");
@@ -241,6 +261,10 @@ public class BookmarkAction extends ActionSupport {
 
             if (getHiperLink() == null || "".equals(getHiperLink())) {
                 addFieldError("hiperLink", "Bookmark/URL cant be empty");
+            }
+
+            if (getCategoryId().equals("-1")) {
+                addFieldError("categoryId", "Please select a category");
             }
         } else {
             logger.debug("in else action");

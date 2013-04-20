@@ -10,13 +10,21 @@
     <package name="myapp" extends="struts-default" namespace="">
 
         <action name="index">
-            <result>/WEB-INF/results/index.jsp</result>
+            <result>/WEB-INF/results/login.jsp</result>
         </action>
 
         <action name="welcome">
             <result>/WEB-INF/results/welcome.html</result>
         </action>
 
+        <action name="eula">
+            <result>/WEB-INF/results/eula.html</result>
+        </action>
+
+        <action name="about">
+            <result>/WEB-INF/results/about.html</result>
+        </action>
+        
         <action name="login_faq">
             <result>/WEB-INF/results/login_faq.html</result>
         </action>
@@ -53,24 +61,32 @@
             <result>/WEB-INF/results/user_guide.html</result>
         </action>
 
+        <action name="feedback">
+            <result>/WEB-INF/results/feedback.html</result>
+        </action>
+
+        <action name="refer_friends">
+            <result>/WEB-INF/results/refer_friends.html</result>
+        </action>
+
         <action name="" class="com.myapp.action.IndexAction" method="execute">
             <result name="success">/WEB-INF/results/mainpage.jsp</result>
-            <result name="input">/WEB-INF/results/index.jsp</result>
+            <result name="input">/WEB-INF/results/login.jsp</result>
         </action>
         
         <action name="login" class="com.myapp.action.LoginAction" method="execute">
             <result name="success">/WEB-INF/results/mainpage.jsp</result>
-            <result name="input">/WEB-INF/results/index.jsp</result>
+            <result name="input">/WEB-INF/results/login.jsp</result>
         </action>
 
         <action name="logout" class="com.myapp.action.LogoutAction" method="execute">
-            <result name="success">/WEB-INF/results/index.jsp</result>
+            <result name="success">/WEB-INF/results/login.jsp</result>
             <result name="fail">/WEB-INF/results/mainpage.jsp</result>
         </action>
 
         <action name="register_form" class="com.myapp.action.GeneralAction" method="execute">
             <result name="success">/WEB-INF/results/register.jsp</result>
-            <result name="input">/WEB-INF/results/index.jsp</result>
+            <result name="input">/WEB-INF/results/login.jsp</result>
         </action>
 
         <action name="create_profile" class="com.myapp.action.RegisterAction" method="createProfile">
