@@ -31,7 +31,7 @@
 
         <div class="new-element-modal">
             <div class="new-element">
-                <div>Add New Bookmark</div>
+                <div>Edit Bookmark</div>
                 <s:form action="update_bookmark">
                     <s:hidden name="bookmarkId" value="%{#session.bookmark.bookmarkId}"/>
                     <s:select name="categoryId" list="%{#session.user.userCategories}" listKey="categoryId" listValue="categoryName" value="%{categoryId}" headerKey="-1" headerValue="Select Category..." key="new.categoryname-label"/>

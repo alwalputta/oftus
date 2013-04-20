@@ -7,12 +7,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
     <head>
 
-<%@include file="/WEB-INF/results/imports.jsp"%>
+        <%@include file="/WEB-INF/results/imports.jsp"%>
 
         <script type="text/javascript">
         </script>
     </head>
-
 
 
     <body>
@@ -21,7 +20,7 @@
 
         <div class="new-category-modal">
             <div class="new-category">
-                <div>Add New Category</div>
+                <div>Modify Category</div>
 
                 <s:form action="update_category">
                     <s:hidden name="categoryId" value="%{#session.category.categoryId}"/>
@@ -35,9 +34,9 @@
                     </tr>
                 </s:form>
                 <s:a href="#new_category_faq" class="new-element-links">Add/Edit Category FAQ</s:a>
+                </div>
             </div>
-        </div>
-<%@include file="/WEB-INF/results/footer.jsp"%>
+        <%@include file="/WEB-INF/results/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
 
     </body>

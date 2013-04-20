@@ -151,6 +151,11 @@ $('.middle-row-element').dblclick(function(){
     window.location=targetUrl;
 });
 
+$('.middle-column-element').dblclick(function(){
+    targetUrl = 'edit_category?categoryId='+$(this).attr('id');
+    window.location=targetUrl;
+});
+
 $('.middle-row-element-text').mouseout(function(){
     var element = $(this).parent('.middle-row-element');
     element.children('.middle-row-element-edit-icons').hide();
