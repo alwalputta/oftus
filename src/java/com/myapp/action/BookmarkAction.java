@@ -298,7 +298,6 @@ public class BookmarkAction extends ActionSupport {
     //business logic to update the category
     public String updateBookmarkOrder() {
         logger.debug("updateCategoryOrder!" + getBookmarkOrder());
-        logger.debug("updateCategoryOrder!" + getCategoryId());
         String returnVal = "success";
         int updated = 0;
 

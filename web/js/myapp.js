@@ -165,47 +165,47 @@ function set_sortable(){
     //Draggability of the columns
     // $("#middle-column-sortable").draggable({containment: '.mainTable'});
     $("#middle-column-sortable").sortable({
-        start: function(event, ui){
-//            alert ('start1');
+        start: function(event, ui) {
+            alert ('start1');
         },
-        update: function(event, ui){
-//            alert ('update1');
+        update: function(event, ui) {
+            alert ('update1');
         },
-        stop: function(event, ui){
+        stop: function(event, ui) {
             alert ('stop1');
             update_column_order();
         },
         receive: function(event, ui) {
             //Run this code whenever an item is dragged and dropped into this list
-//            alert("receive just joined this list1");
+            alert("receive just joined this list1");
         },
-        remove: function(event, ui){
+        remove: function(event, ui) {
             //Run this code whenever an item is dragged and dropped out of this list
-//            alert("remove just left this list1");	
+            alert("remove just left this list1");	
         }
     }).disableSelection();
 
     //draggability of elements across the columns
     $("#middle-row-sortable, #middle-row-sortable").sortable({
         connectWith: ".connectedSortable",
-        start: function(event, ui){
-//            alert ('start');
+        start: function(event, ui) {
+            alert ('start');
         },
-        update: function(event, ui){
-//            alert ('update');
+        update: function(event, ui) {
+            alert ('update');
+        },
+        stop: function(event, ui) {
+            alert ('stop');
             update_bookmark_order();
-        },
-        stop: function(event, ui){
-//            alert ('stop');
         },
         receive: function(event, ui) {
             //Run this code whenever an item is dragged and dropped into this list
             alert("receive just joined this list ....");
             move_bookmark();
         },
-        remove: function(event, ui){
+        remove: function(event, ui) {
             //Run this code whenever an item is dragged and dropped out of this list
-//            alert("remove just left this list");	
+            alert("remove just left this list");	
         }
     }).disableSelection();
 }
@@ -222,26 +222,23 @@ function update_column_order(){
 }
 
 function update_bookmark_order(){
+    alert ('update_bookmark_order');
     bookmark_order = "";
     targetUrl = "update_bookmark_order?bookmarkOrder=";
     $('.middle-row-element').each(function(){
         bookmark_order = bookmark_order + $(this).attr('id') + ':';
     });
-    alert ('bookmark_order:'+bookmark_order);
+    alert ('bookmark_order:' + bookmark_order);
     targetUrl = targetUrl + bookmark_order;
+    alert ('url:' + targetUrl);
     $.ajax(targetUrl);
 }
 
-function move_bookmark(){
+function move_bookmark() {
+    alert ('move_bookmark:' + $(this).html);
     bookmark_order = "";
-    targetUrl = "move_bookmark?bookmarkOrder=";
-    targetUrl = targetUrl + '&categoryId='+$(this).parents('.middle-column-element').attr('id');
-
-    $('.middle-row-element').each(function(){
-        bookmark_order = bookmark_order + $(this).attr('id') + ':';
-    });
-    alert ('move_bookmark_order:' + bookmark_order);
-    targetUrl = targetUrl + '&bookmarkOrder=' + bookmark_order;
+    targetUrl = "move_bookmark?bookmarkId=";
+    targetUrl = targetUrl + '&categoryId='+$(this).children('.middle-row-element').attr('id');
     alert ('move_url:' + targetUrl);
     $.ajax(targetUrl);
 }
