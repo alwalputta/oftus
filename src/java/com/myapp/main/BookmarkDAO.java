@@ -9,6 +9,7 @@ import com.myapp.util.HibernateUtil;
 import java.util.ArrayList;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -40,5 +41,31 @@ public class BookmarkDAO {
             session.close();
         }
         return bookmarks;
+    }
+
+    @SuppressWarnings("unchecked")
+    public int updateBookmarkOrder(String bookmarkId, int bookmarkOrder) {
+        logger.debug("categoryId:" + bookmarkId);
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction;
+        int returnVal = 0;
+        try {
+            transaction = session.beginTransaction();
+            SQLQuery query = session.createSQLQuery("update categorybookmark set bookmark_order = ? where bookmark_id = ?");
+            query.setInteger(0, bookmarkOrder);
+            query.setInteger(1, new Integer(bookmarkId).intValue());
+            returnVal = query.executeUpdate();
+            transaction.commit();
+        } catch (HibernateException e) {
+            logger.debug("HibernateException");
+            e.printStackTrace();
+        } catch (Exception e) {
+            logger.debug("Exception");
+            e.printStackTrace();
+        } finally {
+            logger.debug("finally block");
+            session.close();
+        }
+        return returnVal;
     }
 }

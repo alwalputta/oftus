@@ -139,20 +139,22 @@ $('.middle-row-element-text').mouseenter(function(){
     element.children('.middle-row-element-edit-icons').css('left', (left+width-30));
 });
 
-$('.middle-row-element').dblclick(function(){
-    targetUrl = 'edit_bookmark?bookmarkId='+$(this).attr('id');
-    targetUrl = targetUrl + '&categoryId='+$(this).parents('.middle-column-element').attr('id');
-    window.location=targetUrl;
+$('.middle-row-element-text').mouseout(function(){
+    var element = $(this).parent('.middle-row-element');
+    element.children('.middle-row-element-edit-icons').hide();
 });
 
 $('.middle-column-element').dblclick(function(){
+    alert ('column');
     targetUrl = 'edit_category?categoryId='+$(this).attr('id');
     window.location=targetUrl;
 });
 
-$('.middle-row-element-text').mouseout(function(){
-    var element = $(this).parent('.middle-row-element');
-    element.children('.middle-row-element-edit-icons').hide();
+$('.middle-row-element').dblclick(function(){
+    alert ('row1');
+    targetUrl = 'edit_bookmark?bookmarkId='+$(this).attr('id');
+    targetUrl = targetUrl + '&categoryId='+$(this).parents('.middle-column-element').attr('id');
+    window.location=targetUrl;
 });
 
 $('.favicon').click(function(){
@@ -164,10 +166,10 @@ function set_sortable(){
     // $("#middle-column-sortable").draggable({containment: '.mainTable'});
     $("#middle-column-sortable").sortable({
         start: function(event, ui){
-            alert ('start1');
+//            alert ('start1');
         },
         update: function(event, ui){
-            alert ('update1');
+//            alert ('update1');
         },
         stop: function(event, ui){
             alert ('stop1');
@@ -175,11 +177,11 @@ function set_sortable(){
         },
         receive: function(event, ui) {
             //Run this code whenever an item is dragged and dropped into this list
-            alert("receive just joined this list1");
+//            alert("receive just joined this list1");
         },
         remove: function(event, ui){
             //Run this code whenever an item is dragged and dropped out of this list
-            alert("remove just left this list1");	
+//            alert("remove just left this list1");	
         }
     }).disableSelection();
 
@@ -187,26 +189,28 @@ function set_sortable(){
     $("#middle-row-sortable, #middle-row-sortable").sortable({
         connectWith: ".connectedSortable",
         start: function(event, ui){
-            alert ('start');
+//            alert ('start');
         },
         update: function(event, ui){
-            alert ('update');
+//            alert ('update');
+            update_bookmark_order();
         },
         stop: function(event, ui){
-            alert ('stop');
+//            alert ('stop');
         },
         receive: function(event, ui) {
             //Run this code whenever an item is dragged and dropped into this list
-            alert("receive just joined this list");
+            alert("receive just joined this list ....");
+            move_bookmark();
         },
         remove: function(event, ui){
             //Run this code whenever an item is dragged and dropped out of this list
-            alert("remove just left this list");	
+//            alert("remove just left this list");	
         }
     }).disableSelection();
 }
 
-function update_column_order() {
+function update_column_order(){
     column_order = "";
     targetUrl = "update_category_order?categoryOrder=";
     $('.middle-column-element').each(function(){
@@ -214,10 +218,35 @@ function update_column_order() {
     });
     alert ('category_order:'+column_order);
     targetUrl = targetUrl + column_order;
-    window.location = targetUrl;
+    $.ajax(targetUrl);
 }
 
-function search_and_hide (search_text) {
+function update_bookmark_order(){
+    bookmark_order = "";
+    targetUrl = "update_bookmark_order?bookmarkOrder=";
+    $('.middle-row-element').each(function(){
+        bookmark_order = bookmark_order + $(this).attr('id') + ':';
+    });
+    alert ('bookmark_order:'+bookmark_order);
+    targetUrl = targetUrl + bookmark_order;
+    $.ajax(targetUrl);
+}
+
+function move_bookmark(){
+    bookmark_order = "";
+    targetUrl = "move_bookmark?bookmarkOrder=";
+    targetUrl = targetUrl + '&categoryId='+$(this).parents('.middle-column-element').attr('id');
+
+    $('.middle-row-element').each(function(){
+        bookmark_order = bookmark_order + $(this).attr('id') + ':';
+    });
+    alert ('move_bookmark_order:' + bookmark_order);
+    targetUrl = targetUrl + '&bookmarkOrder=' + bookmark_order;
+    alert ('move_url:' + targetUrl);
+    $.ajax(targetUrl);
+}
+
+function search_and_hide (search_text){
     // var search_text = $('#search-input').val();
     var rg = new RegExp(search_text,'i');
  

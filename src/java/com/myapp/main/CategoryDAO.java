@@ -87,7 +87,6 @@ public class CategoryDAO {
         }
     }
 
-
     @SuppressWarnings("unchecked")
     public int updateCategoryOrder(String categoryId, int categoryOrder) {
         logger.debug("categoryId:" + categoryId);

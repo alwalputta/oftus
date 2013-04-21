@@ -181,6 +181,16 @@
             <result name="input">/WEB-INF/results/mainpage.jsp</result>
         </action>
 
+        <action name="move_bookmark" class="com.myapp.action.BookmarkAction" method="moveBookmark">
+            <result name="success">/WEB-INF/results/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/mainpage.jsp</result>
+        </action>
+
+        <action name="update_bookmark_order" class="com.myapp.action.BookmarkAction" method="updateBookmarkOrder">
+            <result name="success">/WEB-INF/results/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/mainpage.jsp</result>
+        </action>
+
         <action name="test">
             <result>/WEB-INF/results/header.jsp</result>
         </action>
