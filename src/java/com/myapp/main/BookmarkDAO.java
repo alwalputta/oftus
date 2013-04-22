@@ -68,4 +68,31 @@ public class BookmarkDAO {
         }
         return returnVal;
     }
+
+    @SuppressWarnings("unchecked")
+    public int updateBookmarkCategory(String bookmarkId, String categoryId) {
+        logger.debug("bookmarkId:" + bookmarkId);
+        logger.debug("categoryId:" + categoryId);
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction;
+        int returnVal = 0;
+        try {
+            transaction = session.beginTransaction();
+            SQLQuery query = session.createSQLQuery("update categorybookmark set category_id = ? where bookmark_id = ?");
+            query.setInteger(0, new Integer(categoryId).intValue());
+            query.setInteger(1, new Integer(bookmarkId).intValue());
+            returnVal = query.executeUpdate();
+            transaction.commit();
+        } catch (HibernateException e) {
+            logger.debug("HibernateException");
+            e.printStackTrace();
+        } catch (Exception e) {
+            logger.debug("Exception");
+            e.printStackTrace();
+        } finally {
+            logger.debug("finally block");
+            session.close();
+        }
+        return returnVal;
+    }
 }

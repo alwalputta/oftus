@@ -6,6 +6,8 @@ $(document).ready(function() {
     
     categories = [];
     max_row_element_id = 0;
+    element_id = 0;
+    category_from = 0;
 
     search_box_default_text = "Enter Your Search ...";
     $('#search-input').val(search_box_default_text);
@@ -144,14 +146,14 @@ $('.middle-row-element-text').mouseout(function(){
     element.children('.middle-row-element-edit-icons').hide();
 });
 
-$('.middle-column-element').dblclick(function(){
-    alert ('column');
-    targetUrl = 'edit_category?categoryId='+$(this).attr('id');
+$('.middle-column-element-heading').dblclick(function(){
+    //    alert ('column');
+    targetUrl = 'edit_category?categoryId='+$(this).parent('.middle-column-element').attr('id');
     window.location=targetUrl;
 });
 
 $('.middle-row-element').dblclick(function(){
-    alert ('row1');
+    //    alert ('row1');
     targetUrl = 'edit_bookmark?bookmarkId='+$(this).attr('id');
     targetUrl = targetUrl + '&categoryId='+$(this).parents('.middle-column-element').attr('id');
     window.location=targetUrl;
@@ -164,7 +166,7 @@ $('.favicon').click(function(){
 function set_sortable(){
     //Draggability of the columns
     // $("#middle-column-sortable").draggable({containment: '.mainTable'});
-    $("#middle-column-sortable").sortable({
+    $('#middle-column-sortable').sortable({
         start: function(event, ui) {
             alert ('start1');
         },
@@ -177,17 +179,17 @@ function set_sortable(){
         },
         receive: function(event, ui) {
             //Run this code whenever an item is dragged and dropped into this list
-            alert("receive just joined this list1");
+            alert('receive just joined this list1');
         },
         remove: function(event, ui) {
             //Run this code whenever an item is dragged and dropped out of this list
-            alert("remove just left this list1");	
+            alert('remove just left this list1');
         }
     }).disableSelection();
 
     //draggability of elements across the columns
-    $("#middle-row-sortable, #middle-row-sortable").sortable({
-        connectWith: ".connectedSortable",
+    $('#middle-row-sortable, #middle-row-sortable').sortable({
+        connectWith: '.connectedSortable',
         start: function(event, ui) {
             alert ('start');
         },
@@ -195,17 +197,47 @@ function set_sortable(){
             alert ('update');
         },
         stop: function(event, ui) {
-            alert ('stop');
-            update_bookmark_order();
+            //            alert ('stop:' + $(this).html());
+            alert ('stop.element_id' + element_id);
+            alert ('stop.category_from' + category_from);
+            alert ('stop.category_to' + category_to);
+            
+            if (category_from != 0 && category_to != 0) {
+                move_bookmark(element_id, category_from, category_to);
+            } else {
+                update_bookmark_order($(this));
+            }
         },
         receive: function(event, ui) {
             //Run this code whenever an item is dragged and dropped into this list
-            alert("receive just joined this list ....");
-            move_bookmark();
+            alert('receive.just joined this list ....');
+            element_id2 = $(ui.item).children().attr('id');
+            alert ('receive1:' + element_id2);
+  
+            parent2 = $(this).parents('.middle-column-element');
+            alert ('receive2:' + parent2.attr('id'));
+    
+            category_to = parent2.attr('id');
+            targetUrl = 'targetUrl' + element_id2;
+        //            alert ('URL:' + targetUrl);
         },
         remove: function(event, ui) {
             //Run this code whenever an item is dragged and dropped out of this list
-            alert("remove just left this list");	
+            alert ('remove1: just left this list');
+            //            alert ('remove3:' + $(ui.item).text());
+            //            alert ('remove4:' + $(ui.item).html());
+            //            alert ('remove5:' + $(ui.item).children().attr('id'));
+            
+            element_id = $(ui.item).children().attr('id');
+            alert ('remove6:' + element_id);
+  
+            parent = $(this).parents('.middle-column-element');
+            alert ('remove7:' + parent.attr('id'));
+    
+            category_from = parent.attr('id');
+            targetUrl = 'targetUrl' + element_id;
+        //            alert ('URL:' + targetUrl);
+        //  move_bookmark($(this), ui);
         }
     }).disableSelection();
 }
@@ -221,25 +253,28 @@ function update_column_order(){
     $.ajax(targetUrl);
 }
 
-function update_bookmark_order(){
-    alert ('update_bookmark_order');
+function update_bookmark_order(element){
     bookmark_order = "";
     targetUrl = "update_bookmark_order?bookmarkOrder=";
-    $('.middle-row-element').each(function(){
+
+    parent = element.parents('.middle-column-element');
+    
+    parent.find('.middle-row-element').each(function(){
         bookmark_order = bookmark_order + $(this).attr('id') + ':';
     });
-    alert ('bookmark_order:' + bookmark_order);
     targetUrl = targetUrl + bookmark_order;
     alert ('url:' + targetUrl);
     $.ajax(targetUrl);
 }
 
-function move_bookmark() {
-    alert ('move_bookmark:' + $(this).html);
+
+function move_bookmark(element_id, category_from, category_to) {
     bookmark_order = "";
-    targetUrl = "move_bookmark?bookmarkId=";
-    targetUrl = targetUrl + '&categoryId='+$(this).children('.middle-row-element').attr('id');
-    alert ('move_url:' + targetUrl);
+    targetUrl = "move_bookmark?bookmarkId=" + element_id;
+    targetUrl = targetUrl + "&categoryId=" + category_to;
+    
+    alert ('URL:' + targetUrl);
+    
     $.ajax(targetUrl);
 }
 
@@ -310,10 +345,10 @@ function set_div_dimensions() {
 }
 
 function show_page_loading_message () {
-    $('.loading').css("display", "block");
-    $('.loading').css("visibility", "visible");
-    $('.loading').css("top", $(window).height()/2-$('.loading').height()/2-100);
-    $('.loading').css("left", $(window).width()/2-$('.loading').width()/2);
+    $('.loading').css('display', 'block');
+    $('.loading').css('visibility', 'visible');
+    $('.loading').css('top', $(window).height()/2-$('.loading').height()/2-100);
+    $('.loading').css('left', $(window).width()/2-$('.loading').width()/2);
 
     $('.loading input:first').focus();
 }

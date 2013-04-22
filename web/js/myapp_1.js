@@ -170,11 +170,9 @@ $(document).keyup(function(e) {
  
         $('.mask').remove();
         $('.loading').hide();
-        //$('.login-modal').hide();
         $('.register-modal').hide();
         $('.forgot-password-modal').hide();
         $('.new-category-modal').hide();
-        /*        $('.new-element-modal').hide();*/
         $('.edit-element-modal').hide();
         $('.middle-column-element-edit-icons').hide();
         $('.middle-row-element-edit-icons').hide();

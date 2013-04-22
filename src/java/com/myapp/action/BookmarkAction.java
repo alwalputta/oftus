@@ -130,6 +130,7 @@ public class BookmarkAction extends ActionSupport {
         logger.debug("BookmarkAction updateBookmark!");
         String returnVal = "success";
         String categoryChanged = "no";
+        int updated = 0;
 
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
@@ -161,32 +162,11 @@ public class BookmarkAction extends ActionSupport {
                     if (c.getCategoryId() == new Integer(getCategoryId()).intValue()) {
                         ;
                     } else {
-                        categoryChanged = "yes";
-                        bookmarks.remove(b);
-//                        Set<Category> categories = b.getCategories();
-//                        for (Iterator ii = categories.iterator(); ii.hasNext();) {
-//                            Category cc = (Category) ii.next();
-//                            cc.setCategoryId(new Integer(getCategoryId()).intValue());
-//                            logger.debug("cccccccccategoryId value:" + getCategoryId() + ":" + cc.getCategoryName());
-//                        }
+//                        bookmarks.remove(b);
+                        BookmarkDAO bookmarkDAO = new BookmarkDAO();
+                        updated = bookmarkDAO.updateBookmarkCategory(getBookmarkId(), getCategoryId());
                     }
                     break;
-                }
-            }
-        }
-
-        if (categoryChanged.equals("yes")) {
-            Bookmark b = new Bookmark();
-            b.setBookmarkName(getBookmarkName());
-            b.setHiperLink(getHiperLink());
-            b.setDescription(getDescription());
-//            b.setBookmarkOrder(10000); //modify this later//
-
-            for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
-                Category c = (Category) iterator.next();
-                if (c.getCategoryId() == new Integer(getCategoryId()).intValue()) {
-                    Set<Bookmark> bookmarks = c.getBookmarks();
-                    bookmarks.add(b);
                 }
             }
         }
@@ -202,55 +182,14 @@ public class BookmarkAction extends ActionSupport {
     public String moveBookmark() {
         logger.debug("BookmarkAction moveBookmark!");
         String returnVal = "success";
-        Bookmark bb = new Bookmark();
+        int updated = 0;
 
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-
-        user = (User) session.getAttribute("user");
-
+        logger.debug("bookmark id:" + getBookmarkId());
         logger.debug("category id:" + getCategoryId());
 
-        userCategories = user.getUserCategories();
-        logger.debug("userCategories size:" + userCategories.size());
+        BookmarkDAO bookmarkDAO = new BookmarkDAO();
+        updated = bookmarkDAO.updateBookmarkCategory(getBookmarkId(), getCategoryId());
 
-        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
-            Category c = (Category) iterator.next();
-            logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
-
-            Set<Bookmark> bookmarks = c.getBookmarks();
-
-            for (Iterator i = bookmarks.iterator(); i.hasNext();) {
-                Bookmark b = (Bookmark) i.next();
-
-                if (b.getBookmarkId() == new Integer(getBookmarkId()).intValue()) {
-                    bb.setBookmarkName(b.getBookmarkName());
-                    bb.setCreateDate(b.getCreateDate());
-                    bb.setDescription(b.getDescription());
-                    bb.setHiperLink(b.getHiperLink());
-
-                    bookmarks.remove(b);
-                    break;
-                }
-            }
-        }
-
-        bb.setBookmarkName(getBookmarkName());
-        bb.setHiperLink(getHiperLink());
-        bb.setDescription(getDescription());
-
-        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
-            Category c = (Category) iterator.next();
-            if (c.getCategoryId() == new Integer(getCategoryId()).intValue()) {
-                Set<Bookmark> bookmarks = c.getBookmarks();
-                bookmarks.add(bb);
-            }
-        }
-
-        user.setUserCategories(userCategories);
-        UserDAO userDAO = new UserDAO();
-
-        userDAO.updateUser(user);
         return returnVal;
     }
 
@@ -263,7 +202,6 @@ public class BookmarkAction extends ActionSupport {
         HttpSession session = request.getSession();
 
         user = (User) session.getAttribute("user");
-
         logger.debug("category id:" + getCategoryId());
 
         userCategories = user.getUserCategories();
