@@ -299,10 +299,9 @@ CREATE TABLE UserReferral (
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 
-DROP TABLE IF EXISTS UserPreference CASCADE;
-CREATE TABLE UserReferral (
+DROP TABLE IF EXISTS Preference CASCADE;
+CREATE TABLE Preference (
   preference_id int(20) NOT NULL,
-  user_id int(20) NOT NULL,
   preference_code VARCHAR(50) NOT NULL,
   preference_value VARCHAR(50) NOT NULL,
   description VARCHAR(500) NOT NULL,
@@ -314,5 +313,16 @@ CREATE TABLE UserReferral (
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS UserPreference CASCADE;
+CREATE TABLE UserPreference (
+  preference_id int(20) NOT NULL,
+  user_id int(20) NOT NULL,
+  status VARCHAR(10) DEFAULT 'A',
+  create_date DATETIME,
+  end_date DATETIME,
+  last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE
+  FOREIGN KEY (preference_id) REFERENCES User(preference_id) ON DELETE CASCADE
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 
