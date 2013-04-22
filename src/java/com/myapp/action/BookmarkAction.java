@@ -272,7 +272,7 @@ public class BookmarkAction extends ActionSupport {
             if (getCategoryId().equals("-1")) {
                 addFieldError("categoryId", "Please select a category");
             }
-        } else if (getActionName().equals("update_bookmark")) {
+        } else if (getActionName().equals("update_bookmark") || getActionName().equals("update_bookmark_list")) {
             if (getBookmarkName() == null || "".equals(getBookmarkName())) {
                 addFieldError("bookmarkName", "Bookmark title cant be empty");
             }

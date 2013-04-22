@@ -35,48 +35,43 @@
 
             <div class="register-register">
                 <div>User Bookmarks</div>
-                <s:form action="update_profile">
-                    <s:hidden name="userid" value="%{#session.user.userId}"/>
-                    <tr>
-                        <td>Id</td>
-                        <td>Category Name</td>
-                        <td>Description</td>
-                        <td>Category Order</td>
-                        <td>Category Status</td>
-                        <td>Edit</td>
-                        <td>Delete</td>
-                    </tr>
-                    <s:iterator value="%{#session.user.userCategories}" id="category">
+                <table summary="folder contents for fly types">
+                    <thead>
                         <tr>
-                            <td><s:property value="#category.categoryId"/></td>
-                            <td><s:property value="#category.categoryName"/></td>
-                            <td><s:property value="#category.description"/></td>
-                            <td><s:property value="#category.categoryOrder"/></td>
-                            <td><s:property value="#category.status"/></td>
-                            <td><s:url id="editCategory" action="edit_category">
-                                    <s:param name="categoryId" value="#category.categoryId"></s:param>
-                                </s:url>
-                                <a href="<s:property value="#editCategory"/>">Edit</a>
-                            </td>
-                            <td><s:url id="deleteCategory" action="delete_category">
-                                    <s:param name="categoryId" value="#category.categoryId"></s:param>
-                                </s:url>
-                                <a href="<s:property value="#deleteCategory"/>">Delete</a>
-                            </td>
+                            <th class="name">Id</td>
+                                <th class="name">Category Name</th>
+                                <th class="name">Description</th>
+                                <th class="name">Category Status</th>
+                                <th class="name">Edit</th>
+                                <th class="name">Delete</th>
                         </tr>
-                        <tr colspan="5" width="100%">
-                            <table>
+                    </thead>
+
+                    <tbody>
+                        <s:iterator value="%{#session.user.userCategories}" id="category">
+                            <tr>
+                                <th><s:property value="#category.categoryId"/></th>
+                                <th><s:property value="#category.categoryName"/></th>
+                                <th><s:property value="#category.description"/></th>
+                                <th><s:property value="#category.status"/></th>
+                                <th><s:url id="editCategory" action="edit_category">
+                                        <s:param name="categoryId" value="#category.categoryId"></s:param>
+                                    </s:url>
+                                    <a href="<s:property value="#editCategory"/>">Edit</a>
+                                </th>
+                                <th><s:url id="deleteCategory" action="delete_category_list">
+                                        <s:param name="categoryId" value="#category.categoryId"></s:param>
+                                    </s:url>
+                                    <a href="<s:property value="#deleteCategory"/>">Delete</a>
+                                </th>
+                            </tr>
+                            <tr colspan="5" width="100%">
                                 <s:iterator value="#category.bookmarks" id="bookmark">
                                     <tr>
-                                        <td>
-                                            <s:property value="#bookmark.bookmarkId"/>
-                                        </td>
-                                        <td>
-                                            <s:property value="#bookmark.bookmarkName"/>
-                                        </td>
-                                        <td>
-                                            <s:property value="#bookmark.description"/>
-                                        </td>
+                                        <th class="start"><s:property value="#bookmark.bookmarkId"/></th>
+                                        <td><s:property value="#bookmark.bookmarkName"/></td>
+                                        <td><s:property value="#bookmark.description"/></td>
+                                        <td><s:property value="#bookmark.status"/></td>
                                         <td>
                                             <s:url id="editBookmark" action="edit_bookmark">
                                                 <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
@@ -90,14 +85,14 @@
                                         </td>
                                     </tr>
                                 </s:iterator>
-                            </table>
+                        </tbody>
                         </tr>
                     </s:iterator>
-
-                </s:form>
             </div>
         </div>
+
         <%@include file="/WEB-INF/results/footer.jsp"%>
+
         <script type="text/javascript" src="js/myapp.js"></script>
 
     </body>

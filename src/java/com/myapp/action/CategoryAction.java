@@ -174,12 +174,13 @@ public class CategoryAction extends ActionSupport {
             if (getCategoryName() == null || "".equals(getCategoryName())) {
                 addFieldError("categoryName", "Category title cant be empty");
             }
-        } else if (getActionName().equals("update_category")) {
+        } else if (getActionName().equals("update_category") || getActionName().equals("update_category_list")) {
             if (getCategoryName() == null || "".equals(getCategoryName())) {
                 addFieldError("categoryName", "Category title cant be empty");
             }
         } else if (getActionName().equals("update_category_order")) {
             logger.debug("in update_category_order");
+        } else {
         }
     }
 

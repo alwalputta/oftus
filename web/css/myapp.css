@@ -1024,3 +1024,52 @@ input[type=button], input[type=reset]{
     height: 20px;
 }
 
+/* table CSS start */
+table{
+    border-collapse: collapse;
+    margin-bottom: 3em;
+    font-size: 100%;
+    line-height: 1.1;
+}
+
+tr:hover, td.start:hover, td.end:hover{
+    background: #FF9;
+}
+
+th, td{
+    padding: .3em .5em;
+    font-size: 14px;
+}
+
+th{
+    font-weight: normal;
+    text-align: left;
+    background: url(../images/tabletree-arrow.gif) no-repeat 2px 50%;
+    padding-left: 15px;
+}
+
+th.name { width: 12em; }
+th.edit { width: 12em; }
+th.delete { width: 10em; }
+
+thead th{
+    background: #c6ceda;
+    border-color: #fff #fff #888 #fff;
+    border-style: solid;
+    border-width: 1px 1px 2px 1px;
+    padding-left: .5em;
+}
+
+tbody th.start{
+    background: url(../images/tabletree-dots.gif) 18px 54% no-repeat;
+    padding-left: 26px;
+}
+
+tbody th.end{
+    background: url(../images/tabletree-dots2.gif) 18px 54% no-repeat;
+    padding-left: 26px;
+}
+
+/* table CSS ends */
+
+

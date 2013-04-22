@@ -132,6 +132,11 @@
             <result name="input">/WEB-INF/results/edit_category.jsp</result>
         </action>
 
+        <action name="update_category_list" class="com.myapp.action.CategoryAction" method="updateCategory">
+            <result name="success">/WEB-INF/results/list_bookmarks.jsp</result>
+            <result name="input">/WEB-INF/results/edit_category.jsp</result>
+        </action>
+
         <action name="delete_category" class="com.myapp.action.CategoryAction" method="deleteCategory">
             <result name="success">/WEB-INF/results/list_categories.jsp</result>
             <result name="input">/WEB-INF/results/list_categories.jsp</result>
@@ -140,6 +145,11 @@
         <action name="delete_category_mainpage" class="com.myapp.action.CategoryAction" method="deleteCategory">
             <result name="success">/WEB-INF/results/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/mainpage.jsp</result>
+        </action>
+
+        <action name="delete_category_list" class="com.myapp.action.CategoryAction" method="deleteCategory">
+            <result name="success">/WEB-INF/results/list_bookmarks.jsp</result>
+            <result name="input">/WEB-INF/results/list_bookmarks.jsp</result>
         </action>
 
         <action name="update_category_order" class="com.myapp.action.CategoryAction" method="updateCategoryOrder">
@@ -168,6 +178,11 @@
 
         <action name="update_bookmark" class="com.myapp.action.BookmarkAction" method="updateBookmark">
             <result name="success">/WEB-INF/results/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/edit_bookmark.jsp</result>
+        </action>
+
+        <action name="update_bookmark_list" class="com.myapp.action.BookmarkAction" method="updateBookmark">
+            <result name="success">/WEB-INF/results/list_bookmarks.jsp</result>
             <result name="input">/WEB-INF/results/edit_bookmark.jsp</result>
         </action>
 
