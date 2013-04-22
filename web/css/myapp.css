@@ -321,8 +321,8 @@ body {
 }
 
 #logo {
-    width: 40px;
-    height: 40px;
+    width: 200px;
+    height: 75px;
     margin: 0px;
     padding: 0px;
     vertical-align: central;
@@ -334,17 +334,17 @@ body {
     text-align: center;
     font: 40px tahoma;
     font-weight: bold;
-    text-shadow:2px 2px 2px #42440d;
+    text-shadow:0px 0px 0px #42440d;
     box-shadow: 0px 0px 0px 0px blue;
-    color: green;
+    color: darkblue;
 }
 
 .company-logo-punchline {
     text-align: center;
-    font: 20px tahoma;
-    text-shadow:1px 1px 1px #42440d;
+    font: 14px tahoma;
+    text-shadow:0px 0px 0px #42440d;
     box-shadow: 0px 0px 0px 0px blue;
-    color: blue;
+    color: grey;
 }
 
 sup {
@@ -353,7 +353,7 @@ sup {
     text-shadow:1px 1px 1px #42440d;
     box-shadow: 0px 0px 0px 0px blue;
     color: darkgreen;
-    vertical-align: top;
+    vertical-align: text-top;
 }
 
 .top-column-element-middle {

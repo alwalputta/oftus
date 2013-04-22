@@ -2,12 +2,12 @@
 <div class="dockingBarTop">
     <div class="top-column-element-left">
         <div class="company-logo">
-            <img id="logo" src="images/logo.png"/>
+            <img id="logo" src="images/oftus.jpeg"/>
             OftUs<sup>&reg;</sup>
         </div>
-        <div class="company-logo-punchline">
-            Entire World. One Link.
-        </div>
+        <!--div class="company-logo-punchline">
+            Your Whole World. One Link.
+        </div-->
     </div>
     <div class="top-column-element-middle">
         Buy Samsung TV Today!

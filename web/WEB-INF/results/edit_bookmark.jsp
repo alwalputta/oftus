@@ -42,6 +42,7 @@
                         <td colspan="2" align="center">
                             <s:submit align="center" key="new.submit-bookmark-label" theme="simple"/>
                             <s:reset align="center" key="new.reset-label" theme="simple"/>
+                            <s:a href="delete_bookmark_mainpage?bookmarkId=%{#session.bookmark.bookmarkId}">Delete Bookmark</s:a>
                         </td>
                     </tr>
                 </s:form>

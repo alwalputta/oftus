@@ -8,6 +8,7 @@ $(document).ready(function() {
     max_row_element_id = 0;
     element_id = 0;
     category_from = 0;
+    category_to = 0;
 
     search_box_default_text = "Enter Your Search ...";
     $('#search-input').val(search_box_default_text);
@@ -168,22 +169,22 @@ function set_sortable(){
     // $("#middle-column-sortable").draggable({containment: '.mainTable'});
     $('#middle-column-sortable').sortable({
         start: function(event, ui) {
-            alert ('start1');
+//            alert ('start1');
         },
         update: function(event, ui) {
-            alert ('update1');
+//            alert ('update1');
         },
         stop: function(event, ui) {
-            alert ('stop1');
+//            alert ('stop1');
             update_column_order();
         },
         receive: function(event, ui) {
             //Run this code whenever an item is dragged and dropped into this list
-            alert('receive just joined this list1');
+//            alert('receive just joined this list1');
         },
         remove: function(event, ui) {
             //Run this code whenever an item is dragged and dropped out of this list
-            alert('remove just left this list1');
+//            alert('remove just left this list1');
         }
     }).disableSelection();
 
@@ -191,10 +192,10 @@ function set_sortable(){
     $('#middle-row-sortable, #middle-row-sortable').sortable({
         connectWith: '.connectedSortable',
         start: function(event, ui) {
-            alert ('start');
+//            alert ('start');
         },
         update: function(event, ui) {
-            alert ('update');
+//            alert ('update');
         },
         stop: function(event, ui) {
             //            alert ('stop:' + $(this).html());
@@ -202,10 +203,11 @@ function set_sortable(){
             alert ('stop.category_from' + category_from);
             alert ('stop.category_to' + category_to);
             
-            if (category_from != 0 && category_to != 0) {
-                move_bookmark(element_id, category_from, category_to);
-            } else {
+            if (category_from == "0") {
+                alert ('bookmark order if statement');
                 update_bookmark_order($(this));
+            } else {
+                move_bookmark(element_id, category_to);
             }
         },
         receive: function(event, ui) {
@@ -268,7 +270,7 @@ function update_bookmark_order(element){
 }
 
 
-function move_bookmark(element_id, category_from, category_to) {
+function move_bookmark(element_id, category_to) {
     bookmark_order = "";
     targetUrl = "move_bookmark?bookmarkId=" + element_id;
     targetUrl = targetUrl + "&categoryId=" + category_to;
