@@ -5,8 +5,6 @@
 package com.myapp.admin;
 
 import java.io.Serializable;
-import java.util.LinkedHashSet;
-import java.util.Set;
 import org.apache.log4j.Logger;
 
 /**
@@ -23,7 +21,6 @@ public class Preference implements Serializable {
     private String status;
     private String endDate;
     private String lastModifiedDate;
-    private Set<User> users = new LinkedHashSet<User>(0);
     static final Logger logger = Logger.getLogger(Preference.class);
 
     public Preference() {
@@ -91,14 +88,6 @@ public class Preference implements Serializable {
 
     public void setLastModifiedDate(String lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
-    }
-
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
     }
 
     public Preference(String preferenceCode, String preferenceValue, String description) {

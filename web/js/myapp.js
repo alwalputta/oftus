@@ -160,8 +160,24 @@ $('.middle-row-element').dblclick(function(){
     window.location=targetUrl;
 });
 
+$('.middle-row-element-text').click(function(){
+    loadData();
+    element = $(this);
+    bookmark_id = element.parents('.middle-row-element').attr('id');
+    //    alert ('bookmark_id:' + bookmark_id);
+    //    alert ('url:' + $('#' + bookmark_id).data("bookmark").hiperLink);
+    
+    targetUrl = 'open_bookmark?bookmarkId='+bookmark_id;
+//    alert (targetUrl);
+    $.ajax(targetUrl); // not working, check why??
+//    window.location=targetUrl;
+
+    window.location=$('#' + bookmark_id).data("bookmark").hiperLink;
+});
+
 $('.favicon').click(function(){
     alert ('Your favorite icon.');
+    $(this).parent('.middle-row-element').toggleClass('middle-row-element-selected');
 });
 
 function set_sortable(){
@@ -169,22 +185,22 @@ function set_sortable(){
     // $("#middle-column-sortable").draggable({containment: '.mainTable'});
     $('#middle-column-sortable').sortable({
         start: function(event, ui) {
-//            alert ('start1');
+        //            alert ('start1');
         },
         update: function(event, ui) {
-//            alert ('update1');
+        //            alert ('update1');
         },
         stop: function(event, ui) {
-//            alert ('stop1');
+            //            alert ('stop1');
             update_column_order();
         },
         receive: function(event, ui) {
-            //Run this code whenever an item is dragged and dropped into this list
-//            alert('receive just joined this list1');
+        //Run this code whenever an item is dragged and dropped into this list
+        //            alert('receive just joined this list1');
         },
         remove: function(event, ui) {
-            //Run this code whenever an item is dragged and dropped out of this list
-//            alert('remove just left this list1');
+        //Run this code whenever an item is dragged and dropped out of this list
+        //            alert('remove just left this list1');
         }
     }).disableSelection();
 
@@ -192,19 +208,19 @@ function set_sortable(){
     $('#middle-row-sortable, #middle-row-sortable').sortable({
         connectWith: '.connectedSortable',
         start: function(event, ui) {
-//            alert ('start');
+        //            alert ('start');
         },
         update: function(event, ui) {
-//            alert ('update');
+        //            alert ('update');
         },
         stop: function(event, ui) {
             //            alert ('stop:' + $(this).html());
-            alert ('stop.element_id' + element_id);
-            alert ('stop.category_from' + category_from);
-            alert ('stop.category_to' + category_to);
+            //alert ('stop.element_id' + element_id);
+            //alert ('stop.category_from' + category_from);
+            //alert ('stop.category_to' + category_to);
             
             if (category_from == "0") {
-                alert ('bookmark order if statement');
+                //alert ('bookmark order if statement');
                 update_bookmark_order($(this));
             } else {
                 move_bookmark(element_id, category_to);
@@ -212,12 +228,12 @@ function set_sortable(){
         },
         receive: function(event, ui) {
             //Run this code whenever an item is dragged and dropped into this list
-            alert('receive.just joined this list ....');
+            //alert('receive.just joined this list ....');
             element_id2 = $(ui.item).children().attr('id');
-            alert ('receive1:' + element_id2);
+            //alert ('receive1:' + element_id2);
   
             parent2 = $(this).parents('.middle-column-element');
-            alert ('receive2:' + parent2.attr('id'));
+            //alert ('receive2:' + parent2.attr('id'));
     
             category_to = parent2.attr('id');
             targetUrl = 'targetUrl' + element_id2;
@@ -225,16 +241,16 @@ function set_sortable(){
         },
         remove: function(event, ui) {
             //Run this code whenever an item is dragged and dropped out of this list
-            alert ('remove1: just left this list');
+            //alert ('remove1: just left this list');
             //            alert ('remove3:' + $(ui.item).text());
             //            alert ('remove4:' + $(ui.item).html());
             //            alert ('remove5:' + $(ui.item).children().attr('id'));
             
             element_id = $(ui.item).children().attr('id');
-            alert ('remove6:' + element_id);
+            //alert ('remove6:' + element_id);
   
             parent = $(this).parents('.middle-column-element');
-            alert ('remove7:' + parent.attr('id'));
+            //alert ('remove7:' + parent.attr('id'));
     
             category_from = parent.attr('id');
             targetUrl = 'targetUrl' + element_id;
@@ -250,7 +266,7 @@ function update_column_order(){
     $('.middle-column-element').each(function(){
         column_order = column_order + $(this).attr('id') + ':';
     });
-    alert ('category_order:'+column_order);
+    //alert ('category_order:'+column_order);
     targetUrl = targetUrl + column_order;
     $.ajax(targetUrl);
 }
@@ -265,7 +281,7 @@ function update_bookmark_order(element){
         bookmark_order = bookmark_order + $(this).attr('id') + ':';
     });
     targetUrl = targetUrl + bookmark_order;
-    alert ('url:' + targetUrl);
+    //alert ('url:' + targetUrl);
     $.ajax(targetUrl);
 }
 
@@ -275,8 +291,7 @@ function move_bookmark(element_id, category_to) {
     targetUrl = "move_bookmark?bookmarkId=" + element_id;
     targetUrl = targetUrl + "&categoryId=" + category_to;
     
-    alert ('URL:' + targetUrl);
-    
+    //alert ('URL:' + targetUrl);
     $.ajax(targetUrl);
 }
 

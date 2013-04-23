@@ -454,7 +454,7 @@ sup {
     border-radius: 0px;
     color: black;
     background: #aabbaa;
-    height: auto;
+    height: 100%;
     position: relative;
 }
 
@@ -472,6 +472,13 @@ sup {
     border-radius: 5px;
 }
 
+.middle-row-element-selected {
+    border: 1px dotted red;
+    background: darkblue;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
 .middle-row-element span {
     text-align: left;
 }
@@ -485,7 +492,6 @@ sup {
     background: orange;
     color: black;
     font: 12px tahoma;
-    /*    text-transform: capitalize;*/
     text-align: center;
     text-decoration: #3e779d;
 }

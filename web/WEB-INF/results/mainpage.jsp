@@ -12,9 +12,9 @@
         <script type="text/javascript">
             function loadData () {
             <s:iterator value="userCategories" id="category">
-                    $('#C<s:property value="#category.categoryId"/>').data({colId:"<s:property value="#category.categoryId"/>", title:"<s:property value="#category.categoryName"/>", description:"<s:property value="#category.description:"/>"});
+                    $('#<s:property value="#category.categoryId"/>').data("category", {colId:"<s:property value="#category.categoryId"/>", title:"<s:property value="#category.categoryName"/>", description:"<s:property value="#category.description:"/>"});
                 <s:iterator value="#category.bookmarks" id="bookmark">
-                        $('#R<s:property value="#bookmark.bookmarkId"/>').data({linkId:"<s:property value="#bookmark.bookmarkId"/>", title:"<s:property value="#bookmark.bookmarkName"/>", hiperLink:"<s:property value="#bookmark.hiperLink"/>", description:"<s:property value="#bookmark.description"/>"});
+                        $('#<s:property value="#bookmark.bookmarkId"/>').data("bookmark", {linkId:"<s:property value="#bookmark.bookmarkId"/>", title:"<s:property value="#bookmark.bookmarkName"/>", hiperLink:"<s:property value="#bookmark.hiperLink"/>", description:"<s:property value="#bookmark.description"/>"});
                 </s:iterator>
             </s:iterator>
                 }
@@ -111,7 +111,7 @@
                                             <img class="favicon" src="images/favicon.ico"/>
                                             <div class="middle-row-element-text">
                                                 <s:property value="#bookmark.bookmarkName"/>
-                                            </div> 
+                                            </div>
                                             <div class="middle-row-element-edit-icons">
                                                 <s:url id="editBookmark" action="edit_bookmark" escapeAmp="false">
                                                     <s:param name="categoryId" value="#category.categoryId"></s:param>
@@ -156,4 +156,3 @@
     </body>
 </html>
 
-        

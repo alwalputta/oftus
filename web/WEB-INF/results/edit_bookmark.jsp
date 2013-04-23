@@ -10,19 +10,6 @@
 <%@include file="/WEB-INF/results/imports.jsp"%>
 
         <script type="text/javascript">
-           
-            function loadData () {
-                $('#c1').data({colId:"1", title:"Builder"});
-
-            <s:iterator value="userCategories" id="category">
-                    $('#<s:property value="#category.categoryId"/>').data({colId:"<s:property value="#category.categoryId"/>", title:"<s:property value="#category.categoryName"/>"});
-                <s:iterator value="#category.bookmarks" id="bookmark">
-                        $('#<s:property value="#bookmark.bookmarkId"/>').data({linkId:"<s:property value="#bookmark.bookmarkId"/>", title:"<s:property value="#bookmark.bookmarkName"/>", hiperLink:"<s:property value="#bookmark.hiperLink"/>", description:"<s:property value="#bookmark.description"/>"});
-                </s:iterator>
-            </s:iterator>
-
-                    $('#c1r1').data({linkId:"c1r1", title:"Braddock And Logan Homes", hiperLink:"http://www.braddockandloganhomes.com/", description:"test link"});
-                }
         </script>
     </head>
 

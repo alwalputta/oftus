@@ -186,7 +186,7 @@
             <result name="input">/WEB-INF/results/edit_bookmark.jsp</result>
         </action>
 
-        <action name="delete_bookmark" class="com.myapp.action.BookmarkAction" method="deleteBookmark">
+        <action name="delete_bookmark_list" class="com.myapp.action.BookmarkAction" method="deleteBookmark">
             <result name="success">/WEB-INF/results/list_bookmarks.jsp</result>
             <result name="input">/WEB-INF/results/list_bookmarks.jsp</result>
         </action>
@@ -202,6 +202,11 @@
         </action>
 
         <action name="update_bookmark_order" class="com.myapp.action.BookmarkAction" method="updateBookmarkOrder">
+            <result name="success">/WEB-INF/results/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/mainpage.jsp</result>
+        </action>
+
+        <action name="open_bookmark" class="com.myapp.action.BookmarkAction" method="openBookmark">
             <result name="success">/WEB-INF/results/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/mainpage.jsp</result>
         </action>

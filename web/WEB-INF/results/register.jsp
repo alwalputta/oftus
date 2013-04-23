@@ -15,11 +15,6 @@
             $(function() {
                 $("#datepicker").datepicker({dateFormat:"yy/mm/dd"});
             });
-            
-            
-            function loadData () {
-                
-            }
         </script>
     </head>
 

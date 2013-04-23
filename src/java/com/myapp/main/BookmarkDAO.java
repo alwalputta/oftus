@@ -95,4 +95,57 @@ public class BookmarkDAO {
         }
         return returnVal;
     }
+
+    @SuppressWarnings("unchecked")
+    public Bookmark getBookmark(int bookmarkId) {
+        logger.debug("bookmarkId:" + bookmarkId);
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Bookmark bookmark = new Bookmark();
+        
+        try {
+            bookmark = (Bookmark) session.get(Bookmark.class, bookmarkId);
+            session.flush();
+            session.refresh(bookmark);
+        } catch (HibernateException e) {
+            logger.debug("HibernateException");
+            e.printStackTrace();
+        } catch (Exception e) {
+            logger.debug("Exception");
+            e.printStackTrace();
+        } finally {
+            logger.debug("finally block");
+            session.close();
+        }
+        return bookmark;
+    }
+
+    @SuppressWarnings("unchecked")
+    public int openBookmark(int userId, int bookmarkId) {
+        logger.debug("userId:" + userId);
+        logger.debug("bookmarkId:" + bookmarkId);
+        
+        Bookmark bookmark = getBookmark(bookmarkId);
+        
+        BookmarkClick bookmarkClick = new BookmarkClick();
+        bookmarkClick.setBookmarkId(bookmark.getBookmarkId());
+        bookmarkClick.setHiperLink(bookmark.getHiperLink());
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            session.save(bookmarkClick);
+            session.flush();
+            transaction.commit();
+        } catch (HibernateException e) {
+            logger.debug("HibernateException");
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            logger.debug("finally block");
+            session.close();
+        }
+        return bookmarkClick.getBookmarkClickId();
+    }
 }

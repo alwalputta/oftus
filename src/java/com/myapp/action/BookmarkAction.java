@@ -250,6 +250,25 @@ public class BookmarkAction extends ActionSupport {
         return returnVal;
     }
 
+    //business logic to update the category
+    public String openBookmark() {
+        logger.debug("openBookmark!" + getBookmarkId());
+        String returnVal = "success";
+        int updated = 0;
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        user = (User) session.getAttribute("user");
+
+        logger.debug("in open_bookmark:" + getBookmarkId());
+        BookmarkDAO bookmarkDAO = new BookmarkDAO();
+        updated = bookmarkDAO.openBookmark(user.getUserId(), new Integer(getBookmarkId()).intValue());
+        logger.debug("Records Updated" + updated);
+
+        return returnVal;
+    }
+
     //simple validation
     @Override
     public void validate() {
@@ -284,8 +303,12 @@ public class BookmarkAction extends ActionSupport {
             if (getCategoryId().equals("-1")) {
                 addFieldError("categoryId", "Please select a category");
             }
-        } else {
-            logger.debug("in else action");
+        } else if (getActionName().equals("update_bookmark_list")) {
+            logger.debug("in else action update_bookmark list");
+        } else if (getActionName().equals("update_bookmark_mainpage")) {
+            logger.debug("in else action update_bookmark mainpage");
+        } else if (getActionName().equals("open_bookmark")) {
+            logger.debug("in else action open_bookmark");
         }
         logger.debug("action");
     }

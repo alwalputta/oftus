@@ -54,7 +54,7 @@
                                 <th><s:property value="#category.categoryName"/></th>
                                 <th><s:property value="#category.description"/></th>
                                 <th><s:property value="#category.status"/></th>
-                                <th><s:url id="editCategory" action="edit_category">
+                                <th><s:url id="editCategory" action="edit_category_list">
                                         <s:param name="categoryId" value="#category.categoryId"></s:param>
                                     </s:url>
                                     <a href="<s:property value="#editCategory"/>">Edit</a>
@@ -73,12 +73,14 @@
                                         <td><s:property value="#bookmark.description"/></td>
                                         <td><s:property value="#bookmark.status"/></td>
                                         <td>
-                                            <s:url id="editBookmark" action="edit_bookmark">
+                                            <s:url id="editBookmark" action="edit_bookmark_list" escapeAmp="false">
+                                                <s:param name="categoryId" value="#category.categoryId"></s:param>
                                                 <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
                                             </s:url>
                                             <a href="<s:property value="#editBookmark"/>">Edit</a>
                                         </td>
-                                        <td><s:url id="deleteBookmark" action="delete_bookmark">
+                                        <td>
+                                            <s:url id="deleteBookmark" action="delete_bookmark_list">
                                                 <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
                                             </s:url>
                                             <a href="<s:property value="#deleteBookmark"/>">Delete</a>
