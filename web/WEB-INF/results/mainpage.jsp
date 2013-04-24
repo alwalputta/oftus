@@ -32,54 +32,6 @@
 
         <div class="loading">Page being loaded, please wait ...</div>
 
-        <div class="middle-column-element-edit-icons">
-            <img class="ui-icon ui-icon-pencil middle-column-element-edit-icon"/>
-            <img class="ui-icon ui-icon-trash middle-column-element-delete-icon"/>
-        </div>
-
-        <div class="middle-row-element-edit-icons">
-            <img class="ui-icon ui-icon-pencil middle-row-element-edit-icon"/>
-            <img class="ui-icon ui-icon-trash middle-row-element-delete-icon"/>
-        </div>
-
-        <div class="inline-column-element-edit">
-            <input type="text" maxlength="100" class="inline-column-edit-input"/>
-            <input type="button" value="Save"/>
-            <input type="reset" value="Reset"/>
-            <input type="button" value="Cancel"/>
-        </div>
-
-        <div class="inline-row-element-edit">
-            edit row.
-            <input type="input" class="inline-row-edit-input" id="inline-row-title" value=""/>
-            <input type="input" class="inline-row-edit-input" id="inline-row-hiperLink" value=""/>
-            <textarea cols="3" class="inline-row-edit-text" id="inline-row-description"></textarea>
-            <input type="button" id="inline-save" value="Save"></input>
-            <input type="reset" id="inline-save" value="Reset"></input>
-            <input type="button" id="inline-save" value="Close"></input>
-        </div>
-
-
-        <div class="edit-element-modal">
-            <div class="edit-element">
-                <div>Edit Bookmark:</div>
-                <form title="Midify Element" id="edit-element_form">
-                    <fieldset>
-                        <legend>Edit Element</legend>
-                        <input type="text" name="element-name" id="element-name" size="60" maxlength="200"/>
-                        <br></br>
-                        <input type="text" name="url" id="url" size="60" maxlength="200"/>
-                        <br></br>
-                        <textarea cols="60" rows="4" id="description" name="description"></textarea>
-                        <br></br>
-                        <input type="submit" name="save" id="save-element" value="Save" class="edit-element-button"/>
-                        <input type="reset" name="cancel" value="Cancel" class="edit-element-button"/>
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-
-
         <div class="mainTable">
             <div class="middle-column-element-import"></div>
             <ul id="middle-column-sortable">

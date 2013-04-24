@@ -473,8 +473,8 @@ sup {
 }
 
 .middle-row-element-selected {
-    border: 1px dotted red;
-    background: darkblue;
+    border: 1px dotted blue;
+    background: #007182;
     color: #ffffff;
     border-radius: 5px;
 }
