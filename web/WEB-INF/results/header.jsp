@@ -33,7 +33,7 @@
                 <li><a href="refer_friends">Refer Friends</a></li>
             </ul>
             </li>
-            <li><a href="options">Options</a>
+            <li><a href="user_options">Options</a>
                 <ul>
                     <li><a href="list_categories">Manage Categories</a></li>
                     <li><a href="list_bookmarks">Manage Bookmarks</a></li>
@@ -43,7 +43,7 @@
                     <li><a href="our_recommendations">Our Recommendations</a></li>
                 </ul>
             </li>
-            <li><a href="help">Help</a> 
+            <li><a href="user_help">Help</a> 
                 <ul>
                     <li><a href="release_notes">Release Notes</a></li>
                     <li><a href="quick_guide">Quick Guide</a></li>

@@ -70,7 +70,7 @@
         </action>
 
         <action name="import_bookmarks">
-            <result>/WEB-INF/results/import_bookmarks.html</result>
+            <result>/WEB-INF/results/import_bookmarks.jsp</result>
         </action>
 
         <action name="industry_trends">
@@ -83,6 +83,14 @@
 
         <action name="our_recommendations">
             <result>/WEB-INF/results/our_recommendations.html</result>
+        </action>
+
+        <action name="user_options">
+            <result>/WEB-INF/results/user_options.html</result>
+        </action>
+
+        <action name="user_help">
+            <result>/WEB-INF/results/user_help.html</result>
         </action>
 
         <action name="" class="com.myapp.action.IndexAction" method="execute">
@@ -140,12 +148,17 @@
             </interceptor-ref>
             <interceptor-ref name="defaultStack"/>
             <result name="success">/WEB-INF/results/edit_category.jsp</result>
-            <result name="input">/WEB-INF/results/list_categories.jsp</result>
+            <result name="input">/WEB-INF/results/mainpage.jsp</result>
         </action>
 
         <action name="update_category" class="com.myapp.action.CategoryAction" method="updateCategory">
             <result name="success">/WEB-INF/results/list_categories.jsp</result>
             <result name="input">/WEB-INF/results/edit_category.jsp</result>
+        </action>
+
+        <action name="edit_category_list" class="com.myapp.action.CategoryAction" method="editCategory">
+            <result name="success">/WEB-INF/results/edit_category.jsp</result>
+            <result name="input">/WEB-INF/results/list_categories.jsp</result>
         </action>
 
         <action name="update_category_list" class="com.myapp.action.CategoryAction" method="updateCategory">
@@ -190,6 +203,11 @@
         <action name="edit_bookmark" class="com.myapp.action.BookmarkAction" method="editBookmark">
             <result name="success">/WEB-INF/results/edit_bookmark.jsp</result>
             <result name="input">/WEB-INF/results/edit_bookmark.jsp</result>
+        </action>
+
+        <action name="edit_bookmark_list" class="com.myapp.action.BookmarkAction" method="editBookmark">
+            <result name="success">/WEB-INF/results/edit_bookmark.jsp</result>
+            <result name="input">/WEB-INF/results/list_bookmarks.jsp</result>
         </action>
 
         <action name="update_bookmark" class="com.myapp.action.BookmarkAction" method="updateBookmark">

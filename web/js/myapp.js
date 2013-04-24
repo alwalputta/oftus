@@ -69,6 +69,7 @@ $(document).keyup(function(e) {
         //        $('.inline-row-element-edit').hide();
         $('div').removeClass('middle-row-element-selected');
         $('div').removeClass('middle-row-element-dropped');
+//        document.onclick = menu_close;
         
         set_div_dimensions();
         menu_close();
@@ -186,8 +187,8 @@ $('.favicon').click(function(){
 });
 
 $(function() {
-//    $( ".register-register" ).accordion();
-});
+    //    $( ".register-register" ).accordion();
+    });
   
 function set_sortable(){
     //Draggability of the columns
