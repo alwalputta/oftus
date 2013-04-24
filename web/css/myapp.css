@@ -479,6 +479,13 @@ sup {
     border-radius: 5px;
 }
 
+.middle-row-element-dropped {
+    border: 1px dotted blue;
+    background: #3e779d;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
 .middle-row-element span {
     text-align: left;
 }
@@ -885,7 +892,6 @@ input#search-button {
     margin: 2px;
     float: left;
     vertical-align: central;
-
 }
 
 .middle-row-element-text {
@@ -900,6 +906,8 @@ input#search-button {
     padding: 0px;
     width: 100%;
     display: inline;
+    position: relative;
+    float: none;
 }
 
 .middle-column-element-edit-icons {

@@ -67,6 +67,9 @@ $(document).keyup(function(e) {
         $('.middle-row-element-edit-icons').hide();
         //        $('.inline-column-element-edit').hide();
         //        $('.inline-row-element-edit').hide();
+        $('div').removeClass('middle-row-element-selected');
+        $('div').removeClass('middle-row-element-dropped');
+        
         set_div_dimensions();
         menu_close();
 
@@ -179,10 +182,11 @@ $('.middle-row-element-text').click(function(){
 $('.favicon').click(function(){
     //alert ('Your favorite icon.');
     $(this).parent('.middle-row-element').toggleClass('middle-row-element-selected');
+    $('div').removeClass('middle-row-element-dropped');
 });
 
 $(function() {
-    $( ".register-register" ).accordion();
+//    $( ".register-register" ).accordion();
 });
   
 function set_sortable(){
@@ -234,7 +238,11 @@ function set_sortable(){
             } else {
                 move_bookmark(element_id, category_to);
             }
-        //            ui.item.after(ui.item.find('li'));
+            //            ui.item.after(ui.item.find('li'));
+            $('.middle-row-element-selected').each(function(){
+                $(this).removeClass('middle-row-element-selected');
+                $(this).addClass('middle-row-element-dropped');
+            });
         },
         receive: function(event, ui) {
             //Run this code whenever an item is dragged and dropped into this list
