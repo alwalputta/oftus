@@ -34,7 +34,10 @@
             </s:if>
 
             <div class="register-register">
-                <div>User Bookmarks</div>
+                <div>User Bookmarks
+                    <a href="add_category?">Add Category</a>
+                    <a href="add_bookmark?">Add Bookmark</a>
+                </div>
                 <table summary="List of all bookmarks">
                     <thead>
                         <tr>
