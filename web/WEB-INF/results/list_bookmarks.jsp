@@ -35,7 +35,7 @@
 
             <div class="register-register">
                 <div>User Bookmarks</div>
-                <table summary="folder contents for fly types">
+                <table summary="List of all bookmarks">
                     <thead>
                         <tr>
                             <th class="name">Id</td>
@@ -88,8 +88,9 @@
                                     </tr>
                                 </s:iterator>
                         </tbody>
-                        </tr>
                     </s:iterator>
+                    <tr><td><hr size="100%"></td></tr>
+                </table>
             </div>
         </div>
 

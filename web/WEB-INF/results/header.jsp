@@ -2,8 +2,8 @@
 <div class="dockingBarTop">
     <div class="top-column-element-left">
         <div class="company-logo">
-            <img id="logo" src="images/oftus.jpeg"/>
-            OftUs<sup>&reg;</sup>
+            <img id="logo" src="images/oftus2.jpg"/>
+<!--            OftUs<sup>&reg;</sup>-->
         </div>
         <!--div class="company-logo-punchline">
             Your Whole World. One Link.

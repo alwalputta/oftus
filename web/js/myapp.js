@@ -168,11 +168,11 @@ $('.middle-row-element-text').click(function(){
     //    alert ('url:' + $('#' + bookmark_id).data("bookmark").hiperLink);
     
     targetUrl = 'open_bookmark?bookmarkId='+bookmark_id;
-//    alert (targetUrl);
-    $.ajax(targetUrl); // not working, check why??
-//    window.location=targetUrl;
+    //    alert (targetUrl);
+    //    $.ajax(targetUrl);
+    window.location=targetUrl;
 
-    window.location=$('#' + bookmark_id).data("bookmark").hiperLink;
+//    window.location=$('#' + bookmark_id).data("bookmark").hiperLink;
 });
 
 $('.favicon').click(function(){
@@ -180,6 +180,10 @@ $('.favicon').click(function(){
     $(this).parent('.middle-row-element').toggleClass('middle-row-element-selected');
 });
 
+$(function() {
+    $( ".register-register" ).accordion();
+});
+  
 function set_sortable(){
     //Draggability of the columns
     // $("#middle-column-sortable").draggable({containment: '.mainTable'});

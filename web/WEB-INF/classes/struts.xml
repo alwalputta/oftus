@@ -69,6 +69,22 @@
             <result>/WEB-INF/results/refer_friends.html</result>
         </action>
 
+        <action name="import_bookmarks">
+            <result>/WEB-INF/results/import_bookmarks.html</result>
+        </action>
+
+        <action name="industry_trends">
+            <result>/WEB-INF/results/industry_trends.html</result>
+        </action>
+
+        <action name="personal_reports">
+            <result>/WEB-INF/results/personal_reports.html</result>
+        </action>
+
+        <action name="our_recommendations">
+            <result>/WEB-INF/results/our_recommendations.html</result>
+        </action>
+
         <action name="" class="com.myapp.action.IndexAction" method="execute">
             <result name="success">/WEB-INF/results/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/login.jsp</result>

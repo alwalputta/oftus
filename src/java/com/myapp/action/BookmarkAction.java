@@ -14,7 +14,9 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.StringTokenizer;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
@@ -257,6 +259,7 @@ public class BookmarkAction extends ActionSupport {
         int updated = 0;
 
         HttpServletRequest request = ServletActionContext.getRequest();
+        HttpServletResponse response = ServletActionContext.getResponse();
         HttpSession session = request.getSession();
 
         user = (User) session.getAttribute("user");
@@ -265,6 +268,18 @@ public class BookmarkAction extends ActionSupport {
         BookmarkDAO bookmarkDAO = new BookmarkDAO();
         updated = bookmarkDAO.openBookmark(user.getUserId(), new Integer(getBookmarkId()).intValue());
         logger.debug("Records Updated" + updated);
+
+        Bookmark bookmark = bookmarkDAO.getBookmark(new Integer(getBookmarkId()).intValue());
+
+        try {
+            String urlWithSessionID = response.encodeRedirectURL(bookmark.getHiperLink());
+            response.sendRedirect(urlWithSessionID);
+        } catch (Exception e) {
+            logger.debug("Exception");
+            e.printStackTrace();
+        } finally {
+            logger.debug("finally block");
+        }
 
         return returnVal;
     }
