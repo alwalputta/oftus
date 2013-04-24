@@ -14,13 +14,12 @@
     </head>
 
 
-
     <body>
         <%@include file="/WEB-INF/results/header.jsp"%>
 
         <div class="new-category-modal">
             <div class="new-category">
-                <div>Add New Category</div>
+                <div>New Category</div>
 
                 <s:form action="save_category">
                     <s:textfield name="categoryName" size="60" maxlength="200" key="new.categoryname-label"/>

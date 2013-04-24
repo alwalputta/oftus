@@ -34,12 +34,10 @@
             </s:if>
 
             <div class="register-register">
-                
-                    User Categories:::::
-                    <a href="add_category">Add New Category</a>
-                
-                <s:form action="update_profile">
-                    <s:hidden name="userid" value="%{#session.user.userId}"/>
+
+                User Categories:::::
+                <a href="add_category?">Add Category</a>
+                <table>
                     <tr>
                         <td>Id</td>
                         <td>Category Name</td>
@@ -68,8 +66,7 @@
                             </td>
                         </tr>
                     </s:iterator>
-
-                </s:form>
+                </table>
             </div>
         </div>
         <%@include file="/WEB-INF/results/footer.jsp"%>
