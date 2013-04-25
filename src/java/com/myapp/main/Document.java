@@ -4,6 +4,7 @@
  */
 package com.myapp.main;
 
+import java.io.File;
 import java.io.Serializable;
 import org.apache.log4j.Logger;
 
@@ -17,14 +18,14 @@ public class Document implements Serializable {
     private int userId;
     private String documentType;
     private String fileName;
-    private String content;
+    private File content;
     private String contentType;
     private String status;
     private String createDate;
     private String endDate;
     private String lastModifiedDate;
     static final Logger logger = Logger.getLogger(Document.class);
-            
+
     public Document() {
     }
 
@@ -60,11 +61,11 @@ public class Document implements Serializable {
         this.fileName = fileName;
     }
 
-    public String getContent() {
+    public File getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setContent(File content) {
         this.content = content;
     }
 

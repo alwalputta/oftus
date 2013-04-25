@@ -102,7 +102,7 @@ public class BookmarkDAO {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         Bookmark bookmark = new Bookmark();
-        
+
         try {
             bookmark = (Bookmark) session.get(Bookmark.class, bookmarkId);
             session.flush();
@@ -124,9 +124,9 @@ public class BookmarkDAO {
     public int openBookmark(int userId, int bookmarkId) {
         logger.debug("userId:" + userId);
         logger.debug("bookmarkId:" + bookmarkId);
-        
+
         Bookmark bookmark = getBookmark(bookmarkId);
-        
+
         BookmarkClick bookmarkClick = new BookmarkClick();
         bookmarkClick.setBookmarkId(bookmark.getBookmarkId());
         bookmarkClick.setHiperLink(bookmark.getHiperLink());

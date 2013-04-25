@@ -32,7 +32,7 @@ public class DocumentAction extends ActionSupport {
     public String uploadDocument() {
         logger.debug("uploadDocument!");
         String returnVal = "success";
-        
+
         DocumentDAO documentDAO = new DocumentDAO();
         documentDAO.updateDocument(getFileName(), getContent(), getContentType());
 

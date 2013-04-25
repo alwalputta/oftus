@@ -40,5 +40,6 @@
         <mapping resource="com/myapp/main/Category.hbm.xml"/>
         <mapping resource="com/myapp/main/Bookmark.hbm.xml"/>
         <mapping resource="com/myapp/main/BookmarkClick.hbm.xml"/>
+        <mapping resource="com/myapp/main/Document.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

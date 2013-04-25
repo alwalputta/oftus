@@ -10,7 +10,6 @@ import java.io.File;
 import java.util.ArrayList;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -29,26 +28,25 @@ public class DocumentDAO {
         logger.debug("getContentType:" + contentType);
 
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction;
+        Transaction transaction = null;
         int returnVal = 0;
+        
+        Document document = new Document();
+        document.setFileName(fileName);
+        document.setContent(content);
+        document.setContentType(contentType);
 
         try {
             transaction = session.beginTransaction();
-            SQLQuery query = session.createSQLQuery("update categorybookmark set category_id = ? where bookmark_id = ?");
-//            query.setInteger(0, new Integer(categoryId).intValue());
-//            query.setInteger(1, new Integer(bookmarkId).intValue());
-            returnVal = query.executeUpdate();
+            session.save(document);
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");
-            e.printStackTrace();
-        } catch (Exception e) {
-            logger.debug("Exception");
+            transaction.rollback();
             e.printStackTrace();
         } finally {
             logger.debug("finally block");
             session.close();
         }
-        return;
     }
 }
