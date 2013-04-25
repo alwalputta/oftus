@@ -382,9 +382,8 @@ function set_div_dimensions() {
     $('.bottom-row-item').css('height', $('.dockingBarBottom').css('height'));
     $('.middle-row-bottom-spacer').css('height', $('.dockingBarBottom').css('height'));
 
-    $('.middle-column-element').css('width', ((window_width/number_of_columns)-0) + 'px');
-
     var number_of_columns = $('.middle-column-element').length;
+    $('.middle-column-element').css('width', ((window_width/number_of_columns)-5) + 'px');
 }
 
 function show_page_loading_message () {
