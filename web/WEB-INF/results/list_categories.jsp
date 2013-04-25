@@ -20,7 +20,7 @@
 
         <%@include file="/WEB-INF/results/header.jsp"%>
 
-        <div class="register-modal">
+        <div class="mainTable">
             <s:if test="hasActionErrors()">
                 <div id="fieldErrors">
                     <s:actionerror/>
@@ -33,8 +33,7 @@
                 </div>
             </s:if>
 
-            <div class="register-register">
-
+            <div class="register-login">
                 User Categories:::::
                 <a href="add_category?">Add Category</a>
                 <table>
@@ -67,6 +66,9 @@
                         </tr>
                     </s:iterator>
                 </table>
+            </div>
+            <div class="register-login">
+                Note: This lists your categories. You want to see the bookmarks, click Manage Bookmarks link.
             </div>
         </div>
         <%@include file="/WEB-INF/results/footer.jsp"%>

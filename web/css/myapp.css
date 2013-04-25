@@ -60,7 +60,6 @@ body {
 }
 
 .login-modal {
-    /*    display: none;*/
     position: fixed;
     background: teal;
     color: white;
@@ -152,7 +151,7 @@ body {
     position: relative;
     background: #aabbaa;
     color: white;
-    width: 18%;
+    width: 45%;
     height: 90%;
     opacity: 1;
     margin: 10px;
@@ -712,13 +711,6 @@ img.photo-box {
     background: grey;
     margin: 5px;
     margin-left: 10px;
-}
-
-#search-form-fieldset {
-    border: none;
-    margin-right: 5px;
-    border: 1px;
-    margin-bottom: 5px;
 }
 
 #menu {

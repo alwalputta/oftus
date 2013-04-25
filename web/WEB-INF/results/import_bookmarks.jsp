@@ -16,14 +16,31 @@
     <body>
         <%@include file="/WEB-INF/results/header.jsp"%>
 
-        <div class="register-modal">
-            Import Bookmarks....
-            <div class="register-register">
+        <div class="mainTable">
+            <s:if test="hasActionErrors()">
+                <div id="fieldErrors">
+                    <s:actionerror/>
+                </div>
+            </s:if>
+
+            <s:if test="hasActionMessages()">
+                <div class="welcome">
+                    <s:actionmessage/>
+                </div>
+            </s:if>
+
+            <div class="register-login">
+                <div>Import Bookmarks....</div>
                 <s:form action="fileUpload" method="post" enctype="multipart/form-data" >
                     <s:file name="userImage" label="Excel File" />
                     <s:submit />
                 </s:form>
             </div>
+            <div class="register-login">
+                Note: This lists your categories. You want to see the bookmarks, click Manage Bookmarks link.
+            </div>
         </div>
+        <%@include file="/WEB-INF/results/footer.jsp"%>
+        <script type="text/javascript" src="js/myapp.js"></script>
     </body>
 </html>

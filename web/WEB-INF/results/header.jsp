@@ -3,7 +3,7 @@
     <div class="top-column-element-left">
         <div class="company-logo">
             <img id="logo" src="images/oftus2.jpg"/>
-<!--            OftUs<sup>&reg;</sup>-->
+            <!--            OftUs<sup>&reg;</sup>-->
         </div>
         <!--div class="company-logo-punchline">
             Your Whole World. One Link.
@@ -52,20 +52,16 @@
             </li>
             <li><a href="logout">Logout</a>
                 <ul>
-                    <li>
-                        <a href="logout">LogouT</a>
-                    </li>
+                    <li><a href="logout">LogouT</a></li>
                 </ul>
             </li>
         </ul>
         <br></br>
-        <form id="searchForm">
-            <fieldset title="Search Form" id="search-form-fieldset">
-                <div class="search-box">
-                    <input type="text" id="search-input" name="search-input"/>
-                    <input type="button" id="search-button" name="search-button"/>
-                </div>
-            </fieldset>
-        </form>
+        <s:form action="searchForm">
+            <div class="search-box">
+                <input type="text" id="search-input" name="search-input"/>
+                <input type="button" id="search-button" name="search-button"/>
+            </div>
+        </s:form>
     </div>
 </div>
