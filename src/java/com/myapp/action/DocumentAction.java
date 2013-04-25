@@ -4,6 +4,7 @@
  */
 package com.myapp.action;
 
+import com.myapp.main.DocumentDAO;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
@@ -16,21 +17,24 @@ import org.apache.log4j.Logger;
 public class DocumentAction extends ActionSupport {
 
     private File content;
-    private String imageContentType;
-    private String imageFileName;
+    private String contentType;
+    private String fileName;
     static final Logger logger = Logger.getLogger(DocumentAction.class);
 
     //business logic
     @Override
     public String execute() {
-        logger.debug("BookmarkAction newBookmark!");
+        logger.debug("DocumentAction execute!");
         return "success";
     }
 
     //business logic
-    public String uploadDoument() {
-        logger.debug("uploadDoument!");
+    public String uploadDocument() {
+        logger.debug("uploadDocument!");
         String returnVal = "success";
+        
+        DocumentDAO documentDAO = new DocumentDAO();
+        documentDAO.updateDocument(getFileName(), getContent(), getContentType());
 
         return returnVal;
     }
@@ -60,19 +64,19 @@ public class DocumentAction extends ActionSupport {
         this.content = content;
     }
 
-    public String getImageContentType() {
-        return imageContentType;
+    public String getContentType() {
+        return contentType;
     }
 
-    public void setImageContentType(String imageContentType) {
-        this.imageContentType = imageContentType;
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 
-    public String getImageFileName() {
-        return imageFileName;
+    public String getFileName() {
+        return fileName;
     }
 
-    public void setImageFileName(String imageFileName) {
-        this.imageFileName = imageFileName;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }

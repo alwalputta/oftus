@@ -5,7 +5,6 @@
 
 <html>
     <head>
-
         <%@include file="/WEB-INF/results/imports.jsp"%>
 
         <style type="text/css">
@@ -13,7 +12,6 @@
 
         <script type="text/javascript">
         </script>
-
     </head>
 
 
@@ -103,4 +101,3 @@
 
     </body>
 </html>
-

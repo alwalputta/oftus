@@ -3,12 +3,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
     <head>
-
         <%@include file="/WEB-INF/results/imports.jsp"%>
-
         <script type="text/javascript">
             function loadData () {
             <s:iterator value="userCategories" id="category">
@@ -21,21 +18,15 @@
         </script>
     </head>
 
-
     <body>
-
         <%@include file="/WEB-INF/results/header.jsp"%>
-
         <div class="mask"></div>
-
         <div class="message"></div>
-
         <div class="loading">Page being loaded, please wait ...</div>
 
         <div class="mainTable">
             <div class="middle-column-element-import"></div>
             <ul id="middle-column-sortable">
-
                 <s:iterator value="%{#session.user.userCategories}" id="category">
                     <li>
                         <div class="middle-column-element" id="<s:property value="#category.categoryId"/>">
@@ -93,18 +84,12 @@
                                 </span>
                             </div>
                             <div class="middle-row-bottom-spacer"></div>
-
                         </div>
                     </li>
                 </s:iterator>
-
             </ul>
         </div>
-
         <%@include file="/WEB-INF/results/footer.jsp"%>
-
         <script type="text/javascript" src="js/myapp.js"></script>
-
     </body>
 </html>
-
