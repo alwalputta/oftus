@@ -69,7 +69,7 @@ $(document).keyup(function(e) {
         //        $('.inline-row-element-edit').hide();
         $('div').removeClass('middle-row-element-selected');
         $('div').removeClass('middle-row-element-dropped');
-//        document.onclick = menu_close;
+        //        document.onclick = menu_close;
         
         set_div_dimensions();
         menu_close();
@@ -372,12 +372,17 @@ function set_div_dimensions() {
     $('.new-element-modal').css('top', $('.dockingBarTop').css('height'));
     $('.register-modal').css('top', $('.dockingBarTop').css('height'));
     $('.register-register').css('top', $('.dockingBarTop').css('height'));
+
+    //    $('.login_modal').css('height', '5000px');
+    //    $('.login_modal').css('height', '5000px');
+    //    $('.login_login').css('height', '5000px');
     $('.bottom-row-item').css('height', $('.dockingBarBottom').css('height'));
     $('.middle-row-bottom-spacer').css('height', $('.dockingBarBottom').css('height'));
-    
+
+    $('.middle-column-element').css('width', ((window_width/number_of_columns)-50) + 'px');
+
     var window_width = $(window).width();
     var number_of_columns = $('.middle-column-element').length;
-    $('.middle-column-element').css('width', ((window_width/number_of_columns)-5) + 'px');
 }
 
 function show_page_loading_message () {

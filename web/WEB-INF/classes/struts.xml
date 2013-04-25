@@ -241,6 +241,11 @@
         </action>
 
         <action name="open_bookmark" class="com.myapp.action.BookmarkAction" method="openBookmark">
+            <result name="success">/WEB-INF/results/edit_profile.jsp</result>
+            <result name="input">/WEB-INF/results/edit_profile.jsp</result>
+        </action>
+
+        <action name="upload_picture" class="com.myapp.action.DocumentAction" method="uploadDocument">
             <result name="success">/WEB-INF/results/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/mainpage.jsp</result>
         </action>
