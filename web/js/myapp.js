@@ -373,15 +373,17 @@ function set_div_dimensions() {
     $('.register-modal').css('top', $('.dockingBarTop').css('height'));
     $('.register-register').css('top', $('.dockingBarTop').css('height'));
 
+    var window_width = $(window).width();
+
     //    $('.login_modal').css('height', '5000px');
     //    $('.login_modal').css('height', '5000px');
     //    $('.login_login').css('height', '5000px');
+
     $('.bottom-row-item').css('height', $('.dockingBarBottom').css('height'));
     $('.middle-row-bottom-spacer').css('height', $('.dockingBarBottom').css('height'));
 
-    $('.middle-column-element').css('width', ((window_width/number_of_columns)-50) + 'px');
+    $('.middle-column-element').css('width', ((window_width/number_of_columns)-0) + 'px');
 
-    var window_width = $(window).width();
     var number_of_columns = $('.middle-column-element').length;
 }
 
