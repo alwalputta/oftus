@@ -29,7 +29,7 @@ public class DocumentAction extends ActionSupport {
 
     //business logic
     public String uploadDoument() {
-        logger.debug("uploadDoument!" + "");
+        logger.debug("uploadDoument!");
         String returnVal = "success";
 
         return returnVal;
