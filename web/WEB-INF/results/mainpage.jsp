@@ -90,6 +90,7 @@
             </ul>
         </div>
         <%@include file="/WEB-INF/results/footer.jsp"%>
+        <script type="text/javascript" src="js/jquery-highlight-4.js"></script>
         <script type="text/javascript" src="js/myapp.js"></script>
     </body>
 </html>

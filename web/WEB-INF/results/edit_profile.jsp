@@ -38,7 +38,7 @@
                 </div>
             </s:if>
 
-            <div class="login-login">
+            <div class="register-login">
                 <div>Edit User Profile</div>
                 <s:form action="update_profile">
 
@@ -84,7 +84,7 @@
 
                 </div>
 
-                <div class="register-login">
+                <div class="login-login">
                     <img class ="photo-box" src="images/user.jpg" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
                 <br></br>
                 <br></br>

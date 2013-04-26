@@ -8,7 +8,11 @@ import com.myapp.main.DocumentDAO;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
 
 /**
  *
@@ -33,9 +37,22 @@ public class DocumentAction extends ActionSupport {
         logger.debug("uploadDocument!");
         String returnVal = "success";
 
-        DocumentDAO documentDAO = new DocumentDAO();
-        documentDAO.updateDocument(getFileName(), getContent(), getContentType());
+//        DocumentDAO documentDAO = new DocumentDAO();
+//        documentDAO.updateDocument(getFileName(), getContent(), getContentType());
 
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        try {
+            String filePath = request.getSession().getServletContext().getRealPath("/");
+            System.out.println("Server path:" + filePath);
+            File fileToCreate = new File(filePath, fileName);
+
+            FileUtils.copyFile(content, fileToCreate);
+        } catch (Exception e) {
+            e.printStackTrace();
+            addActionError(e.getMessage());
+        }
         return returnVal;
     }
 

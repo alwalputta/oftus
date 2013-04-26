@@ -57,11 +57,11 @@
             </li>
         </ul>
         <br></br>
-        <s:form action="searchForm">
-            <div class="search-box">
+        <div class="search-box">
+            <s:form action="searchForm">
                 <input type="text" id="search-input" name="search-input"/>
                 <input type="button" id="search-button" name="search-button"/>
-            </div>
-        </s:form>
+            </s:form>
+        </div>
     </div>
 </div>

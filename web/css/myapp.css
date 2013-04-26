@@ -81,7 +81,7 @@ body {
     position: relative;
     background: teal;
     color: white;
-    width: 60%;
+    width: 30%;
     height: 80%;
     opacity: 1;
     margin: 10px;
@@ -151,9 +151,7 @@ body {
     position: relative;
     background: #aabbaa;
     color: white;
-    width: 45%;
-    height: 90%;
-    opacity: 1;
+    width: 60%;
     margin: 10px;
     border: 1px solid #20548E;
     padding: 10px;
@@ -162,6 +160,7 @@ body {
     text-align: center;
     font: 15px tahoma;
 }
+
 
 .forgot-password-modal {
     /*   display: none;*/
@@ -256,7 +255,7 @@ body {
 }
 
 .highlight {
-    background:gold;
+    background-color: yellow;
 }
 
 /* Top Static Docking bar CSS */
@@ -832,7 +831,7 @@ div.search-box {
     height: 20px;
 }
 
-div.search-box.focus {
+div.search-box:focus {
     border: 1px solid #9ecbe2;
     box-shadow: 0 0 6px #abdcff, inset 0 1px 2px rgba(0,0,0,0.08);
 }
@@ -1038,13 +1037,34 @@ table{
     line-height: 1.1;
 }
 
-tr:hover, td.start:hover, td.end:hover{
+tr.row:hover, td.start:hover, td.end:hover{
     background: #FF9;
+    text-align: left;
+}
+
+tr.rowc:hover, td.startc:hover, td.endc:hover{
+    background: #FD7;
+    text-align: left;
+}
+
+tr.rowb:hover, td.startb:hover, td.endb:hover{
+    background: #FB5;
+    text-align: left;
 }
 
 th, td{
     padding: .3em .5em;
     font-size: 14px;
+    color: black;
+    text-align: left;
+}
+
+tr.rowc{
+    padding: .3em .5em;
+    font-size: 16px;
+    color: black;
+    text-align: left;
+    background-color: #007182;
 }
 
 th{
@@ -1075,7 +1095,6 @@ tbody th.end{
     background: url(../images/tabletree-dots2.gif) 18px 54% no-repeat;
     padding-left: 26px;
 }
-
 /* table CSS ends */
 
 

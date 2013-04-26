@@ -246,7 +246,7 @@
         </action>
 
         <action name="upload_picture" class="com.myapp.action.DocumentAction" method="uploadDocument">
-            <result name="success">/WEB-INF/results/mainpage.jsp</result>
+            <result name="success">/WEB-INF/results/display_picture.jsp</result>
             <result name="input">/WEB-INF/results/mainpage.jsp</result>
         </action>
 

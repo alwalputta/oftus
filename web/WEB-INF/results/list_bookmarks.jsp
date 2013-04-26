@@ -38,7 +38,7 @@
                 </div>
                 <table summary="List of all bookmarks">
                     <thead>
-                        <tr>
+                        <tr class="row">
                             <th class="name">Id</td>
                                 <th class="name">Category Name</th>
                                 <th class="name">Description</th>
@@ -50,7 +50,7 @@
 
                     <tbody>
                         <s:iterator value="%{#session.user.userCategories}" id="category">
-                            <tr>
+                            <tr class="rowc">
                                 <th><s:property value="#category.categoryId"/></th>
                                 <th><s:property value="#category.categoryName"/></th>
                                 <th><s:property value="#category.description"/></th>
@@ -66,28 +66,27 @@
                                     <a href="<s:property value="#deleteCategory"/>">Delete</a>
                                 </th>
                             </tr>
-                            <tr colspan="5" width="100%">
-                                <s:iterator value="#category.bookmarks" id="bookmark">
-                                    <tr>
-                                        <th class="start"><s:property value="#bookmark.bookmarkId"/></th>
-                                        <td><s:property value="#bookmark.bookmarkName"/></td>
-                                        <td><s:property value="#bookmark.description"/></td>
-                                        <td><s:property value="#bookmark.status"/></td>
-                                        <td>
-                                            <s:url id="editBookmark" action="edit_bookmark_list" escapeAmp="false">
-                                                <s:param name="categoryId" value="#category.categoryId"></s:param>
-                                                <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
-                                            </s:url>
-                                            <a href="<s:property value="#editBookmark"/>">Edit</a>
-                                        </td>
-                                        <td>
-                                            <s:url id="deleteBookmark" action="delete_bookmark_list">
-                                                <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
-                                            </s:url>
-                                            <a href="<s:property value="#deleteBookmark"/>">Delete</a>
-                                        </td>
-                                    </tr>
-                                </s:iterator>
+                            <s:iterator value="#category.bookmarks" id="bookmark">
+                                <tr class="rowb">
+                                    <th class="start"><s:property value="#bookmark.bookmarkId"/></th>
+                                    <td><s:property value="#bookmark.bookmarkName"/></td>
+                                    <td><s:property value="#bookmark.description"/></td>
+                                    <td><s:property value="#bookmark.status"/></td>
+                                    <td>
+                                        <s:url id="editBookmark" action="edit_bookmark_list" escapeAmp="false">
+                                            <s:param name="categoryId" value="#category.categoryId"></s:param>
+                                            <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
+                                        </s:url>
+                                        <a href="<s:property value="#editBookmark"/>">Edit</a>
+                                    </td>
+                                    <td>
+                                        <s:url id="deleteBookmark" action="delete_bookmark_list">
+                                            <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
+                                        </s:url>
+                                        <a href="<s:property value="#deleteBookmark"/>">Delete</a>
+                                    </td>
+                                </tr>
+                            </s:iterator>
                         </tbody>
                     </s:iterator>
                 </table>

@@ -37,7 +37,7 @@
                 User Categories:::::
                 <a href="add_category?">Add Category</a>
                 <table>
-                    <tr>
+                    <tr class="row">
                         <td>Id</td>
                         <td>Category Name</td>
                         <td>Description</td>
@@ -47,7 +47,7 @@
                         <td>Delete</td>
                     </tr>
                     <s:iterator value="%{#session.user.userCategories}" id="category">
-                        <tr>
+                        <tr class="rowc">
                             <td><s:property value="#category.categoryId"/></td>
                             <td><s:property value="#category.categoryName"/></td>
                             <td><s:property value="#category.description"/></td>
