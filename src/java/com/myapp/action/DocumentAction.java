@@ -4,6 +4,7 @@
  */
 package com.myapp.action;
 
+import com.myapp.admin.User;
 import com.myapp.main.Document;
 import com.myapp.main.DocumentDAO;
 import com.opensymphony.xwork2.ActionContext;
@@ -24,8 +25,8 @@ import org.hibernate.Hibernate;
 public class DocumentAction extends ActionSupport {
 
     private File file;
-    private String fileName;
-    private String contentType;
+    private String fileFileName;
+    private String fileContentType;
     static final Logger logger = Logger.getLogger(DocumentAction.class);
 
     //business logic
@@ -41,12 +42,19 @@ public class DocumentAction extends ActionSupport {
         String returnVal = "success";
         Blob blob;
 
-        Document document = new Document();
-        document.setFileName(getFileName());
-        document.setContentType(getContentType());
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
 
-        logger.debug("uploadDocument1 fileName:" + getFileName());
-        logger.debug("uploadDocument1 contentType:" + getContentType());
+        Document document = new Document();
+
+        document.setFileType("profile_pic");
+        document.setFileName(getFileFileName());
+        document.setContentType(getFileContentType());
+        document.setUserId(user.getUserId());
+
+        logger.debug("uploadDocument1 fileName:" + getFileFileName());
+        logger.debug("uploadDocument1 contentType:" + getFileContentType());
         try {
             FileInputStream fi = new FileInputStream(getFile());
             blob = Hibernate.createBlob(fi);
@@ -88,19 +96,19 @@ public class DocumentAction extends ActionSupport {
         this.file = file;
     }
 
-    public String getContentType() {
-        return contentType;
+    public String getFileContentType() {
+        return fileContentType;
     }
 
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
+    public void setFileContentType(String fileContentType) {
+        this.fileContentType = fileContentType;
     }
 
-    public String getFileName() {
-        return fileName;
+    public String getFileFileName() {
+        return fileFileName;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setFileFileName(String fileFileName) {
+        this.fileFileName = fileFileName;
     }
 }
