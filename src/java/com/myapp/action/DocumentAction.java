@@ -41,9 +41,6 @@ public class DocumentAction extends ActionSupport {
         String returnVal = "success";
         Blob blob;
 
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-
         Document document = new Document();
         document.setFileName(getFileName());
         document.setContentType(getContentType());
