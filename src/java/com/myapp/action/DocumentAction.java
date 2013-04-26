@@ -4,15 +4,18 @@
  */
 package com.myapp.action;
 
+import com.myapp.main.Document;
 import com.myapp.main.DocumentDAO;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
+import java.io.FileInputStream;
+import java.sql.Blob;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.hibernate.Hibernate;
 
 /**
  *
@@ -20,9 +23,9 @@ import org.apache.struts2.ServletActionContext;
  */
 public class DocumentAction extends ActionSupport {
 
-    private File content;
-    private String contentType;
+    private File file;
     private String fileName;
+    private String contentType;
     static final Logger logger = Logger.getLogger(DocumentAction.class);
 
     //business logic
@@ -36,19 +39,26 @@ public class DocumentAction extends ActionSupport {
     public String uploadDocument() {
         logger.debug("uploadDocument!");
         String returnVal = "success";
-
-//        DocumentDAO documentDAO = new DocumentDAO();
-//        documentDAO.updateDocument(getFileName(), getContent(), getContentType());
+        Blob blob;
 
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
 
-        try {
-            String filePath = request.getSession().getServletContext().getRealPath("/");
-            System.out.println("Server path:" + filePath);
-            File fileToCreate = new File(filePath, fileName);
+        Document document = new Document();
+        document.setFileName(getFileName());
+        document.setContentType(getContentType());
 
-            FileUtils.copyFile(content, fileToCreate);
+        logger.debug("uploadDocument1 fileName:" + getFileName());
+        logger.debug("uploadDocument1 contentType:" + getContentType());
+        try {
+            FileInputStream fi = new FileInputStream(getFile());
+            blob = Hibernate.createBlob(fi);
+            document.setBlob(blob);
+
+            logger.debug("uploadDocument1:");
+            DocumentDAO documentDAO = new DocumentDAO();
+            documentDAO.uploadDocument(document);
+            logger.debug("uploadDocument2:");
         } catch (Exception e) {
             e.printStackTrace();
             addActionError(e.getMessage());
@@ -62,9 +72,9 @@ public class DocumentAction extends ActionSupport {
         logger.debug("in the validate of Document.validate()");
         if (getActionName().equals("upload_picture")) {
             logger.debug("in upload_picture");
-            if (getContent() == null || "".equals(getContent())) {
-                addFieldError("content", "File cant be empty");
-            }
+//            if (fileName == null || "".equals(fileName)) {
+//                addFieldError("content", "Please chose a file.");
+//            }
         }
     }
 
@@ -73,12 +83,12 @@ public class DocumentAction extends ActionSupport {
         return context.getName();
     }
 
-    public File getContent() {
-        return content;
+    public File getFile() {
+        return file;
     }
 
-    public void setContent(File content) {
-        this.content = content;
+    public void setFile(File file) {
+        this.file = file;
     }
 
     public String getContentType() {

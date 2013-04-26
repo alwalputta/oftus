@@ -91,7 +91,7 @@
                 <br></br>
                 <br></br>
                 <s:form action="upload_picture" method="post" enctype="multipart/form-data" >
-                    <s:file name="content" label="Upload Picture:" />
+                    <s:file name="file" label="Upload Picture:" />
                     <s:submit />
                 </s:form>
             </div>

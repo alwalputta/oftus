@@ -4,8 +4,8 @@
  */
 package com.myapp.main;
 
-import java.io.File;
 import java.io.Serializable;
+import java.sql.Blob;
 import org.apache.log4j.Logger;
 
 /**
@@ -16,9 +16,9 @@ public class Document implements Serializable {
 
     private int documentId;
     private int userId;
-    private String documentType;
+    private String fileType;
     private String fileName;
-    private File content;
+    private Blob blob;
     private String contentType;
     private String status;
     private String createDate;
@@ -45,12 +45,12 @@ public class Document implements Serializable {
         this.userId = userId;
     }
 
-    public String getDocumentType() {
-        return documentType;
+    public String getFileType() {
+        return fileType;
     }
 
-    public void setDocumentType(String documentType) {
-        this.documentType = documentType;
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
     }
 
     public String getFileName() {
@@ -61,12 +61,12 @@ public class Document implements Serializable {
         this.fileName = fileName;
     }
 
-    public File getContent() {
-        return content;
+    public Blob getBlob() {
+        return blob;
     }
 
-    public void setContent(File content) {
-        this.content = content;
+    public void setBlob(Blob blob) {
+        this.blob = blob;
     }
 
     public String getContentType() {

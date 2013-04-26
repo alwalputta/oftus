@@ -6,7 +6,6 @@ package com.myapp.main;
 
 import com.myapp.admin.StateDAO;
 import com.myapp.util.HibernateUtil;
-import java.io.File;
 import java.util.ArrayList;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -23,18 +22,12 @@ public class DocumentDAO {
     static final Logger logger = Logger.getLogger(StateDAO.class);
 
     @SuppressWarnings("unchecked")
-    public void updateDocument(String fileName, File content, String contentType) {
-        logger.debug("getFileName:" + fileName);
-        logger.debug("getContentType:" + contentType);
+    public void uploadDocument(Document document) {
+        logger.debug("getFileName:" + document.getFileName());
+        logger.debug("getFileType:" + document.getFileType());
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
-        int returnVal = 0;
-        
-        Document document = new Document();
-        document.setFileName(fileName);
-        document.setContent(content);
-        document.setContentType(contentType);
 
         try {
             transaction = session.beginTransaction();
