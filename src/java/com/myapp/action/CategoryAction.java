@@ -31,7 +31,7 @@ public class CategoryAction extends ActionSupport {
     Set<Category> userCategories = null;
     static final Logger logger = Logger.getLogger(CategoryAction.class);
 
-//business logic to fetch the category details
+    //business logic to fetch the category details
     public String addCategory() {
         logger.debug("addCategory!");
         String returnVal = "success";

@@ -14,7 +14,6 @@
     </div>
 
     <div class="top-column-element-right">
-
         <img class ="photo-box" src="images/user.jpg" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
         <ul id="menu">
             <li>
@@ -40,7 +39,7 @@
                     <li><a href="import_bookmarks">Import Bookmarks</a></li>
                     <li><a href="industry_trends">Industry Trends</a></li>
                     <li><a href="personal_reports">Personal Reports</a></li>
-                    <li><a href="our_recommendations">Our Recommendations</a></li>
+                    <li><a href="our_recommendations">Recommendations</a></li>
                 </ul>
             </li>
             <li><a href="user_help">Help</a> 
@@ -56,7 +55,6 @@
                 </ul>
             </li>
         </ul>
-        <br></br>
         <div class="search-box">
             <s:form action="searchForm">
                 <input type="text" id="search-input" name="search-input"/>
