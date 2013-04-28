@@ -50,6 +50,8 @@ public class LoginAction extends ActionSupport {
 
         String returnVal = "success";
 
+        CredentialDAO credentialDAO = new CredentialDAO();
+        credential = credentialDAO.selectCredential(getUsername());
         Set<User> users = credential.getUsers();
         for (Iterator iterator = users.iterator(); iterator.hasNext();) {
             user = (User) iterator.next();
@@ -85,54 +87,54 @@ public class LoginAction extends ActionSupport {
     @Override
     public void validate() {
         if (getActionName().equals("login")) {
-            CredentialDAO credentialDAO = new CredentialDAO();
-            credential = credentialDAO.selectCredential(getUsername());
 
-            if (credential == null) {
-                addActionMessage("This user does not exist. Do you want to register?");
-                addFieldError("username", getText("userdoesnotexist"));
-                credential = new Credential();
-            } else if ((getUsername().equals(credential.getUsername())) && getPassword().equals(credential.getPassword())) {
-                logger.debug("before state DAO2:" + credential.getUsername());
-            } else {
-                addActionMessage("This username and password is not registered.");
-                addFieldError("username", getText("userdoesnotexist"));
+            if (getUsername() == null || "".equals(getUsername())) {
+                addFieldError("username", "Username cant be blank");
             }
-        } else if (getActionName().equals("add_bookmark")) {
-            logger.debug("add_bookmark");
-        }
-
-///////////////
-        try {
-            UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-            Factory<org.apache.shiro.mgt.SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
-
-            // Setting up the SecurityManager...
-            org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();
-            SecurityUtils.setSecurityManager(securityManager);
-
-            Subject subject = SecurityUtils.getSubject();
-            subject.login(token);
-            token.clear();
-            logger.debug("User is authenticated:" + subject.isAuthenticated());
-
-            if (subject.hasRole("user:user")) {
-                logger.debug("user has user role");
+            if (getPassword() == null || "".equals(getPassword())) {
+                addFieldError("password", "Password cant be blank");
             }
-            if (subject.isPermitted("user:admin")) {
-                logger.debug("user has admin role");
+
+            // code for authentication
+            try {
+                UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+                Factory<org.apache.shiro.mgt.SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
+
+                org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();
+                SecurityUtils.setSecurityManager(securityManager);
+
+                Subject subject = SecurityUtils.getSubject();
+                subject.login(token);
+                token.clear();
+                logger.debug("User is authenticated:" + subject.isAuthenticated());
+
+                if (subject.hasRole("user")) {
+                    logger.debug("user has user role");
+                } else {
+                    logger.debug("user does not have user role");
+                }
+//                if (subject.isPermitted("user:admin")) {
+//                    logger.debug("user has admin role");
+//                } else {
+//                    logger.debug("user has no admin role");
+//                }
+//                Session session = subject.getSession();
+                if (subject.isAuthenticated()) {
+                    logger.debug("user authenticated successfully");
+                } else {
+                    addActionMessage("This user does not exist. Do you want to register?");
+                }
+            } catch (IncorrectCredentialsException ex) {
+                ex.printStackTrace();
+            } catch (LockedAccountException ex) {
+                ex.printStackTrace();
+            } catch (UnknownAccountException ex) {
+                ex.printStackTrace();
+            } catch (AuthenticationException ex) {
+                ex.printStackTrace();
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
-            Session session = subject.getSession();
-        } catch (IncorrectCredentialsException ex) {
-            ex.printStackTrace();
-        } catch (LockedAccountException ex) {
-            ex.printStackTrace();
-        } catch (UnknownAccountException ex) {
-            ex.printStackTrace();
-        } catch (AuthenticationException ex) {
-            ex.printStackTrace();
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
         logger.debug("in the validate of LoginAction");
     }
