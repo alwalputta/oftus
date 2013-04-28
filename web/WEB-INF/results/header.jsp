@@ -3,11 +3,11 @@
     <div class="top-column-element-left">
         <div class="company-logo">
             <img id="logo" src="images/oftus2.jpg"/>
-            <!--            OftUs<sup>&reg;</sup>-->
+            OFTUS<sup>&reg;</sup>
+            <div class="company-logo-punchline">
+                Your One Link World.
+            </div>
         </div>
-        <!--div class="company-logo-punchline">
-            Your Whole World. One Link.
-        </div-->
     </div>
     <div class="top-column-element-middle">
         Buy Samsung TV Today!

@@ -348,9 +348,9 @@ body {
 sup {
     font: 12px tahoma;
     font-weight: bold;
-    text-shadow:1px 1px 1px #42440d;
+    text-shadow:0px 0px 0px #42440d;
     box-shadow: 0px 0px 0px 0px blue;
-    color: darkgreen;
+    color: darkblue;
     vertical-align: text-top;
 }
 
@@ -449,7 +449,7 @@ sup {
     border-right: 0px;
     border-bottom: 0px;
     padding: 2px;
-    border-radius: 0px;
+    border-radius: 5px;
     color: black;
     background: #aabbaa;
     height: 100%;

@@ -26,12 +26,14 @@ public class User implements Serializable {
     private String status;
     private String endDate;
     private String lastModifiedDate;
+    private String username;
+    private String password;
     private Set<Address> userAddresses = new LinkedHashSet<Address>(0);
     private Set<Email> userEmails = new LinkedHashSet<Email>(0);
     private Set<Phone> userPhones = new LinkedHashSet<Phone>(0);
     private Set<Credential> userCredentials = new LinkedHashSet<Credential>(0);
+    private Set<Role> userRoles = new LinkedHashSet<Role>(0);
     private Set<Category> userCategories = new LinkedHashSet<Category>(0);
-    
     static final Logger logger = Logger.getLogger(User.class);
 
     public User(String firstName, String middleName, String lastName, String DOB, String gender) {
@@ -191,6 +193,14 @@ public class User implements Serializable {
         this.userCredentials = userCredentials;
     }
 
+    public Set<Role> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<Role> userRoles) {
+        this.userRoles = userRoles;
+    }
+
     public Set<Phone> getUserPhones() {
         return userPhones;
     }
@@ -205,5 +215,23 @@ public class User implements Serializable {
 
     public void setUserCategories(Set<Category> userCategories) {
         this.userCategories = userCategories;
+    }
+
+    public String getUsername() {
+        username = "palwal0";
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        password = "palwal";
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

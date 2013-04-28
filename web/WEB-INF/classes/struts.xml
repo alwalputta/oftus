@@ -98,7 +98,7 @@
             <result name="input">/WEB-INF/results/login.jsp</result>
         </action>
         
-        <action name="login" class="com.myapp.action.LoginAction" method="execute">
+        <action name="login" class="com.myapp.action.LoginAction" method="logIn">
             <result name="success">/WEB-INF/results/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/login.jsp</result>
         </action>
@@ -109,13 +109,13 @@
         </action>
 
         <action name="register_form" class="com.myapp.action.GeneralAction" method="execute">
-            <result name="success">/WEB-INF/results/register.jsp</result>
+            <result name="success">/WEB-INF/results/register_form.jsp</result>
             <result name="input">/WEB-INF/results/login.jsp</result>
         </action>
 
         <action name="create_profile" class="com.myapp.action.RegisterAction" method="createProfile">
             <result name="success">/WEB-INF/results/mainpage.jsp</result>
-            <result name="input">/WEB-INF/results/register.jsp</result>
+            <result name="input">/WEB-INF/results/register_form.jsp</result>
         </action>
 
         <action name="edit_profile" class="com.myapp.action.GeneralAction" method="editProfile">

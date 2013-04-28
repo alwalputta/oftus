@@ -81,7 +81,6 @@
 
                 </s:form>
                 <s:a href="register_faq">Register FAQ</s:a>
-
                 </div>
 
                 <div class="login-login">

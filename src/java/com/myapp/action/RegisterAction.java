@@ -10,6 +10,7 @@ import com.myapp.admin.CredentialDAO;
 import com.myapp.admin.Email;
 import com.myapp.admin.EmailDAO;
 import com.myapp.admin.Phone;
+import com.myapp.admin.Role;
 import com.myapp.admin.User;
 import com.myapp.admin.UserDAO;
 import com.myapp.main.Bookmark;
@@ -95,6 +96,16 @@ public class RegisterAction extends ActionSupport {
         userCredentials.add(credential);
 
         user.setUserCredentials(userCredentials);
+
+        logger.debug("RegisterAction execute!5.2");
+        //Role object being created
+        Role role = new Role();
+        role.setStatus("A");
+        role.setRole("user");
+        Set<Role> userRoles = new LinkedHashSet<Role>();
+        userRoles.add(role);
+
+        user.setUserRoles(userRoles);
 
         logger.debug("RegisterAction execute!6");
         //Credential object being created

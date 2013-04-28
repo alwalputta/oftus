@@ -34,6 +34,7 @@
         <mapping resource="com/myapp/admin/State.hbm.xml"/>
         <mapping resource="com/myapp/admin/Address.hbm.xml"/>
         <mapping resource="com/myapp/admin/Credential.hbm.xml"/>
+        <mapping resource="com/myapp/admin/Role.hbm.xml"/>
         <mapping resource="com/myapp/admin/Email.hbm.xml"/>
         <mapping resource="com/myapp/admin/Phone.hbm.xml"/>
         <mapping resource="com/myapp/admin/User.hbm.xml"/>

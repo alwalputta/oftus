@@ -23,7 +23,7 @@
 
         <%@include file="/WEB-INF/results/header.jsp"%>
 
-        <div class="register-modal">
+        <div class="mainTable">
 
             <s:if test="hasActionErrors()">
                 <div id="fieldErrors">
@@ -37,10 +37,9 @@
                 </div>
             </s:if>
 
-            <div class="register-register">
+            <div class="register-login">
                 <div>Register User:</div>
-                <s:form action="register">
-
+                <s:form action="create_profile">
                     <s:textfield name="username" size="25" maxlength="200" key="register.username-label"/>
                     <s:password name="password" size="25" key="register.password-label"/>
                     <s:password name="password2" size="25" key="register.password2-label"/>
@@ -70,7 +69,7 @@
                 <s:a href="register_faq">Register FAQ</s:a>
                 </div>
 
-                <div class="register-login">
+                <div class="login-register">
                     <br></br>Already have an account? <a href="index">Login now</a>
                 </div>
 
