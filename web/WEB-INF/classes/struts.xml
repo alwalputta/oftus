@@ -78,15 +78,15 @@
         </action>
 
         <action name="personal_reports">
-            <result>/WEB-INF/results/personal_reports.html</result>
+            <result>/WEB-INF/results/secure/personal_reports.html</result>
         </action>
 
         <action name="our_recommendations">
-            <result>/WEB-INF/results/our_recommendations.html</result>
+            <result>/WEB-INF/results/secure/our_recommendations.html</result>
         </action>
 
         <action name="user_options">
-            <result>/WEB-INF/results/user_options.html</result>
+            <result>/WEB-INF/results/secure/user_options.html</result>
         </action>
 
         <action name="user_help">
@@ -94,18 +94,18 @@
         </action>
 
         <action name="" class="com.myapp.action.IndexAction" method="execute">
-            <result name="success">/WEB-INF/results/mainpage.jsp</result>
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/login.jsp</result>
         </action>
         
         <action name="login" class="com.myapp.action.LoginAction" method="logIn">
-            <result name="success">/WEB-INF/results/mainpage.jsp</result>
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/login.jsp</result>
         </action>
 
         <action name="logout" class="com.myapp.action.LogoutAction" method="execute">
             <result name="success">/WEB-INF/results/login.jsp</result>
-            <result name="fail">/WEB-INF/results/mainpage.jsp</result>
+            <result name="fail">/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
 
         <action name="register_form" class="com.myapp.action.GeneralAction" method="execute">
@@ -114,32 +114,32 @@
         </action>
 
         <action name="create_profile" class="com.myapp.action.RegisterAction" method="createProfile">
-            <result name="success">/WEB-INF/results/mainpage.jsp</result>
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/register_form.jsp</result>
         </action>
 
         <action name="edit_profile" class="com.myapp.action.GeneralAction" method="editProfile">
-            <result name="success">/WEB-INF/results/edit_profile.jsp</result>
-            <result name="input">/WEB-INF/results/mainpage.jsp</result>
+            <result name="success">/WEB-INF/results/secure/edit_profile.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
 
         <action name="update_profile" class="com.myapp.action.RegisterAction" method="updateProfile">
-            <result name="success">/WEB-INF/results/mainpage.jsp</result>
-            <result name="input">/WEB-INF/results/edit_profile.jsp</result>
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_profile.jsp</result>
         </action>
 
         <action name="list_categories">
-            <result>/WEB-INF/results/list_categories.jsp</result>
+            <result>/WEB-INF/results/secure/list_categories.jsp</result>
         </action>
 
         <action name="add_category" class="com.myapp.action.CategoryAction" method="addCategory">
-            <result name="success">/WEB-INF/results/new_category.jsp</result>
-            <result name="input">/WEB-INF/results/new_category.jsp</result>
+            <result name="success">/WEB-INF/results/secure/new_category.jsp</result>
+            <result name="input">/WEB-INF/results/secure/new_category.jsp</result>
         </action>
 
         <action name="save_category" class="com.myapp.action.CategoryAction" method="saveCategory">
-            <result name="success">/WEB-INF/results/list_categories.jsp</result>
-            <result name="input">/WEB-INF/results/new_category.jsp</result>
+            <result name="success">/WEB-INF/results/secure/list_categories.jsp</result>
+            <result name="input">/WEB-INF/results/secure/new_category.jsp</result>
         </action>
 
         <action name="edit_category" class="com.myapp.action.CategoryAction" method="editCategory">
@@ -147,102 +147,102 @@
                 <param name="excludeMethods">validate, editCategory</param>
             </interceptor-ref>
             <interceptor-ref name="defaultStack"/>
-            <result name="success">/WEB-INF/results/edit_category.jsp</result>
-            <result name="input">/WEB-INF/results/mainpage.jsp</result>
+            <result name="success">/WEB-INF/results/secure/edit_category.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
 
         <action name="update_category" class="com.myapp.action.CategoryAction" method="updateCategory">
-            <result name="success">/WEB-INF/results/list_categories.jsp</result>
-            <result name="input">/WEB-INF/results/edit_category.jsp</result>
+            <result name="success">/WEB-INF/results/secure/list_categories.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_category.jsp</result>
         </action>
 
         <action name="edit_category_list" class="com.myapp.action.CategoryAction" method="editCategory">
-            <result name="success">/WEB-INF/results/edit_category.jsp</result>
-            <result name="input">/WEB-INF/results/list_categories.jsp</result>
+            <result name="success">/WEB-INF/results/secure/edit_category.jsp</result>
+            <result name="input">/WEB-INF/results/secure/list_categories.jsp</result>
         </action>
 
         <action name="update_category_list" class="com.myapp.action.CategoryAction" method="updateCategory">
-            <result name="success">/WEB-INF/results/list_bookmarks.jsp</result>
-            <result name="input">/WEB-INF/results/edit_category.jsp</result>
+            <result name="success">/WEB-INF/results/secure/list_bookmarks.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_category.jsp</result>
         </action>
 
         <action name="delete_category" class="com.myapp.action.CategoryAction" method="deleteCategory">
-            <result name="success">/WEB-INF/results/list_categories.jsp</result>
-            <result name="input">/WEB-INF/results/list_categories.jsp</result>
+            <result name="success">/WEB-INF/results/secure/list_categories.jsp</result>
+            <result name="input">/WEB-INF/results/secure/list_categories.jsp</result>
         </action>
 
         <action name="delete_category_mainpage" class="com.myapp.action.CategoryAction" method="deleteCategory">
-            <result name="success">/WEB-INF/results/mainpage.jsp</result>
-            <result name="input">/WEB-INF/results/mainpage.jsp</result>
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
 
         <action name="delete_category_list" class="com.myapp.action.CategoryAction" method="deleteCategory">
-            <result name="success">/WEB-INF/results/list_bookmarks.jsp</result>
-            <result name="input">/WEB-INF/results/list_bookmarks.jsp</result>
+            <result name="success">/WEB-INF/results/secure/list_bookmarks.jsp</result>
+            <result name="input">/WEB-INF/results/secure/list_bookmarks.jsp</result>
         </action>
 
         <action name="update_category_order" class="com.myapp.action.CategoryAction" method="updateCategoryOrder">
-            <result name="success">/WEB-INF/results/mainpage.jsp</result>
-            <result name="input">/WEB-INF/results/mainpage.jsp</result>
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
 
         <action name="list_bookmarks">
-            <result>/WEB-INF/results/list_bookmarks.jsp</result>
+            <result>/WEB-INF/results/secure/list_bookmarks.jsp</result>
         </action>
 
         <action name="add_bookmark" class="com.myapp.action.BookmarkAction" method="addBookmark">
-            <result name="success">/WEB-INF/results/new_bookmark.jsp</result>
-            <result name="input">/WEB-INF/results/new_bookmark.jsp</result>
+            <result name="success">/WEB-INF/results/secure/new_bookmark.jsp</result>
+            <result name="input">/WEB-INF/results/secure/new_bookmark.jsp</result>
         </action>
 
         <action name="save_bookmark" class="com.myapp.action.BookmarkAction" method="saveBookmark">
-            <result name="success">/WEB-INF/results/mainpage.jsp</result>
-            <result name="input">/WEB-INF/results/new_bookmark.jsp</result>
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/new_bookmark.jsp</result>
         </action>
 
         <action name="edit_bookmark" class="com.myapp.action.BookmarkAction" method="editBookmark">
-            <result name="success">/WEB-INF/results/edit_bookmark.jsp</result>
-            <result name="input">/WEB-INF/results/edit_bookmark.jsp</result>
+            <result name="success">/WEB-INF/results/secure/edit_bookmark.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_bookmark.jsp</result>
         </action>
 
         <action name="edit_bookmark_list" class="com.myapp.action.BookmarkAction" method="editBookmark">
-            <result name="success">/WEB-INF/results/edit_bookmark.jsp</result>
-            <result name="input">/WEB-INF/results/list_bookmarks.jsp</result>
+            <result name="success">/WEB-INF/results/secure/edit_bookmark.jsp</result>
+            <result name="input">/WEB-INF/results/secure/list_bookmarks.jsp</result>
         </action>
 
         <action name="update_bookmark" class="com.myapp.action.BookmarkAction" method="updateBookmark">
-            <result name="success">/WEB-INF/results/mainpage.jsp</result>
-            <result name="input">/WEB-INF/results/edit_bookmark.jsp</result>
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_bookmark.jsp</result>
         </action>
 
         <action name="update_bookmark_list" class="com.myapp.action.BookmarkAction" method="updateBookmark">
-            <result name="success">/WEB-INF/results/list_bookmarks.jsp</result>
-            <result name="input">/WEB-INF/results/edit_bookmark.jsp</result>
+            <result name="success">/WEB-INF/results/secure/list_bookmarks.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_bookmark.jsp</result>
         </action>
 
         <action name="delete_bookmark_list" class="com.myapp.action.BookmarkAction" method="deleteBookmark">
-            <result name="success">/WEB-INF/results/list_bookmarks.jsp</result>
-            <result name="input">/WEB-INF/results/list_bookmarks.jsp</result>
+            <result name="success">/WEB-INF/results/secure/list_bookmarks.jsp</result>
+            <result name="input">/WEB-INF/results/secure/list_bookmarks.jsp</result>
         </action>
 
         <action name="delete_bookmark_mainpage" class="com.myapp.action.BookmarkAction" method="deleteBookmark">
-            <result name="success">/WEB-INF/results/mainpage.jsp</result>
-            <result name="input">/WEB-INF/results/mainpage.jsp</result>
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
 
         <action name="move_bookmark" class="com.myapp.action.BookmarkAction" method="moveBookmark">
-            <result name="success">/WEB-INF/results/mainpage.jsp</result>
-            <result name="input">/WEB-INF/results/mainpage.jsp</result>
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
 
         <action name="update_bookmark_order" class="com.myapp.action.BookmarkAction" method="updateBookmarkOrder">
-            <result name="success">/WEB-INF/results/mainpage.jsp</result>
-            <result name="input">/WEB-INF/results/mainpage.jsp</result>
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
 
         <action name="open_bookmark" class="com.myapp.action.BookmarkAction" method="openBookmark">
-            <result name="success">/WEB-INF/results/edit_profile.jsp</result>
-            <result name="input">/WEB-INF/results/edit_profile.jsp</result>
+            <result name="success">/WEB-INF/results/secure/edit_profile.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_profile.jsp</result>
         </action>
 
         <action name="upload_picture" class="com.myapp.action.DocumentAction" method="uploadDocument">
@@ -253,8 +253,8 @@
                 </param>
             </interceptor-ref>
             <interceptor-ref name="defaultStack"></interceptor-ref>            
-            <result name="success">/WEB-INF/results/display_picture.jsp</result>
-            <result name="input">/WEB-INF/results/edit_profile.jsp</result>
+            <result name="success">/WEB-INF/results/secure/display_picture.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_profile.jsp</result>
         </action>
 
         <action name="test">
@@ -262,13 +262,7 @@
         </action>
 
         <action name="test1">
-            <result>/WEB-INF/results/mainpage.jsp</result>
+            <result>/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
-
-        <action name="test2">
-            <result>/WEB-INF/results/HomeStuffMaster.jsp</result>
-        </action>
-
     </package>
-
 </struts>

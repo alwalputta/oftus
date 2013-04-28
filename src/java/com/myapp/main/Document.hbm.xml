@@ -9,7 +9,7 @@
         <property name="userId" column="user_id" type="int"></property>
         <property name="fileType" column="file_type" type="string"></property>
         <property name="fileName" column="file_name" type="string"></property>
-        <property name="blob" column="blob" type="blob"></property>
+        <property name="blob" column="content" type="blob"></property>
         <property name="contentType" column="content_type" type="string"></property>
         <property name="status" column="status" type="string"></property>
         <property name="createDate" column="create_date" type="string"></property>

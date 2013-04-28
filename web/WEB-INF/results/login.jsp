@@ -70,7 +70,7 @@
                     <s:form action="login">
                         <s:textfield name="username" size="25" maxlength="200" key="index.username-label"/>
                         <s:password name="password" size="25" maxlength="200" key="index.password-label"/>
-                        <s:checkbox name="rememberme" key="index.rememberme-label"/>
+                        <s:checkbox name="rememberMe" key="index.rememberme-label"/>
 
                         <tr>
                             <td colspan="2" align="center">
