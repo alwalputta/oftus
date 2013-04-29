@@ -6,7 +6,50 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
          http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
-    <display-name>myapp Project on Strust 2 and Glassfish 3.0.1 Project setup</display-name>
+    <display-name>myapp Project on Strust 2 and Glassfish 3.0.1</display-name>
+
+    <filter>
+        <filter-name>ShiroFilter</filter-name>
+        <filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class>
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>
+                [main]
+                builtInCacheManager = org.apache.shiro.cache.MemoryConstrainedCacheManager
+                securityManager.cacheManager = $builtInCacheManager
+
+                # Ehcache
+                builtInCacheManager = org.apache.shiro.cache.MemoryConstrainedCacheManager
+                securityManager.cacheManager = $builtInCacheManager
+
+                # Create JDBC realm.
+                jdbcRealm = org.apache.shiro.realm.jdbc.JdbcRealm
+
+                # Configure JDBC realm datasource.
+                dataSource = com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+                dataSource.URL = jdbc:mysql://localhost:3306/app
+                dataSource.user = root
+                dataSource.password = ""
+                jdbcRealm.dataSource = $dataSource
+
+                # Configure JDBC realm SQL queries.
+                jdbcRealm.authenticationQuery = SELECT password FROM Credential WHERE status = 'A' and username = ?
+                jdbcRealm.userRolesQuery = SELECT c.role FROM role c, UserRole d WHERE c.role_id and d.role_id and user_Id = (select b.user_id from credential a, usercredential b where a.credential_id = b.credential_id and a.username = ?)
+
+                roles.unauthorizedUrl = /WEB-INF/results/login.jsp
+
+                [urls]
+                /WEB-INF/results/secure/** = authcBasic
+                /WEB-INF/results/admin/** = authcBasic
+                /WEB-INF/results/login.jsp = authc
+            </param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>ShiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
     <filter>
         <filter-name>struts2</filter-name>
@@ -15,16 +58,6 @@
     
     <filter-mapping>
         <filter-name>struts2</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-    <filter>
-        <filter-name>ShiroFilter</filter-name>
-        <filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>ShiroFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
