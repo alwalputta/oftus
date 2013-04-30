@@ -55,12 +55,14 @@
                                 <th><s:property value="#category.categoryName"/></th>
                                 <th><s:property value="#category.description"/></th>
                                 <th><s:property value="#category.status"/></th>
-                                <th><s:url id="editCategory" action="edit_category_list">
+                                <th>
+                                    <s:url id="editCategory" action="edit_category_list">
                                         <s:param name="categoryId" value="#category.categoryId"></s:param>
                                     </s:url>
                                     <a href="<s:property value="#editCategory"/>">Edit</a>
                                 </th>
-                                <th><s:url id="deleteCategory" action="delete_category_list">
+                                <th>
+                                    <s:url id="deleteCategory" action="delete_category_list">
                                         <s:param name="categoryId" value="#category.categoryId"></s:param>
                                     </s:url>
                                     <a href="<s:property value="#deleteCategory"/>">Delete</a>

@@ -30,12 +30,16 @@
                         <td colspan="2" align="center">
                             <s:submit align="center" key="new.submit-category-label" theme="simple"/>
                             <s:reset align="center" key="new.reset-label" theme="simple"/>
+                            <s:url id="deleteCategory" action="delete_category_mainpage">
+                                <s:param name="categoryId" value="%{#session.category.categoryId}"></s:param>
+                            </s:url>
+                            <a href="<s:property value="#deleteCategory"/>">Delete Category</a>
                         </td>
                     </tr>
                 </s:form>
                 <s:a href="#new_category_faq" class="new-element-links">Add/Edit Category FAQ</s:a>
-                </div>
             </div>
+        </div>
         <%@include file="/WEB-INF/results/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
 

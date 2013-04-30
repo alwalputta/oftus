@@ -2,7 +2,8 @@
 <div class="dockingBarTop">
     <div class="top-column-element-left">
         <div class="company-logo">
-            <img id="logo" src="images/oftus2.jpg"/>
+            <!--img id="logo" src="images/oftus2.jpg"/-->
+            <img id="logo" src="images/oftus.gif"/>
             OFTUS<sup>&reg;</sup>
             <div class="company-logo-punchline">
                 Your One Link World.
@@ -30,6 +31,7 @@
                 <li><a href="edit_profile">Manage Profile</a></li>
                 <li><a href="edit_preferences">Manage Preferences</a></li>
                 <li><a href="refer_friends">Refer Friends</a></li>
+                <li><a href="http://localhost:4848">Server Admin</a></li>
             </ul>
             </li>
             <li><a href="user_options">Options</a>

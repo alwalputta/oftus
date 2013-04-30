@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
     <head>
 
-<%@include file="/WEB-INF/results/imports.jsp"%>
+        <%@include file="/WEB-INF/results/imports.jsp"%>
 
         <script type="text/javascript">
         </script>
@@ -30,13 +30,17 @@
                             <s:submit align="center" key="new.submit-bookmark-label" theme="simple"/>
                             <s:reset align="center" key="new.reset-label" theme="simple"/>
                             <s:a href="delete_bookmark_mainpage?bookmarkId=%{#session.bookmark.bookmarkId}">Delete Bookmark</s:a>
+                            <s:url id="deleteBookmark" action="delete_bookmark_mainpage">
+                                <s:param name="bookmarkId" value="%{#session.bookmark.bookmarkId}"></s:param>
+                            </s:url>
+                            <a href="<s:property value="#deleteBookmark"/>">Delete Bookmark</a>
                         </td>
                     </tr>
                 </s:form>
                 <s:a href="new_bookmark_faq" class="new-element-links">Edit Bookmark FAQ</s:a>
+                </div>
             </div>
-        </div>
-<%@include file="/WEB-INF/results/footer.jsp"%>
+        <%@include file="/WEB-INF/results/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
 
     </body>

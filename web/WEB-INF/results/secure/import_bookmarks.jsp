@@ -30,6 +30,9 @@
             </s:if>
 
             <div class="register-login">
+                <s:url id="fileDownload" namespace="/" action="download_template" ></s:url>
+                Download Template File - <s:a href="%{fileDownload}">Template File</s:a>
+
                 <div>Import Bookmarks....</div>
                 <s:form action="fileUpload" method="post" enctype="multipart/form-data" >
                     <s:file name="userImage" label="Excel File" />
