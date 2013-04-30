@@ -191,6 +191,7 @@ public class BookmarkAction extends ActionSupport {
         BookmarkDAO bookmarkDAO = new BookmarkDAO();
         updated = bookmarkDAO.updateBookmarkCategory(getBookmarkId(), getCategoryId());
 
+        logger.debug("updated:" + updated);
         return returnVal;
     }
 

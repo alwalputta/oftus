@@ -73,7 +73,7 @@
 
                     <tr>
                         <td colspan="2" align="center">
-                            <s:submit name="register" key="register.update-label" theme="simple" onclick="alert('alwal');"/>
+                            <s:submit name="register" key="register.update-label" theme="simple"/>
                             <s:reset name="cancel" key="register.cancel-label" theme="simple"/>
                             <s:submit name="close" key="register.close-label" theme="simple"/>
                         </td>

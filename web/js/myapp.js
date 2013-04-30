@@ -4,8 +4,6 @@ $(document).ready(function() {
     //comented temporarily
     // show_page_loading_message();
     
-    categories = [];
-    max_row_element_id = 0;
     element_id = 0;
     category_from = 0;
     category_to = 0;
@@ -35,8 +33,7 @@ $(document).ready(function() {
 
 $('input[type=button]').hover(function(){
     $(this).css('border','3px solid red');
-},
-function(){
+}, function(){
     $(this).css('border','1px solid black');
 });
 
@@ -159,7 +156,7 @@ $('.middle-row-element').dblclick(function(){
     //    alert ('row1');
     targetUrl = 'edit_bookmark?bookmarkId='+$(this).attr('id');
     targetUrl = targetUrl + '&categoryId='+$(this).parents('.middle-column-element').attr('id');
-    window.location=targetUrl;
+    window.location = targetUrl;
 });
 
 $('.middle-row-element-text').click(function(){
@@ -172,7 +169,7 @@ $('.middle-row-element-text').click(function(){
     targetUrl = 'open_bookmark?bookmarkId='+bookmark_id;
     //    alert (targetUrl);
     //    $.ajax(targetUrl);
-    window.location=targetUrl;
+    window.location = targetUrl;
 
 //    window.location=$('#' + bookmark_id).data("bookmark").hiperLink;
 });
@@ -231,10 +228,10 @@ function set_sortable(){
             //alert ('stop.category_to' + category_to);
             
             if (category_from == "0") {
-                alert ('AAAAA1000');
+//                alert ('AAAAA1000');
                 update_bookmark_order($(this));
             } else {
-                alert ('BBBBBB20000');
+//                alert ('BBBBBB20000');
                 move_bookmark(element_id, category_to);
             }
             //            ui.item.after(ui.item.find('li'));
@@ -242,7 +239,7 @@ function set_sortable(){
             if ($('.middle-row-element-selected').length > 0) {
                 $('.middle-row-element-selected').each(function(){
                     var element = $(this);
-                    alert ('CCCCCC3000:'+element.attr('id'));
+//                    alert ('CCCCCC3000:'+element.attr('id'));
                     move_bookmark(element.attr('id'), category_to);
                     $(this).removeClass('middle-row-element-selected');
                     $(this).addClass('middle-row-element-dropped');
@@ -304,7 +301,7 @@ function update_bookmark_order(element){
         bookmark_order = bookmark_order + $(this).attr('id') + ':';
     });
     targetUrl = targetUrl + bookmark_order;
-    alert ('bookmark order url:' + targetUrl);
+//    alert ('bookmark order url:' + targetUrl);
     $.ajax(targetUrl);
 }
 
