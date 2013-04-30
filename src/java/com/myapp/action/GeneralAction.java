@@ -10,7 +10,6 @@ import com.myapp.admin.State;
 import com.myapp.admin.StateDAO;
 import com.myapp.admin.User;
 import com.myapp.main.Category;
-import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;

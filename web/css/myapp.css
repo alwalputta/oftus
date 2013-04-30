@@ -478,7 +478,7 @@ sup {
 }
 
 .middle-row-element-dropped {
-    border: 1px dotted blue;
+    border: 2px dashed yellow;
     background: #3e779d;
     color: #ffffff;
     border-radius: 5px;

@@ -70,20 +70,20 @@ public class LoginAction extends ActionSupport {
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
 
-        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
-            logger.debug("222222222222");
-            Category c = (Category) iterator.next();
-            logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName() + ":"
-                    + c.getDescription());
-            Set<Bookmark> bookmarks = c.getBookmarks();
-
-            for (Iterator i = bookmarks.iterator(); i.hasNext();) {
-                Bookmark b = (Bookmark) i.next();
-                logger.debug("bookmarkId value:" + b.getBookmarkId() + ":" + b.getBookmarkName() + ":"
-                        + b.getHiperLink() + ":" + b.getDescription());
-            }
-        }
-        logger.debug("end of LoginAction execute end.");
+//        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
+//            logger.debug("222222222222");
+//            Category c = (Category) iterator.next();
+//            logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName() + ":"
+//                    + c.getDescription());
+//            Set<Bookmark> bookmarks = c.getBookmarks();
+//
+//            for (Iterator i = bookmarks.iterator(); i.hasNext();) {
+//                Bookmark b = (Bookmark) i.next();
+//                logger.debug("bookmarkId value:" + b.getBookmarkId() + ":" + b.getBookmarkName() + ":"
+//                        + b.getHiperLink() + ":" + b.getDescription());
+//            }
+//        }
+        logger.debug("end of LoginAction execute.");
         return returnVal;
     }
 
@@ -92,15 +92,17 @@ public class LoginAction extends ActionSupport {
     public void validate() {
         if (getActionName().equals("login")) {
 
+            logger.debug("username:" + getUsername());
+            logger.debug("password:" + getPassword());
+
             // code for authentication
             try {
-                UsernamePasswordToken token = new UsernamePasswordToken(username, password);
                 Factory<org.apache.shiro.mgt.SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
-
                 org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();
                 SecurityUtils.setSecurityManager(securityManager);
 
                 Subject subject = SecurityUtils.getSubject();
+                UsernamePasswordToken token = new UsernamePasswordToken(username, password);
                 subject.login(token);
                 logger.debug("User RememberMe:" + getRememberMe());
 
@@ -115,15 +117,17 @@ public class LoginAction extends ActionSupport {
                 } else {
                     logger.debug("user does not have user role");
                 }
-//                if (subject.isPermitted("user:admin")) {
-//                    logger.debug("user has admin role");
-//                } else {
-//                    logger.debug("user has no admin role");
-//                }
-//                Session session = subject.getSession();
+                if (subject.isPermitted("test")) {
+                    logger.debug("user has admin role");
+                } else {
+                    logger.debug("user has no admin role");
+                }
+                Session session = subject.getSession();
+
                 if (subject.isAuthenticated()) {
                     logger.debug("user authenticated successfully");
                 } else {
+                    addFieldError("username", "This user does not exist. Do you want to register?");
                     addActionMessage("This user does not exist. Do you want to register?");
                 }
             } catch (IncorrectCredentialsException ex) {

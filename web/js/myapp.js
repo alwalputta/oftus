@@ -222,38 +222,45 @@ function set_sortable(){
             $('.middle-row-element-selected').appendTo(ui.item);
         },
         update: function(event, ui) {
-            alert ('update');
+        //            alert ('update function.');
         },
         stop: function(event, ui) {
-            alert ('stop:' + $(this).html());
+            //            alert ('stop:' + $(this).html());
             //alert ('stop.element_id' + element_id);
             //alert ('stop.category_from' + category_from);
             //alert ('stop.category_to' + category_to);
             
             if (category_from == "0") {
-                //alert ('bookmark order if statement');
+                alert ('AAAAA1000');
                 update_bookmark_order($(this));
             } else {
+                alert ('BBBBBB20000');
                 move_bookmark(element_id, category_to);
             }
             //            ui.item.after(ui.item.find('li'));
-            $('.middle-row-element-selected').each(function(){
-                $(this).removeClass('middle-row-element-selected');
-                $(this).addClass('middle-row-element-dropped');
-            });
+            
+            if ($('.middle-row-element-selected').length > 0) {
+                $('.middle-row-element-selected').each(function(){
+                    var element = $(this);
+                    alert ('CCCCCC3000:'+element.attr('id'));
+                    move_bookmark(element.attr('id'), category_to);
+                    $(this).removeClass('middle-row-element-selected');
+                    $(this).addClass('middle-row-element-dropped');
+                });
+            }
         },
         receive: function(event, ui) {
             //Run this code whenever an item is dragged and dropped into this list
             //alert('receive.just joined this list ....');
             element_id = $(ui.item).children().attr('id');
             //alert ('receive1:' + element_id2);
-  
+
             parent = $(this).parents('.middle-column-element');
             //alert ('receive2:' + parent2.attr('id'));
     
             category_to = parent.attr('id');
             targetUrl = 'targetUrl' + element_id;
-        //            alert ('URL:' + targetUrl);
+        //            alert ('receive URL:' + targetUrl);
         },
         remove: function(event, ui) {
             //Run this code whenever an item is dragged and dropped out of this list
@@ -270,7 +277,7 @@ function set_sortable(){
     
             category_from = parent.attr('id');
             targetUrl = 'targetUrl' + element_id;
-        //            alert ('URL:' + targetUrl);
+        //            alert ('remove URL:' + targetUrl);
         //  move_bookmark($(this), ui);
         }
     }).disableSelection();
@@ -297,7 +304,7 @@ function update_bookmark_order(element){
         bookmark_order = bookmark_order + $(this).attr('id') + ':';
     });
     targetUrl = targetUrl + bookmark_order;
-    //alert ('url:' + targetUrl);
+    alert ('bookmark order url:' + targetUrl);
     $.ajax(targetUrl);
 }
 

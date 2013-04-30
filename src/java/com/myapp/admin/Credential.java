@@ -4,6 +4,7 @@
  */
 package com.myapp.admin;
 
+import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import org.apache.log4j.Logger;
@@ -12,7 +13,7 @@ import org.apache.log4j.Logger;
  *
  * @author palwal
  */
-public class Credential {
+public class Credential implements Serializable {
 
     private int credentialId;
     private String username;
