@@ -346,7 +346,7 @@ body {
 }
 
 sup {
-    font: 12px tahoma;
+    font: 14px tahoma;
     font-weight: bold;
     text-shadow:0px 0px 0px #42440d;
     box-shadow: 0px 0px 0px 0px blue;
@@ -472,18 +472,19 @@ sup {
 
 .middle-row-element-selected {
     border: 1px dotted blue;
-    background: #007182;
+    background: #888;
     color: #ffffff;
     border-radius: 5px;
 }
 
 .middle-row-element-dropped {
-    border: 2px dashed yellow;
+    border: 2px dashed blue;
     background: #3e779d;
     color: #ffffff;
     border-radius: 5px;
 }
 
+/*can be deleted?*/
 .middle-row-element span {
     text-align: left;
 }
@@ -496,7 +497,7 @@ sup {
     border-radius: 0px;
     background: orange;
     color: black;
-    font: 12px tahoma;
+    font: 14px tahoma;
     text-align: center;
     text-decoration: #3e779d;
 }
@@ -505,14 +506,14 @@ sup {
     border: 2px solid black;
     background: #007182;
     color: #ff0000;
-    font: 12px tahoma;
+    font: 14px tahoma;
 }
 
 .middle-row-new-element:active {
     border: 2px dashed black;
     background: green;
     color: #ff2222;
-    font: 12px tahoma;
+    font: 14px tahoma;
 }
 
 .new-element-modal {
@@ -640,12 +641,12 @@ sup {
     white-space: nowrap;
     border-radius: 5px;
     color: black;
-    font: 12px Tahoma;
+    font: 16px Tahoma;
 }
 
 .bottom-row-item a {
     color: black;
-    font: 14px Tahoma;
+    font: 16px Tahoma;
 }
 
 a:link {
@@ -887,7 +888,7 @@ input#search-button {
 
 .middle-row-element-text {
     text-decoration: none;
-    font: 12px Tahoma;
+    font: 14px Tahoma;
     text-align: left;
     overflow: auto;
     vertical-align: middle; 
@@ -943,7 +944,7 @@ input#search-button {
 
 .inline-column-edit-input {
     text-decoration: none;
-    font: 12px Tahoma;
+    font: 14px Tahoma;
     text-align: left;
     overflow: auto;
     vertical-align: middle; 

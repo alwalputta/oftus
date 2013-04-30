@@ -5,9 +5,9 @@
             <!--img id="logo" src="images/oftus2.jpg"/-->
             <img id="logo" src="images/oftus.gif"/>
             OFTUS<sup>&reg;</sup>
-            <div class="company-logo-punchline">
+            <!--div class="company-logo-punchline">
                 Your One Link World.
-            </div>
+            </div-->
         </div>
     </div>
     <div class="top-column-element-middle">

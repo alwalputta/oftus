@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     //Message while the page is still being loaded.
     //comented temporarily
-    // show_page_loading_message();
+    show_page_loading_message();
     
     element_id = 0;
     category_from = 0;
@@ -180,10 +180,6 @@ $('.favicon').click(function(){
     $('div').removeClass('middle-row-element-dropped');
 });
 
-$(function() {
-    //    $( ".register-register" ).accordion();
-    });
-  
 function set_sortable(){
     //Draggability of the columns
     // $("#middle-column-sortable").draggable({containment: '.mainTable'});
@@ -221,31 +217,6 @@ function set_sortable(){
         update: function(event, ui) {
         //            alert ('update function.');
         },
-        stop: function(event, ui) {
-            //            alert ('stop:' + $(this).html());
-            //alert ('stop.element_id' + element_id);
-            //alert ('stop.category_from' + category_from);
-            //alert ('stop.category_to' + category_to);
-            
-            if (category_from == "0") {
-//                alert ('AAAAA1000');
-                update_bookmark_order($(this));
-            } else {
-//                alert ('BBBBBB20000');
-                move_bookmark(element_id, category_to);
-            }
-            //            ui.item.after(ui.item.find('li'));
-            
-            if ($('.middle-row-element-selected').length > 0) {
-                $('.middle-row-element-selected').each(function(){
-                    var element = $(this);
-//                    alert ('CCCCCC3000:'+element.attr('id'));
-                    move_bookmark(element.attr('id'), category_to);
-                    $(this).removeClass('middle-row-element-selected');
-                    $(this).addClass('middle-row-element-dropped');
-                });
-            }
-        },
         receive: function(event, ui) {
             //Run this code whenever an item is dragged and dropped into this list
             //alert('receive.just joined this list ....');
@@ -276,6 +247,30 @@ function set_sortable(){
             targetUrl = 'targetUrl' + element_id;
         //            alert ('remove URL:' + targetUrl);
         //  move_bookmark($(this), ui);
+        },
+        stop: function(event, ui) {
+            //            alert ('stop:' + $(this).html());
+            //alert ('stop.element_id' + element_id);
+            //alert ('stop.category_from' + category_from);
+            //alert ('stop.category_to' + category_to);
+            
+            if (category_from != "0") {
+                move_bookmark(element_id, category_to);
+            //                update_bookmark_order($(this));
+            }
+            //            ui.item.after(ui.item.find('li'));
+
+            if ($('.middle-row-element-selected').length > 0) {
+                $('.middle-row-element-selected').each(function(){
+                    var element = $(this);
+                    //                    alert ('CCCCCC3000:'+element.attr('id'));
+                    move_bookmark(element.attr('id'), category_to);
+                    //                    update_bookmark_order($(this));
+                    $(this).removeClass('middle-row-element-selected');
+                    $(this).addClass('middle-row-element-dropped');
+                });
+            }
+            update_bookmark_order($(this));
         }
     }).disableSelection();
 }
@@ -301,7 +296,7 @@ function update_bookmark_order(element){
         bookmark_order = bookmark_order + $(this).attr('id') + ':';
     });
     targetUrl = targetUrl + bookmark_order;
-//    alert ('bookmark order url:' + targetUrl);
+    //    alert ('bookmark order url:' + targetUrl);
     $.ajax(targetUrl);
 }
 
@@ -375,10 +370,6 @@ function set_div_dimensions() {
 
     var window_width = $(window).width();
 
-    //    $('.login_modal').css('height', '5000px');
-    //    $('.login_modal').css('height', '5000px');
-    //    $('.login_login').css('height', '5000px');
-
     $('.bottom-row-item').css('height', $('.dockingBarBottom').css('height'));
     $('.middle-row-bottom-spacer').css('height', $('.dockingBarBottom').css('height'));
 
@@ -391,8 +382,6 @@ function show_page_loading_message () {
     $('.loading').css('visibility', 'visible');
     $('.loading').css('top', $(window).height()/2-$('.loading').height()/2-100);
     $('.loading').css('left', $(window).width()/2-$('.loading').width()/2);
-
-    $('.loading input:first').focus();
 }
 
 $(window).load(function() {
