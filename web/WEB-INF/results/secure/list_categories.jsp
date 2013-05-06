@@ -33,7 +33,7 @@
                 </div>
             </s:if>
 
-            <div class="register-login">
+            <div class="login-login">
                 User Categories:::::
                 <a href="add_category?">Add Category</a>
                 <table>
@@ -67,8 +67,9 @@
                     </s:iterator>
                 </table>
             </div>
-            <div class="register-login">
-                Note: This lists your categories. You want to see the bookmarks, click Manage Bookmarks link.
+            <div class="login-register">
+                Note: This lists your categories.
+                If you want to see the bookmarks, click <a href="list_bookmarks">Manage Bookmarks</a> link.
             </div>
         </div>
         <%@include file="/WEB-INF/results/footer.jsp"%>

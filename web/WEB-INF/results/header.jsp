@@ -15,11 +15,11 @@
     </div>
 
     <div class="top-column-element-right">
-        <img class ="photo-box" src="images/user.jpg" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
+        <img class ="photo-box" src="<s:url action='ImageServlet'/>" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
         <ul id="menu">
             <li>
             <s:if test="%{#session.user.firstName} == null">
-                <a href="login">Login</a>
+                <a href="login_form">Login</a>
             </s:if>
             <s:else>
                 <a href="login">
@@ -38,7 +38,7 @@
                 <ul>
                     <li><a href="list_categories">Manage Categories</a></li>
                     <li><a href="list_bookmarks">Manage Bookmarks</a></li>
-                    <li><a href="import_bookmarks">Import Bookmarks</a></li>
+                    <li><a href="import_bookmarks_page">Import Bookmarks</a></li>
                     <li><a href="industry_trends">Industry Trends</a></li>
                     <li><a href="personal_reports">Personal Reports</a></li>
                     <li><a href="our_recommendations">Recommendations</a></li>

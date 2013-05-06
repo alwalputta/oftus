@@ -6,6 +6,7 @@
 <struts>
 
     <constant name="struts.devMode" value="true"/>
+    <constant name="struts.action.excludePattern" value="/ImageServlet"/>
 
     <package name="myapp" extends="struts-default" namespace="">
 
@@ -69,7 +70,7 @@
             <result>/WEB-INF/results/refer_friends.html</result>
         </action>
 
-        <action name="import_bookmarks">
+        <action name="import_bookmarks_page">
             <result>/WEB-INF/results/secure/import_bookmarks.jsp</result>
         </action>
 
@@ -93,7 +94,7 @@
             <result>/WEB-INF/results/user_help.html</result>
         </action>
 
-        <action name="" class="com.myapp.action.IndexAction" method="execute">
+        <action name="login_form" class="com.myapp.action.IndexAction" method="execute">
             <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/login.jsp</result>
         </action>
@@ -245,9 +246,10 @@
             <result name="input">/WEB-INF/results/secure/edit_profile.jsp</result>
         </action>
 
-        <action name="upload_picture" class="com.myapp.action.DocumentAction" method="uploadDocument">
+        <action name="upload_picture" class="com.myapp.action.DocumentAction" method="uploadPicture">
+            <interceptor-ref name="exception"/>
             <interceptor-ref name="fileUpload">
-                <param name="maximumSize">2097152</param>
+                <param name="maximumSize">10097152</param>
                 <param name="allowedTypes">
                     image/png,image/gif,image/jpeg,image/pjpeg
                 </param>
@@ -257,16 +259,28 @@
             <result name="input">/WEB-INF/results/secure/edit_profile.jsp</result>
         </action>
 
-        <action name="download_template" class="com.myapp.action.DownloadAction" method="downloadTemplate">
-            <result name="success" type="stream">
-                <param name="contentType">application/octet-stream</param>
-                <param name="inputName">fileInputStream</param>
-                <param name="contentDisposition">attachment;filename="fileABC.txt"</param>
-                <param name="bufferSize">1024</param>
-            </result>
+        <action name="show_picture" class="com.myapp.action.DocumentAction" method="showPicture">
+            <result name="success">/WEB-INF/results/secure/edit_profile.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_profile.jsp</result>
+        </action>
+
+        <action name="import_bookmarks" class="com.myapp.action.DocumentAction" method="importBookmarks">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/secure/import_bookmarks.jsp</result>
         </action>
 
+        <!--
+        Delete the associated Action and other method
+                <action name="download_template" class="com.myapp.action.DownloadAction" method="downloadTemplate">
+                    <result name="success" type="stream">
+                        <param name="contentType">application/octet-stream</param>
+                        <param name="inputName">fileInputStream</param>
+                        <param name="contentDisposition">attachment;filename="fileABC.txt"</param>
+                        <param name="bufferSize">1024</param>
+                    </result>
+                    <result name="input">/WEB-INF/results/secure/import_bookmarks.jsp</result>
+                </action>
+        -->
         <action name="test">
             <result>/WEB-INF/results/header.jsp</result>
         </action>
@@ -275,4 +289,23 @@
             <result>/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
     </package>
+ 
+<!--       
+    <package name="image" namespace="" extends="struts-default">
+        <result-types>
+            <result-type name="imageResult" class="com.myapp.util.CustomImageBytesResult"/>
+        </result-types>
+ 
+        <action name="Display" class="com.myapp.action.DisplayAction">
+            <result>/WEB-INF/results/header_1.jsp</result>
+        </action>
+ 
+        <action name="ImageAction" class="com.myapp.action.ImageAction">
+            <result name="success" type="imageResult">
+            </result>
+        </action>
+ 
+    </package>
+    -->
+    
 </struts>

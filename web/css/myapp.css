@@ -112,97 +112,7 @@ body {
     font: 15px tahoma;
 }
 
-.register-modal {
-    /*    display: none;*/
-    /*    position: fixed;*/
-    background: #aabbaa;
-    color: white;
-    width: 90%;
-    opacity: 1;
-    margin: 0px;
-    border: 20px solid darkgoldenrod;
-    padding: 20px;
-    border-radius: 25px;
-    vertical-align: middle;
-    text-align: center;
-    font: 15px tahoma;
-}
 
-.register-register {
-    display: block;
-    float: left;
-    position: relative;
-    background: #aabbaa;
-    color: white;
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-    margin: 10px;
-    border: 1px solid #20548E;
-    padding: 10px;
-    border-radius: 10px;
-    vertical-align: middle;
-    text-align: left;
-    font: 15px tahoma;
-}
-
-.register-login {
-    display: block;
-    float: left;
-    position: relative;
-    background: #aabbaa;
-    color: white;
-    width: 60%;
-    margin: 10px;
-    border: 1px solid #20548E;
-    padding: 10px;
-    border-radius: 10px;
-    vertical-align: middle;
-    text-align: center;
-    font: 15px tahoma;
-}
-
-.forgot-password-modal {
-    /*   display: none;*/
-    position: fixed;
-    background: teal;
-    color: white;
-    width: 90%;
-    height: 600px;
-    opacity: 1;
-    margin: 0px;
-    border: 20px solid #20548E;
-    padding: 20px;
-    border-radius: 25px;
-    vertical-align: middle;
-    text-align: center;
-    font: 15px tahoma;
-}
-
-.forgot-password {
-    display: block;
-    float: left;
-    position: relative;
-    background: teal;
-    color: white;
-    width: 90%;
-    height: 90%;
-    opacity: 1;
-    margin: 10px;
-    border: 1px solid #20548E;
-    padding: 10px;
-    border-radius: 10px;
-    vertical-align: middle;
-    text-align: left;
-    font: 15px tahoma;
-}
-
-.login-login input, .register-register input, .forgot-password input, .new-element input {
-    border-radius: 5px;
-    margin: 5px;
-    margin-left: 0px;
-    height: 25px;
-}
 
 .new-element textarea {
     border-radius: 5px;
@@ -899,7 +809,7 @@ input#search-button {
     width: 100%;
     display: inline;
     position: relative;
-    float: none;
+    float: right;
 }
 
 .middle-column-element-edit-icons {

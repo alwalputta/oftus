@@ -1,0 +1,166 @@
+/* 
+ Document: oftus.css
+ Created on: May 5, 2013, 3:45:A3 PM
+ Author: Alwal Putta
+ Description: Main stylesheet
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+root { 
+    display: block;
+}
+
+html
+{
+    margin:0px;
+    padding:0px;
+    border: 1px black dotted;
+}
+
+body {
+    width:100%;
+    margin:0px;
+    padding:0px;
+    border: 0px dashed #007182;
+    height: 100%;
+    text-align: left;
+    /*    background: url(../images/background.JPG) no-repeat;*/
+}
+
+.main {
+    position: fixed;
+    background: teal;
+    color: white;
+    width: 100%;
+    height: 10000px;
+    margin: 0px;
+    padding: 0px;
+    vertical-align: middle;
+    text-align: center;
+    font: 15px tahoma;
+    float: right;
+    overflow: auto;
+}
+
+.header {
+    display: block;
+    float: left;
+    position: relative;
+    background: white;
+    color: black;
+    width: 100%;
+    margin: 0px;
+    padding: 10px;
+    vertical-align: middle;
+    text-align: center;
+    font: 15px tahoma;
+    
+}
+
+.body {
+    display: block;
+    float: left;
+    position: relative;
+    background: skyblue;
+    color: white;
+    width: 100%;
+    margin: 0px;
+    padding: 10px;
+    margin-top: 20px;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.footer {
+    display: block;
+    float: left;
+    position: relative;
+    background: #aabbaa;
+    color: white;
+    width: 100%;
+    margin: 0px;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #20548E;
+    vertical-align: middle;
+    text-align: center;
+    font: 15px tahoma;
+}
+
+#logo {
+    height: 100px;
+    width: 250px;
+    margin: 0px;
+    margin-top: 20px;
+    padding: 0px;
+}
+
+.top-block {
+    display: inline-block;
+    width: 10%;
+    height: 25px;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #aabbaa;
+    text-align: center;
+    text-decoration: #0f0033;
+    text-transform: capitalize;
+}
+
+.middle-block {
+    display: inline-block;
+    width: 25%;
+    margin: 25px;
+    padding: 25px;
+    border-color: black;
+    vertical-align: central;
+    float: left;
+}
+
+.bottom-block {
+    display: inline-block;
+    margin: 5px;
+    padding: 25px;
+    border-color: black;
+    vertical-align: central;
+    width: 20%;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+li {
+    font-size: 20px;
+}
+
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+    text-decoration: none;    
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+a:active {
+    color: black;
+    text-decoration: none;
+}
+
+

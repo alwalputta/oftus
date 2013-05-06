@@ -4,9 +4,13 @@
  */
 package com.myapp.util;
 
-import java.nio.ByteBuffer;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.UUID;
-import javax.persistence.Transient;
 
 /**
  *
@@ -14,29 +18,38 @@ import javax.persistence.Transient;
  */
 public class Utils {
 
-//    @Transient
-//    private String uuid;
-//    private byte[] id;
-//
-//    public String getId() {
-//        if (this.id == null) {
-//            UUID u = UUID.randomUUID();
-//            ByteBuffer bb = ByteBuffer.allocate(16);
-//
-//            bb.putLong(u.getMostSignificantBits()).putLong(u.getLeastSignificantBits());
-//            this.id = bb.array();
-//            this.uuid = u.toString();
-//        } else if (this.uuid == null) {
-//            ByteBuffer bb = ByteBuffer.wrap(this.id);
-//            UUID u = new UUID(bb.getLong(), bb.getLong());
-//            this.uuid = u.toString();
-//        }
-//        return this.uuid;
-//    }
-    
     public static String getUuid() {
         UUID uuid = UUID.randomUUID();
         return uuid.toString();
     }
-    
+
+    public static byte[] fileToByte(File file) throws IOException {
+        InputStream is = new FileInputStream(file);
+
+        long length = file.length();
+        if (length > Integer.MAX_VALUE) {
+            // File is too large
+        }
+        byte[] bytes = new byte[(int) length];
+
+        int offset = 0;
+        int numRead = 0;
+        while (offset < bytes.length
+                && (numRead = is.read(bytes, offset, bytes.length - offset)) >= 0) {
+            offset += numRead;
+        }
+
+        if (offset < bytes.length) {
+            throw new IOException("Could not completely read file " + file.getName());
+        }
+
+        is.close();
+        return bytes;
+    }
+
+    public static byte[] blobToByte(Blob blob) throws IOException, SQLException {
+        int blobLength = (int) blob.length();
+        byte[] imageInByte = blob.getBytes(1, blobLength);
+        return imageInByte;
+    }
 }

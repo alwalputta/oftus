@@ -39,7 +39,7 @@
             </s:if>
 
             <div class="register-login">
-                <div>Edit User Profile</div>
+                <div>Edit User Profile</div> <a href="ImageAction">Download</a>
                 <s:form action="update_profile">
 
                     <s:hidden name="userid" value="%{#session.user.userId}"/>

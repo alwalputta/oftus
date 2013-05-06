@@ -45,6 +45,7 @@ public class IndexAction extends ActionSupport {
     public void validate() {
         logger.debug("in the validate");
     }
+
     public String getActionName() {
         ActionContext context = ActionContext.getContext();
         return context.getName();
