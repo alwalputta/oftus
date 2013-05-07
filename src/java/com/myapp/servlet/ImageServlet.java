@@ -40,9 +40,11 @@ public class ImageServlet extends HttpServlet {
         try {
 //            ServletOutputStream sos = response.getOutputStream();
 //            response.reset();
+
             response.setContentType("image/jpg");
 
             HttpSession session = request.getSession();
+
             User user = (User) session.getAttribute("user");
             logger.debug("showPicture:" + user.getUserId());
 
@@ -61,16 +63,6 @@ public class ImageServlet extends HttpServlet {
             response.getOutputStream().flush();
             logger.debug("showPicture:" + document.getStatus());
 
-            /* TODO output your page here. You may use following sample code. */
-            /*            out.println("<html>");
-             out.println("<head>");
-             out.println("<title>Servlet ImageServlet</title>");
-             out.println("</head>");
-             out.println("<body>");
-             out.println("<h1>Servlet ImageServlet at " + request.getContextPath() + "</h1>");
-             out.println("</body>");
-             out.println("</html>");
-             */
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

@@ -4,14 +4,14 @@
         <div class="company-logo">
             <!--img id="logo" src="images/oftus2.jpg"/-->
             <img id="logo" src="images/oftus.gif"/>
-            OFTUS<sup>&reg;</sup>
+            <!--OFTUS<sup>&reg;</sup>-->
             <!--div class="company-logo-punchline">
                 Your One Link World.
             </div-->
         </div>
     </div>
     <div class="top-column-element-middle">
-        Buy Samsung TV Today!
+<!--        Buy Samsung TV Today!-->
     </div>
 
     <div class="top-column-element-right">

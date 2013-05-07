@@ -4,6 +4,7 @@
  */
 package com.myapp.action;
 
+import au.com.bytecode.opencsv.CSVReader;
 import com.myapp.admin.User;
 import com.myapp.main.Document;
 import com.myapp.main.DocumentDAO;
@@ -12,20 +13,16 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Blob;
-import java.util.Iterator;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.Hibernate;
 import sun.misc.BASE64Encoder;
-import org.apache.commons.codec.binary.Base64;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
 
 public class DocumentAction extends ActionSupport {
 
@@ -151,31 +148,14 @@ public class DocumentAction extends ActionSupport {
             logger.debug("importBookmarks:");
 
 
-            HSSFWorkbook workbook = new HSSFWorkbook(fi);
-            //Get first sheet from the workbook
-            HSSFSheet sheet = workbook.getSheetAt(0);
-            //Get iterator to all the rows in current sheet
-            Iterator<Row> rowIterator = sheet.iterator();
-
-            //Get iterator to all cells of current row
-            while (rowIterator.hasNext()) {
-                Row row = rowIterator.next();
-                Iterator<Cell> cellIterator = row.cellIterator();
-                while (cellIterator.hasNext()) {
-                    Cell cell = cellIterator.next();
-                    switch (cell.getCellType()) {
-                        case Cell.CELL_TYPE_BOOLEAN:
-                            logger.debug("importBookmarks:" + cell.getBooleanCellValue() + "\t\t");
-                            break;
-                        case Cell.CELL_TYPE_NUMERIC:
-                            logger.debug("importBookmarks:" + cell.getNumericCellValue() + "\t\t");
-                            break;
-                        case Cell.CELL_TYPE_STRING:
-                            logger.debug("importBookmarks:" + cell.getStringCellValue() + "\t\t");
-                            break;
-                    }
+            CSVReader csvReader = new CSVReader(new FileReader(getFile()));
+            String[] row = null;
+            while ((row = csvReader.readNext()) != null) {
+                for (int i=0; i<row.length; i++) {
+                logger.debug("AAA:" + i + ":" + row[i]);
                 }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
             addActionError(e.getMessage());
