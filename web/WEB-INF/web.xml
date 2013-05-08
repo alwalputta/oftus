@@ -3,7 +3,7 @@
     <display-name>myapp Project on Strust 2 and Glassfish 3.0.1</display-name>
     
     <welcome-file-list>
-        <welcome-file>/WEB-INF/results/welcome.html</welcome-file>
+        <welcome-file>html/welcome.html</welcome-file>
     </welcome-file-list>
 
     <servlet>
