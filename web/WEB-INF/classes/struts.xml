@@ -7,6 +7,7 @@
 
     <constant name="struts.devMode" value="true"/>
     <constant name="struts.action.excludePattern" value="/ImageServlet"/>
+    <constant name="struts.multipart.maxSize" value="1000000" />
 
     <package name="myapp" extends="struts-default" namespace="">
 
@@ -231,6 +232,11 @@
             <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
 
+        <action name="delete_bookmarks" class="com.myapp.action.BookmarkAction" method="deleteBookmarks">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
+        </action>
+
         <action name="move_bookmark" class="com.myapp.action.BookmarkAction" method="moveBookmark">
             <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
@@ -249,10 +255,8 @@
         <action name="upload_picture" class="com.myapp.action.DocumentAction" method="uploadPicture">
             <interceptor-ref name="exception"/>
             <interceptor-ref name="fileUpload">
-                <param name="maximumSize">10097152</param>
-                <param name="allowedTypes">
-                    image/png,image/gif,image/jpeg,image/pjpeg
-                </param>
+                <param name="maximumSize">1000000</param>
+                <param name="allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg</param>
             </interceptor-ref>
             <interceptor-ref name="defaultStack"></interceptor-ref>            
             <result name="success">/WEB-INF/results/secure/display_picture.jsp</result>

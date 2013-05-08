@@ -444,16 +444,13 @@ sup {
 
 .middle-row-element {
     border: 1px solid #0f0f0f;
-    margin-left: auto;
-    margin-right: auto;
-    border-right: 0px;
-    border-bottom: 0px;
     padding: 2px;
     border-radius: 5px;
     color: black;
     background: #aabbaa;
     height: 100%;
     position: relative;
+    text-align: left;
 }
 
 .middle-row-element:hover {
@@ -634,10 +631,9 @@ sup {
     display: block;
     text-align: center;
     width: 20%;
-    background: #6699aa;
+    background: wheat;
     text-decoration: none;
     border: 0px solid #20548E;
-    color: #EAFFED;
     white-space: nowrap;
     border-radius: 5px;
     color: black;
@@ -770,7 +766,7 @@ img.photo-box {
     width: 100%;
     float: none;
     display: block;
-    background:#E2EBED;
+    background: #E2EBED;
     padding: 5px;
     padding-right: 10px;
     margin: 0px;
@@ -782,7 +778,7 @@ img.photo-box {
     width: 100%;
     float: none;
     display: block;
-    background:#abdcff;
+    background: #abdcff;
     padding: 5px;
     padding-right: 10px;
     font-weight: bold;
@@ -794,7 +790,7 @@ img.photo-box {
 
 #menu li ul li a {
     width: 100%;
-    background: #9F1B1B;
+    background: #20548E;
 }
 
 #menu span {
@@ -871,7 +867,7 @@ input#search-button {
     float: right;
 }
 
-.middle-column-element-heading {
+.middle-column-element-text {
     font: 16px Tahoma;
     text-transform: fullsize-kana;
     margin: 5px;
@@ -900,6 +896,7 @@ input#search-button {
     display: inline;
     position: relative;
     float: none;
+    padding-left: 5px;
 }
 
 .middle-column-element-edit-icons {
@@ -920,7 +917,6 @@ input#search-button {
     position: fixed;
     top: 200px;
     left: 200px;
-    width: 34px;
     height: 18px;
     border: 1px #007182 solid;
     border-radius: 5px;
@@ -934,6 +930,10 @@ input#search-button {
 
 .middle-row-element-edit-icon, .middle-row-element-delete-icon {
     float: left;
+}
+
+.middle-row-element-delete-icons {
+    
 }
 
 .bottom-row-item span {

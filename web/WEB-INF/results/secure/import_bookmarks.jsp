@@ -31,7 +31,7 @@
 
             <div class="register-login">
                 <div>Import Bookmarks....</div>
-                Download Template File - <s:a href="template/export_bookmarks.xlsx">Template File</s:a>
+                Download Bookmarks Import Template - <s:a href="template/export_bookmarks.csv">Template File</s:a>
                 <s:form action="import_bookmarks" method="post" enctype="multipart/form-data" >
                     <s:file name="file" label="Bookmarks Excel File:" />
                     <s:submit />

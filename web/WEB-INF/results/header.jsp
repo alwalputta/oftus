@@ -53,7 +53,7 @@
             </li>
             <li><a href="logout">Logout</a>
                 <ul>
-                    <li><a href="logout">LogouT</a></li>
+                    <li><a href="logout">Logout me</a></li>
                 </ul>
             </li>
         </ul>

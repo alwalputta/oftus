@@ -30,7 +30,7 @@
                 <s:iterator value="%{#session.user.userCategories}" id="category">
                     <li>
                         <div class="middle-column-element" id="<s:property value="#category.categoryId"/>">
-                            <div class="middle-column-element-heading">
+                            <div class="middle-column-element-text">
                                 <s:property value="#category.categoryName"/>
                             </div>
                             <div class="middle-column-element-edit-icons">
@@ -51,7 +51,8 @@
                                 <s:iterator value="#category.bookmarks" id="bookmark">
                                     <li>
                                         <div class="middle-row-element" id="<s:property value="#bookmark.bookmarkId"/>">
-                                            <img class="favicon" src="images/favicon.ico"/>
+                                            <img class="favicon" src="https://plus.google.com/_/favicon?domain=<s:property value="#bookmark.hiperLink"/>"></img>
+                                            <!--img class="favicon" src="images/favicon.ico"/-->
                                             <div class="middle-row-element-text">
                                                 <s:property value="#bookmark.bookmarkName"/>
                                             </div>
@@ -70,7 +71,7 @@
                                                 <a href="<s:property value="#deleteBookmark"/>">
                                                     <img class="ui-icon ui-icon-trash middle-row-element-delete-icon"/>
                                                 </a>
-
+                                                <img class="ui-icon ui-icon-circle-close middle-row-element-bulk-delete-icon"/>
                                             </div>
                                         </div>
                                     </li>

@@ -6,6 +6,9 @@ package com.myapp.action;
 
 import au.com.bytecode.opencsv.CSVReader;
 import com.myapp.admin.User;
+import com.myapp.admin.UserDAO;
+import com.myapp.main.Bookmark;
+import com.myapp.main.Category;
 import com.myapp.main.Document;
 import com.myapp.main.DocumentDAO;
 import com.myapp.util.Utils;
@@ -16,6 +19,9 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Blob;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.commons.codec.binary.Base64;
@@ -121,13 +127,14 @@ public class DocumentAction extends ActionSupport {
         logger.debug("importBookmarks!");
         String returnVal = "success";
         Blob blob;
+        Set<Category> userCategories;
+        Set<Bookmark> bookmarks = new LinkedHashSet<Bookmark>(0);
 
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
         Document document = new Document();
-
         document.setFileType("import_bookmarks");
         document.setFileName(getFileFileName());
         document.setContentType(getFileContentType());
@@ -136,6 +143,7 @@ public class DocumentAction extends ActionSupport {
 
         logger.debug("importBookmarks fileName:" + getFileFileName());
         logger.debug("importBookmarks contentType:" + getFileContentType());
+
         try {
             FileInputStream fi = new FileInputStream(getFile());
             blob = Hibernate.createBlob(fi);
@@ -147,24 +155,51 @@ public class DocumentAction extends ActionSupport {
 
             logger.debug("importBookmarks:");
 
+            userCategories = user.getUserCategories();
+            logger.debug("userCategories size:" + userCategories.size());
 
             CSVReader csvReader = new CSVReader(new FileReader(getFile()));
             String[] row = null;
+            int i = 0;
+            Category c = new Category();
             while ((row = csvReader.readNext()) != null) {
-                for (int i=0; i<row.length; i++) {
-                logger.debug("AAA:" + i + ":" + row[i]);
+//                for (int i = 0; i < row.length; i++) {
+//                    logger.debug("AAA:" + i + ":" + row[i]);
+//            }
+                i++;
+                if (i == 1) {
+                    c.setCategoryName("IMPORTS");
+                    c.setDescription("Bookmark Imports");
+                    c.setStatus("A");
+                    i++;
+                    continue;
+                } else {
+                    Bookmark bookmark = new Bookmark();
+                    bookmark.setBookmarkName(row[0]);
+                    bookmark.setHiperLink(row[1]);
+                    bookmark.setDescription(row[2]);
+                    bookmarks.add(bookmark);
                 }
             }
+            c.setBookmarks(bookmarks);
+            if (i > 1) {
+                userCategories.add(c);
+            }
+
+            user.setUserCategories(userCategories);
+            UserDAO userDAO = new UserDAO();
+            userDAO.updateUser(user);
 
         } catch (Exception e) {
             e.printStackTrace();
             addActionError(e.getMessage());
         }
+
         logger.debug("importBookmarks:");
         return returnVal;
     }
+//simple validation
 
-    //simple validation
     @Override
     public void validate() {
         logger.debug("in the validate of Document.validate()");
