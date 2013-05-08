@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     //Message while the page is still being loaded.
     //comented temporarily
     show_page_loading_message();
@@ -93,7 +92,6 @@ $(document).click(function(){
     menu_close();
     //Fades in the page when clicked on the document/page
     // $('.mask').fadeIn(300);
-
     // Commented for time being, uncomment as needed
     $('.mask').remove();
 });
@@ -113,7 +111,6 @@ Input.focus(function() {
 $('.middle-column-element-text').mouseenter(function(){
     var element = $(this).parent('.middle-column-element');
     var position = element.position();
-
     var top = parseInt($('.dockingBarTop').css('height').replace('px',''));
     var left = position.left;
     var width = parseInt(element.css('width').replace('px',''));
@@ -132,7 +129,6 @@ $('.middle-column-element-text').mouseout(function(){
 $('.middle-row-element-text').mouseenter(function(){
     var element = $(this).parent('.middle-row-element');
     var position = element.position();
-
     var top = position.top + parseInt($('.dockingBarTop').css('height').replace('px',''));
     var left = element.closest('.middle-column-element').position().left; 
     var width = parseInt(element.css('width').replace('px',''));
@@ -167,12 +163,10 @@ $('.middle-row-element-text').click(function(){
     bookmark_id = element.parents('.middle-row-element').attr('id');
     // alert ('bookmark_id:' + bookmark_id);
     // alert ('url:' + $('#' + bookmark_id).data("bookmark").hiperLink);
- 
     targetUrl = 'open_bookmark?bookmarkId='+bookmark_id;
     // alert (targetUrl);
     // $.ajax(targetUrl);
     window.location = targetUrl;
-
 // window.location=$('#' + bookmark_id).data("bookmark").hiperLink;
 });
 
@@ -183,26 +177,26 @@ $('.favicon').click(function(){
 });
 
 $('.middle-row-element-bulk-delete-icon').click(function(){
-//    alert ('middle-row-element-bulk-delete-icon');
+    //    alert ('middle-row-element-bulk-delete-icon');
     var bookmarks = "";
     var targetUrl = "delete_bookmarks?bookmarks=";
     if ($('.middle-row-element-selected').length > 0) {
         $('.middle-row-element-selected').each(function(){
             var element = $(this);
-//            alert ('CCCCCC3000:'+element.attr('id'));
+            //            alert ('CCCCCC3000:'+element.attr('id'));
             bookmarks = bookmarks + element.attr('id') + ":";
             $(this).hide();
         });
         targetUrl = targetUrl + bookmarks;
-//        alert('AAAA' + targetUrl);
+        //        alert('AAAA' + targetUrl);
         $.ajax(targetUrl);
     }
 });
 
 $('.middle-column-element-new-icon').click(function(){
     var targetUrl = "add_category";
-//        alert('AAAA' + targetUrl);
-        window.location = targetUrl;
+    //        alert('AAAA' + targetUrl);
+    window.location = targetUrl;
 });
 
 function set_sortable(){
@@ -292,7 +286,7 @@ function set_sortable(){
                     move_bookmark(element.attr('id'), category_to);
                     // update_bookmark_order($(this));
                     $(this).removeClass('middle-row-element-selected');
-                //                    $(this).addClass('middle-row-element-dropped');
+                    // $(this).addClass('middle-row-element-dropped');
                 });
             }
             update_bookmark_order($(this));
@@ -314,9 +308,7 @@ function update_column_order(){
 function update_bookmark_order(element){
     bookmark_order = "";
     targetUrl = "update_bookmark_order?bookmarkOrder=";
-
     parent = element.parents('.middle-column-element');
- 
     parent.find('.middle-row-element').each(function(){
         bookmark_order = bookmark_order + $(this).attr('id') + ':';
     });
@@ -330,7 +322,7 @@ function move_bookmark(element_id, category_to) {
     bookmark_order = "";
     targetUrl = "move_bookmark?bookmarkId=" + element_id;
     targetUrl = targetUrl + "&categoryId=" + category_to;
- 
+
     //alert ('URL:' + targetUrl);
     $.ajax(targetUrl);
 }
@@ -338,7 +330,6 @@ function move_bookmark(element_id, category_to) {
 function search_and_hide (search_text){
     // var search_text = $('#search-input').val();
     var rg = new RegExp(search_text, 'i');
- 
     $('.middle-row-element-text').each(function() {
         if ((search_text).length > 0) {
             $(this).removeHighlight().highlight(search_text);
