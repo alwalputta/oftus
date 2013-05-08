@@ -22,20 +22,10 @@ html
 {
     margin:0px;
     padding:0px;
-    border: 1px black dotted;
+    border: 1px black solid;
 }
 
 body {
-    width:100%;
-    margin:0px;
-    padding:0px;
-    border: 0px dashed #007182;
-    height: 100%;
-    text-align: left;
-    /*    background: url(../images/background.JPG) no-repeat;*/
-}
-
-.main {
     position: fixed;
     background: teal;
     color: white;
@@ -48,6 +38,8 @@ body {
     font: 15px tahoma;
     float: right;
     overflow: auto;
+    border: 0px black solid;
+    /*    background: url(../images/background.JPG) no-repeat;*/
 }
 
 .header {

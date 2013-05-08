@@ -52,7 +52,6 @@
                                     <li>
                                         <div class="middle-row-element" id="<s:property value="#bookmark.bookmarkId"/>">
                                             <img class="favicon" src="https://plus.google.com/_/favicon?domain=<s:property value="#bookmark.hiperLink"/>"></img>
-                                            <!--img class="favicon" src="images/favicon.ico"/-->
                                             <div class="middle-row-element-text">
                                                 <s:property value="#bookmark.bookmarkName"/>
                                             </div>
