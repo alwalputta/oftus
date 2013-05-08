@@ -72,6 +72,9 @@
                                                     <img class="ui-icon ui-icon-trash middle-row-element-delete-icon"/>
                                                 </a>
                                                 <img class="ui-icon ui-icon-scissors middle-row-element-bulk-delete-icon"/>
+                                                <a href="add_bookmark?categoryId=<s:property value="#category.categoryId"/>">
+                                                    <img class="ui-icon ui-icon-plusthick middle-row-element-new-icon"/>
+                                                </a>
                                             </div>
                                         </div>
                                     </li>
@@ -79,10 +82,9 @@
                             </ul>
 
                             <div class="middle-row-new-element">
-                                <span><a href="add_bookmark?categoryId=<s:property value="#category.categoryId"/>">
-                                        + Add Bookmark +
-                                    </a>
-                                </span>
+                                <a href="add_bookmark?categoryId=<s:property value="#category.categoryId"/>">
+                                    <img class="ui-icon ui-icon-plusthick"/>+ Add Bookmark +<img class="ui-icon ui-icon-plusthick"/>
+                                </a>
                             </div>
                             <div class="middle-row-bottom-spacer"></div>
                         </div>

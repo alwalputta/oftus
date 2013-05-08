@@ -35,7 +35,7 @@ body {
     padding: 0px;
     vertical-align: middle;
     text-align: center;
-    font: 15px tahoma;
+    font: 25px tahoma;
     float: right;
     overflow: auto;
     border: 0px black solid;
@@ -50,25 +50,26 @@ body {
     color: black;
     width: 100%;
     margin: 0px;
-    padding: 10px;
+    padding: 0px;
     vertical-align: middle;
     text-align: center;
-    font: 15px tahoma;
+    font: 20px tahoma;
     
 }
 
-.body {
+.main {
     display: block;
     float: left;
     position: relative;
-    background: skyblue;
+    background: darkseagreen;
     color: white;
     width: 100%;
     margin: 0px;
-    padding: 10px;
+    padding: 0px;
     margin-top: 20px;
     vertical-align: middle;
     text-align: left;
+    font: 40px tahoma;
 }
 
 .footer {
@@ -79,12 +80,12 @@ body {
     color: white;
     width: 100%;
     margin: 0px;
-    margin-top: 10px;
+    margin-top: 40px;
     padding: 10px;
     border: 1px solid #20548E;
     vertical-align: middle;
     text-align: center;
-    font: 15px tahoma;
+    font: 20px tahoma;
 }
 
 #logo {
@@ -102,7 +103,7 @@ body {
     margin: 10px;
     padding: 5px;
     border-radius: 5px;
-    background-color: #aabbaa;
+    background-color: cadetblue;
     text-align: center;
     text-decoration: #0f0033;
     text-transform: capitalize;
@@ -128,11 +129,11 @@ body {
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 35px;
 }
 
 li {
-    font-size: 20px;
+    font-size: 30px;
 }
 
 a:link {

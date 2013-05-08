@@ -17,8 +17,8 @@
     <body>
         <%@include file="/WEB-INF/results/header.jsp"%>
 
-        <div class="new-category-modal">
-            <div class="new-category">
+        <div class="mainTable">
+            <div class="login-login">
                 <div>New Category</div>
 
                 <s:form action="save_category">
@@ -32,6 +32,11 @@
                     </tr>
                 </s:form>
                 <s:a href="#new_category_faq" class="new-element-links">Add/Edit Category FAQ</s:a>
+                </div>
+                <div class="login-register">
+                    <br>
+                        Don't have an account yet? <s:a href="register_form">Create one</s:a>
+                        <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
                 </div>
             </div>
         <%@include file="/WEB-INF/results/footer.jsp"%>

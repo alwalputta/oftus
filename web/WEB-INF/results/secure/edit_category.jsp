@@ -28,12 +28,12 @@
                     <s:textarea name="description" value="%{#session.category.description}" rows="5" cols="60" key="new.category-description-label"/>
                     <tr>
                         <td colspan="2" align="center">
-                            <s:submit align="center" key="new.submit-category-label" theme="simple"/>
-                            <s:reset align="center" key="new.reset-label" theme="simple"/>
+                            <s:submit align="center" key="new.submit-category-label" theme="simple" cssClass="form-button"/>
+                            <s:reset align="center" key="new.reset-label" theme="simple" cssClass="form-button"/>
                             <s:url id="deleteCategory" action="delete_category_mainpage">
                                 <s:param name="categoryId" value="%{#session.category.categoryId}"></s:param>
                             </s:url>
-                            <a href="<s:property value="#deleteCategory"/>">Delete Category</a>
+                            <a href="<s:property value="#deleteCategory"/>" class="form-button">Delete Category</a>
                         </td>
                     </tr>
                 </s:form>

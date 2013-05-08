@@ -112,9 +112,9 @@ body {
     font: 15px tahoma;
 }
 
+
+/**
 .register-modal {
-    /*    display: none;*/
-    /*    position: fixed;*/
     background: #aabbaa;
     color: white;
     width: 90%;
@@ -163,7 +163,6 @@ body {
 }
 
 .forgot-password-modal {
-    /*   display: none;*/
     position: fixed;
     background: teal;
     color: white;
@@ -196,6 +195,7 @@ body {
     text-align: left;
     font: 15px tahoma;
 }
+*/
 
 .login-login input, .register-register input, .forgot-password input, .new-element input {
     border-radius: 5px;
@@ -425,7 +425,7 @@ sup {
     border-radius: 10px;
     text-align: center;
     color: orange;
-    background: lightblue;
+    background: #007182;
     height: 100%;
     width: 100%; /*change this to fit to the page*/
 }
@@ -513,6 +513,7 @@ sup {
     font: 14px tahoma;
 }
 
+/*
 .new-element-modal {
     display: block;
     position: fixed;
@@ -617,6 +618,7 @@ sup {
     text-align: left;
     font: 15px tahoma;
 }
+*/
 
 .middle-row-bottom-spacer {
     width: 100%;
@@ -758,7 +760,7 @@ img.photo-box {
     border-top: 1px solid white;
     text-align: left;
     border-radius: 5px;
-    border: 2px solid cornflowerblue;
+    border: 2px solid #447799;
     background-color: blue;
 }
 
@@ -766,7 +768,7 @@ img.photo-box {
     width: 100%;
     float: none;
     display: block;
-    background: #E2EBED;
+    background: #9ecbe2;
     padding: 5px;
     padding-right: 10px;
     margin: 0px;
@@ -790,7 +792,7 @@ img.photo-box {
 
 #menu li ul li a {
     width: 100%;
-    background: #20548E;
+    background: #447799;
 }
 
 #menu span {
@@ -904,11 +906,10 @@ input#search-button {
     position: fixed;
     top: 200px;
     left: 200px;
-    width: 34px;
-    height: 18px;
+    height: 20px;
     border: 1px #007182 solid;
     border-radius: 5px;
-    background-color: yellowgreen;
+    background-color: aliceblue;
     z-index: 200;
 }
 
@@ -917,23 +918,19 @@ input#search-button {
     position: fixed;
     top: 200px;
     left: 200px;
-    height: 18px;
+    height: 20px;
     border: 1px #007182 solid;
     border-radius: 5px;
     background-color: yellow;
     z-index: 200;
 }
 
-.middle-column-element-edit-icon, .middle-column-element-delete-icon {
+.middle-column-element-edit-icon, .middle-column-element-delete-icon, .middle-column-element-new-icon {
     float: left;
 }
 
-.middle-row-element-edit-icon, .middle-row-element-delete-icon {
+.middle-row-element-edit-icon, .middle-row-element-delete-icon, .middle-row-element-bulk-delete-icon, .middle-row-element-new-icon {
     float: left;
-}
-
-.middle-row-element-delete-icons {
-    
 }
 
 .bottom-row-item span {
@@ -1098,3 +1095,9 @@ tbody th.end{
 }
 /* table CSS ends */
 
+.form-button {
+    background: whitesmoke;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}

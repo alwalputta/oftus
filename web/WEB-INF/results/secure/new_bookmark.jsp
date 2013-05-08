@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
     <head>
 
-<%@include file="/WEB-INF/results/imports.jsp"%>
+        <%@include file="/WEB-INF/results/imports.jsp"%>
 
         <script type="text/javascript">
         </script>
@@ -16,8 +16,8 @@
     <body>
         <%@include file="/WEB-INF/results/header.jsp"%>
 
-        <div class="new-element-modal">
-            <div class="new-element">
+        <div class="mainTable">
+            <div class="login-login">
                 <div>Add New Bookmark</div>
 
                 <s:form action="save_bookmark">
@@ -34,8 +34,13 @@
                 </s:form>
                 <a href="new_bookmark_faq" class="new-element-links">Add Bookmark FAQ</a>
             </div>
+            <div class="login-register">
+                <br>
+                    Don't have an account yet? <s:a href="register_form">Create one</s:a>
+                    <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+            </div>
         </div>
-<%@include file="/WEB-INF/results/footer.jsp"%>
+        <%@include file="/WEB-INF/results/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
 
     </body>

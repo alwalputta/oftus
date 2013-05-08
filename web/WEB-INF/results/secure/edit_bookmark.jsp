@@ -15,8 +15,8 @@
     <body>
         <%@include file="/WEB-INF/results/header.jsp"%>
 
-        <div class="new-element-modal">
-            <div class="new-element">
+        <div class="mainTable">
+            <div class="login-login">
                 <div>Edit Bookmark</div>
                 <s:form action="update_bookmark">
                     <s:hidden name="bookmarkId" value="%{#session.bookmark.bookmarkId}"/>
@@ -31,14 +31,21 @@
                             <s:url id="deleteBookmark" action="delete_bookmark_mainpage">
                                 <s:param name="bookmarkId" value="%{#session.bookmark.bookmarkId}"></s:param>
                             </s:url>
-                            <a href="<s:property value="#deleteBookmark"/>">Delete Bookmark</a>
+                            <a href="<s:property value="#deleteBookmark"/>" class="form-button">Delete Bookmark</a>
                         </td>
                     </tr>
                 </s:form>
                 <s:a href="new_bookmark_faq" class="new-element-links">Edit Bookmark FAQ</s:a>
                 </div>
             </div>
-        <%@include file="/WEB-INF/results/footer.jsp"%>
+            <div class="login-register">
+                <br>
+                    <!--
+                    Don't have an account yet? <s:a href="register_form?debug=xml">Create one</s:a>
+                    -->
+                    Don't have an account yet? <s:a href="register_form">Create one</s:a>
+                    <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+            </div>        <%@include file="/WEB-INF/results/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
 
     </body>
