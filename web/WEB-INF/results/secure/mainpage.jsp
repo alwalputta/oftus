@@ -46,6 +46,7 @@
                                 <a href="<s:property value="#deleteCategory"/>">
                                     <img class="ui-icon ui-icon-trash middle-column-element-delete-icon"/>
                                 </a>
+                                <img class="ui-icon ui-icon-plusthick middle-column-element-new-icon"/>
                             </div>
                             <ul id="middle-row-sortable" class="connectedSortable">
                                 <s:iterator value="#category.bookmarks" id="bookmark">
@@ -70,7 +71,7 @@
                                                 <a href="<s:property value="#deleteBookmark"/>">
                                                     <img class="ui-icon ui-icon-trash middle-row-element-delete-icon"/>
                                                 </a>
-                                                <img class="ui-icon ui-icon-circle-close middle-row-element-bulk-delete-icon"/>
+                                                <img class="ui-icon ui-icon-scissors middle-row-element-bulk-delete-icon"/>
                                             </div>
                                         </div>
                                     </li>
