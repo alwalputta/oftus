@@ -207,14 +207,14 @@ $('.middle-column-element-new-icon').click(function(){
 
 //Load images after the page load is complete
 $(window).load(function () {
-    $.each(document.images, function(){
+    $.each(document.images, function() {
         //        alert ('image');
         var this_image = this;
-        var src = $(this_image).attr('src') || '' ;
+        var src = $(this_image).attr('src') || '';
         if(!src.length > 0){
             //this_image.src = options.loading; // show loading
-            var lsrc = $(this_image).attr('lsrc') || '' ;
-            if(lsrc.length > 0){
+            var lsrc = $(this_image).attr('lsrc') || '';
+            if(lsrc.length > 0) {
                 var img = new Image();
                 img.src = lsrc;
                 $(img).load(function() {
