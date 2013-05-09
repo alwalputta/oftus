@@ -330,8 +330,8 @@ DROP TABLE IF EXISTS UserDocument CASCADE;
 CREATE TABLE UserDocument (
   document_id int(11) NOT NULL,
   user_id int(11) NOT NULL,
-  file_type VARCHAR(10) NOT NULL,
-  file_name varchar(200) NOT NULL,
+  file_type VARCHAR(100) NOT NULL,
+  file_name varchar(500) NOT NULL,
   content blob NOT NULL,
   content_type varchar(255) NOT NULL,
   status VARCHAR(10) DEFAULT 'A',

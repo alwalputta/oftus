@@ -6,11 +6,13 @@ package com.myapp.action;
 
 import com.myapp.admin.User;
 import com.myapp.admin.UserDAO;
+import com.myapp.main.Bookmark;
 import com.myapp.main.Category;
 import com.myapp.main.CategoryDAO;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.StringTokenizer;
 import javax.servlet.http.HttpServletRequest;
@@ -68,11 +70,18 @@ public class CategoryAction extends ActionSupport {
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
 
+        Bookmark bookmark = new Bookmark("OFTUS", "OFTUS bookmark", "http://www.oftus.com/");
+        bookmark.setStatus("A");
+        Set<Bookmark> userBookmarks = new LinkedHashSet<Bookmark>();
+        userBookmarks.add(bookmark);
+        
         Category category = new Category();
         category.setCategoryName(getCategoryName());
         category.setDescription(getDescription());
         category.setStatus("A");
 
+        category.setBookmarks(userBookmarks);
+        
         userCategories.add(category);
 
         user.setUserCategories(userCategories);
