@@ -48,7 +48,12 @@ public class LoginAction extends ActionSupport {
 
     //business logic
 //    @Override
-    public String logIn() {
+    public String loginForm() {
+        logger.debug("LoginAction execute!");
+        return SUCCESS;
+    }
+
+    public String login() {
         logger.debug("LoginAction execute!");
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
@@ -89,8 +94,9 @@ public class LoginAction extends ActionSupport {
     //simple validation
     @Override
     public void validate() {
-        if (getActionName().equals("login")) {
-
+        if (getActionName().equals("login_form")) {
+            logger.debug("login_form");
+        } else if (getActionName().equals("login")) {
             logger.debug("username:" + getUsername());
             logger.debug("password:" + getPassword());
 

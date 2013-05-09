@@ -36,7 +36,6 @@ CREATE TABLE Gender (
   PRIMARY KEY (gender_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 DROP TABLE IF EXISTS State;
 CREATE TABLE State (
   state_id int(20) DEFAULT NULL,
@@ -64,7 +63,6 @@ CREATE TABLE User (
   PRIMARY KEY (user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 DROP TABLE IF EXISTS Address CASCADE;
 CREATE TABLE Address (
   address_id int(20) NOT NULL,
@@ -80,7 +78,6 @@ CREATE TABLE Address (
   PRIMARY KEY (address_id)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
-
 DROP TABLE IF EXISTS UserAddress CASCADE;
 CREATE TABLE UserAddress (
   user_id int(20) NOT NULL,
@@ -92,7 +89,6 @@ CREATE TABLE UserAddress (
   FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE,
   FOREIGN KEY (address_id) REFERENCES Address(address_id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
-
 
 DROP TABLE IF EXISTS Phone CASCADE;
 CREATE TABLE Phone (
@@ -108,7 +104,6 @@ CREATE TABLE Phone (
   PRIMARY KEY (phone_id)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
-
 DROP TABLE IF EXISTS UserPhone CASCADE;
 CREATE TABLE UserPhone (
   phone_id int(20) NOT NULL,
@@ -120,7 +115,6 @@ CREATE TABLE UserPhone (
   FOREIGN KEY (phone_id) REFERENCES User(user_id) ON DELETE CASCADE,
   FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
-
 
 DROP TABLE IF EXISTS Email CASCADE;
 CREATE TABLE Email (
@@ -136,7 +130,6 @@ CREATE TABLE Email (
   PRIMARY KEY (email_id)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
-
 DROP TABLE IF EXISTS UserEmail CASCADE;
 CREATE TABLE UserEmail (
   email_id int(20) NOT NULL,
@@ -148,7 +141,6 @@ CREATE TABLE UserEmail (
   FOREIGN KEY (email_id) REFERENCES Email(email_id) ON DELETE CASCADE,
   FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
-
 
 DROP TABLE IF EXISTS Credential CASCADE;
 CREATE TABLE Credential (
@@ -162,7 +154,6 @@ CREATE TABLE Credential (
   PRIMARY KEY (credential_id)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
-
 DROP TABLE IF EXISTS UserCredential CASCADE;
 CREATE TABLE UserCredential (
   credential_id int(20) NOT NULL,
@@ -175,7 +166,6 @@ CREATE TABLE UserCredential (
   FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
-
 DROP TABLE IF EXISTS Role CASCADE;
 CREATE TABLE Role (
   role_id int(20) NOT NULL,
@@ -186,7 +176,6 @@ CREATE TABLE Role (
   last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (role_id)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
-
 
 DROP TABLE IF EXISTS UserRole CASCADE;
 CREATE TABLE UserRole (
@@ -199,7 +188,6 @@ CREATE TABLE UserRole (
   FOREIGN KEY (role_id) REFERENCES Role(role_id) ON DELETE CASCADE,
   FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
-
 
 DROP TABLE IF EXISTS UserLoginLog CASCADE;
 CREATE TABLE UserLoginLog (
@@ -216,7 +204,6 @@ CREATE TABLE UserLoginLog (
   FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
-
 DROP TABLE IF EXISTS FailedLoginLog CASCADE;
 CREATE TABLE FailedLoginLog (
   failed_login_id int(20) NOT NULL,
@@ -232,7 +219,6 @@ CREATE TABLE FailedLoginLog (
   PRIMARY KEY (failed_login_id)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
-
 DROP TABLE IF EXISTS UserClickLog CASCADE;
 CREATE TABLE UserClickLog (
   click_id int(11) NOT NULL,
@@ -240,9 +226,7 @@ CREATE TABLE UserClickLog (
   action_name varchar(255) DEFAULT NULL,
   create_date varchar(255) DEFAULT NULL,
   PRIMARY KEY (click_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1$$
-
-
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS Category CASCADE;
 CREATE TABLE Category (
@@ -255,7 +239,6 @@ CREATE TABLE Category (
   last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (CATEGORY_ID)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
-
 
 DROP TABLE IF EXISTS UserCategory CASCADE;
 CREATE TABLE UserCategory (
@@ -270,7 +253,6 @@ CREATE TABLE UserCategory (
   FOREIGN KEY (category_id) REFERENCES Category(category_id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
-
 DROP TABLE IF EXISTS Bookmark CASCADE;
 CREATE TABLE Bookmark (
   bookmark_id int(20) NOT NULL,
@@ -283,7 +265,6 @@ CREATE TABLE Bookmark (
   last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (bookmark_id)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
-
 
 DROP TABLE IF EXISTS CategoryBookmark CASCADE;
 CREATE TABLE CategoryBookmark (
@@ -298,7 +279,6 @@ CREATE TABLE CategoryBookmark (
   FOREIGN KEY (bookmark_id) REFERENCES Bookmark(bookmark_id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
-
 DROP TABLE IF EXISTS BookmarkClick CASCADE;
 CREATE TABLE BookmarkClick (
   bookmark_click_id int(20) NOT NULL,
@@ -309,7 +289,6 @@ CREATE TABLE BookmarkClick (
   PRIMARY KEY (bookmark_click_id),
   FOREIGN KEY (bookmark_id) REFERENCES Bookmark(bookmark_id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
-
 
 DROP TABLE IF EXISTS UserReferral CASCADE;
 CREATE TABLE UserReferral (
@@ -323,7 +302,6 @@ CREATE TABLE UserReferral (
   FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
-
 DROP TABLE IF EXISTS Preference CASCADE;
 CREATE TABLE Preference (
   preference_id int(20) NOT NULL,
@@ -336,7 +314,6 @@ CREATE TABLE Preference (
   PRIMARY KEY (preference_id)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
-
 DROP TABLE IF EXISTS UserPreference CASCADE;
 CREATE TABLE UserPreference (
   preference_id int(20) NOT NULL,
@@ -348,7 +325,6 @@ CREATE TABLE UserPreference (
   FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE,
   FOREIGN KEY (preference_id) REFERENCES Preference(preference_id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
-
 
 DROP TABLE IF EXISTS UserDocument CASCADE;
 CREATE TABLE UserDocument (
@@ -366,5 +342,9 @@ CREATE TABLE UserDocument (
   FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
+insert into gender (gender_id, gender_code, gender_name) values (1, 'M', 'Male');
 
+insert into state (state_id, state_code, state_name) values (1, 'CA', 'California');
+
+commit;
 

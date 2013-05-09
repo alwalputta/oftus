@@ -81,10 +81,10 @@
 
                 </s:form>
                 <s:a href="register_faq">Register FAQ</s:a>
-                </div>
+            </div>
 
-                <div class="login-login">
-                    <img class ="photo-box" src="images/user.jpg" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
+            <div class="login-login">
+                <img class ="photo-box" src="<s:url action='ImageServlet'/>" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
                 <br></br>
                 <br></br>
                 <br></br>

@@ -95,12 +95,12 @@
             <result>/WEB-INF/results/user_help.html</result>
         </action>
 
-        <action name="login_form" class="com.myapp.action.IndexAction" method="execute">
-            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
-            <result name="input">/WEB-INF/results/login.jsp</result>
+        <action name="login_form" class="com.myapp.action.LoginAction" method="loginForm">
+            <result name="success">/WEB-INF/results/login.jsp</result>
+             <result name="input">/WEB-INF/results/login.jsp</result>
         </action>
-        
-        <action name="login" class="com.myapp.action.LoginAction" method="logIn">
+
+        <action name="login" class="com.myapp.action.LoginAction" method="login">
             <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/login.jsp</result>
         </action>
@@ -259,7 +259,7 @@
                 <param name="allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg</param>
             </interceptor-ref>
             <interceptor-ref name="defaultStack"></interceptor-ref>            
-            <result name="success">/WEB-INF/results/secure/display_picture.jsp</result>
+            <result name="success">/WEB-INF/results/secure/edit_picture.jsp</result>
             <result name="input">/WEB-INF/results/secure/edit_profile.jsp</result>
         </action>
 
