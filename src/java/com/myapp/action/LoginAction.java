@@ -7,8 +7,9 @@ package com.myapp.action;
 import com.myapp.admin.Credential;
 import com.myapp.admin.CredentialDAO;
 import com.myapp.admin.User;
-import com.myapp.main.Bookmark;
 import com.myapp.main.Category;
+import com.myapp.util.LoginLog;
+import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Iterator;
@@ -26,6 +27,7 @@ import org.apache.shiro.config.ConfigurationException;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.util.ByteSource;
 import org.apache.shiro.util.Factory;
 import org.apache.struts2.ServletActionContext;
 
@@ -48,6 +50,8 @@ public class LoginAction extends ActionSupport {
 //    @Override
     public String logIn() {
         logger.debug("LoginAction execute!");
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
 
         String returnVal = "success";
 
@@ -62,28 +66,23 @@ public class LoginAction extends ActionSupport {
         logger.debug("before state DAO1:" + getUsername());
         logger.debug("execute state DAO2:" + user.getFirstName());
 
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
+        LoginLog loginLog = new LoginLog();
+        loginLog.setUserId(user.getUserId());
+        loginLog.setBrowser(SUCCESS);
+        loginLog.setIpAddress(request.getLocalAddr());
+        loginLog.setMachineName(request.getRemoteHost());
+        loginLog.setTimeZone(request.getLocale() + "");
+        loginLog.setSessionId(session.getId());
+
+        Utils.recordLoginLog(loginLog);
+        session.setAttribute("loginLog", loginLog);
         session.setAttribute("user", user);
 
-        logger.debug("111111111111");
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
 
-//        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
-//            logger.debug("222222222222");
-//            Category c = (Category) iterator.next();
-//            logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName() + ":"
-//                    + c.getDescription());
-//            Set<Bookmark> bookmarks = c.getBookmarks();
-//
-//            for (Iterator i = bookmarks.iterator(); i.hasNext();) {
-//                Bookmark b = (Bookmark) i.next();
-//                logger.debug("bookmarkId value:" + b.getBookmarkId() + ":" + b.getBookmarkName() + ":"
-//                        + b.getHiperLink() + ":" + b.getDescription());
-//            }
-//        }
-        logger.debug("end of LoginAction execute.");
+        Utils.recordPageClick(user.getUserId(), getActionName());
+
         return returnVal;
     }
 

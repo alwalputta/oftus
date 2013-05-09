@@ -4,7 +4,7 @@
     <session-factory>
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/app</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/app1</property>
         <property name="connection.username">root</property>
         <property name="connection.password"/>
         
@@ -43,6 +43,7 @@
         <mapping resource="com/myapp/main/BookmarkClick.hbm.xml"/>
         <mapping resource="com/myapp/main/Document.hbm.xml"/>
         <mapping resource="com/myapp/util/PageClick.hbm.xml"/>
+        <mapping resource="com/myapp/util/LoginLog.hbm.xml"/>
         <mapping resource="com/myapp/util/Referral.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

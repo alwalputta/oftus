@@ -85,7 +85,11 @@
 
                             <div class="middle-row-new-element">
                                 <a href="add_bookmark?categoryId=<s:property value="#category.categoryId"/>">
-                                    <img class="ui-icon ui-icon-plusthick"/>+ Add Bookmark +<img class="ui-icon ui-icon-plusthick"/>
+                                    <img class="ui-icon ui-icon-plusthick middle-row-new-element-icon-left"/>
+                                    <img class="ui-icon ui-icon-plusthick middle-row-new-element-icon-left"/>
+                                    + Add Bookmark +
+                                    <img class="ui-icon ui-icon-plusthick middle-row-new-element-icon-right"/>
+                                    <img class="ui-icon ui-icon-plusthick middle-row-new-element-icon-right"/>
                                 </a>
                             </div>
                             <div class="middle-row-bottom-spacer"></div>

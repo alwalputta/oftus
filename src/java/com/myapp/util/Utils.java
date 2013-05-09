@@ -50,4 +50,19 @@ public class Utils {
         byte[] imageInByte = blob.getBytes(1, blobLength);
         return imageInByte;
     }
+
+    public static void recordPageClick(int userId, String actionName) {
+
+        PageClick pageClick = new PageClick();
+        pageClick.setUserId(userId);
+        pageClick.setActionName(actionName);
+
+        UtilDAO utilDAO = new UtilDAO();
+        utilDAO.recordPageClick(pageClick);
+    }
+
+    public static void recordLoginLog(LoginLog loginLog) {
+        UtilDAO utilDAO = new UtilDAO();
+        utilDAO.recordLoginLog(loginLog);
+    }
 }

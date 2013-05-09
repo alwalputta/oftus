@@ -18,8 +18,8 @@
 
         <%@include file="/WEB-INF/results/header.jsp"%>
 
-        <div class="new-category-modal">
-            <div class="new-category">
+        <div class="mainTable">
+            <div class="login-login">
                 <div>Modify Category</div>
 
                 <s:form action="update_category">

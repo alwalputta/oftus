@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.myapp.admin.State" table="STATE">
+    <class name="com.myapp.admin.State" table="State">
         <id name="stateId" type="int" column="state_id">
             <generator class="increment"/>
         </id>

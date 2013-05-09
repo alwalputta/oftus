@@ -12,8 +12,8 @@ import java.util.Date;
  */
 public class Referral {
 
-    private Long referralId;
-    private Long userId;
+    private int referralId;
+    private int userId;
     private String referralEmail;
     private String message;
     private Date createDate;
@@ -21,28 +21,28 @@ public class Referral {
     /**
      * @return the referralId
      */
-    public Long getReferralId() {
+    public int getReferralId() {
         return referralId;
     }
 
     /**
      * @param referralId the referralId to set
      */
-    public void setReferralId(Long referralId) {
+    public void setReferralId(int referralId) {
         this.referralId = referralId;
     }
 
     /**
      * @return the userId
      */
-    public Long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
     /**
      * @param userId the userId to set
      */
-    public void setUserId(Long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

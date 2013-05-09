@@ -45,8 +45,7 @@ public class CredentialDAO {
             
             for (Iterator iterator = list.iterator(); iterator.hasNext();) {
                 credential = (Credential) iterator.next();
-            }
-            
+            }            
             logger.debug("username:" + username);
 
             transaction.commit();

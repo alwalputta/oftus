@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.myapp.main.BookmarkClick" table="BOOKMARKCLICK">
+    <class name="com.myapp.main.BookmarkClick" table="BookmarkClick">
         <id column="bookmark_click_id" name="bookmarkClickId" type="int">
             <generator class="increment"/>
         </id>

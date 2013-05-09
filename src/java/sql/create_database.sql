@@ -158,6 +158,7 @@ CREATE TABLE Credential (
   status varchar(10) DEFAULT 'A',
   create_date DATETIME,
   last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  end_date DATETIME,
   PRIMARY KEY (credential_id)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
@@ -202,7 +203,7 @@ CREATE TABLE UserRole (
 
 DROP TABLE IF EXISTS UserLoginLog CASCADE;
 CREATE TABLE UserLoginLog (
-  user_login_id int(20) NOT NULL,
+  login_log_id int(20) NOT NULL,
   user_id int(20) NOT NULL,
   browser VARCHAR(500) NOT NULL,
   ip_address VARCHAR(500) NOT NULL,
@@ -211,7 +212,7 @@ CREATE TABLE UserLoginLog (
   session_id VARCHAR(500) NOT NULL,
   create_date DATETIME,
   last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (user_login_id),
+  PRIMARY KEY (login_log_id),
   FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
@@ -234,14 +235,13 @@ CREATE TABLE FailedLoginLog (
 
 DROP TABLE IF EXISTS UserClickLog CASCADE;
 CREATE TABLE UserClickLog (
-  user_click_id int(20) NOT NULL,
-  user_login_id int(20) NOT NULL,
-  form_name VARCHAR(500) NOT NULL,
-  create_date DATETIME,
-  last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (user_click_id),
-  FOREIGN KEY (user_login_id) REFERENCES UserLoginLog(user_login_id) ON DELETE CASCADE
-) ENGINE=INNODB DEFAULT CHARSET=latin1;
+  click_id int(11) NOT NULL,
+  user_id int(11) DEFAULT NULL,
+  action_name varchar(255) DEFAULT NULL,
+  create_date varchar(255) DEFAULT NULL,
+  PRIMARY KEY (click_id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1$$
+
 
 
 DROP TABLE IF EXISTS Category CASCADE;
@@ -333,8 +333,7 @@ CREATE TABLE Preference (
   status VARCHAR(10) DEFAULT 'A',
   create_date DATETIME,
   last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (preference_id),
-  FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE
+  PRIMARY KEY (preference_id)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 
@@ -346,8 +345,8 @@ CREATE TABLE UserPreference (
   create_date DATETIME,
   end_date DATETIME,
   last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE
-  FOREIGN KEY (preference_id) REFERENCES User(preference_id) ON DELETE CASCADE
+  FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE,
+  FOREIGN KEY (preference_id) REFERENCES Preference(preference_id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 

@@ -924,12 +924,25 @@ input#search-button {
     z-index: 200;
 }
 
-.middle-column-element-edit-icon, .middle-column-element-delete-icon, .middle-column-element-new-icon {
+.middle-column-element-edit-icon, 
+.middle-column-element-delete-icon, 
+.middle-column-element-new-icon {
     float: left;
 }
 
-.middle-row-element-edit-icon, .middle-row-element-delete-icon, .middle-row-element-bulk-delete-icon, .middle-row-element-new-icon {
+.middle-row-element-edit-icon, 
+.middle-row-element-delete-icon, 
+.middle-row-element-bulk-delete-icon, 
+.middle-row-element-new-icon {
     float: left;
+}
+
+.middle-row-new-element-icon-left {
+    float: left;
+}
+
+.middle-row-new-element-icon-right {
+    float: right;
 }
 
 .bottom-row-item span {
