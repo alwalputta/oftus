@@ -25,7 +25,6 @@ public class Utils {
 
     public static byte[] fileToByte(File file) throws IOException {
         InputStream is = new FileInputStream(file);
-
         long length = file.length();
         if (length > Integer.MAX_VALUE) {
             // File is too large
@@ -34,8 +33,7 @@ public class Utils {
 
         int offset = 0;
         int numRead = 0;
-        while (offset < bytes.length
-                && (numRead = is.read(bytes, offset, bytes.length - offset)) >= 0) {
+        while (offset < bytes.length && (numRead = is.read(bytes, offset, bytes.length - offset)) >= 0) {
             offset += numRead;
         }
 

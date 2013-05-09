@@ -16,7 +16,7 @@ public class Referral {
     private Long userId;
     private String referralEmail;
     private String message;
-    private Date referralDate;
+    private Date createDate;
 
     /**
      * @return the referralId
@@ -77,14 +77,14 @@ public class Referral {
     /**
      * @return the referralDate
      */
-    public Date getReferralDate() {
-        return referralDate;
+    public Date getCreateDate() {
+        return createDate;
     }
 
     /**
-     * @param referralDate the referralDate to set
+     * @param createDate the referralDate to set
      */
-    public void setReferralDate(Date referralDate) {
-        this.referralDate = referralDate;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }

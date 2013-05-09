@@ -22,7 +22,9 @@
         <%@include file="/WEB-INF/results/header.jsp"%>
         <div class="mask"></div>
         <div class="message"></div>
-        <div class="loading">Page being loaded, please wait ...</div>
+        <div class="loading">
+            Page being loaded, please wait ...
+        </div>
 
         <div class="mainTable">
             <div class="middle-column-element-import"></div>

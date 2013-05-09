@@ -2,13 +2,13 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.myapp.util.Referral" table="REFERRAL">
-        <id column="referral_id" name="ReferralId" type="int">
+    <class name="com.myapp.util.PageClick" table="PAGECLICK">
+        <id column="page_click_id" name="pageClickId" type="int">
             <generator class="increment"/>
         </id>
         <property name="userId" column="user_id" type="int"></property>
-        <property name="referralEmail" column="referral_email" type="string"></property>
-        <property name="message" column="message" type="string"></property>
+        <property name="actionName" column="action_name" type="string"></property>
         <property name="createDate" column="create_date" type="string"></property>
+        <property name="lastModifiedDate" column="last_modified_date" type="string"></property>
     </class>
 </hibernate-mapping>

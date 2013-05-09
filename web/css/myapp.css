@@ -241,13 +241,12 @@ body {
 .loading {
     display: none;
     position: fixed;
-    background: teal;
-    color: white;
+    background: #9ecbe2;
+    color: black;
     width: 100%;
     height: 100%;
-    opacity: 1;
     z-index: 900;
-    border: 10px double #9F1B1B;
+    border: 10px groove goldenrod;
     border-radius: 10px;
     vertical-align: middle;
     text-align: center;

@@ -40,7 +40,8 @@ $('input[type=button]').hover(function(){
 $(document).keydown(function(e){
     var element = $(this);
     if (e.ctrlKey && e.keyCode == 86) {
-        show_add_element_window('copy_v', element); //ctrl + v on mac
+    //        show_add_element_window('copy_v', element); //ctrl + v on mac
+    //Add something to call add new element action
     } else if (e.ctrlKey && e.keyCode == 70) { //ctrl + f on mac
         $('#search-input').focus();
     }
@@ -207,11 +208,13 @@ $('.middle-column-element-new-icon').click(function(){
 
 //Load images after the page load is complete
 $(window).load(function () {
+    $('.loading').remove();
     $.each(document.images, function() {
-        //        alert ('image');
+        //alert ('image');
         var this_image = this;
         var src = $(this_image).attr('src') || '';
         if(!src.length > 0){
+            //alert ('image');
             //this_image.src = options.loading; // show loading
             var lsrc = $(this_image).attr('lsrc') || '';
             if(lsrc.length > 0) {
@@ -402,7 +405,7 @@ function menu_canceltimer() {
 //document.onclick = menu_close;
 
 function set_div_dimensions() {
-    // set the top of the middle mainTable
+    $('.loading').css('top', $('.dockingBarTop').css('height'));
     $('.mainTable').css('top', $('.dockingBarTop').css('height'));
     $('.login-modal').css('top', $('.dockingBarTop').css('height'));
     $('.new-category-modal').css('top', $('.dockingBarTop').css('height'));
@@ -422,11 +425,6 @@ function set_div_dimensions() {
 function show_page_loading_message () {
     $('.loading').css('display', 'block');
     $('.loading').css('visibility', 'visible');
-    $('.loading').css('top', $(window).height()/2-$('.loading').height()/2-100);
     $('.loading').css('left', $(window).width()/2-$('.loading').width()/2);
 }
-
-$(window).load(function() {
-    $('.loading').remove();
-});
 
