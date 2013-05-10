@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
  */
 public class Category implements Serializable {
 
-    private int categoryId;
+    private String categoryId;
     private String categoryName;
     private String description;
     private String status;
@@ -35,11 +35,11 @@ public class Category implements Serializable {
         this.description = description;
     }
 
-    public int getCategoryId() {
+    public String getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
     }
 

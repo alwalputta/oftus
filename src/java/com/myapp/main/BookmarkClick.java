@@ -13,8 +13,8 @@ import org.apache.log4j.Logger;
  */
 public class BookmarkClick implements Serializable {
 
-    private int bookmarkClickId;
-    private int bookmarkId;
+    private String bookmarkClickId;
+    private String bookmarkId;
     private String hiperLink;
     private String createDate;
     private String lastModifiedDate;
@@ -23,19 +23,19 @@ public class BookmarkClick implements Serializable {
     public BookmarkClick() {
     }
 
-    public int getBookmarkClickId() {
+    public String getBookmarkClickId() {
         return bookmarkClickId;
     }
 
-    public void setBookmarkClickId(int bookmarkClickId) {
+    public void setBookmarkClickId(String bookmarkClickId) {
         this.bookmarkClickId = bookmarkClickId;
     }
 
-    public int getBookmarkId() {
+    public String getBookmarkId() {
         return bookmarkId;
     }
 
-    public void setBookmarkId(int bookmarkId) {
+    public void setBookmarkId(String bookmarkId) {
         this.bookmarkId = bookmarkId;
     }
 

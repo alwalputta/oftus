@@ -126,7 +126,7 @@
         </action>
 
         <action name="update_profile" class="com.myapp.action.RegisterAction" method="updateProfile">
-            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="success">/WEB-INF/results/secure/edit_profile.jsp</result>
             <result name="input">/WEB-INF/results/secure/edit_profile.jsp</result>
         </action>
 

@@ -78,6 +78,7 @@ public class LoginAction extends ActionSupport {
         loginLog.setMachineName(request.getRemoteHost());
         loginLog.setTimeZone(request.getLocale() + "");
         loginLog.setSessionId(session.getId());
+        loginLog.setCreateDate(Utils.getCurrentDate());
 
         Utils.recordLoginLog(loginLog);
         session.setAttribute("loginLog", loginLog);
@@ -86,7 +87,7 @@ public class LoginAction extends ActionSupport {
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
 
-        Utils.recordPageClick(user.getUserId(), getActionName());
+        Utils.recordClickLog(user.getUserId(), getActionName());
 
         return returnVal;
     }

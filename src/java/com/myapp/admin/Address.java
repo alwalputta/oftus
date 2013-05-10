@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
  */
 public class Address implements Serializable {
 
-    private int addressId;
+    private String addressId;
     private String address1;
     private String address2;
     private String city;
@@ -31,11 +31,11 @@ public class Address implements Serializable {
     public Address() {
     }
 
-    public int getAddressId() {
+    public String getAddressId() {
         return addressId;
     }
 
-    public void setAddressId(int addressId) {
+    public void setAddressId(String addressId) {
         this.addressId = addressId;
     }
 

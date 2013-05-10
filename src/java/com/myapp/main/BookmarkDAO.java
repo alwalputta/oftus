@@ -23,7 +23,7 @@ public class BookmarkDAO {
     static final Logger logger = Logger.getLogger(StateDAO.class);
 
     @SuppressWarnings("unchecked")
-    public ArrayList<Bookmark> listBookmarks(int categoryId) {
+    public ArrayList<Bookmark> listBookmarks(String categoryId) {
         logger.debug("listBookmarks()");
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
@@ -53,7 +53,7 @@ public class BookmarkDAO {
             transaction = session.beginTransaction();
             SQLQuery query = session.createSQLQuery("update categorybookmark set bookmark_order = ? where bookmark_id = ?");
             query.setInteger(0, bookmarkOrder);
-            query.setInteger(1, new Integer(bookmarkId).intValue());
+            query.setString(1, bookmarkId);
             returnVal = query.executeUpdate();
             transaction.commit();
         } catch (HibernateException e) {
@@ -79,8 +79,8 @@ public class BookmarkDAO {
         try {
             transaction = session.beginTransaction();
             SQLQuery query = session.createSQLQuery("update categorybookmark set category_id = ? where bookmark_id = ?");
-            query.setInteger(0, new Integer(categoryId).intValue());
-            query.setInteger(1, new Integer(bookmarkId).intValue());
+            query.setString(0, categoryId);
+            query.setString(1, bookmarkId);
             returnVal = query.executeUpdate();
             transaction.commit();
         } catch (HibernateException e) {
@@ -97,7 +97,7 @@ public class BookmarkDAO {
     }
 
     @SuppressWarnings("unchecked")
-    public Bookmark getBookmark(int bookmarkId) {
+    public Bookmark getBookmark(String bookmarkId) {
         logger.debug("bookmarkId:" + bookmarkId);
 
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -121,7 +121,7 @@ public class BookmarkDAO {
     }
 
     @SuppressWarnings("unchecked")
-    public int openBookmark(int userId, int bookmarkId) {
+    public String openBookmark(String userId, String bookmarkId) {
         logger.debug("userId:" + userId);
         logger.debug("bookmarkId:" + bookmarkId);
 

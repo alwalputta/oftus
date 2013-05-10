@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
  */
 public class Bookmark implements Serializable {
 
-    private int bookmarkId;
+    private String bookmarkId;
     private String bookmarkName;
     private String description;
     private String hiperLink;
@@ -35,11 +35,11 @@ public class Bookmark implements Serializable {
         this.hiperLink = hiperLink;
     }
 
-    public int getBookmarkId() {
+    public String getBookmarkId() {
         return bookmarkId;
     }
 
-    public void setBookmarkId(int bookmarkId) {
+    public void setBookmarkId(String bookmarkId) {
         this.bookmarkId = bookmarkId;
     }
 

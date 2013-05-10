@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
  */
 public class Role implements Serializable {
 
-    private int roleId;
+    private String roleId;
     private String role;
     private String status;
     private String createDate;
@@ -27,11 +27,11 @@ public class Role implements Serializable {
     public Role() {
     }
 
-    public int getRoleId() {
+    public String getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(String roleId) {
         this.roleId = roleId;
     }
 

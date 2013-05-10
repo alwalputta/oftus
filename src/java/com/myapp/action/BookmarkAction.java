@@ -80,7 +80,7 @@ public class BookmarkAction extends ActionSupport {
             for (Iterator<Bookmark> i = bookmarks.iterator(); i.hasNext();) {
                 Bookmark b = i.next();
                 
-                if (b.getBookmarkId() == new Integer(getBookmarkId()).intValue()) {
+                if (b.getBookmarkId().equals(getBookmarkId())) {
                     logger.debug("bbbbbbbbbbbbbookmarkId value:" + b.getBookmarkId() + ":" + b.getBookmarkName()
                             + ":" + b.getHiperLink() + ":" + b.getDescription());
                     session.setAttribute("bookmark", b);
@@ -115,7 +115,7 @@ public class BookmarkAction extends ActionSupport {
             Category c = iterator.next();
             logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
             
-            if (c.getCategoryId() == new Integer(getCategoryId()).intValue()) {
+            if (c.getCategoryId().equals(getCategoryId())) {
                 Set<Bookmark> bookmarks = c.getBookmarks();
                 logger.debug("bookmarks size1:" + bookmarks.size());
                 bookmarks.add(bookmark);
@@ -157,7 +157,7 @@ public class BookmarkAction extends ActionSupport {
             for (Iterator<Bookmark> i = bookmarks.iterator(); i.hasNext();) {
                 Bookmark b = i.next();
                 
-                if (b.getBookmarkId() == new Integer(getBookmarkId()).intValue()) {
+                if (b.getBookmarkId().equals(getBookmarkId())) {
                     logger.debug("cccccccccbookmarkId value:" + getBookmarkId() + ":" + getBookmarkName() + ":"
                             + getHiperLink() + ":" + getDescription());
                     b.setBookmarkName(getBookmarkName());
@@ -165,7 +165,7 @@ public class BookmarkAction extends ActionSupport {
                     b.setDescription(getDescription());
 //                    b.setBookmarkOrder(10000); //modify this later//
 
-                    if (c.getCategoryId() == new Integer(getCategoryId()).intValue()) {
+                    if (c.getCategoryId().equals(getCategoryId())) {
                         ;
                     } else {
 //                        bookmarks.remove(b);
@@ -224,7 +224,7 @@ public class BookmarkAction extends ActionSupport {
             for (Iterator<Bookmark> i = bookmarks.iterator(); i.hasNext();) {
                 Bookmark b = i.next();
                 
-                if (b.getBookmarkId() == new Integer(getBookmarkId()).intValue()) {
+                if (b.getBookmarkId().equals(getBookmarkId())) {
                     logger.debug("bookmarkId value:" + b.getBookmarkId() + ":" + b.getBookmarkName() + ":"
                             + b.getHiperLink() + ":" + b.getDescription());
 //                    b.setStatus("D");
@@ -313,7 +313,7 @@ public class BookmarkAction extends ActionSupport {
     public String openBookmark() {
         logger.debug("openBookmark!" + getBookmarkId());
         String returnVal = "success";
-        int updated = 0;
+        String updated = "";
         
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
@@ -323,10 +323,10 @@ public class BookmarkAction extends ActionSupport {
         
         logger.debug("in open_bookmark:" + getBookmarkId());
         BookmarkDAO bookmarkDAO = new BookmarkDAO();
-        updated = bookmarkDAO.openBookmark(user.getUserId(), new Integer(getBookmarkId()).intValue());
+        updated = bookmarkDAO.openBookmark(user.getUserId(), getBookmarkId());
         logger.debug("Records Updated" + updated);
         
-        Bookmark bookmark = bookmarkDAO.getBookmark(new Integer(getBookmarkId()).intValue());
+        Bookmark bookmark = bookmarkDAO.getBookmark(getBookmarkId());
         
         try {
             String url = response.encodeRedirectURL(bookmark.getHiperLink());

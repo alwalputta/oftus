@@ -15,7 +15,7 @@
     </div>
 
     <div class="top-column-element-right">
-        <img class ="photo-box" src="<s:url action='ImageServlet'/>" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
+        <img class ="photo-box" src="images/user.jpg" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
         <ul id="menu">
             <li>
             <s:if test="%{#session.user.firstName} == null">

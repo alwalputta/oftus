@@ -201,7 +201,7 @@ $('.middle-row-element-bulk-delete-icon').click(function(){
 });
 
 $('.middle-column-element-new-icon').click(function(){
-    var targetUrl = "add_category";
+    var targetUrl = "add_category?source=mainPage";
     //        alert('AAAA' + targetUrl);
     window.location = targetUrl;
 });

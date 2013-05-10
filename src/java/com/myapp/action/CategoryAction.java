@@ -30,6 +30,7 @@ public class CategoryAction extends ActionSupport {
     private String categoryName;
     private String description;
     private String categoryOrder;
+    private String source;
     Set<Category> userCategories = null;
     static final Logger logger = Logger.getLogger(CategoryAction.class);
 
@@ -50,7 +51,7 @@ public class CategoryAction extends ActionSupport {
         HttpSession session = request.getSession();
 
         CategoryDAO categoryDAO = new CategoryDAO();
-        Category category = categoryDAO.selectCategory(new Integer(categoryId).intValue());
+        Category category = categoryDAO.selectCategory(categoryId);
 
         session.setAttribute("category", category);
 
@@ -74,14 +75,14 @@ public class CategoryAction extends ActionSupport {
         bookmark.setStatus("A");
         Set<Bookmark> userBookmarks = new LinkedHashSet<Bookmark>();
         userBookmarks.add(bookmark);
-        
+
         Category category = new Category();
         category.setCategoryName(getCategoryName());
         category.setDescription(getDescription());
         category.setStatus("A");
 
         category.setBookmarks(userBookmarks);
-        
+
         userCategories.add(category);
 
         user.setUserCategories(userCategories);
@@ -109,7 +110,7 @@ public class CategoryAction extends ActionSupport {
             logger.debug("222222222222");
             Category c = (Category) iterator.next();
 
-            if (c.getCategoryId() == new Integer(categoryId).intValue()) {
+            if (c.getCategoryId().equals(categoryId)) {
                 c.setCategoryName(categoryName);
                 c.setDescription(description);
                 break;
@@ -140,7 +141,7 @@ public class CategoryAction extends ActionSupport {
         for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
             c = (Category) iterator.next();
             logger.debug("222222222222:" + c.getCategoryId());
-            if (c.getCategoryId() == new Integer(categoryId).intValue()) {
+            if (c.getCategoryId().equals(categoryId)) {
 //                c.setStatus("D");
                 userCategories.remove(c);
                 break;
@@ -228,5 +229,13 @@ public class CategoryAction extends ActionSupport {
     public String getActionName() {
         ActionContext context = ActionContext.getContext();
         return context.getName();
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 }

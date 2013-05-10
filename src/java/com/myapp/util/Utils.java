@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -51,18 +54,25 @@ public class Utils {
         return imageInByte;
     }
 
-    public static void recordPageClick(int userId, String actionName) {
+    public static void recordLoginLog(LoginLog loginLog) {
+        UtilDAO utilDAO = new UtilDAO();
+        utilDAO.recordLoginLog(loginLog);
+    }
 
-        PageClick pageClick = new PageClick();
+    public static void recordClickLog(String userId, String actionName) {
+
+        ClickLog pageClick = new ClickLog();
         pageClick.setUserId(userId);
         pageClick.setActionName(actionName);
+        pageClick.setCreateDate(getCurrentDate());
 
         UtilDAO utilDAO = new UtilDAO();
         utilDAO.recordPageClick(pageClick);
     }
 
-    public static void recordLoginLog(LoginLog loginLog) {
-        UtilDAO utilDAO = new UtilDAO();
-        utilDAO.recordLoginLog(loginLog);
+    public static String getCurrentDate() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        return dateFormat.format(date);
     }
 }

@@ -14,8 +14,8 @@ import org.apache.log4j.Logger;
  */
 public class Document implements Serializable {
 
-    private int documentId;
-    private int userId;
+    private String documentId;
+    private String userId;
     private String fileType;
     private String fileName;
     private Blob blob;
@@ -29,19 +29,19 @@ public class Document implements Serializable {
     public Document() {
     }
 
-    public int getDocumentId() {
+    public String getDocumentId() {
         return documentId;
     }
 
-    public void setDocumentId(int documentId) {
+    public void setDocumentId(String documentId) {
         this.documentId = documentId;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

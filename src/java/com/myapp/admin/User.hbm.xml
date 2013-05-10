@@ -2,8 +2,8 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.myapp.admin.User" table="User">
-        <id column="user_id" name="userId" type="int">
-            <generator class="increment"/>
+        <id column="user_id" name="userId" type="string" length="200">
+            <generator class="uuid"/>
         </id>
         <property column="first_name" name="firstName" type="string"/>
         <property column="middle_name" name="middleName" type="string"/>

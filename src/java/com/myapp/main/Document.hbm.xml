@@ -3,10 +3,10 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.myapp.main.Document" table="UserDocument">
-        <id column="document_id" name="documentId" type="int">
-            <generator class="increment"/>
+        <id column="document_id" name="documentId" type="string" length="200">
+            <generator class="uuid"/>
         </id>
-        <property name="userId" column="user_id" type="int"></property>
+        <property name="userId" column="user_id" type="string"></property>
         <property name="fileType" column="file_type" type="string"></property>
         <property name="fileName" column="file_name" type="string"></property>
         <property name="blob" column="content" type="blob"></property>

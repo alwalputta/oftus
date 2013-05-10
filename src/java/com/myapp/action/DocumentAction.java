@@ -178,6 +178,9 @@ public class DocumentAction extends ActionSupport {
                     bookmark.setBookmarkName(row[0]);
                     bookmark.setHiperLink(row[1]);
                     bookmark.setDescription(row[2]);
+                    bookmark.setStatus("A");
+                    bookmark.setCreateDate(Utils.getCurrentDate());
+                    
                     bookmarks.add(bookmark);
                 }
             }

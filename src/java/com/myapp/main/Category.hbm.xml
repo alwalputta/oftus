@@ -3,8 +3,8 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.myapp.main.Category" table="Category">
-        <id column="category_id" name="categoryId" type="int">
-            <generator class="increment"/>
+        <id column="category_id" name="categoryId" type="string" length="200">
+            <generator class="uuid"/>
         </id>
         <property name="categoryName" column="category_name" type="string"/>
         <property name="description" column="description" type="string"/>

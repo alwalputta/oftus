@@ -24,7 +24,7 @@ public class UserDAO {
      * @return
      */
     @SuppressWarnings("unchecked")
-    public int saveUser(User user) {
+    public void saveUser(User user) {
         logger.debug("saveUser()");
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
@@ -42,7 +42,7 @@ public class UserDAO {
             logger.debug("finally block");
             session.close();
         }
-        return user.getUserId();
+        return;
     }
 
     @SuppressWarnings("unchecked")
@@ -67,47 +67,8 @@ public class UserDAO {
         return;
     }
 
-//    @SuppressWarnings("unchecked")
-//    public User selectUserFromCredentialID(int credentialID) {
-//        logger.debug("credentialId:" + credentialID);
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        Transaction transaction = null;
-//        int userId = 0;
-//        User user = new User();
-//        try {
-//            transaction = session.beginTransaction();
-//
-//            Query query = session.createSQLQuery("select uc.user_id from UserCredential uc where uc.credential_id = :credentialId");
-//            query.setParameter("credentialId", credentialID);
-//
-//            logger.debug("query:" + query.toString());
-//
-//            List users = query.list();
-//            logger.debug("list size:" + users.size());
-//
-//            for (Iterator iterator = users.iterator(); iterator.hasNext();) {
-//                logger.debug("11111111");
-//                userId = (Integer) iterator.next();
-//                logger.debug("userId value:" + userId);
-//            }
-//            user = (User) session.get(User.class, userId);
-//            transaction.commit();
-//        } catch (HibernateException e) {
-//            logger.debug("HibernateException");
-//            transaction.rollback();
-//            e.printStackTrace();
-//        } catch (Exception e) {
-//            logger.debug("Exception");
-//            transaction.rollback();
-//            e.printStackTrace();
-//        } finally {
-//            logger.debug("finally block");
-//            session.close();
-//        }
-//        return user;
-//    }
     @SuppressWarnings("unchecked")
-    public User selectUser(int userId) {
+    public User selectUser(String userId) {
         logger.debug("userId:" + userId);
         Session session = HibernateUtil.getSessionFactory().openSession();
         User user = new User();

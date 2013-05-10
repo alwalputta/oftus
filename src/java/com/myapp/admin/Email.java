@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
  */
 public class Email implements Serializable {
 
-    private int emailId;
+    private String emailId;
     private String emailAddress;
     private String primaryFlag;
     private String validateFlag;
@@ -27,11 +27,11 @@ public class Email implements Serializable {
     private Set<User> users = new LinkedHashSet<User>(0);
     static final Logger logger = Logger.getLogger(Email.class);
 
-    public int getEmailId() {
+    public String getEmailId() {
         return emailId;
     }
 
-    public void setEmailId(int emailId) {
+    public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
 

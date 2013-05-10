@@ -4,9 +4,7 @@
  */
 package com.myapp.main;
 
-import com.myapp.admin.StateDAO;
 import com.myapp.util.HibernateUtil;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.apache.log4j.Logger;
@@ -45,7 +43,7 @@ public class DocumentDAO {
     }
 
     @SuppressWarnings("unchecked")
-    public Document getPicture(int userId) {
+    public Document getPicture(String userId) {
         logger.debug("listPictures()");
         Document document = null;
         Session session = HibernateUtil.getSessionFactory().openSession();

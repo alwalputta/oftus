@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
  */
 public class Phone implements Serializable {
 
-    private int phoneId;
+    private String phoneId;
     private String phoneNumber;
     private String phoneType;
     private String validateFlag;
@@ -27,11 +27,11 @@ public class Phone implements Serializable {
     private Set<User> users = new LinkedHashSet<User>(0);
     static final Logger logger = Logger.getLogger(Phone.class);
 
-    public int getPhoneId() {
+    public String getPhoneId() {
         return phoneId;
     }
 
-    public void setPhoneId(int phoneId) {
+    public void setPhoneId(String phoneId) {
         this.phoneId = phoneId;
     }
 

@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
  */
 public class Gender implements Serializable {
 
-    private int genderId;
+    private String genderId;
     private String genderCode;
     private String genderName;
     private String createDate;
@@ -22,11 +22,11 @@ public class Gender implements Serializable {
     private String lastModifiedDate;
     static final Logger logger = Logger.getLogger(Gender.class);
 
-    public int getGenderId() {
+    public String getGenderId() {
         return genderId;
     }
 
-    public void setGenderId(int genderId) {
+    public void setGenderId(String genderId) {
         this.genderId = genderId;
     }
 

@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
  */
 public class Credential implements Serializable {
 
-    private int credentialId;
+    private String credentialId;
     private String username;
     private String password;
     private String createDate;
@@ -28,14 +28,14 @@ public class Credential implements Serializable {
     /**
      * @return the credentialId
      */
-    public int getCredentialId() {
+    public String getCredentialId() {
         return credentialId;
     }
 
     /**
      * @param credentialId the credentialId to set
      */
-    public void setCredentialId(int credentialId) {
+    public void setCredentialId(String credentialId) {
         this.credentialId = credentialId;
     }
 

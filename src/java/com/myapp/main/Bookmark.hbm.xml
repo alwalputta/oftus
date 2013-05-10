@@ -3,8 +3,8 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.myapp.main.Bookmark" table="Bookmark">
-        <id column="bookmark_id" name="bookmarkId" type="int">
-            <generator class="increment"/>
+        <id column="bookmark_id" name="bookmarkId" type="string" length="200">
+            <generator class="uuid"/>
         </id>
         <property name="bookmarkName" column="bookmark_name" type="string"></property>
         <property name="description" column="description" type="string"></property>

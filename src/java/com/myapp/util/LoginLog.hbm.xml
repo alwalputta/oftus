@@ -3,10 +3,10 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.myapp.util.LoginLog" table="UserLoginLog">
-        <id column="login_log_id" name="loginLogId" type="int">
-            <generator class="increment"/>
+        <id column="login_log_id" name="loginLogId" type="string" length="200">
+            <generator class="uuid"/>
         </id>
-        <property name="userId" column="user_id" type="int"></property>
+        <property name="userId" column="user_id" type="string"></property>
         <property name="browser" column="browser" type="string"></property>
         <property name="ipAddress" column="ip_address" type="string"></property>
         <property name="machineName" column="machine_name" type="string"></property>

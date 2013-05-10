@@ -44,7 +44,7 @@ public class CategoryDAO {
     }
 
     @SuppressWarnings("unchecked")
-    public Category selectCategory(int categoryId) {
+    public Category selectCategory(String categoryId) {
         logger.debug("categoryId:" + categoryId);
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
@@ -97,7 +97,7 @@ public class CategoryDAO {
             transaction = session.beginTransaction();
             SQLQuery query = session.createSQLQuery("update usercategory set category_order = ? where category_id = ?");
             query.setInteger(0, categoryOrder);
-            query.setInteger(1, new Integer(categoryId).intValue());
+            query.setString(1, categoryId);
             returnVal = query.executeUpdate();
             transaction.commit();
         } catch (HibernateException e) {

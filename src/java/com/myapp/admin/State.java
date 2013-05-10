@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
  */
 public class State implements Serializable {
 
-    private int stateId;
+    private String stateId;
     private String stateCode;
     private String stateName;
     private String createDate;
@@ -38,11 +38,11 @@ public class State implements Serializable {
         this.stateName = stateName;
     }
 
-    public int getStateId() {
+    public String getStateId() {
         return stateId;
     }
 
-    public void setStateId(int stateId) {
+    public void setStateId(String stateId) {
         this.stateId = stateId;
     }
 

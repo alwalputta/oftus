@@ -10,26 +10,26 @@ import java.util.Date;
  *
  * @author palwal
  */
-public class PageClick {
+public class ClickLog {
 
-    private int clickId;
-    private int userId;
+    private String clickId;
+    private String userId;
     private String actionName;
-    private Date createDate;
+    private String createDate;
 
-    public int getClickId() {
+    public String getClickId() {
         return clickId;
     }
 
-    public void setClickId(int clickId) {
+    public void setClickId(String clickId) {
         this.clickId = clickId;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -41,11 +41,11 @@ public class PageClick {
         this.actionName = actionName;
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 }

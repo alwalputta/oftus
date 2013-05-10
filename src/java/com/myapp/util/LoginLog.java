@@ -12,28 +12,28 @@ import java.util.Date;
  */
 public class LoginLog {
 
-    private int loginLogId;
-    private int userId;
+    private String loginLogId;
+    private String userId;
     private String browser;
     private String ipAddress;
     private String machineName;
     private String timeZone;
     private String sessionId;
-    private Date createDate;
+    private String createDate;
 
-    public int getLoginLogId() {
+    public String getLoginLogId() {
         return loginLogId;
     }
 
-    public void setLoginLogId(int loginLogId) {
+    public void setLoginLogId(String loginLogId) {
         this.loginLogId = loginLogId;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -77,11 +77,11 @@ public class LoginLog {
         this.sessionId = sessionId;
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 }

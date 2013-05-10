@@ -3,8 +3,8 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.myapp.admin.State" table="State">
-        <id name="stateId" type="int" column="state_id">
-            <generator class="increment"/>
+        <id name="stateId" type="string" column="state_id" length="200">
+            <generator class="uuid"/>
         </id>
         <property name="stateCode" column="state_code" type="string"/>
         <property name="stateName" column="state_name" type="string"/>
