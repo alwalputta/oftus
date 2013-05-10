@@ -172,6 +172,8 @@ public class RegisterAction extends ActionSupport {
         user.setLastName(getLastname());
         user.setGender(getGender());
         user.setDOB("".equals(getDOB()) ? null : getDOB());
+        user.setStatus("A");
+        user.setCreateDate(Utils.getCurrentDate());
 
         logger.debug("RegisterAction execute!2");
         //Address object being created
@@ -186,6 +188,8 @@ public class RegisterAction extends ActionSupport {
         address.setCity(city);
         address.setState(state);
         address.setZip(zip);
+        address.setStatus("A");
+        address.setCreateDate(Utils.getCurrentDate());
 
         Set<Email> userEmails = user.getUserEmails();
         Email email = null;
@@ -193,6 +197,8 @@ public class RegisterAction extends ActionSupport {
             email = (Email) iterator.next();
         }
         email.setEmailAddress(getEmailAddress());
+        email.setStatus("A");
+        email.setCreateDate(Utils.getCurrentDate());
 
         Set<Phone> userPhones = user.getUserPhones();
         Phone phone = null;
@@ -201,6 +207,8 @@ public class RegisterAction extends ActionSupport {
         }
         phone.setPhoneNumber(getPhoneNumber());
         phone.setPhoneType("M");
+        phone.setStatus("A");
+        phone.setCreateDate(Utils.getCurrentDate());
 
         if (getPassword() != null && !"".equals(getPassword())) {
             Set<Credential> userCredentials = user.getUserCredentials();
@@ -209,6 +217,8 @@ public class RegisterAction extends ActionSupport {
                 credential = (Credential) iterator.next();
             }
             credential.setPassword(getPassword());
+            credential.setStatus("A");
+            credential.setCreateDate(Utils.getCurrentDate());
         }
 
         UserDAO userDAO = new UserDAO();

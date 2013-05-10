@@ -12,7 +12,7 @@
     <package name="myapp" extends="struts-default" namespace="">
 
         <action name="index">
-            <result>/WEB-INF/results/login.jsp</result>
+            <result>/WEB-INF/results/login_form.jsp</result>
         </action>
 
         <action name="welcome">
@@ -96,23 +96,23 @@
         </action>
 
         <action name="login_form" class="com.myapp.action.LoginAction" method="loginForm">
-            <result name="success">/WEB-INF/results/login.jsp</result>
-             <result name="input">/WEB-INF/results/login.jsp</result>
+            <result name="success">/WEB-INF/results/login_form.jsp</result>
+             <result name="input">/WEB-INF/results/login_form.jsp</result>
         </action>
 
         <action name="login" class="com.myapp.action.LoginAction" method="login">
             <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
-            <result name="input">/WEB-INF/results/login.jsp</result>
+            <result name="input">/WEB-INF/results/login_form.jsp</result>
         </action>
 
         <action name="logout" class="com.myapp.action.LogoutAction" method="execute">
-            <result name="success">/WEB-INF/results/login.jsp</result>
+            <result name="success">/WEB-INF/results/login_form.jsp</result>
             <result name="fail">/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
 
         <action name="register_form" class="com.myapp.action.GeneralAction" method="execute">
             <result name="success">/WEB-INF/results/register_form.jsp</result>
-            <result name="input">/WEB-INF/results/login.jsp</result>
+            <result name="input">/WEB-INF/results/login_form.jsp</result>
         </action>
 
         <action name="create_profile" class="com.myapp.action.RegisterAction" method="createProfile">

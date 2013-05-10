@@ -9,6 +9,7 @@ import com.myapp.admin.UserDAO;
 import com.myapp.main.Bookmark;
 import com.myapp.main.BookmarkDAO;
 import com.myapp.main.Category;
+import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Collection;
@@ -109,6 +110,7 @@ public class BookmarkAction extends ActionSupport {
         Bookmark bookmark = new Bookmark();
         bookmark.setBookmarkName(getBookmarkName());
         bookmark.setHiperLink(hiperLink);
+        bookmark.setCreateDate(Utils.getCurrentDate());
 //        bookmark.setBookmarkOrder(10000); //modify this later//
 
         for (Iterator<Category> iterator = userCategories.iterator(); iterator.hasNext();) {

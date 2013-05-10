@@ -61,11 +61,10 @@ public class DocumentAction extends ActionSupport {
         document.setContentType(getFileContentType());
         document.setUserId(user.getUserId());
         document.setStatus("A");
+        document.setCreateDate(Utils.getCurrentDate());
 
 //xxxxxx
-
         String imageString = null;
-
         try {
             byte[] imageBytes = Utils.fileToByte(getFile());
 
@@ -75,14 +74,11 @@ public class DocumentAction extends ActionSupport {
             logger.debug("uploadPicture imageString:" + imageString.length());
             logger.debug("uploadPicture imageString:");
 
-
             String encoded = Base64.encodeBase64String(imageBytes);
             //logger.debug("uploadPicture imageString:" + encoded);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 //xxxxx
 
         logger.debug("uploadPicture fileName:" + getFileFileName());
@@ -140,6 +136,7 @@ public class DocumentAction extends ActionSupport {
         document.setContentType(getFileContentType());
         document.setUserId(user.getUserId());
         document.setStatus("A");
+        document.setCreateDate(Utils.getCurrentDate());
 
         logger.debug("importBookmarks fileName:" + getFileFileName());
         logger.debug("importBookmarks contentType:" + getFileContentType());

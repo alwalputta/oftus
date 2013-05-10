@@ -9,6 +9,7 @@ import com.myapp.admin.UserDAO;
 import com.myapp.main.Bookmark;
 import com.myapp.main.Category;
 import com.myapp.main.CategoryDAO;
+import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Iterator;
@@ -80,6 +81,7 @@ public class CategoryAction extends ActionSupport {
         category.setCategoryName(getCategoryName());
         category.setDescription(getDescription());
         category.setStatus("A");
+        category.setCreateDate(Utils.getCurrentDate());
 
         category.setBookmarks(userBookmarks);
 
