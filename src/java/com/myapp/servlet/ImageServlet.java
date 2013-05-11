@@ -7,7 +7,6 @@ package com.myapp.servlet;
 import com.myapp.admin.User;
 import com.myapp.main.Document;
 import com.myapp.main.DocumentDAO;
-import com.myapp.util.Utils;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,11 +36,9 @@ public class ImageServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-//        PrintWriter out = response.getWriter();
         try {
             response.setContentType("image/jpg");
             HttpSession session = request.getSession();
-//            Utils.recordClickLog("IS:" + session.getId(), request.getQueryString());
 
             User user = (User) session.getAttribute("user");
             logger.debug("showPicture:" + user.getUserId());

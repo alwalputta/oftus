@@ -11,6 +11,16 @@
 
     <package name="myapp" extends="struts-default" namespace="">
 
+        <interceptors>
+            <interceptor name="mylogging" class="com.myapp.struts.LoggingInterceptor"></interceptor>
+            <interceptor-stack name="loggingStack">
+                <interceptor-ref name="mylogging"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="loggingStack"></default-interceptor-ref>
+
         <action name="index">
             <result>/WEB-INF/results/login_form.jsp</result>
         </action>
@@ -52,23 +62,23 @@
         </action>
 
         <action name="release_notes">
-            <result>/WEB-INF/results/release_notes.html</result>
+            <result>html/release_notes.html</result>
         </action>
 
         <action name="quick_guide">
-            <result>/WEB-INF/results/quick_guide.html</result>
+            <result>html/quick_guide.html</result>
         </action>
 
         <action name="user_guide">
-            <result>/WEB-INF/results/user_guide.html</result>
+            <result>html/user_guide.html</result>
         </action>
 
         <action name="feedback">
-            <result>/WEB-INF/results/feedback.html</result>
+            <result>html/feedback.html</result>
         </action>
 
         <action name="refer_friends">
-            <result>/WEB-INF/results/refer_friends.html</result>
+            <result>html/refer_friends.html</result>
         </action>
 
         <action name="import_bookmarks_page">
@@ -97,7 +107,7 @@
 
         <action name="login_form" class="com.myapp.action.LoginAction" method="loginForm">
             <result name="success">/WEB-INF/results/login_form.jsp</result>
-             <result name="input">/WEB-INF/results/login_form.jsp</result>
+            <result name="input">/WEB-INF/results/login_form.jsp</result>
         </action>
 
         <action name="login" class="com.myapp.action.LoginAction" method="login">
@@ -145,9 +155,6 @@
         </action>
 
         <action name="edit_category" class="com.myapp.action.CategoryAction" method="editCategory">
-            <interceptor-ref name="validation">
-                <param name="excludeMethods">validate, editCategory</param>
-            </interceptor-ref>
             <interceptor-ref name="defaultStack"/>
             <result name="success">/WEB-INF/results/secure/edit_category.jsp</result>
             <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
@@ -273,18 +280,6 @@
             <result name="input">/WEB-INF/results/secure/import_bookmarks.jsp</result>
         </action>
 
-        <!--
-        Delete the associated Action and other method
-                <action name="download_template" class="com.myapp.action.DownloadAction" method="downloadTemplate">
-                    <result name="success" type="stream">
-                        <param name="contentType">application/octet-stream</param>
-                        <param name="inputName">fileInputStream</param>
-                        <param name="contentDisposition">attachment;filename="fileABC.txt"</param>
-                        <param name="bufferSize">1024</param>
-                    </result>
-                    <result name="input">/WEB-INF/results/secure/import_bookmarks.jsp</result>
-                </action>
-        -->
         <action name="test">
             <result>/WEB-INF/results/header.jsp</result>
         </action>
@@ -293,23 +288,5 @@
             <result>/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
     </package>
- 
-<!--       
-    <package name="image" namespace="" extends="struts-default">
-        <result-types>
-            <result-type name="imageResult" class="com.myapp.util.CustomImageBytesResult"/>
-        </result-types>
- 
-        <action name="Display" class="com.myapp.action.DisplayAction">
-            <result>/WEB-INF/results/header_1.jsp</result>
-        </action>
- 
-        <action name="ImageAction" class="com.myapp.action.ImageAction">
-            <result name="success" type="imageResult">
-            </result>
-        </action>
- 
-    </package>
-    -->
-    
+     
 </struts>

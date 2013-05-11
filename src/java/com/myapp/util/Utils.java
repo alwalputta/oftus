@@ -4,6 +4,7 @@
  */
 package com.myapp.util;
 
+import com.myapp.struts.LoggingInterceptor;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -16,12 +17,15 @@ import java.util.Date;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.apache.log4j.Logger;
 
 /**
  *
  * @author palwal
  */
 public class Utils {
+
+    static final Logger logger = Logger.getLogger(Utils.class);
 
     public static String getUuid() {
         UUID uuid = UUID.randomUUID();

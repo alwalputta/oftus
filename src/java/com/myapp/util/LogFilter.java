@@ -4,12 +4,7 @@
  */
 package com.myapp.util;
 
-import com.myapp.servlet.ImageServlet;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.Date;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
