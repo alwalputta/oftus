@@ -272,6 +272,7 @@ public class RegisterAction extends ActionSupport {
                 }
             }
         } else {
+            logger.debug("Other");
         }
     }
 
