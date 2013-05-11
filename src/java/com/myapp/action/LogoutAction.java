@@ -5,6 +5,7 @@
 package com.myapp.action;
 
 import com.myapp.admin.User;
+import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import javax.servlet.http.Cookie;
@@ -56,8 +57,11 @@ public class LogoutAction extends ActionSupport {
     //simple validation
     @Override
     public void validate() {
-        System.out.println("in the validate of LogoutAction");
         logger.debug("in the validate of LogoutAction");
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        Utils.recordClickLog(session.getId(), getActionName());
+
         addActionMessage("In the LogoutAction");
     }
 

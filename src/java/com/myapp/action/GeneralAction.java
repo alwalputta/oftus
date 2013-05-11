@@ -10,6 +10,7 @@ import com.myapp.admin.State;
 import com.myapp.admin.StateDAO;
 import com.myapp.admin.User;
 import com.myapp.main.Category;
+import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
@@ -125,6 +126,10 @@ public class GeneralAction extends ActionSupport {
     @Override
     public void validate() {
         logger.debug("GeneralAction validate");
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        Utils.recordClickLog(session.getId(), getActionName());
+
         //addActionMessage("In the GeneralAction" + Utils.getUuid());
     }
 

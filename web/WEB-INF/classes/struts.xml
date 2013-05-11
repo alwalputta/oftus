@@ -6,8 +6,8 @@
 <struts>
 
     <constant name="struts.devMode" value="true"/>
+    <constant name="struts.multipart.maxSize" value="10000000" />
     <constant name="struts.action.excludePattern" value="/ImageServlet"/>
-    <constant name="struts.multipart.maxSize" value="1000000" />
 
     <package name="myapp" extends="struts-default" namespace="">
 

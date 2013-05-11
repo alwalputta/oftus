@@ -15,7 +15,6 @@ import com.myapp.admin.User;
 import com.myapp.admin.UserDAO;
 import com.myapp.main.Bookmark;
 import com.myapp.main.Category;
-import com.myapp.util.LoginLog;
 import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -142,17 +141,8 @@ public class RegisterAction extends ActionSupport {
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
 
-        LoginLog loginLog = new LoginLog();
-        loginLog.setUserId(user.getUserId());
-        loginLog.setBrowser(SUCCESS);
-        loginLog.setIpAddress(request.getLocalAddr());
-        loginLog.setMachineName(request.getRemoteHost());
-        loginLog.setTimeZone(request.getLocale() + "");
-        loginLog.setSessionId(session.getId());
-        loginLog.setCreateDate(Utils.getCurrentDate());
-
-        Utils.recordLoginLog(loginLog);
-        session.setAttribute("loginLog", loginLog);
+        Utils.recordLoginLog(user.getUserId(), request);
+//        session.setAttribute("loginLog", loginLog);
         session.setAttribute("user", user);
 
         return "success";
@@ -231,6 +221,10 @@ public class RegisterAction extends ActionSupport {
     @Override
     public void validate() {
         logger.debug("in the validate of RegisterAction:" + getActionName());
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        Utils.recordClickLog(session.getId(), getActionName());
 
         if ("create_profile".equals(getActionName())) {
             //Check if user already exists

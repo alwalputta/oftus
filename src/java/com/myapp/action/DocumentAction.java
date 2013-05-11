@@ -19,7 +19,6 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Blob;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
@@ -203,6 +202,10 @@ public class DocumentAction extends ActionSupport {
     @Override
     public void validate() {
         logger.debug("in the validate of Document.validate()");
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        Utils.recordClickLog(session.getId(), getActionName());
+
         if (getActionName().equals("upload_picture")) {
             logger.debug("in upload_picture");
 //            if (fileName == null || "".equals(fileName)) {

@@ -178,6 +178,10 @@ public class CategoryAction extends ActionSupport {
     @Override
     public void validate() {
         logger.debug("in the validate");
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        Utils.recordClickLog(session.getId(), getActionName());
+
         logger.debug("editCategory!" + getCategoryId());
 
         if (getActionName().equals("new_bookmark")) {

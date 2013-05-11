@@ -14,6 +14,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -54,7 +56,18 @@ public class Utils {
         return imageInByte;
     }
 
-    public static void recordLoginLog(LoginLog loginLog) {
+    public static void recordLoginLog(String userId, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+
+        LoginLog loginLog = new LoginLog();
+        loginLog.setUserId(userId);
+        loginLog.setBrowser("Browser");
+        loginLog.setIpAddress(request.getLocalAddr());
+        loginLog.setMachineName(request.getRemoteHost());
+        loginLog.setTimeZone(request.getLocale() + "");
+        loginLog.setSessionId(session.getId());
+        loginLog.setCreateDate(Utils.getCurrentDate());
+
         UtilDAO utilDAO = new UtilDAO();
         utilDAO.recordLoginLog(loginLog);
     }

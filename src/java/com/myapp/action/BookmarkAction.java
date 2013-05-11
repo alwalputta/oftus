@@ -347,6 +347,10 @@ public class BookmarkAction extends ActionSupport {
     @Override
     public void validate() {
         logger.debug("in the validate of BookmarkAction");
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        Utils.recordClickLog(session.getId(), getActionName());
+
         if (getActionName().equals("new_bookmark")) {
             logger.debug("in new_bookmark");
         } else if (getActionName().equals("update_bookmark_order")) {

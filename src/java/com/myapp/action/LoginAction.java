@@ -8,7 +8,6 @@ import com.myapp.admin.Credential;
 import com.myapp.admin.CredentialDAO;
 import com.myapp.admin.User;
 import com.myapp.main.Category;
-import com.myapp.util.LoginLog;
 import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -25,9 +24,7 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.config.ConfigurationException;
 import org.apache.shiro.config.IniSecurityManagerFactory;
-import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
-import org.apache.shiro.util.ByteSource;
 import org.apache.shiro.util.Factory;
 import org.apache.struts2.ServletActionContext;
 
@@ -71,23 +68,12 @@ public class LoginAction extends ActionSupport {
         logger.debug("before state DAO1:" + getUsername());
         logger.debug("execute state DAO2:" + user.getFirstName());
 
-        LoginLog loginLog = new LoginLog();
-        loginLog.setUserId(user.getUserId());
-        loginLog.setBrowser(SUCCESS);
-        loginLog.setIpAddress(request.getLocalAddr());
-        loginLog.setMachineName(request.getRemoteHost());
-        loginLog.setTimeZone(request.getLocale() + "");
-        loginLog.setSessionId(session.getId());
-        loginLog.setCreateDate(Utils.getCurrentDate());
-
-        Utils.recordLoginLog(loginLog);
-        session.setAttribute("loginLog", loginLog);
+        Utils.recordLoginLog(user.getUserId(), request);
+//        session.setAttribute("loginLog", loginLog);
         session.setAttribute("user", user);
 
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
-
-        Utils.recordClickLog(user.getUserId(), getActionName());
 
         return returnVal;
     }
@@ -95,6 +81,10 @@ public class LoginAction extends ActionSupport {
     //simple validation
     @Override
     public void validate() {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        Utils.recordClickLog(session.getId(), getActionName());
+
         if (getActionName().equals("login_form")) {
             logger.debug("login_form");
         } else if (getActionName().equals("login")) {
@@ -128,7 +118,7 @@ public class LoginAction extends ActionSupport {
                 } else {
                     logger.debug("user has no admin role");
                 }
-                Session session = subject.getSession();
+//                Session session = subject.getSession();
 
                 if (subject.isAuthenticated()) {
                     logger.debug("user authenticated successfully");

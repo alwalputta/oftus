@@ -41,6 +41,24 @@
     </filter-mapping>
     
     <!--
+    Log filer - not fully working
+    <filter>
+        <filter-name>LogFilter</filter-name>
+        <filter-class>
+            com.myapp.util.LogFilter
+        </filter-class>
+        <init-param>
+            <param-name>test-param</param-name>
+            <param-value>This parameter is for testing.</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>LogFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    -->
+
+    <!--
     <context-param>
         <param-name>shiroConfigLocations</param-name>
         <param-value>shiro.ini</param-value>
@@ -54,7 +72,6 @@
         <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
     </listener>
     -->
-
 
     <session-config>
         <!-- web.xml expects the session timeout in minutes: -->
