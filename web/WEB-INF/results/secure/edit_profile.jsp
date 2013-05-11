@@ -38,10 +38,9 @@
                 </div>
             </s:if>
 
-            <div class="register-login">
-                <div>Edit User Profile</div> <a href="ImageAction">Download</a>
+            <div class="login-login">
+                <div>Edit User Profile</div>
                 <s:form action="update_profile">
-
                     <s:hidden name="userid" value="%{#session.user.userId}"/>
                     <s:iterator value="%{#session.user.userCredentials}" id="credential">
                         <s:textfield name="username" value="%{#credential.username}" size="25" maxlength="200" key="register.username-label" readonly="true"/>
@@ -78,14 +77,14 @@
                             <s:submit name="close" key="register.close-label" theme="simple"/>
                         </td>
                     </tr>
-
                 </s:form>
                 <s:a href="register_faq">Register FAQ</s:a>
+                <br></br>
+                <br></br>
             </div>
 
-            <div class="login-login">
+            <div class="login-register">
                 <img class ="photo-box" src="<s:url action='ImageServlet'/>" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
-                <br></br>
                 <br></br>
                 <br></br>
                 <br></br>

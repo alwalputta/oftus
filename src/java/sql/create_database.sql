@@ -322,7 +322,19 @@ CREATE TABLE UserDocument (
 
 insert into gender (gender_id, gender_code, gender_name) values ('402881e43e8ccc1b013e8ccc20c80001', 'M', 'Male');
 
-insert into state (state_id, state_code, state_name) values ('402881e43e8ccc1b013e8ccc20c80002', 'CA', 'California');
+insert into gender (gender_id, gender_code, gender_name) values ('402881e43e8ccc1b013e8ccc20c80002', 'F', 'FemMale');
+
+insert into state (state_id, state_code, state_name) values ('402881e43e8ccc1b013e8ccc20c80003', 'CA', 'California');
+
+insert into state (state_id, state_code, state_name) values ('402881e43e8ccc1b013e8ccc20c80004', 'BA', 'Balifornia');
+
+insert into state (state_id, state_code, state_name) values ('402881e43e8ccc1b013e8ccc20c80005', 'DA', 'Dalifornia');
+
+insert into state (state_id, state_code, state_name) values ('402881e43e8ccc1b013e8ccc20c80006', 'GA', 'Galifornia');
+
+insert into state (state_id, state_code, state_name) values ('402881e43e8ccc1b013e8ccc20c80007', 'HA', 'Halifornia');
+
+insert into state (state_id, state_code, state_name) values ('402881e43e8ccc1b013e8ccc20c80008', 'FA', 'Falifornia');
 
 commit;
 
