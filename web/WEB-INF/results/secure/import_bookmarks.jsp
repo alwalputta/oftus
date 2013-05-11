@@ -29,18 +29,22 @@
                 </div>
             </s:if>
 
-            <div class="register-login">
-                <div>Import Bookmarks....</div>
-                Download Bookmarks Import Template - <s:a href="template/export_bookmarks.csv">Template File</s:a>
+            <div class="login-login">
+                <div>Import Bookmarks:</div>
                 <s:form action="import_bookmarks" method="post" enctype="multipart/form-data" >
                     <s:file name="file" label="Bookmarks Excel File:" />
                     <s:submit />
                 </s:form>
             </div>
-            <div class="register-login">
+            <div class="login-register">
+                Download Bookmarks Template - <s:a href="template/export_bookmarks.csv">Template File</s:a>
+                <br></br>
                 Note: This lists your categories. You want to see the bookmarks, click Manage Bookmarks link.
+                <br></br>
+                <br></br>
             </div>
         </div>
+
         <%@include file="/WEB-INF/results/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
     </body>

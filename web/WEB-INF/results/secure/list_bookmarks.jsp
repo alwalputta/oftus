@@ -39,19 +39,19 @@
                 <table summary="List of all bookmarks">
                     <thead>
                         <tr class="row">
-                            <th class="name">Id</td>
-                                <th class="name">Category Name</th>
-                                <th class="name">Description</th>
-                                <th class="name">Category Status</th>
-                                <th class="name">Edit</th>
-                                <th class="name">Delete</th>
+                            <!--th class="name">Id</th-->
+                            <th class="name">Category Name</th>
+                            <th class="name">Description</th>
+                            <th class="name">Category Status</th>
+                            <th class="name">Edit</th>
+                            <th class="name">Delete</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <s:iterator value="%{#session.user.userCategories}" id="category">
                             <tr class="rowc">
-                                <th><s:property value="#category.categoryId"/></th>
+                                <!--th><s:property value="#category.categoryId"/></th-->
                                 <th><s:property value="#category.categoryName"/></th>
                                 <th><s:property value="#category.description"/></th>
                                 <th><s:property value="#category.status"/></th>
@@ -70,7 +70,7 @@
                             </tr>
                             <s:iterator value="#category.bookmarks" id="bookmark">
                                 <tr class="rowb">
-                                    <th class="start"><s:property value="#bookmark.bookmarkId"/></th>
+                                    <!--th class="start"><s:property value="#bookmark.bookmarkId"/></th-->
                                     <td><s:property value="#bookmark.bookmarkName"/></td>
                                     <td><s:property value="#bookmark.description"/></td>
                                     <td><s:property value="#bookmark.status"/></td>
