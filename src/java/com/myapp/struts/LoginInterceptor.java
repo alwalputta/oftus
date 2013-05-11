@@ -18,11 +18,10 @@ import org.apache.struts2.StrutsStatics;
  *
  * @author palwal
  */
-public class LoginInterceptor extends AbstractInterceptor implements
-        StrutsStatics {
+public class LoginInterceptor extends AbstractInterceptor implements StrutsStatics {
 
     private static final Log log = LogFactory.getLog(LoginInterceptor.class);
-    private static final String USER_HANDLE = "loggedInUser";
+    private static final String USER_HANDLE = "user";
     private static final String LOGIN_ATTEMPT = "loginAttempt";
 
     @Override
@@ -53,7 +52,7 @@ public class LoginInterceptor extends AbstractInterceptor implements
             if (!StringUtils.isBlank(loginAttempt)) {
                 return invocation.invoke();
             }
-            return "login";
+            return "login_form";
         } else {
             return invocation.invoke();
         }

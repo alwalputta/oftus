@@ -5,9 +5,9 @@
 
 <struts>
 
-    <constant name="struts.devMode" value="true"/>
-    <constant name="struts.multipart.maxSize" value="10000000" />
     <constant name="struts.action.excludePattern" value="/ImageServlet"/>
+    <constant name="struts.multipart.maxSize" value="10000000" />
+    <constant name="struts.devMode" value="true"/>
 
     <package name="myapp" extends="struts-default" namespace="">
 
@@ -21,6 +21,10 @@
 
         <default-interceptor-ref name="loggingStack"></default-interceptor-ref>
 
+        <global-results>
+            <result name="login_form_redirect">/WEB-INF/results/login_form.jsp</result>
+        </global-results>
+
         <action name="index">
             <result>/WEB-INF/results/login_form.jsp</result>
         </action>
@@ -30,35 +34,35 @@
         </action>
 
         <action name="eula">
-            <result>/WEB-INF/results/eula.html</result>
+            <result>html/eula.html</result>
         </action>
 
         <action name="about">
-            <result>/WEB-INF/results/about.html</result>
+            <result>html/about.html</result>
         </action>
         
         <action name="login_faq">
-            <result>/WEB-INF/results/login_faq.html</result>
+            <result>html/login_faq.html</result>
         </action>
 
         <action name="register_faq">
-            <result>/WEB-INF/results/register_faq.html</result>
+            <result>html/register_faq.html</result>
         </action>
 
         <action name="forgot_password_faq">
-            <result>/WEB-INF/results/forgot_password_faq.html</result>
+            <result>html/forgot_password_faq.html</result>
         </action>
 
         <action name="reset_password_faq">
-            <result>/WEB-INF/results/reset_password_faq.html</result>
+            <result>html/reset_password_faq.html</result>
         </action>
 
         <action name="new_bookmark_faq">
-            <result>/WEB-INF/results/new_bookmark_faq.html</result>
+            <result>html/new_bookmark_faq.html</result>
         </action>
 
         <action name="forgot_password_form">
-            <result>/WEB-INF/results/forgot_password.html</result>
+            <result>html/forgot_password.html</result>
         </action>
 
         <action name="release_notes">

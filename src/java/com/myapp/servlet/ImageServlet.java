@@ -40,16 +40,23 @@ public class ImageServlet extends HttpServlet {
             response.setContentType("image/jpg");
             HttpSession session = request.getSession();
 
-            User user = (User) session.getAttribute("user");
+            Object ob = session.getAttribute("user");
+            User user;
+
+            if (ob instanceof User) {
+                user = (User) ob;
+            } else {
+                return;
+            }
             logger.debug("showPicture:" + user.getUserId());
 
             DocumentDAO documentDAO = new DocumentDAO();
             Document document = documentDAO.getPicture(user.getUserId());
 
-            logger.debug("showPicture:" + document.getContentType());
-            logger.debug("showPicture:" + document.getFileName());
-            logger.debug("showPicture:" + document.getFileType());
-            logger.debug("showPicture:" + document.getStatus());
+//            logger.debug("showPicture:" + document.getContentType());
+//            logger.debug("showPicture:" + document.getFileName());
+//            logger.debug("showPicture:" + document.getFileType());
+//            logger.debug("showPicture:" + document.getStatus());
 
             //(assuming you have a ResultSet named RS)
             int blobLength = (int) document.getBlob().length();

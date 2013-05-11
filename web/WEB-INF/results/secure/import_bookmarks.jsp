@@ -37,7 +37,7 @@
                 </s:form>
             </div>
             <div class="login-register">
-                Download Bookmarks Template - <s:a href="template/export_bookmarks.csv">Template File</s:a>
+                Download Bookmarks Template - <s:a href="template/export_bookmarks.xlsx">Template File</s:a>
                 <br></br>
                 Note: This lists your categories. You want to see the bookmarks, click Manage Bookmarks link.
                 <br></br>
