@@ -14,12 +14,11 @@
     vertical-align: baseline;
 }
 
-root { 
+root {
     display: block;
 }
 
-html
-{
+html {
     margin:0px;
     padding:0px;
     border: 1px black solid;
@@ -54,7 +53,6 @@ body {
     vertical-align: middle;
     text-align: center;
     font: 20px tahoma;
-    
 }
 
 .main {
@@ -129,7 +127,7 @@ body {
 }
 
 h1 {
-    font-size: 35px;
+    font-size: 50px;
 }
 
 li {
