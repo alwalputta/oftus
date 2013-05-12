@@ -12,6 +12,16 @@ import com.opensymphony.xwork2.interceptor.Interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.LockedAccountException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.config.ConfigurationException;
+import org.apache.shiro.config.IniSecurityManagerFactory;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.util.Factory;
 import org.apache.struts2.StrutsStatics;
 
 /**
@@ -21,7 +31,7 @@ import org.apache.struts2.StrutsStatics;
 public class LoggingInterceptor extends AbstractInterceptor implements Interceptor, StrutsStatics {
 
     static final Logger logger = Logger.getLogger(LoggingInterceptor.class);
-    private static final String USER_HANDLE = "user";
+    private static final String LOGGED_IN = "loggedIn";
     private static final String LOGIN_ATTEMPT = "loginAttempt";
 
     @Override
@@ -38,31 +48,93 @@ public class LoggingInterceptor extends AbstractInterceptor implements Intercept
         final ActionContext context = invocation.getInvocationContext();
         HttpServletRequest request = (HttpServletRequest) context.get(HTTP_REQUEST);
         HttpSession session = request.getSession(true);
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String rememberMe = request.getParameter("rememberMe");
 
-        // Is there a "user" object stored in the user's HttpSession?
-        Object user = session.getAttribute(USER_HANDLE);
-        if (user == null) {
-            // The user has not logged in yet.
-            logger.debug("User is null...");
-            // Is the user attempting to log in right now?
-//            String loginAttempt = request.getParameter(LOGIN_ATTEMPT);
+        String loggedIn = (String) session.getAttribute(LOGGED_IN);
+        String loginAttempt = (String) session.getAttribute(LOGIN_ATTEMPT);
+        logger.debug("Login attempt: " + loginAttempt);
 
-            /* The user is attempting to log in. */
-//            if (!StringUtils.isBlank(loginAttempt)) {
-            return "login_form_redirect";
+        if (loginAttempt == null) {
+            session.setAttribute(LOGIN_ATTEMPT, "1");
         } else {
-            logger.debug("User is not null...");
-            String userId = null;
-            try {
-                userId = ((User) user).getUserId();
-            } catch (Exception e) {
-                logger.debug("User is not null, class cast exception...");
-            }
-            if (userId == null || "".equals(userId)) {
+            int i = new Integer(loginAttempt).intValue();
+            i++;
+            session.setAttribute(LOGIN_ATTEMPT, i + "");
+
+            if (new Integer(loginAttempt).intValue() > 5) {
                 return "login_form_redirect";
-            } else {
-                return invocation.invoke();
             }
+        }
+
+        if (username == null || "".equals(username)) {
+            logger.debug("Username is null");
+            return "login_form_redirect";
+        }
+        if (password == null || "".equals(password)) {
+            logger.debug("Password is null");
+            return "login_form_redirect";
+        }
+        Subject subject = null;
+        UsernamePasswordToken token = null;
+
+        if (loggedIn == null || !loggedIn.equals("true")) {
+            logger.debug("User is null, not logged in yet...");
+
+            // code for authentication
+            try {
+                Factory<org.apache.shiro.mgt.SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
+                org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();
+                SecurityUtils.setSecurityManager(securityManager);
+
+                subject = SecurityUtils.getSubject();
+                token = new UsernamePasswordToken(username, password);
+                subject.login(token);
+                logger.debug("Username:" + username);
+                logger.debug("Password:" + password);
+                logger.debug("RememberMe:" + rememberMe);
+
+                if (rememberMe != null && rememberMe.equals("true")) {
+                    token.setRememberMe(true);
+                }
+                token.clear();
+                logger.debug("User is authenticated:" + subject.isAuthenticated());
+
+                if (subject.isAuthenticated()) {
+                    session.setAttribute(LOGGED_IN, "true");
+                    logger.debug("user authenticated successfully");
+                } else {
+                    logger.debug("user authentication failed");
+                }
+                if (subject.hasRole("user")) {
+                    logger.debug("user has user role");
+                } else {
+                    logger.debug("user does not have user role");
+                }
+                if (subject.isPermitted("test")) {
+                    logger.debug("user has admin role");
+                } else {
+                    logger.debug("user has no admin role");
+                }
+            } catch (IncorrectCredentialsException ex) {
+                ex.printStackTrace();
+            } catch (LockedAccountException ex) {
+                ex.printStackTrace();
+            } catch (UnknownAccountException ex) {
+                ex.printStackTrace();
+            } catch (AuthenticationException ex) {
+                ex.printStackTrace();
+            } catch (ConfigurationException ex) {
+                ex.printStackTrace();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        if (subject.isAuthenticated()) {
+            return invocation.invoke();
+        } else {
+            return "login_form_redirect";
         }
     }
 
