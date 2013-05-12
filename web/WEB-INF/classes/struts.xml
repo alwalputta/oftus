@@ -26,8 +26,7 @@
                 <result name="login_form_redirect">/WEB-INF/results/login_form.jsp</result>
             </global-results>
         -->
-
-
+        
         <action name="index">
             <result>/WEB-INF/results/login_form.jsp</result>
         </action>

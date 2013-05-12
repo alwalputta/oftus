@@ -4,7 +4,6 @@
  */
 package com.myapp.util;
 
-import com.myapp.struts.LoggingInterceptor;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -78,13 +77,13 @@ public class Utils {
 
     public static void recordClickLog(String userId, String actionName) {
 
-        ClickLog pageClick = new ClickLog();
-        pageClick.setUserId(userId);
-        pageClick.setActionName(actionName);
-        pageClick.setCreateDate(getCurrentDate());
+        ClickLog clickLog = new ClickLog();
+        clickLog.setUserId(userId);
+        clickLog.setActionName(actionName);
+        clickLog.setCreateDate(getCurrentDate());
 
         UtilDAO utilDAO = new UtilDAO();
-        utilDAO.recordPageClick(pageClick);
+        utilDAO.recordClickLog(clickLog);
     }
 
     public static String getCurrentDate() {

@@ -76,7 +76,7 @@ public class LoginAction extends ActionSupport {
         logger.debug("userCategories size:" + userCategories.size());
         logger.debug("returnVal:" + returnVal);
 
-        return returnVal;
+        return "success";
     }
 
     //simple validation
@@ -155,7 +155,7 @@ public class LoginAction extends ActionSupport {
                 ex.printStackTrace();
             } catch (Exception ex) {
                 addActionMessage("This user does not exist. Do you want to register?");
-                addActionError("Error");
+//                addActionError("Error");
                 ex.printStackTrace();
             }
         }

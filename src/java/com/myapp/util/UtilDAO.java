@@ -17,7 +17,7 @@ public class UtilDAO {
     static final Logger logger = Logger.getLogger(UtilDAO.class);
 
     @SuppressWarnings("unchecked")
-    public void recordPageClick(ClickLog pageClick) {
+    public void recordClickLog(ClickLog pageClick) {
         logger.debug("userId:" + pageClick.getUserId());
         logger.debug("actionName:" + pageClick.getActionName());
 
