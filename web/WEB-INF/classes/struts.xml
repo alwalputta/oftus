@@ -33,7 +33,7 @@
         </action>
 
         <action name="welcome">
-            <result>/WEB-INF/results/welcome.html</result>
+            <result>html/welcome.html</result>
         </action>
 
         <action name="eula">
