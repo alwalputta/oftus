@@ -11,6 +11,7 @@
 
     <package name="myapp" extends="struts-default" namespace="">
 
+        <!--
         <interceptors>
             <interceptor name="mylogging" class="com.myapp.struts.LoggingInterceptor"></interceptor>
             <interceptor-stack name="loggingStack">
@@ -21,9 +22,11 @@
 
         <default-interceptor-ref name="loggingStack"></default-interceptor-ref>
 
-        <global-results>
-            <result name="login_form_redirect">/WEB-INF/results/login_form.jsp</result>
-        </global-results>
+            <global-results>
+                <result name="login_form_redirect">/WEB-INF/results/login_form.jsp</result>
+            </global-results>
+        -->
+
 
         <action name="index">
             <result>/WEB-INF/results/login_form.jsp</result>

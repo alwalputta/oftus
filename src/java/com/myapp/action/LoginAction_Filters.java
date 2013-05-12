@@ -16,23 +16,13 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.LockedAccountException;
-import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.config.ConfigurationException;
-import org.apache.shiro.config.IniSecurityManagerFactory;
-import org.apache.shiro.subject.Subject;
-import org.apache.shiro.util.Factory;
 import org.apache.struts2.ServletActionContext;
 
 /**
  *
  * @author palwal
  */
-public class LoginAction1 extends ActionSupport {
+public class LoginAction_Filters extends ActionSupport {
 
     private String username;
     private String password;
@@ -42,7 +32,7 @@ public class LoginAction1 extends ActionSupport {
     Credential credential = null;
     User user = null;
     Set<Category> userCategories = null;
-    static final Logger logger = Logger.getLogger(LoginAction1.class);
+    static final Logger logger = Logger.getLogger(LoginAction_Filters.class);
 
     //business logic
 //    @Override
@@ -70,7 +60,6 @@ public class LoginAction1 extends ActionSupport {
         logger.debug("execute state DAO2:" + user.getFirstName());
 
         Utils.recordLoginLog(user.getUserId(), request);
-//        session.setAttribute("loginLog", loginLog);
         session.setAttribute("user", user);
 
         userCategories = user.getUserCategories();
@@ -91,61 +80,6 @@ public class LoginAction1 extends ActionSupport {
         } else if (getActionName().equals("login")) {
             logger.debug("username:" + getUsername());
             logger.debug("password:" + getPassword());
-
-            // code for authentication
-            try {
-                Factory<org.apache.shiro.mgt.SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
-                org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();
-                SecurityUtils.setSecurityManager(securityManager);
-
-                Subject subject = SecurityUtils.getSubject();
-                UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-                subject.login(token);
-                logger.debug("User RememberMe:" + getRememberMe());
-
-                if (getRememberMe().equals("true")) {
-                    token.setRememberMe(true);
-                }
-                token.clear();
-                logger.debug("User is authenticated:" + subject.isAuthenticated());
-
-                if (subject.hasRole("user")) {
-                    logger.debug("user has user role");
-                } else {
-                    logger.debug("user does not have user role");
-                }
-                if (subject.isPermitted("test")) {
-                    logger.debug("user has admin role");
-                } else {
-                    logger.debug("user has no admin role");
-                }
-//                Session session = subject.getSession();
-
-                if (subject.isAuthenticated()) {
-                    logger.debug("user authenticated successfully");
-                } else {
-                    addFieldError("username", "This user does not exist. Do you want to register?");
-                    addActionMessage("This user does not exist. Do you want to register?");
-                }
-            } catch (IncorrectCredentialsException ex) {
-                addActionMessage("This user does not exist. Do you want to register?");
-                ex.printStackTrace();
-            } catch (LockedAccountException ex) {
-                addActionMessage("This user does not exist. Do you want to register?");
-                ex.printStackTrace();
-            } catch (UnknownAccountException ex) {
-                addActionMessage("This user does not exist. Do you want to register?");
-                ex.printStackTrace();
-            } catch (AuthenticationException ex) {
-                addActionMessage("This user does not exist. Do you want to register?");
-                ex.printStackTrace();
-            } catch (ConfigurationException ex) {
-                addActionMessage("This user does not exist. Do you want to register?");
-                ex.printStackTrace();
-            } catch (Exception ex) {
-                addActionMessage("This user does not exist. Do you want to register?");
-                ex.printStackTrace();
-            }
         }
         logger.debug("in the validate of LoginAction");
     }

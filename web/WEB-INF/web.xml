@@ -17,21 +17,6 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
         <url-pattern>/ImageServlet</url-pattern>
     </servlet-mapping>
 
-<!--
-    <filter>
-        <filter-name>ShiroFilter</filter-name>
-        <filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class>
-        <init-param>
-            <param-name>config</param-name>
-            <param-value>
-            </param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>ShiroFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-    -->
     <filter>
         <filter-name>struts2</filter-name>
         <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -40,6 +25,25 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
         <filter-name>struts2</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+
+    <filter>
+        <filter-name>ShiroFilter</filter-name>
+        <filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class>
+        <init-param>
+            <param-name>config</param-name>
+            <param-value></param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>ShiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+    
     
     <!--
     Log filer - not fully working
@@ -79,11 +83,11 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
             <url-pattern>/*</url-pattern>
         </filter-mapping>
     -->
-
+    <!--
     <session-config>
-        <!-- web.xml expects the session timeout in minutes: -->
         <session-timeout>30</session-timeout>
     </session-config>
+    -->
     
     <welcome-file-list>
         <welcome-file>html/welcome.html</welcome-file>

@@ -1,4 +1,4 @@
-<title>OFTUS&reg; Your World. One Click. &#9786;</title>
+<title>OFTUS&reg; Your World. One Link. &#9786;</title>
 
 <link rel="shortcut icon" type="image/x-icon" class="header-icon" href="images/favicon.ico"/>
 <link rel="stylesheet" type="text/css" href="css/myapp.css"/>
