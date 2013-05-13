@@ -60,7 +60,6 @@ public class DocumentDAO {
             logger.debug("list size:" + documents.size());
 
             for (Iterator iterator = documents.iterator(); iterator.hasNext();) {
-                logger.debug("11111111");
                 document = (Document) iterator.next();
             }
             transaction.commit();

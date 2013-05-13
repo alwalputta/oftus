@@ -37,9 +37,6 @@ public class LoginAction extends ActionSupport {
     private String username;
     private String password;
     private String rememberMe;
-    private String loginAttempt;
-    boolean loggedIn = false;
-    Credential credential = null;
     User user = null;
     Set<Category> userCategories = null;
     static final Logger logger = Logger.getLogger(LoginAction.class);
@@ -59,7 +56,7 @@ public class LoginAction extends ActionSupport {
         String returnVal = "success";
 
         CredentialDAO credentialDAO = new CredentialDAO();
-        credential = credentialDAO.selectCredential(getUsername());
+        Credential credential = credentialDAO.selectCredential(getUsername());
 
         Set<User> users = credential.getUsers();
         for (Iterator iterator = users.iterator(); iterator.hasNext();) {
@@ -95,28 +92,21 @@ public class LoginAction extends ActionSupport {
             // code for authentication
             try {
                 Factory<org.apache.shiro.mgt.SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
-//                logger.debug("User RememberMe:" + getRememberMe());
                 org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();
-//                logger.debug("User RememberMe:" + getRememberMe());
                 SecurityUtils.setSecurityManager(securityManager);
 
-//                logger.debug("User RememberMe:" + getRememberMe());
                 Subject subject = SecurityUtils.getSubject();
-//                logger.debug("User RememberMe:" + getRememberMe());
-                UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-//                logger.debug("User RememberMe:" + getRememberMe());
+                UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), getPassword());
                 subject.login(token);
-                logger.debug("User RememberMe:" + getRememberMe());
+                logger.debug("After subject.login");
 
                 if (getRememberMe().equals("true")) {
                     token.setRememberMe(true);
                     logger.debug("User RememberMe: Setting to TRUE");
                 }
                 token.clear();
-
-                logger.debug("User RememberMe:" + token.isRememberMe());
-
                 logger.debug("User is authenticated:" + subject.isAuthenticated());
+                logger.debug("User RememberMe:" + token.isRememberMe());
 
                 if (subject.hasRole("user")) {
                     logger.debug("user has user role");
@@ -200,13 +190,5 @@ public class LoginAction extends ActionSupport {
     public String getActionName() {
         ActionContext context = ActionContext.getContext();
         return context.getName();
-    }
-
-    public String getLoginAttempt() {
-        return loginAttempt;
-    }
-
-    public void setLoginAttempt(String loginAttempt) {
-        this.loginAttempt = loginAttempt;
     }
 }
