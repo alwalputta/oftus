@@ -18,15 +18,13 @@
             }
         </style>
 
-        <%@include file="/WEB-INF/results/imports.jsp"%>
+        <%@include file="/WEB-INF/results/open/imports.jsp"%>
 
     </head>
 
     <%
         response.setHeader("Cache-Control", "no-cache");
         response.setDateHeader("Expires", 0);
-        session.setAttribute("user", "palwal");
-        session.setAttribute("password", "password");
     %>
 
     <body>
@@ -44,7 +42,7 @@
         <s:a href="%{localeDE}" >German</s:a>
         </p-->
 
-        <%@include file="/WEB-INF/results/header.jsp"%>
+        <%@include file="/WEB-INF/results/open/header.jsp"%>
 
         <div class="login-modal">
 
@@ -98,7 +96,7 @@
             </div>
         </div>
 
-        <%@include file="/WEB-INF/results/footer.jsp"%>
+        <%@include file="/WEB-INF/results/open/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
     </body>
 

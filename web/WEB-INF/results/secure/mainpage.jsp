@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
     <head>
-        <%@include file="/WEB-INF/results/imports.jsp"%>
+        <%@include file="/WEB-INF/results/open/imports.jsp"%>
         <script type="text/javascript">
             function loadData () {
             <s:iterator value="userCategories" id="category">
@@ -19,7 +19,7 @@
     </head>
 
     <body>
-        <%@include file="/WEB-INF/results/header.jsp"%>
+        <%@include file="/WEB-INF/results/open/header.jsp"%>
         <div class="mask"></div>
         <div class="message"></div>
         <div class="loading">
@@ -98,7 +98,7 @@
                 </s:iterator>
             </ul>
         </div>
-        <%@include file="/WEB-INF/results/footer.jsp"%>
+        <%@include file="/WEB-INF/results/open/footer.jsp"%>
         <script type="text/javascript" src="js/jquery-highlight-4.js"></script>
         <script type="text/javascript" src="js/myapp.js"></script>
     </body>

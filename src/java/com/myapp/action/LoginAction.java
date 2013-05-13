@@ -76,7 +76,7 @@ public class LoginAction extends ActionSupport {
         logger.debug("userCategories size:" + userCategories.size());
         logger.debug("returnVal:" + returnVal);
 
-        return "success";
+        return returnVal;
     }
 
     //simple validation
@@ -95,23 +95,27 @@ public class LoginAction extends ActionSupport {
             // code for authentication
             try {
                 Factory<org.apache.shiro.mgt.SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
-                logger.debug("User RememberMe:" + getRememberMe());
+//                logger.debug("User RememberMe:" + getRememberMe());
                 org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();
-                logger.debug("User RememberMe:" + getRememberMe());
+//                logger.debug("User RememberMe:" + getRememberMe());
                 SecurityUtils.setSecurityManager(securityManager);
 
-                logger.debug("User RememberMe:" + getRememberMe());
+//                logger.debug("User RememberMe:" + getRememberMe());
                 Subject subject = SecurityUtils.getSubject();
-                logger.debug("User RememberMe:" + getRememberMe());
+//                logger.debug("User RememberMe:" + getRememberMe());
                 UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-                logger.debug("User RememberMe:" + getRememberMe());
+//                logger.debug("User RememberMe:" + getRememberMe());
                 subject.login(token);
                 logger.debug("User RememberMe:" + getRememberMe());
 
                 if (getRememberMe().equals("true")) {
                     token.setRememberMe(true);
+                    logger.debug("User RememberMe: Setting to TRUE");
                 }
                 token.clear();
+
+                logger.debug("User RememberMe:" + token.isRememberMe());
+
                 logger.debug("User is authenticated:" + subject.isAuthenticated());
 
                 if (subject.hasRole("user")) {
@@ -129,32 +133,31 @@ public class LoginAction extends ActionSupport {
                 if (subject.isAuthenticated()) {
                     logger.debug("user authenticated successfully");
                 } else {
-//                    addFieldError("username", "This user does not exist. Do you want to register?");
-                    addActionError("Error");
-                    addActionMessage("This user does not exist. Do you want to register?");
+//                    addActionError("Error");
+//                    addActionMessage("This user does not exist. Do you want to register?");
                 }
             } catch (IncorrectCredentialsException ex) {
-                addActionMessage("This user does not exist. Do you want to register?");
-                addActionError("Error");
+//                addActionMessage("This user does not exist. Do you want to register?");
+//                addActionError("Error");
                 ex.printStackTrace();
             } catch (LockedAccountException ex) {
-                addActionMessage("This user does not exist. Do you want to register?");
-                addActionError("Error");
+//                addActionMessage("This user does not exist. Do you want to register?");
+//                addActionError("Error");
                 ex.printStackTrace();
             } catch (UnknownAccountException ex) {
-                addActionMessage("This user does not exist. Do you want to register?");
-                addActionError("Error");
+//                addActionMessage("This user does not exist. Do you want to register?");
+//                addActionError("Error");
                 ex.printStackTrace();
             } catch (AuthenticationException ex) {
-                addActionMessage("This user does not exist. Do you want to register?");
-                addActionError("Error");
+//                addActionMessage("This user does not exist. Do you want to register?");
+//                addActionError("Error");
                 ex.printStackTrace();
             } catch (ConfigurationException ex) {
-                addActionMessage("This user does not exist. Do you want to register?");
-                addActionError("Error");
+//                addActionMessage("This user does not exist. Do you want to register?");
+//                addActionError("Error");
                 ex.printStackTrace();
             } catch (Exception ex) {
-                addActionMessage("This user does not exist. Do you want to register?");
+//                addActionMessage("This user does not exist. Do you want to register?");
 //                addActionError("Error");
                 ex.printStackTrace();
             }

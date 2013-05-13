@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
     <head>
 
-        <%@include file="/WEB-INF/results/imports.jsp"%>
+        <%@include file="/WEB-INF/results/open/imports.jsp"%>
 
         <script type="text/javascript">
         </script>
@@ -15,7 +15,7 @@
 
 
     <body>
-        <%@include file="/WEB-INF/results/header.jsp"%>
+        <%@include file="/WEB-INF/results/open/header.jsp"%>
 
         <div class="mainTable">
             <div class="login-login">
@@ -39,7 +39,7 @@
                         <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
                 </div>
             </div>
-        <%@include file="/WEB-INF/results/footer.jsp"%>
+        <%@include file="/WEB-INF/results/open/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
 
     </body>

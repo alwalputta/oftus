@@ -2,7 +2,6 @@
 <div class="dockingBarTop">
     <div class="top-column-element-left">
         <div class="company-logo">
-            <!--img id="logo" src="images/oftus2.jpg"/-->
             <img id="logo" src="images/oftus.gif"/>
             <!--OFTUS<sup>&reg;</sup>-->
             <!--div class="company-logo-punchline">
@@ -19,7 +18,7 @@
         <ul id="menu">
             <li>
             <s:if test="%{#session.user.firstName} == null">
-                <a href="login_form">Login</a>
+                <a href="index">Login</a>
             </s:if>
             <s:else>
                 <a href="login">

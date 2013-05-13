@@ -4,7 +4,6 @@
  */
 package com.myapp.struts;
 
-import com.myapp.admin.User;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;

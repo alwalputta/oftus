@@ -5,7 +5,7 @@
 
 <html>
     <head>
-        <%@include file="/WEB-INF/results/imports.jsp"%>
+        <%@include file="/WEB-INF/results/open/imports.jsp"%>
 
         <style type="text/css">
         </style>
@@ -16,7 +16,7 @@
 
 
     <body>
-        <%@include file="/WEB-INF/results/header.jsp"%>
+        <%@include file="/WEB-INF/results/open/header.jsp"%>
 
         <div class="mainTable">
             <s:if test="hasActionErrors()">
@@ -98,7 +98,7 @@
                 If you want to see the categories, click <a href="list_categories">Manage Categories</a> link.
             </div>
         </div>
-        <%@include file="/WEB-INF/results/footer.jsp"%>
+        <%@include file="/WEB-INF/results/open/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
     </body>
 </html>
