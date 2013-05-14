@@ -14,12 +14,10 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.util.Iterator;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -28,21 +26,20 @@ import org.apache.shiro.config.ConfigurationException;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
-import org.apache.shiro.web.util.WebUtils;
 import org.apache.struts2.ServletActionContext;
 
 /**
  *
  * @author palwal
  */
-public class LoginAction extends ActionSupport {
+public class LoginAction_Shiro extends ActionSupport {
 
     private String username;
     private String password;
     private String rememberMe;
     User user = null;
     Set<Category> userCategories = null;
-    static final Logger logger = Logger.getLogger(LoginAction.class);
+    static final Logger logger = Logger.getLogger(LoginAction_Shiro.class);
 
     //business logic
 //    @Override
@@ -76,14 +73,13 @@ public class LoginAction extends ActionSupport {
         logger.debug("userCategories size:" + userCategories.size());
         logger.debug("returnVal:" + returnVal);
 
-        return SUCCESS;
+        return returnVal;
     }
 
     //simple validation
     @Override
     public void validate() {
         HttpServletRequest request = ServletActionContext.getRequest();
-        HttpServletResponse response = ServletActionContext.getResponse();
         HttpSession session = request.getSession();
         Utils.recordClickLog(session.getId(), getActionName());
 
@@ -112,10 +108,6 @@ public class LoginAction extends ActionSupport {
                 logger.debug("User is authenticated:" + subject.isAuthenticated());
                 logger.debug("User RememberMe:" + token.isRememberMe());
 
-//                AuthenticationToken token1 = new UsernamePasswordToken(username, password);
-//                subject.login(token1);
-//                WebUtils.redirectToSavedRequest(request, response, "login");
-
                 if (subject.hasRole("user")) {
                     logger.debug("user has user role");
                 } else {
@@ -135,16 +127,28 @@ public class LoginAction extends ActionSupport {
 //                    addActionMessage("This user does not exist. Do you want to register?");
                 }
             } catch (IncorrectCredentialsException ex) {
+//                addActionMessage("This user does not exist. Do you want to register?");
+//                addActionError("Error");
                 ex.printStackTrace();
             } catch (LockedAccountException ex) {
+//                addActionMessage("This user does not exist. Do you want to register?");
+//                addActionError("Error");
                 ex.printStackTrace();
             } catch (UnknownAccountException ex) {
+//                addActionMessage("This user does not exist. Do you want to register?");
+//                addActionError("Error");
                 ex.printStackTrace();
             } catch (AuthenticationException ex) {
+//                addActionMessage("This user does not exist. Do you want to register?");
+//                addActionError("Error");
                 ex.printStackTrace();
             } catch (ConfigurationException ex) {
+//                addActionMessage("This user does not exist. Do you want to register?");
+//                addActionError("Error");
                 ex.printStackTrace();
             } catch (Exception ex) {
+//                addActionMessage("This user does not exist. Do you want to register?");
+//                addActionError("Error");
                 ex.printStackTrace();
             }
         }

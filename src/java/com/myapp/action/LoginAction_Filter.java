@@ -22,7 +22,7 @@ import org.apache.struts2.ServletActionContext;
  *
  * @author palwal
  */
-public class LoginAction_Filters extends ActionSupport {
+public class LoginAction_Filter extends ActionSupport {
 
     private String username;
     private String password;
@@ -32,7 +32,7 @@ public class LoginAction_Filters extends ActionSupport {
     Credential credential = null;
     User user = null;
     Set<Category> userCategories = null;
-    static final Logger logger = Logger.getLogger(LoginAction_Filters.class);
+    static final Logger logger = Logger.getLogger(LoginAction_Filter.class);
 
     //business logic
 //    @Override

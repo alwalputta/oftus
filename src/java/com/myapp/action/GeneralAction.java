@@ -70,20 +70,15 @@ public class GeneralAction extends ActionSupport {
     //business logic
     @Override
     public String execute() {
-
         logger.debug("GeneralAction execute!");
-
-        logger.debug("before gender DAO!");
 
         GenderDAO genderDAO = new GenderDAO();
         genders = genderDAO.listGenders();
-
-        logger.debug("before state DAO!");
+        logger.debug("genders:" + genders.size());
 
         StateDAO stateDAO = new StateDAO();
         states = stateDAO.listStates();
-
-        logger.debug("after state DAO!");
+        logger.debug("states:" + states.size());
 
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();

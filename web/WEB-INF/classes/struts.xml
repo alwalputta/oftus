@@ -5,6 +5,7 @@
 
 <struts>
 
+    <constant name="struts.action.excludePattern" value="/TestServlet"/>
     <constant name="struts.action.excludePattern" value="/ImageServlet"/>
     <constant name="struts.multipart.maxSize" value="10000000" />
     <constant name="struts.devMode" value="true"/>
@@ -22,10 +23,10 @@
 
         <default-interceptor-ref name="loggingStack"></default-interceptor-ref>
 
-            <global-results>
-                <result name="login_form_redirect">/WEB-INF/results/open/login_form.jsp</result>
-            </global-results>
-        -->
+        <global-results>
+            <result name="login_form_redirect">/WEB-INF/results/open/login_form.jsp</result>
+        </global-results>
+       -->
         
         <action name="index">
             <result>/WEB-INF/results/open/login_form.jsp</result>
@@ -111,12 +112,12 @@
             <result>/WEB-INF/results/user_help.html</result>
         </action>
 
-<!--
-        <action name="login_form" class="com.myapp.action.LoginAction" method="loginForm">
-            <result name="success">/WEB-INF/results/open/login_form.jsp</result>
-            <result name="input">/WEB-INF/results/open/login_form.jsp</result>
-        </action>
--->
+        <!--
+                <action name="login_form" class="com.myapp.action.LoginAction" method="loginForm">
+                    <result name="success">/WEB-INF/results/open/login_form.jsp</result>
+                    <result name="input">/WEB-INF/results/open/login_form.jsp</result>
+                </action>
+        -->
         <action name="login" class="com.myapp.action.LoginAction" method="login">
             <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/open/login_form.jsp</result>
