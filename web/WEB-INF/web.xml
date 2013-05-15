@@ -21,9 +21,10 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
         <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
     </listener>
 
+    <!--
     <filter>
         <filter-name>ShiroFilter</filter-name>
-        <filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class>
+        <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
         <init-param>
             <param-name>configPath</param-name>
             <param-value>/WEB-INF/classes/shiro.ini</param-value>
@@ -38,7 +39,8 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
         <dispatcher>INCLUDE</dispatcher> 
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
-        
+    -->
+    
     <servlet>
         <servlet-name>ImageServlet</servlet-name>
         <servlet-class>com.myapp.servlet.ImageServlet</servlet-class>

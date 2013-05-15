@@ -14,19 +14,33 @@
 
         <!--
         <interceptors>
-            <interceptor name="mylogging" class="com.myapp.struts.LoggingInterceptor"></interceptor>
-            <interceptor-stack name="loggingStack">
-                <interceptor-ref name="mylogging"/>
+            <interceptor name="shiro" class="com.myapp.struts.ShiroInterceptor"></interceptor>
+            <interceptor-stack name="shiroStack">
+                <interceptor-ref name="shiro"/>
                 <interceptor-ref name="defaultStack"/>
             </interceptor-stack>
         </interceptors>
 
-        <default-interceptor-ref name="loggingStack"></default-interceptor-ref>
+        <default-interceptor-ref name="shiroStack"></default-interceptor-ref>
 
         <global-results>
             <result name="login_form_redirect">/WEB-INF/results/open/login_form.jsp</result>
         </global-results>
-       -->
+        -->
+
+        <interceptors>
+            <interceptor name="shiro" class="com.myapp.struts.ShiroInterceptor"></interceptor>
+            <interceptor-stack name="shiroStack">
+                <interceptor-ref name="shiro"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="shiroStack"></default-interceptor-ref>
+
+         <global-results>
+             <result name="login_form_redirect">/WEB-INF/results/open/login_form.jsp</result>
+         </global-results>
         
         <action name="index">
             <result>/WEB-INF/results/open/login_form.jsp</result>

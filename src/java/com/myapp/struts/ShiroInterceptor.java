@@ -27,9 +27,9 @@ import org.apache.struts2.StrutsStatics;
  *
  * @author palwal
  */
-public class LoggingInterceptor extends AbstractInterceptor implements Interceptor, StrutsStatics {
+public class ShiroInterceptor extends AbstractInterceptor implements Interceptor, StrutsStatics {
 
-    static final Logger logger = Logger.getLogger(LoggingInterceptor.class);
+    static final Logger logger = Logger.getLogger(ShiroInterceptor.class);
     private static final String LOGGED_IN = "loggedIn";
     private static final String LOGIN_ATTEMPT = "loginAttempt";
 
@@ -98,10 +98,10 @@ public class LoggingInterceptor extends AbstractInterceptor implements Intercept
                     token.setRememberMe(true);
                 }
                 token.clear();
-                logger.debug("User is authenticated:" + subject.isAuthenticated());
+                logger.debug("User authenticated:" + subject.isAuthenticated());
 
                 if (subject.isAuthenticated()) {
-                    session.setAttribute(LOGGED_IN, "true");
+//                    session.setAttribute(LOGGED_IN, "true");
                     logger.debug("user authenticated successfully");
                 } else {
                     logger.debug("user authentication failed");
@@ -139,11 +139,11 @@ public class LoggingInterceptor extends AbstractInterceptor implements Intercept
 
     @Override
     public void destroy() {
-        logger.debug("Destroying LoggingInterceptor...");
+        logger.debug("Destroying ShiroInterceptor...");
     }
 
     @Override
     public void init() {
-        logger.debug("Initializing LoggingInterceptor...");
+        logger.debug("Initializing ShiroInterceptor...");
     }
 }
