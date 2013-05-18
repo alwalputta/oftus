@@ -12,7 +12,7 @@
 
     <package name="myapp" extends="struts-default" namespace="">
 
-        <!--
+        
         <interceptors>
             <interceptor name="shiro" class="com.myapp.struts.ShiroInterceptor"></interceptor>
             <interceptor-stack name="shiroStack">
@@ -26,26 +26,7 @@
         <global-results>
             <result name="login_form_redirect">/WEB-INF/results/open/login_form.jsp</result>
         </global-results>
-        -->
-
-        <interceptors>
-            <interceptor name="shiro" class="com.myapp.struts.ShiroInterceptor"></interceptor>
-            <interceptor-stack name="shiroStack">
-                <interceptor-ref name="shiro"/>
-                <interceptor-ref name="defaultStack"/>
-            </interceptor-stack>
-        </interceptors>
-
-        <default-interceptor-ref name="shiroStack"></default-interceptor-ref>
-
-         <global-results>
-             <result name="login_form_redirect">/WEB-INF/results/open/login_form.jsp</result>
-         </global-results>
         
-        <action name="index">
-            <result>/WEB-INF/results/open/login_form.jsp</result>
-        </action>
-
         <action name="welcome">
             <result>html/welcome.html</result>
         </action>
@@ -132,6 +113,12 @@
                     <result name="input">/WEB-INF/results/open/login_form.jsp</result>
                 </action>
         -->
+
+        <action name="index" class="com.myapp.action.LoginAction" method="loginForm">
+            <result name="success">/WEB-INF/results/open/login_form.jsp</result>
+            <result name="input">/WEB-INF/results/open/login_form.jsp</result>
+        </action>
+        
         <action name="login" class="com.myapp.action.LoginAction" method="login">
             <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/open/login_form.jsp</result>

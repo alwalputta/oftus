@@ -4,7 +4,6 @@
  */
 package com.myapp.struts;
 
-import com.myapp.admin.User;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ValidationAware;
 import com.opensymphony.xwork2.ActionInvocation;
@@ -30,12 +29,12 @@ import org.apache.struts2.StrutsStatics;
  *
  * @author palwal
  */
-public class ShiroInterceptor extends AbstractInterceptor implements Interceptor, StrutsStatics {
+public class ShiroInterceptor1 extends AbstractInterceptor implements Interceptor, StrutsStatics {
 
-    static final Logger logger = Logger.getLogger(ShiroInterceptor.class);
+    static final Logger logger = Logger.getLogger(ShiroInterceptor1.class);
     private static final String LOGGED_IN = "loggedIn";
     private static final String LOGIN_ATTEMPT = "loginAttempt";
-    private static final String USER_HANDLE = "user";
+    private static final String USER_HANDLE = "userHandle";
     private static final String USERNAME = "username";
     private static final String PASSWORD = "password";
     private static final String REMEMBER_ME = "rememberMe";
@@ -59,65 +58,55 @@ public class ShiroInterceptor extends AbstractInterceptor implements Interceptor
         String loginAttempt = (String) session.getAttribute(LOGIN_ATTEMPT);
         logger.debug("Login attempt: " + loginAttempt);
 
-        User user = (User) session.getAttribute(USER_HANDLE);
+        /*
+         if (loginAttempt == null) {
+         session.setAttribute(LOGIN_ATTEMPT, "1");
+         } else {
+         int i = new Integer(loginAttempt).intValue();
+         i++;
+         session.setAttribute(LOGIN_ATTEMPT, i + "");
+
+         if (new Integer(loginAttempt).intValue() > 5) {
+         return "login_form_redirect";
+         }
+         }
+         */
+
+        logger.debug("After Password is null....");
+
+        // Get the action context from the invocation so we can access the
+        // HttpServletRequest and HttpSession objects.
+
+        // Is there a "user" object stored in the user's HttpSession?
+        Object user = session.getAttribute(USER_HANDLE);
         if (user == null) {
-            logger.debug("User is null");
-            String username = request.getParameter(USERNAME);
-            String password = request.getParameter(PASSWORD);
-            if (username == null || "".equals(username)) {
-                logger.debug("Username is null");
-                Object action = invocation.getAction();
-//                ((ValidationAware) action).addActionError("Username is empty.");
-                return "login_form_redirect";
+            // The user has not logged in yet.
+            logger.debug("loginAttempt before...." + loginAttempt);
+            if (!StringUtils.isBlank(loginAttempt)) { // The user is attempting to log in.
+                logger.debug("Login attempt after....");
+                // Process the user's login attempt.
+                if (processLoginAttempt(request, session)) {
+                    // The login succeeded send them the login-success page.
+                    logger.debug("After Password is null....");
+                    return "login-success";
+                } else {
+                    // The login failed. Set an error if we can on the action.
+                    logger.debug("After Password is null....");
+                    Object action = invocation.getAction();
+                    if (action instanceof ValidationAware) {
+                        logger.debug("After Password is null....");
+                        ((ValidationAware) action).addActionError("Username or password incorrect.");
+                    }
+                }
             }
-            if (password == null || "".equals(password)) {
-                logger.debug("Password is null");
-                Object action = invocation.getAction();
-//                ((ValidationAware) action).addActionError("Password is empty.");
-                return "login_form_redirect";
-            }
+            // Either the login attempt failed or the user hasn't tried to login yet, 
+            // and we need to send the login form.
+            logger.debug("After Password is null....");
+            return LOGIN_PAGE;
+        } else {
+            logger.debug("After Password is null....");
+            return invocation.invoke();
         }
-
-//        Factory<org.apache.shiro.mgt.SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
-//        org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();
-//        SecurityUtils.setSecurityManager(securityManager);
-//        //Subject user = SecurityUtils.getSubject();
-//
-//        Subject subject = null;
-//        String loggedIn = (String) session.getAttribute(LOGGED_IN);
-
-//        if (loggedIn != null && loggedIn.equals("true")) {
-//            subject = SecurityUtils.getSubject();;
-//        } else {
-//            if (subject == null) {
-//                logger.debug("User is null, not logged in yet...");
-//                if (loginAttempt == null) {
-//                    session.setAttribute(LOGIN_ATTEMPT, "1");
-//                } else {
-//                    logger.debug("User is not logged in ......");
-//                    int i = new Integer(loginAttempt).intValue();
-//                    i++;
-//                    session.setAttribute(LOGIN_ATTEMPT, i + "");
-//
-//                    if (new Integer(loginAttempt).intValue() > 5) {
-//                        return "login_form_redirect";
-//                    }
-//                }
-//            } else {
-//                logger.debug("Login attempt: " + loginAttempt);
-//                login(invocation);
-//                logger.debug("Logged processed");
-//            }
-//        }
-//        if (subject != null && subject.isAuthenticated()) {
-//            return invocation.invoke();
-//        } else {
-//            return "login_form_redirect";
-//        }
-
-        login(invocation);
-//        processLoginAttempt(request);
-        return invocation.invoke();
     }
 
     @Override
@@ -130,36 +119,15 @@ public class ShiroInterceptor extends AbstractInterceptor implements Interceptor
         logger.debug("Initializing ShiroInterceptor...");
     }
 
-    private void login(ActionInvocation invocation) {
-        final ActionContext context = invocation.getInvocationContext();
-        HttpServletRequest request = (HttpServletRequest) context.get(HTTP_REQUEST);
-        HttpSession session = request.getSession(true);
-
-        User user = (User) session.getAttribute(USER_HANDLE);
-        if (user == null) {
-            logger.debug("User is null");
-            if (processLoginAttempt(request)) {
-                logger.debug("User loggedin successfully");
-            } else {
-                Object action = invocation.getAction();
-                logger.debug("User action:" + action);
-                if (action instanceof ValidationAware) {
-                    logger.debug("Before ValidationAware....");
-                    ((ValidationAware) action).addActionError("Username or password incorrect.");
-                    logger.debug("After ValidationAware....");
-                }
-            }
-        } else {
-            logger.debug("User not null....");
-        }
-    }
-
-    public boolean processLoginAttempt(HttpServletRequest request) {
-        HttpSession session = request.getSession(true);
+    /**
+     * Attempt to process the user's login attempt delegating the work to the
+     * SecurityManager.
+     */
+    public boolean processLoginAttempt(HttpServletRequest request, HttpSession session) {
         String username = request.getParameter(USERNAME);
         String password = request.getParameter(PASSWORD);
         String rememberMe = request.getParameter(REMEMBER_ME);
-        Subject subject = null;
+        Subject user = null;
         UsernamePasswordToken token = null;
 
         // Use the security manager to validate the user's username and password.
@@ -168,9 +136,9 @@ public class ShiroInterceptor extends AbstractInterceptor implements Interceptor
             org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();
             SecurityUtils.setSecurityManager(securityManager);
 
-            subject = SecurityUtils.getSubject();
+            user = SecurityUtils.getSubject();
             token = new UsernamePasswordToken(username, password);
-            subject.login(token);
+            user.login(token);
             logger.debug("Username:" + username);
             logger.debug("Password:" + password);
             logger.debug("RememberMe:" + rememberMe);
@@ -181,13 +149,14 @@ public class ShiroInterceptor extends AbstractInterceptor implements Interceptor
             }
             logger.debug("After Password is null....");
             token.clear();
-            logger.debug("User authenticated:" + subject.isAuthenticated());
+            logger.debug("User authenticated:" + user.isAuthenticated());
 
-            if (subject.isAuthenticated()) {
+            if (user.isAuthenticated()) {
                 logger.debug("After Password is null....");
                 session.setAttribute(LOGGED_IN, "true");
                 logger.debug("user authenticated successfully");
             }
+            logger.debug("After Password is null....");
         } catch (IncorrectCredentialsException ex) {
             ex.printStackTrace();
         } catch (LockedAccountException ex) {
@@ -201,6 +170,17 @@ public class ShiroInterceptor extends AbstractInterceptor implements Interceptor
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return true;
+
+        if (user != null) {
+            // The user has successfully logged in. Store their user object in 
+            // their HttpSession. Then return true.
+            logger.debug("After Password is null....");
+            session.setAttribute(USER_HANDLE, user);
+            return true;
+        } else {
+            // The user did not successfully log in. Return false.
+            logger.debug("After Password is null....");
+            return false;
+        }
     }
 }

@@ -8,7 +8,6 @@ import com.myapp.admin.Credential;
 import com.myapp.admin.CredentialDAO;
 import com.myapp.admin.User;
 import com.myapp.main.Category;
-import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Iterator;
@@ -59,7 +58,7 @@ public class LoginAction extends ActionSupport {
         logger.debug("before state DAO1:" + getUsername());
         logger.debug("execute state DAO2:" + user.getFirstName());
 
-        Utils.recordLoginLog(user.getUserId(), request);
+        //Utils.recordLoginLog(user.getUserId(), request);
         session.setAttribute("user", user);
 
         userCategories = user.getUserCategories();
@@ -71,12 +70,12 @@ public class LoginAction extends ActionSupport {
     //simple validation
     @Override
     public void validate() {
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-        Utils.recordClickLog(session.getId(), getActionName());
+//        HttpServletRequest request = ServletActionContext.getRequest();
+//        HttpSession session = request.getSession();
+        //Utils.recordClickLog(session.getId(), getActionName());
 
-        if (getActionName().equals("login_form")) {
-            logger.debug("login_form");
+        if (getActionName().equals("index")) {
+            logger.debug("index");
         } else if (getActionName().equals("login")) {
             logger.debug("username:" + getUsername());
             logger.debug("password:" + getPassword());
