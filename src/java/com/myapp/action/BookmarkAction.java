@@ -165,12 +165,10 @@ public class BookmarkAction extends ActionSupport {
                     b.setBookmarkName(getBookmarkName());
                     b.setHiperLink(getHiperLink());
                     b.setDescription(getDescription());
-//                    b.setBookmarkOrder(10000); //modify this later//
 
                     if (c.getCategoryId().equals(getCategoryId())) {
                         ;
                     } else {
-//                        bookmarks.remove(b);
                         BookmarkDAO bookmarkDAO = new BookmarkDAO();
                         updated = bookmarkDAO.updateBookmarkCategory(getBookmarkId(), getCategoryId());
                     }

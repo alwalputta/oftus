@@ -6,13 +6,12 @@ package com.myapp.struts;
 
 import com.myapp.admin.User;
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ValidationAware;
 import com.opensymphony.xwork2.ActionInvocation;
+import com.opensymphony.xwork2.ValidationAware;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -43,7 +42,6 @@ public class ShiroInterceptor extends AbstractInterceptor implements Interceptor
 
     @Override
     public String intercept(ActionInvocation invocation) throws Exception {
-
         String className = invocation.getAction().getClass().getName();
         logger.debug("Before action: " + className);
 
@@ -64,56 +62,37 @@ public class ShiroInterceptor extends AbstractInterceptor implements Interceptor
             logger.debug("User is null");
             String username = request.getParameter(USERNAME);
             String password = request.getParameter(PASSWORD);
+
+            if (loginAttempt == null) {
+                session.setAttribute(LOGIN_ATTEMPT, "1");
+            } else {
+                logger.debug("User is not logged in ......");
+                int i = new Integer(loginAttempt).intValue();
+                i++;
+                session.setAttribute(LOGIN_ATTEMPT, i + "");
+
+                if (new Integer(loginAttempt).intValue() > 5) {
+                    Object action = invocation.getAction();
+                    ((ValidationAware) action).addActionError("You exceeded your login attempts.");
+                    return "login_form_redirect";
+                }
+            }
+
             if (username == null || "".equals(username)) {
                 logger.debug("Username is null");
                 Object action = invocation.getAction();
-//                ((ValidationAware) action).addActionError("Username is empty.");
+                ((ValidationAware) action).addActionError("Username is empty.");
                 return "login_form_redirect";
             }
             if (password == null || "".equals(password)) {
                 logger.debug("Password is null");
                 Object action = invocation.getAction();
-//                ((ValidationAware) action).addActionError("Password is empty.");
+                ((ValidationAware) action).addActionError("Password is empty.");
                 return "login_form_redirect";
             }
+        } else {
+            session.setAttribute(LOGIN_ATTEMPT, "1");
         }
-
-//        Factory<org.apache.shiro.mgt.SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
-//        org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();
-//        SecurityUtils.setSecurityManager(securityManager);
-//        //Subject user = SecurityUtils.getSubject();
-//
-//        Subject subject = null;
-//        String loggedIn = (String) session.getAttribute(LOGGED_IN);
-
-//        if (loggedIn != null && loggedIn.equals("true")) {
-//            subject = SecurityUtils.getSubject();;
-//        } else {
-//            if (subject == null) {
-//                logger.debug("User is null, not logged in yet...");
-//                if (loginAttempt == null) {
-//                    session.setAttribute(LOGIN_ATTEMPT, "1");
-//                } else {
-//                    logger.debug("User is not logged in ......");
-//                    int i = new Integer(loginAttempt).intValue();
-//                    i++;
-//                    session.setAttribute(LOGIN_ATTEMPT, i + "");
-//
-//                    if (new Integer(loginAttempt).intValue() > 5) {
-//                        return "login_form_redirect";
-//                    }
-//                }
-//            } else {
-//                logger.debug("Login attempt: " + loginAttempt);
-//                login(invocation);
-//                logger.debug("Logged processed");
-//            }
-//        }
-//        if (subject != null && subject.isAuthenticated()) {
-//            return invocation.invoke();
-//        } else {
-//            return "login_form_redirect";
-//        }
 
         login(invocation);
 //        processLoginAttempt(request);
