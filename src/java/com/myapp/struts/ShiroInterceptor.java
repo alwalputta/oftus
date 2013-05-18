@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.ValidationAware;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
@@ -23,6 +24,7 @@ import org.apache.shiro.config.ConfigurationException;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
+import org.apache.shiro.web.util.WebUtils;
 import org.apache.struts2.StrutsStatics;
 
 /**
@@ -38,7 +40,7 @@ public class ShiroInterceptor extends AbstractInterceptor implements Interceptor
     private static final String USERNAME = "username";
     private static final String PASSWORD = "password";
     private static final String REMEMBER_ME = "rememberMe";
-    private static final String LOGIN_PAGE = "index";
+    private static final String LOGIN_PAGE = "login";
 
     @Override
     public String intercept(ActionInvocation invocation) throws Exception {
@@ -112,12 +114,13 @@ public class ShiroInterceptor extends AbstractInterceptor implements Interceptor
     private void login(ActionInvocation invocation) {
         final ActionContext context = invocation.getInvocationContext();
         HttpServletRequest request = (HttpServletRequest) context.get(HTTP_REQUEST);
+        HttpServletResponse response = (HttpServletResponse) context.get(HTTP_RESPONSE);
         HttpSession session = request.getSession(true);
 
         User user = (User) session.getAttribute(USER_HANDLE);
         if (user == null) {
             logger.debug("User is null");
-            if (processLoginAttempt(request)) {
+            if (processLoginAttempt(request, response)) {
                 logger.debug("User loggedin successfully");
             } else {
                 Object action = invocation.getAction();
@@ -133,7 +136,7 @@ public class ShiroInterceptor extends AbstractInterceptor implements Interceptor
         }
     }
 
-    public boolean processLoginAttempt(HttpServletRequest request) {
+    public boolean processLoginAttempt(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession(true);
         String username = request.getParameter(USERNAME);
         String password = request.getParameter(PASSWORD);
@@ -153,10 +156,13 @@ public class ShiroInterceptor extends AbstractInterceptor implements Interceptor
             logger.debug("Username:" + username);
             logger.debug("Password:" + password);
             logger.debug("RememberMe:" + rememberMe);
+            //WebUtils.redirectToSavedRequest(request, response, LOGIN_PAGE);
 
             if (rememberMe != null && rememberMe.equals("true")) {
-                logger.debug("After Password is null....");
+                logger.debug("After Password is null..1111..");
                 token.setRememberMe(true);
+            } else {
+                logger.debug("After Password is null..2222..");
             }
             logger.debug("After Password is null....");
             token.clear();
@@ -166,6 +172,11 @@ public class ShiroInterceptor extends AbstractInterceptor implements Interceptor
                 logger.debug("After Password is null....");
                 session.setAttribute(LOGGED_IN, "true");
                 logger.debug("user authenticated successfully");
+            }
+            if (token.isRememberMe()) {
+                logger.debug("rememberMe true....");
+            } else {
+                logger.debug("rememberMe is false....");
             }
         } catch (IncorrectCredentialsException ex) {
             ex.printStackTrace();
