@@ -71,7 +71,16 @@ body {
     left: 500px;
     border: 2px #007182 dashed;
     border-radius: 5px;
-    z-index: 15000;
+    z-index: 150;
+    background: yellow;
+    color: black;
+}
+
+fieldErrors {
+    position: fixed;
+    border: 2px #007182 dashed;
+    border-radius: 5px;
+    z-index: 150;
     background: yellow;
     color: black;
 }

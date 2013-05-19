@@ -38,6 +38,7 @@ public class BookmarkAction extends ActionSupport {
     private String description;
     private String bookmarkOrder;
     private String bookmarks;
+    private String message;
     User user = null;
     static final Logger logger = Logger.getLogger(BookmarkAction.class);
     public static final long serialVersionUID = 42L;
@@ -54,6 +55,7 @@ public class BookmarkAction extends ActionSupport {
     public String addBookmark() {
         logger.debug("addBookmark!" + getCategoryId());
         String returnVal = "success";
+        setMessage("Edit Bookmark below and click Save");
 
         return returnVal;
     }
@@ -90,6 +92,7 @@ public class BookmarkAction extends ActionSupport {
                 }
             }
         }
+        setMessage("Edit Bookmark");
         return returnVal;
     }
 
@@ -131,6 +134,7 @@ public class BookmarkAction extends ActionSupport {
         UserDAO userDAO = new UserDAO();
         userDAO.updateUser(user);
 
+        setMessage("Bookmark Saved Successfully");
         return returnVal;
     }
 
@@ -183,6 +187,7 @@ public class BookmarkAction extends ActionSupport {
         UserDAO userDAO = new UserDAO();
 
         userDAO.updateUser(user);
+        setMessage("Bookmark updated successfully.");
         return returnVal;
     }
 
@@ -200,6 +205,7 @@ public class BookmarkAction extends ActionSupport {
         logger.debug("Number of record updated:" + updated);
 
         logger.debug("updated:" + updated);
+        setMessage("Bookmark moved successfully");
         return returnVal;
     }
 
@@ -242,6 +248,7 @@ public class BookmarkAction extends ActionSupport {
 
         UserDAO userDAO = new UserDAO();
         userDAO.updateUser(user);
+        setMessage("Bookmark Deleted Successfully");
 
         return returnVal;
     }
@@ -291,6 +298,7 @@ public class BookmarkAction extends ActionSupport {
 
         UserDAO userDAO = new UserDAO();
         userDAO.updateUser(user);
+        setMessage("Bookmarks deleted successfully");
 
         return returnVal;
     }
@@ -309,6 +317,7 @@ public class BookmarkAction extends ActionSupport {
             updated = bookmarkDAO.updateBookmarkOrder(bookmarkId, i);
             logger.debug("Records Updated" + updated);
         }
+        setMessage("Bookmark order updated");
         return returnVal;
     }
 
@@ -340,6 +349,7 @@ public class BookmarkAction extends ActionSupport {
         } finally {
             logger.debug("finally block");
         }
+        setMessage("Bookmark opened");
 
         return returnVal;
     }
@@ -453,5 +463,13 @@ public class BookmarkAction extends ActionSupport {
 
     public void setBookmarks(String bookmarks) {
         this.bookmarks = bookmarks;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

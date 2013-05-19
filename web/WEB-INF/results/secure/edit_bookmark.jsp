@@ -16,7 +16,8 @@
         <%@include file="/WEB-INF/results/open/header.jsp"%>
 
         <div class="message">
-            <s:property value="#message"/>
+            <s:property value="%{message}"/>
+            Make changes to the bookmark and click Save.
         </div>
         <div class="mainTable">
             <div class="login-login">
@@ -39,7 +40,6 @@
                     </tr>
                 </s:form>
                 <s:a href="new_bookmark_faq" class="new-element-links">Edit Bookmark FAQ</s:a>
-                </div>
             </div>
             <div class="login-register">
                 <br>
@@ -48,9 +48,9 @@
                     -->
                     Don't have an account yet? <s:a href="register_form">Create one</s:a>
                     <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-            </div>        <%@include file="/WEB-INF/results/open/footer.jsp"%>
-        <script type="text/javascript" src="js/myapp.js"></script>
-
+            </div>        
+            <%@include file="/WEB-INF/results/open/footer.jsp"%>
+            <script type="text/javascript" src="js/myapp.js"></script>
     </body>
 </html>
 

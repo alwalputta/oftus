@@ -17,7 +17,7 @@
         <%@include file="/WEB-INF/results/open/header.jsp"%>
 
         <div class="message">
-            <s:property value="#message"/>
+            <s:property value="%{message}"/>
         </div>
         <div class="mainTable">
             <div class="login-login">

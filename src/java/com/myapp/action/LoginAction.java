@@ -64,7 +64,7 @@ public class LoginAction extends ActionSupport {
 
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
-        
+
         setMessage("You have successfully logged in.");
 
         return returnVal;

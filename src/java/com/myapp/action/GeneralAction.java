@@ -28,9 +28,76 @@ public class GeneralAction extends ActionSupport {
 
     private List<Gender> genders;
     private List<State> states;
+    private String message;
     User user = null;
     Set<Category> userCategories = null;
     static final Logger logger = Logger.getLogger(GeneralAction.class);
+
+    public GeneralAction() {
+    }
+
+    //business logic
+    @Override
+    public String execute() {
+        logger.debug("GeneralAction execute!");
+
+        GenderDAO genderDAO = new GenderDAO();
+        genders = genderDAO.listGenders();
+        logger.debug("genders:" + genders.size());
+
+        StateDAO stateDAO = new StateDAO();
+        states = stateDAO.listStates();
+        logger.debug("states:" + states.size());
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        session.setAttribute("genders", genders);
+        session.setAttribute("states", states);
+        
+        setMessage("General Action execute");
+        return "success";
+    }
+
+    @SuppressWarnings("unchecked")
+    public String editProfile() {
+        logger.debug("RegisterAction editProfile!");
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        genders = (List<Gender>) session.getAttribute("genders");
+        states = (List<State>) session.getAttribute("states");
+
+        if (genders == null) {
+            GenderDAO genderDAO = new GenderDAO();
+            genders = genderDAO.listGenders();
+        }
+
+        logger.debug("before state DAO!");
+
+        if (states == null) {
+            StateDAO stateDAO = new StateDAO();
+            states = stateDAO.listStates();
+        }
+
+        session.setAttribute("genders", genders);
+        session.setAttribute("states", states);
+
+        User user = (User) session.getAttribute("user");
+        logger.debug("RegisterAction editProfile, userid:" + user.getUserId());
+
+        setMessage("General Action execute");
+        return "success";
+    }
+
+    @Override
+    public void validate() {
+        logger.debug("GeneralAction validate");
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        Utils.recordClickLog(session.getId(), getActionName());
+
+        //addActionMessage("In the GeneralAction" + Utils.getUuid());
+    }
 
     public List<Gender> getGenders() {
         return genders;
@@ -64,72 +131,16 @@ public class GeneralAction extends ActionSupport {
         this.userCategories = userCategories;
     }
 
-    public GeneralAction() {
-    }
-
-    //business logic
-    @Override
-    public String execute() {
-        logger.debug("GeneralAction execute!");
-
-        GenderDAO genderDAO = new GenderDAO();
-        genders = genderDAO.listGenders();
-        logger.debug("genders:" + genders.size());
-
-        StateDAO stateDAO = new StateDAO();
-        states = stateDAO.listStates();
-        logger.debug("states:" + states.size());
-
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-        session.setAttribute("genders", genders);
-        session.setAttribute("states", states);
-
-        return "success";
-    }
-
-    @SuppressWarnings("unchecked")
-    public String editProfile() {
-        logger.debug("RegisterAction editProfile!");
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-
-        genders = (List<Gender>) session.getAttribute("genders");
-        states = (List<State>) session.getAttribute("states");
-
-        if (genders == null) {
-            GenderDAO genderDAO = new GenderDAO();
-            genders = genderDAO.listGenders();
-        }
-
-        logger.debug("before state DAO!");
-
-        if (states == null) {
-            StateDAO stateDAO = new StateDAO();
-            states = stateDAO.listStates();
-        }
-
-        session.setAttribute("genders", genders);
-        session.setAttribute("states", states);
-
-        User user = (User) session.getAttribute("user");
-        logger.debug("RegisterAction editProfile, userid:" + user.getUserId());
-
-        return "success";
-    }
-
-    @Override
-    public void validate() {
-        logger.debug("GeneralAction validate");
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-        Utils.recordClickLog(session.getId(), getActionName());
-
-        //addActionMessage("In the GeneralAction" + Utils.getUuid());
-    }
-
     public String getActionName() {
         ActionContext context = ActionContext.getContext();
         return context.getName();
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

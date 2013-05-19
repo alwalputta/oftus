@@ -34,6 +34,7 @@ public class DocumentAction extends ActionSupport {
     private File file;
     private String fileFileName;
     private String fileContentType;
+    private String message;
     static final Logger logger = Logger.getLogger(DocumentAction.class);
 
     //business logic
@@ -96,6 +97,7 @@ public class DocumentAction extends ActionSupport {
             e.printStackTrace();
             addActionError(e.getMessage());
         }
+        setMessage("upload picture");
         return returnVal;
     }
 
@@ -115,6 +117,7 @@ public class DocumentAction extends ActionSupport {
         logger.debug("showPicture:" + document.getFileType());
         logger.debug("showPicture:" + document.getStatus());
 
+        setMessage("show picture");
         return SUCCESS;
     }
 
@@ -195,6 +198,7 @@ public class DocumentAction extends ActionSupport {
         }
 
         logger.debug("importBookmarks:");
+        setMessage("import bookmarks");
         return returnVal;
     }
 //simple validation
@@ -247,5 +251,13 @@ public class DocumentAction extends ActionSupport {
 
     public void setFileFileName(String fileFileName) {
         this.fileFileName = fileFileName;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

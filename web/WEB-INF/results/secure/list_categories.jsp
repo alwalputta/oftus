@@ -21,7 +21,8 @@
         <%@include file="/WEB-INF/results/open/header.jsp"%>
 
         <div class="message">
-            <s:property value="#message"/>
+            <s:property value="%{message}"/>
+            Below is the list of your categories.
         </div>
         <div class="mainTable">
             <s:if test="hasActionErrors()">
@@ -37,11 +38,10 @@
             </s:if>
 
             <div class="login-login">
-                User Categories:::::
-                <a href="add_category?">Add Category</a>
+                User Categories::::: <a href="add_category?">Add Category</a>
                 <table>
                     <tr class="row">
-                        <td>Id</td>
+                        <!--td>Id</td-->
                         <td>Category Name</td>
                         <td>Description</td>
                         <td>Category Order</td>
@@ -51,7 +51,7 @@
                     </tr>
                     <s:iterator value="%{#session.user.userCategories}" id="category">
                         <tr class="rowc">
-                            <td><s:property value="#category.categoryId"/></td>
+                            <!--td><s:property value="#category.categoryId"/></td-->
                             <td><s:property value="#category.categoryName"/></td>
                             <td><s:property value="#category.description"/></td>
                             <td><s:property value="#category.categoryOrder"/></td>
