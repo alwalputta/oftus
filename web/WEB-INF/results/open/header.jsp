@@ -3,7 +3,7 @@
     <div class="top-column-element-left">
         <div class="company-logo">
             <a href="http://www.oftus.com">
-                <img id="logo" src="images/oftus.gif"/>
+                <img id="logo" src="images/oftus2.jpg"/>
             </a>
             <!--OFTUS<sup>&reg;</sup>-->
             <!--div class="company-logo-punchline">
