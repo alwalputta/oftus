@@ -55,7 +55,7 @@ public class BookmarkAction extends ActionSupport {
     public String addBookmark() {
         logger.debug("addBookmark!" + getCategoryId());
         String returnVal = "success";
-        setMessage("Edit Bookmark below and click Save");
+        setMessage("Enter details of new bookmark below and click Save");
 
         return returnVal;
     }
@@ -92,7 +92,7 @@ public class BookmarkAction extends ActionSupport {
                 }
             }
         }
-        setMessage("Edit Bookmark");
+        setMessage("Make changes to the bookmark and click Save.");
         return returnVal;
     }
 

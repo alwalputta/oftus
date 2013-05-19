@@ -53,7 +53,7 @@ public class GeneralAction extends ActionSupport {
         HttpSession session = request.getSession();
         session.setAttribute("genders", genders);
         session.setAttribute("states", states);
-        
+
         setMessage("General Action execute");
         return "success";
     }
@@ -71,21 +71,19 @@ public class GeneralAction extends ActionSupport {
             GenderDAO genderDAO = new GenderDAO();
             genders = genderDAO.listGenders();
         }
-
         logger.debug("before state DAO!");
 
         if (states == null) {
             StateDAO stateDAO = new StateDAO();
             states = stateDAO.listStates();
         }
-
         session.setAttribute("genders", genders);
         session.setAttribute("states", states);
 
         User user = (User) session.getAttribute("user");
         logger.debug("RegisterAction editProfile, userid:" + user.getUserId());
 
-        setMessage("General Action execute");
+        setMessage("Edit profile and click update.");
         return "success";
     }
 

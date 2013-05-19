@@ -62,7 +62,7 @@
 
             <div class="message">
                 <s:property value="#message"/>
-                Please enter username and password ...
+                Please enter username and password to access your world.
             </div>
             <div class="mainTable">
 

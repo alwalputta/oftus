@@ -17,7 +17,6 @@
 
         <div class="message">
             <s:property value="%{message}"/>
-            Make changes to the bookmark and click Save.
         </div>
         <div class="mainTable">
             <div class="login-login">
