@@ -18,6 +18,9 @@
 
         <%@include file="/WEB-INF/results/open/header.jsp"%>
 
+        <div class="message">
+            <s:property value="#message"/>
+        </div>
         <div class="mainTable">
             <div class="login-login">
                 <div>Modify Category</div>
@@ -38,8 +41,8 @@
                     </tr>
                 </s:form>
                 <s:a href="#new_category_faq" class="new-element-links">Add/Edit Category FAQ</s:a>
+                </div>
             </div>
-        </div>
         <%@include file="/WEB-INF/results/open/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
 

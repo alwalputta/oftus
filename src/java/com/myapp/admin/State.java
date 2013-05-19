@@ -77,13 +77,12 @@ public class State implements Serializable {
     public void setLastModifiedDate(String lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
     }
-    
+
     public State(String stateCode, String stateName) {
         this.stateCode = stateCode;
         this.stateName = stateName;
     }
-    
+
     public State() {
-        
     }
 }

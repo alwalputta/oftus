@@ -2,9 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 //THIS CLASS IS NOT NEEDED.
-
 package com.myapp.util;
 
 import java.io.RandomAccessFile;
@@ -38,5 +36,3 @@ public class FileReader {
         System.out.println("Reading from Memory Mapped File is completed");
     }
 }
-
-

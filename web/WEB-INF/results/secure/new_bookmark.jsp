@@ -16,6 +16,9 @@
     <body>
         <%@include file="/WEB-INF/results/open/header.jsp"%>
 
+        <div class="message">
+            <s:property value="#message"/>
+        </div>
         <div class="mainTable">
             <div class="login-login">
                 <div>Add New Bookmark</div>
@@ -37,9 +40,9 @@
             <div class="login-register">
                 <br>
                     Don't have an account yet? <s:a href="register_form">Create one</s:a>
-                    <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                        <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                </div>
             </div>
-        </div>
         <%@include file="/WEB-INF/results/open/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
 

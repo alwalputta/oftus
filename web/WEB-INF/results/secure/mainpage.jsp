@@ -21,7 +21,9 @@
     <body>
         <%@include file="/WEB-INF/results/open/header.jsp"%>
         <div class="mask"></div>
-        <div class="message"></div>
+        <div class="message">
+            <s:property value="%{message}"/>
+        </div>
         <div class="loading">
             Page being loaded, please wait ...
         </div>

@@ -26,11 +26,11 @@ public class LoginAction extends ActionSupport {
     private String username;
     private String password;
     private String rememberMe;
-    private String loginAttempt;
     boolean loggedIn = false;
     Credential credential = null;
     User user = null;
     Set<Category> userCategories = null;
+    private String message;
     static final Logger logger = Logger.getLogger(LoginAction.class);
 
     //business logic
@@ -47,22 +47,25 @@ public class LoginAction extends ActionSupport {
 
         String returnVal = "success";
 
-        CredentialDAO credentialDAO = new CredentialDAO();
-        credential = credentialDAO.selectCredential(getUsername());
+//        CredentialDAO credentialDAO = new CredentialDAO();
+//        credential = credentialDAO.selectCredential(getUsername());
+//
+//        Set<User> users = credential.getUsers();
+//        for (Iterator iterator = users.iterator(); iterator.hasNext();) {
+//            user = (User) iterator.next();
+//        }
 
-        Set<User> users = credential.getUsers();
-        for (Iterator iterator = users.iterator(); iterator.hasNext();) {
-            user = (User) iterator.next();
-        }
-
+        user = (User) session.getAttribute("user");
         logger.debug("before state DAO1:" + getUsername());
         logger.debug("execute state DAO2:" + user.getFirstName());
 
         //Utils.recordLoginLog(user.getUserId(), request);
-        session.setAttribute("user", user);
+//        session.setAttribute("user", user);
 
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
+        
+        setMessage("You have successfully logged in.");
 
         return returnVal;
     }
@@ -120,11 +123,11 @@ public class LoginAction extends ActionSupport {
         return context.getName();
     }
 
-    public String getLoginAttempt() {
-        return loginAttempt;
+    public String getMessage() {
+        return message;
     }
 
-    public void setLoginAttempt(String loginAttempt) {
-        this.loginAttempt = loginAttempt;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

@@ -176,7 +176,7 @@ public class DocumentAction extends ActionSupport {
                     bookmark.setDescription(row[2]);
                     bookmark.setStatus("A");
                     bookmark.setCreateDate(Utils.getCurrentDate());
-                    
+
                     bookmarks.add(bookmark);
                 }
             }

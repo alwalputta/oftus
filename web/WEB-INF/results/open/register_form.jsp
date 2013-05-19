@@ -21,7 +21,7 @@
 
     <body>
 
-        <%@include file="/WEB-INF/results/open/header.jsp"%>
+        <%@include file="/WEB-INF/results/open/header_basic.jsp"%>
 
         <div class="mainTable">
 

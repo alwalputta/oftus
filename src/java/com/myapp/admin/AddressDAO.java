@@ -11,6 +11,6 @@ import org.apache.log4j.Logger;
  * @author palwal
  */
 public class AddressDAO {
-    static final Logger logger = Logger.getLogger(AddressDAO.class);
 
+    static final Logger logger = Logger.getLogger(AddressDAO.class);
 }

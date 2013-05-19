@@ -33,6 +33,7 @@ public class CategoryAction extends ActionSupport {
     private String categoryOrder;
     private String source;
     Set<Category> userCategories = null;
+    public static final long serialVersionUID = 42L;
     static final Logger logger = Logger.getLogger(CategoryAction.class);
 
     //business logic to fetch the category details

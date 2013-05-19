@@ -51,7 +51,7 @@ public class TestServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter po = response.getWriter();
         po.print("FFWEfwefewfewfw");
-        
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 

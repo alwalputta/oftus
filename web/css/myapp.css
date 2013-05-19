@@ -48,15 +48,36 @@ body {
     z-index: 10;
 }
 
-.message {
+.loading {
     display: none;
-    position: relative;
-    height: 200px;
-    width: 300px;
-    top: 200px;
-    left: 200px;
-    border: 5px #007182 dotted;
-    z-index: 50;
+    position: fixed;
+    background: #9ecbe2;
+    color: black;
+    width: 100%;
+    height: 100%;
+    z-index: 900;
+    border: 10px groove goldenrod;
+    border-radius: 10px;
+    vertical-align: middle;
+    text-align: center;
+    font: 25px tahoma;
+}
+
+.message {
+    position: fixed;
+    height: 50px;
+    width: 500px;
+    top: 10px;
+    left: 500px;
+    border: 2px #007182 dashed;
+    border-radius: 5px;
+    z-index: 15000;
+    background: yellow;
+    color: black;
+}
+
+.highlight {
+    background-color: yellow;
 }
 
 .login-modal {
@@ -112,91 +133,6 @@ body {
     font: 15px tahoma;
 }
 
-
-/**
-.register-modal {
-    background: #aabbaa;
-    color: white;
-    width: 90%;
-    opacity: 1;
-    margin: 0px;
-    border: 20px solid darkgoldenrod;
-    padding: 20px;
-    border-radius: 25px;
-    vertical-align: middle;
-    text-align: center;
-    font: 15px tahoma;
-}
-
-.register-register {
-    display: block;
-    float: left;
-    position: relative;
-    background: #aabbaa;
-    color: white;
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-    margin: 10px;
-    border: 1px solid #20548E;
-    padding: 10px;
-    border-radius: 10px;
-    vertical-align: middle;
-    text-align: left;
-    font: 15px tahoma;
-}
-
-.register-login {
-    display: block;
-    float: left;
-    position: relative;
-    background: #aabbaa;
-    color: white;
-    width: 60%;
-    margin: 10px;
-    border: 1px solid #20548E;
-    padding: 10px;
-    border-radius: 10px;
-    vertical-align: middle;
-    text-align: center;
-    font: 15px tahoma;
-}
-
-.forgot-password-modal {
-    position: fixed;
-    background: teal;
-    color: white;
-    width: 90%;
-    height: 600px;
-    opacity: 1;
-    margin: 0px;
-    border: 20px solid #20548E;
-    padding: 20px;
-    border-radius: 25px;
-    vertical-align: middle;
-    text-align: center;
-    font: 15px tahoma;
-}
-
-.forgot-password {
-    display: block;
-    float: left;
-    position: relative;
-    background: teal;
-    color: white;
-    width: 90%;
-    height: 90%;
-    opacity: 1;
-    margin: 10px;
-    border: 1px solid #20548E;
-    padding: 10px;
-    border-radius: 10px;
-    vertical-align: middle;
-    text-align: left;
-    font: 15px tahoma;
-}
-*/
-
 .login-login input, .register-register input, .forgot-password input, .new-element input {
     border-radius: 5px;
     margin: 5px;
@@ -236,25 +172,6 @@ body {
     padding-bottom: 10px;
     margin: 5px;
     vertical-align: baseline; 
-}
-
-.loading {
-    display: none;
-    position: fixed;
-    background: #9ecbe2;
-    color: black;
-    width: 100%;
-    height: 100%;
-    z-index: 900;
-    border: 10px groove goldenrod;
-    border-radius: 10px;
-    vertical-align: middle;
-    text-align: center;
-    font: 25px tahoma;
-}
-
-.highlight {
-    background-color: yellow;
 }
 
 /* Top Static Docking bar CSS */

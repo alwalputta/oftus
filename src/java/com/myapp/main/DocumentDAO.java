@@ -18,6 +18,7 @@ import org.hibernate.Transaction;
  * @author palwal
  */
 public class DocumentDAO {
+
     static final Logger logger = Logger.getLogger(DocumentDAO.class);
 
     @SuppressWarnings("unchecked")

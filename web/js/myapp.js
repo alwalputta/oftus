@@ -23,13 +23,17 @@ $(document).ready(function() {
     //locking the page, golden code to mask the page, make non-ediatble
     // $('.mask').fadeIn(300);
     $('.loading').fadeIn(300);
-
-//check if mac
-// if(navigator.userAgent.indexOf("Mac OS X") != -1) {
-// alert(MAC.OS);
-// }
+    $('.message').fadeOut(10000);
 });
 
+$(".message").hover(function() {
+    $(this).stop().fadeOut();
+    $(this).fadeIn();
+}, function() {
+    $(this).fadeIn();
+    $(this).stop().fadeOut(10000);
+});
+  
 $('input[type=button]').hover(function(){
     $(this).css('border','3px solid red');
 }, function(){
@@ -58,8 +62,9 @@ $(document).bind('paste', (function(e){
 
 $(document).keyup(function(e) {
     if (e.keyCode == 27) { //esc key
-        $('.mask').remove();
+        $('.mask').hide();
         $('.loading').hide();
+        $('.message').hide();
         $('.middle-column-element-edit-icons').hide();
         $('.middle-row-element-edit-icons').hide();
         $('div').removeClass('middle-row-element-selected');
@@ -94,7 +99,7 @@ $(document).click(function(){
     //Fades in the page when clicked on the document/page
     // $('.mask').fadeIn(300);
     // Commented for time being, uncomment as needed
-    $('.mask').remove();
+    $('.mask').hide();
 });
 
 //putting default value when no text is entered in the search box
@@ -208,7 +213,7 @@ $('.middle-column-element-new-icon').click(function(){
 
 //Load images after the page load is complete
 $(window).load(function () {
-    $('.loading').remove();
+    $('.loading').hide();
     $.each(document.images, function() {
         //alert ('image');
         var this_image = this;

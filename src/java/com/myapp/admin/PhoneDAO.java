@@ -11,6 +11,6 @@ import org.apache.log4j.Logger;
  * @author palwal
  */
 public class PhoneDAO {
+
     static final Logger logger = Logger.getLogger(PhoneDAO.class);
-    
 }

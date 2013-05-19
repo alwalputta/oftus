@@ -47,6 +47,8 @@ public class RegisterAction extends ActionSupport {
     private String city;
     private String state;
     private String zip;
+    private String userId;
+    private String message;
     static final Logger logger = Logger.getLogger(RegisterAction.class);
 
     //business logic
@@ -55,11 +57,11 @@ public class RegisterAction extends ActionSupport {
         logger.debug("RegisterAction execute!");
 
         User user = new User();
-
         user.setFirstName(getFirstname());
         user.setMiddleName(getMiddlename());
         user.setLastName(getLastname());
         user.setGender(getGender());
+        user.setStatus("N");
         user.setDOB("".equals(getDOB()) ? null : getDOB());
 
         logger.debug("RegisterAction execute!2");
@@ -137,13 +139,15 @@ public class RegisterAction extends ActionSupport {
 
         logger.debug("RegisterAction execute, userid:" + user.getUserId());
 
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-        session.setAttribute("user", user);
+//        HttpServletRequest request = ServletActionContext.getRequest();
+//        HttpSession session = request.getSession();
+//        session.setAttribute("user", user);
+//
+//        Utils.recordLoginLog(user.getUserId(), request);
+//        session.setAttribute("user", user);
 
-        Utils.recordLoginLog(user.getUserId(), request);
-//        session.setAttribute("loginLog", loginLog);
-        session.setAttribute("user", user);
+        setMessage("User profile created successfully; "
+                + "Please activate profile by clicking the link in the email, we just sent you.");
 
         return "success";
     }
@@ -215,6 +219,25 @@ public class RegisterAction extends ActionSupport {
         userDAO.updateUser(user);
 
         logger.debug("userid:" + user.getUserId());
+        setMessage("User profile updated successfully.");
+
+        return "success";
+    }
+
+    //Update the user profile
+    public String activateProfile() {
+        logger.debug("RegisterAction activateProfile!");
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        UserDAO userDAO = new UserDAO();
+        User user = (User) userDAO.selectUser(getUserId());
+        user.setStatus("A");
+
+        userDAO.updateUser(user);
+
+        logger.debug("userid:" + user.getUserId());
         return "success";
     }
 
@@ -270,6 +293,12 @@ public class RegisterAction extends ActionSupport {
                 } else {
                     addFieldError("password2", "Both passwords dont match");
                 }
+            }
+        } else if ("activate_profile".equals(getActionName())) {
+            UserDAO userDAO = new UserDAO();
+            User user = (User) userDAO.selectUser(getUserId());
+            if (user == null) {
+                addActionMessage("Please check the link, it does not correspond to any profile in the system");
             }
         } else {
             logger.debug("Other");
@@ -394,6 +423,22 @@ public class RegisterAction extends ActionSupport {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public String getActionName() {

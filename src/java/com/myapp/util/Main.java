@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class Main {
-    
+
     public static void main(String[] args) {
         Main obj = new Main();
 
@@ -21,7 +21,6 @@ public class Main {
         obj.deleteCategory(new Long(21));
     }
 
-    
     public Long saveCategory(Category category) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
@@ -40,7 +39,6 @@ public class Main {
         return categoryId;
     }
 
-    
     public void listCategory() {
         Session session = HibernateUtil.getSessionFactory().openSession();
 //        Transaction transaction = null;
@@ -58,7 +56,6 @@ public class Main {
         }
     }
 
-    
     public void updateCategory(Long categoryId, String categoryName) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
@@ -74,7 +71,6 @@ public class Main {
         }
     }
 
-    
     public void deleteCategory(Long categoryId) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;

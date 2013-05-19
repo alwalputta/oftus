@@ -16,6 +16,9 @@
     <body>
         <%@include file="/WEB-INF/results/open/header.jsp"%>
 
+        <div class="message">
+            <s:property value="#message"/>
+        </div>
         <div class="mainTable">
             <s:if test="hasActionErrors()">
                 <div id="fieldErrors">
@@ -38,12 +41,12 @@
             </div>
             <div class="login-register">
                 Download Bookmarks Template - <s:a href="template/export_bookmarks.xlsx">Template File</s:a>
-                <br></br>
-                Note: This lists your categories. You want to see the bookmarks, click Manage Bookmarks link.
-                <br></br>
-                <br></br>
+                    <br></br>
+                    Note: This lists your categories. You want to see the bookmarks, click Manage Bookmarks link.
+                    <br></br>
+                    <br></br>
+                </div>
             </div>
-        </div>
 
         <%@include file="/WEB-INF/results/open/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>

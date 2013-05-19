@@ -82,8 +82,7 @@ public class Gender implements Serializable {
         this.genderCode = genderCode;
         this.genderName = genderName;
     }
-    
+
     public Gender() {
-        
-    }    
+    }
 }

@@ -24,6 +24,9 @@
 
         <%@include file="/WEB-INF/results/open/header.jsp"%>
 
+        <div class="message">
+            <s:property value="#message"/>
+        </div>
         <div class="mainTable">
 
             <s:if test="hasActionErrors()">
@@ -79,12 +82,12 @@
                     </tr>
                 </s:form>
                 <s:a href="register_faq">Register FAQ</s:a>
-                <br></br>
-                <br></br>
-            </div>
+                    <br></br>
+                    <br></br>
+                </div>
 
-            <div class="login-register">
-                <img class ="photo-box" src="<s:url action='ImageServlet'/>" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
+                <div class="login-register">
+                    <img class ="photo-box" src="<s:url action='ImageServlet'/>" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
                 <br></br>
                 <br></br>
                 <br></br>

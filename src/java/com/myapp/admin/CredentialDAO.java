@@ -42,10 +42,10 @@ public class CredentialDAO {
             Query query = session.createQuery("from Credential where username = '" + username + "' and status='A'");
 //            query.setParameter("username", username);
             List list = query.list();
-            
+
             for (Iterator iterator = list.iterator(); iterator.hasNext();) {
                 credential = (Credential) iterator.next();
-            }            
+            }
             logger.debug("username:" + username);
 
             transaction.commit();

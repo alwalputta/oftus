@@ -32,7 +32,6 @@ public class MyFormAuthenticationFilter extends PassThruAuthenticationFilter {
             return false;
         }
     }
-
 //    @Override
 //    protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception {
 //        logger.debug("onLoginSuccess");

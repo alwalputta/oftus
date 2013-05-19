@@ -4,12 +4,17 @@
  */
 package com.myapp.struts;
 
+import com.myapp.admin.Credential;
+import com.myapp.admin.CredentialDAO;
 import com.myapp.admin.User;
+import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ValidationAware;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import com.opensymphony.xwork2.interceptor.Interceptor;
+import java.util.Iterator;
+import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -75,7 +80,8 @@ public class ShiroInterceptor extends AbstractInterceptor implements Interceptor
 
                 if (new Integer(loginAttempt).intValue() > 5) {
                     Object action = invocation.getAction();
-                    ((ValidationAware) action).addActionError("You exceeded your login attempts.");
+                    ((ValidationAware) action).addActionError("You exceeded your login attempts; "
+                            + "Please log back after sometime.");
                     return "login_form_redirect";
                 }
             }
@@ -122,6 +128,15 @@ public class ShiroInterceptor extends AbstractInterceptor implements Interceptor
             logger.debug("User is null");
             if (processLoginAttempt(request, response)) {
                 logger.debug("User loggedin successfully");
+                CredentialDAO credentialDAO = new CredentialDAO();
+                Credential credential = credentialDAO.selectCredential(request.getParameter(USERNAME));
+
+                Set<User> users = credential.getUsers();
+                for (Iterator iterator = users.iterator(); iterator.hasNext();) {
+                    user = (User) iterator.next();
+                }
+                session.setAttribute(USER_HANDLE, user);
+                Utils.recordLoginLog(user.getUserId(), request);
             } else {
                 Object action = invocation.getAction();
                 logger.debug("User action:" + action);
