@@ -98,12 +98,11 @@ public class ShiroInterceptor extends AbstractInterceptor implements Interceptor
                 ((ValidationAware) action).addActionError("Password is empty.");
                 return "login_form_redirect";
             }
+            login(invocation);
         } else {
             session.setAttribute(LOGIN_ATTEMPT, "1");
         }
 
-        login(invocation);
-//        processLoginAttempt(request);
         return invocation.invoke();
     }
 

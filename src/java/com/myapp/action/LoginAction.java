@@ -5,12 +5,10 @@
 package com.myapp.action;
 
 import com.myapp.admin.Credential;
-import com.myapp.admin.CredentialDAO;
 import com.myapp.admin.User;
 import com.myapp.main.Category;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import java.util.Iterator;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -37,7 +35,16 @@ public class LoginAction extends ActionSupport {
 //    @Override
     public String loginForm() {
         logger.debug("LoginAction execute!");
-        return SUCCESS;
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+
+        if (user == null) {
+            return "input";
+        } else {
+            setMessage("You have successfully logged in.");
+            return SUCCESS;
+        }
     }
 
     public String login() {
@@ -66,19 +73,31 @@ public class LoginAction extends ActionSupport {
         logger.debug("userCategories size:" + userCategories.size());
 
         setMessage("You have successfully logged in.");
-
         return returnVal;
     }
 
     //simple validation
     @Override
     public void validate() {
-//        HttpServletRequest request = ServletActionContext.getRequest();
-//        HttpSession session = request.getSession();
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+
         //Utils.recordClickLog(session.getId(), getActionName());
 
         if (getActionName().equals("index")) {
             logger.debug("index");
+            if (user == null) {
+                if (username == null || "".equals(username)) {
+                    logger.debug("Username is null");
+                    addActionError("Username is empty.");
+                }
+                if (password == null || "".equals(password)) {
+                    logger.debug("Password is null");
+                    addActionError("Password is empty.");
+                }
+            } else {
+            }
         } else if (getActionName().equals("login")) {
             logger.debug("username:" + getUsername());
             logger.debug("password:" + getPassword());

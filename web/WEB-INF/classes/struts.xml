@@ -107,7 +107,7 @@
         </action>
 
         <action name="index" class="com.myapp.action.LoginAction" method="loginForm">
-            <result name="success">/WEB-INF/results/open/login_form.jsp</result>
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/open/login_form.jsp</result>
         </action>
         

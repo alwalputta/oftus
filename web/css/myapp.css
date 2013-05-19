@@ -114,14 +114,44 @@ fieldErrors {
     color: white;
     width: 60%;
     height: 100%;
-    opacity: 1;
     margin: 10px;
     border: 1px solid #20548E;
-    padding: 10px;
+    padding: 30px;
+    padding-top: 5px;
+    padding-left: 10px;
     border-radius: 10px;
     vertical-align: middle;
-    text-align: left;
     font: 15px tahoma;
+    alignment-adjust: central;
+}
+
+.page-title {
+    float: left;
+    vertical-align: middle;
+    display: block;
+    text-align: center;
+    width: 100%;
+    background: #9ecbe2;
+    border: 1px solid #20548E;
+    border-radius: 5px;
+    color: black;
+    font: 26px Tahoma;
+    padding: 5px;
+    margin: 5px;
+}
+
+.login-form {
+    float: left;
+    vertical-align: middle;
+    display: block;
+    text-align: center;
+    width: 100%;
+    background: skyblue;
+    border: 1px solid #20548E;
+    border-radius: 5px;
+    color: black;
+    padding: 5px;
+    margin: 5px;
 }
 
 .login-register {
@@ -132,7 +162,6 @@ fieldErrors {
     color: white;
     width: 30%;
     height: 100%;
-    opacity: 1;
     margin: 10px;
     border: 1px solid #20548E;
     padding: 10px;
@@ -858,6 +887,11 @@ input[type=button], input[type=reset]{
     height: 20px;
 }
 
+input{
+    border-radius: 2px;
+    border: 1px solid black;
+}
+
 /* table CSS start */
 table{
     border-collapse: collapse;
@@ -882,7 +916,7 @@ tr.rowb:hover, td.startb:hover, td.endb:hover{
 }
 
 th, td{
-    padding: .3em .5em;
+    padding: 0px;
     font-size: 14px;
     color: black;
     text-align: left;
@@ -903,8 +937,8 @@ th{
     padding-left: 15px;
 }
 
-th.name { width: 12em; }
-th.edit { width: 12em; }
+th.name{ width: 12em; }
+th.edit{ width: 12em; }
 th.delete { width: 10em; }
 
 thead th{
@@ -926,7 +960,7 @@ tbody th.end{
 }
 /* table CSS ends */
 
-.form-button {
+.form-button{
     background: whitesmoke;
     padding: 5px;
     margin: 5px;

@@ -83,10 +83,7 @@
 
                     </s:form>
                     <s:a href="forgot_password_form">Forgot Password?</s:a> |
-                    <s:a href="login_faq">Login FAQ</s:a> |
-                    <s:a href="test">Test</s:a> |
-                    <s:a href="test2">Test</s:a> |
-                    <s:a href="test3">Test</s:a>
+                    <s:a href="login_faq">Login FAQ</s:a>
                         <br></br>
                     </div>
                     <div class="login-register">
