@@ -22,7 +22,6 @@
 
         <div class="message">
             <s:property value="%{message}"/>
-            Below is the list of your categories.
         </div>
         <div class="mainTable">
             <s:if test="hasActionErrors()">

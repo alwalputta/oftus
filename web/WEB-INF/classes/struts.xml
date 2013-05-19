@@ -106,13 +106,6 @@
             <result>/WEB-INF/results/user_help.html</result>
         </action>
 
-        <!--
-                <action name="login_form" class="com.myapp.action.LoginAction" method="loginForm">
-                    <result name="success">/WEB-INF/results/open/login_form.jsp</result>
-                    <result name="input">/WEB-INF/results/open/login_form.jsp</result>
-                </action>
-        -->
-
         <action name="index" class="com.myapp.action.LoginAction" method="loginForm">
             <result name="success">/WEB-INF/results/open/login_form.jsp</result>
             <result name="input">/WEB-INF/results/open/login_form.jsp</result>

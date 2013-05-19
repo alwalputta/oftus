@@ -39,15 +39,15 @@
                     </tr>
                 </s:form>
                 <s:a href="new_bookmark_faq" class="new-element-links">Edit Bookmark FAQ</s:a>
-            </div>
-            <div class="login-register">
-                <br>
-                    <!--
-                    Don't have an account yet? <s:a href="register_form?debug=xml">Create one</s:a>
-                    -->
-                    Don't have an account yet? <s:a href="register_form">Create one</s:a>
-                    <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-            </div>        
+                </div>
+                <div class="login-register">
+                    <br>
+                        <!--
+                        Don't have an account yet? <s:a href="register_form?debug=xml">Create one</s:a>
+                        -->
+                        Don't have an account yet? <s:a href="register_form">Create one</s:a>
+                        <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                </div>        
             <%@include file="/WEB-INF/results/open/footer.jsp"%>
             <script type="text/javascript" src="js/myapp.js"></script>
     </body>

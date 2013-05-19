@@ -19,21 +19,21 @@
         <img class ="photo-box" src="<s:url action='ImageServlet'/>" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
         <ul id="menu">
             <li>
-            <s:if test="%{#session.user.firstName} == null">
-                <a href="index">Login</a>
-            </s:if>
-            <s:else>
-                <a href="login">
-                    Hi, <s:property value="%{#session.user.firstName}"/>
-                </a>
-            </s:else>
-            <ul>
-                <li><a href="welcome">Welcome!</a></li>
-                <li><a href="edit_profile">Manage Profile</a></li>
-                <li><a href="edit_preferences">Manage Preferences</a></li>
-                <li><a href="refer_friends">Refer Friends</a></li>
-                <li><a href="http://localhost:4848">Server Admin</a></li>
-            </ul>
+                <s:if test="%{#session.user.firstName} == null">
+                    <a href="index">Login</a>
+                </s:if>
+                <s:else>
+                    <a href="login">
+                        Hi, <s:property value="%{#session.user.firstName}"/>
+                    </a>
+                </s:else>
+                <ul>
+                    <li><a href="welcome">Welcome!</a></li>
+                    <li><a href="edit_profile">Manage Profile</a></li>
+                    <li><a href="edit_preferences">Manage Preferences</a></li>
+                    <li><a href="refer_friends">Refer Friends</a></li>
+                    <li><a href="http://localhost:4848">Server Admin</a></li>
+                </ul>
             </li>
             <li><a href="user_options">Options</a>
                 <ul>

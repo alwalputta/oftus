@@ -97,7 +97,7 @@ public class DocumentAction extends ActionSupport {
             e.printStackTrace();
             addActionError(e.getMessage());
         }
-        setMessage("upload picture");
+        setMessage("Profile picture uploaded successfully.");
         return returnVal;
     }
 
@@ -117,7 +117,7 @@ public class DocumentAction extends ActionSupport {
         logger.debug("showPicture:" + document.getFileType());
         logger.debug("showPicture:" + document.getStatus());
 
-        setMessage("show picture");
+        setMessage("Picture displayed successfully.");
         return SUCCESS;
     }
 
@@ -198,10 +198,10 @@ public class DocumentAction extends ActionSupport {
         }
 
         logger.debug("importBookmarks:");
-        setMessage("import bookmarks");
+        setMessage("Your bookmarks have been imported successfully.");
+
         return returnVal;
     }
-//simple validation
 
     @Override
     public void validate() {
