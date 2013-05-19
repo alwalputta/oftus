@@ -87,18 +87,18 @@
                     <s:a href="test">Test</s:a> |
                     <s:a href="test2">Test</s:a> |
                     <s:a href="test3">Test</s:a>
-                        <br></br>
-                    </div>
-                    <div class="login-register">
-                        <br>
-                            <!--
-                            Don't have an account yet? <s:a href="register_form?debug=xml">Create one</s:a>
-                            -->
-                            Don't have an account yet? <s:a href="register_form">Create one</s:a>
-                            <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-                    </div>
+                    <br></br>
+                </div>
+                <div class="login-register">
+                    <br>
+                        <!--
+                        Don't have an account yet? <s:a href="register_form?debug=xml">Create one</s:a>
+                        -->
+                        Don't have an account yet? <s:a href="register_form">Create one</s:a>
+                        <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
                 </div>
             </div>
+        </div>
 
         <%@include file="/WEB-INF/results/open/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
