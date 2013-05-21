@@ -154,6 +154,20 @@ fieldErrors {
     margin: 5px;
 }
 
+.login-box {
+    float: left;
+    vertical-align: middle;
+    display: block;
+    text-align: center;
+    width: 95%;
+    background: skyblue;
+    border: 1px solid #20548E;
+    border-radius: 5px;
+    color: black;
+    padding: 5px;
+    margin: 5px;
+}
+
 .login-register {
     display: block;
     float: left;

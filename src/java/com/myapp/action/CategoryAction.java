@@ -188,7 +188,6 @@ public class CategoryAction extends ActionSupport {
         logger.debug("in the validate");
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        Utils.recordClickLog(session.getId(), getActionName());
 
         logger.debug("editCategory!" + getCategoryId());
 

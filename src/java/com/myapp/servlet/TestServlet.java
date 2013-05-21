@@ -55,8 +55,6 @@ public class TestServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        HttpSession session = request.getSession();
-        Utils.recordClickLog(session.getId(), "TestServlet");
         logger.debug("username:" + username);
         logger.debug("password:" + password);
 

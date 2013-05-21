@@ -83,8 +83,6 @@ public class LoginAction extends ActionSupport {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        //Utils.recordClickLog(session.getId(), getActionName());
-
         if (getActionName().equals("index")) {
             logger.debug("index");
             if (user == null) {

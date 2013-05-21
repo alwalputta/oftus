@@ -44,6 +44,11 @@
 
         <%@include file="/WEB-INF/results/open/header_basic.jsp"%>
 
+        <div class="message">
+            <s:property value="%{message}"/>
+            Please enter username and password to access your world.
+        </div>
+
         <div class="login-modal">
 
             <s:if test="hasActionErrors()">
@@ -60,45 +65,41 @@
 
             <s:fielderror/>
 
-            <div class="message">
-                <s:property value="#message"/>
-                Please enter username and password to access your world.
-            </div>
             <div class="mainTable">
 
                 <div class="login-login">
-                    <div>Login:</div>
-
-                    <s:form action="login">
-                        <s:textfield name="username" size="25" maxlength="200" key="index.username-label"/>
-                        <s:password name="password" size="25" maxlength="200" key="index.password-label"/>
-                        <s:checkbox name="rememberMe" key="index.rememberme-label"/>
-                        <s:hidden name="loginAttempt" value="%{'1'}"/>
-                        <tr>
-                            <td colspan="2" align="center">
-                                <s:submit align="center" key="index.submit-label" theme="simple"/>
-                                <s:reset align="center" key="index.reset-label" theme="simple"/>
-                            </td>
-                        </tr>
-
-                    </s:form>
-                    <s:a href="forgot_password_form">Forgot Password?</s:a> |
-                    <s:a href="login_faq">Login FAQ</s:a>
+                    <div class="page-title">Login</div>
+                    <div class="login-form">
+                        <s:form action="login">
+                            <s:textfield name="username" size="25" maxlength="200" key="index.username-label"/>
+                            <s:password name="password" size="25" maxlength="200" key="index.password-label"/>
+                            <s:checkbox name="rememberMe" key="index.rememberme-label"/>
+                            <tr>
+                                <td colspan="2" align="center">
+                                    <s:submit align="center" key="index.submit-label" theme="simple"/>
+                                    <s:reset align="center" key="index.reset-label" theme="simple"/>
+                                </td>
+                            </tr>
+                        </s:form>
+                        <s:a href="forgot_password_form">Forgot Password?</s:a> |
+                        <s:a href="login_faq">Login FAQ</s:a>
                         <br></br>
                     </div>
-                    <div class="login-register">
+                </div>
+                <div class="login-register">
+                    <div class="login-box">
                         <br>
                             <!--
                             Don't have an account yet? <s:a href="register_form?debug=xml">Create one</s:a>
                             -->
-                            Don't have an account yet? <s:a href="register_form">Create one</s:a>
-                            <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                            <br></br><br></br>
+                            Don't have an account yet?<br></br><s:a href="register_form">Create one</s:a>
+                            <br></br><br></br><br></br><br></br>
                     </div>
                 </div>
             </div>
-
+        </div>
         <%@include file="/WEB-INF/results/open/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
     </body>
-
 </html>

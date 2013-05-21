@@ -92,7 +92,6 @@ public class GeneralAction1 extends ActionSupport {
         logger.debug("GeneralAction validate");
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        Utils.recordClickLog(session.getId(), getActionName());
 
         //addActionMessage("In the GeneralAction" + Utils.getUuid());
     }

@@ -360,7 +360,6 @@ public class BookmarkAction extends ActionSupport {
         logger.debug("in the validate of BookmarkAction");
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        Utils.recordClickLog(session.getId(), getActionName());
 
         if (getActionName().equals("new_bookmark")) {
             logger.debug("in new_bookmark");

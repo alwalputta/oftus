@@ -40,7 +40,6 @@ public class LogoutAction extends ActionSupport {
         logger.debug("in the validate of LogoutAction");
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        Utils.recordClickLog(session.getId(), getActionName());
 
         addActionMessage("In the LogoutAction");
     }

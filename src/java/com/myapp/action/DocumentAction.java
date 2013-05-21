@@ -208,7 +208,6 @@ public class DocumentAction extends ActionSupport {
         logger.debug("in the validate of Document.validate()");
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        Utils.recordClickLog(session.getId(), getActionName());
 
         if (getActionName().equals("upload_picture")) {
             logger.debug("in upload_picture");

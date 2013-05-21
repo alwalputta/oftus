@@ -307,7 +307,6 @@ public class RegisterAction extends ActionSupport {
 
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        Utils.recordClickLog(session.getId(), getActionName());
 
         if ("create_profile".equals(getActionName())) {
             //Check if user already exists

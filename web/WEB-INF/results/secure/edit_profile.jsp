@@ -41,6 +41,8 @@
                 </div>
             </s:if>
 
+            <s:fielderror/>
+
             <div class="login-login">
                 <div class="page-title">Edit User Profile</div>
                 <div class="login-form">
@@ -88,14 +90,21 @@
             </div>
 
             <div class="login-register">
-                <img class ="photo-box" src="<s:url action='ImageServlet'/>" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
-                <br></br>
-                <br></br>
-                <br></br>
-                <s:form action="upload_picture" method="post" enctype="multipart/form-data">
-                    <s:file name="file" label="Upload Picture:"/>
-                    <s:submit/>
-                </s:form>
+                <div class="page-title">Upload Picture</div>
+                <div class="login-box">
+                    <img class ="photo-box" src="<s:url action='ImageServlet'/>" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <s:form action="upload_picture" method="post" enctype="multipart/form-data">
+                        <s:file name="file" label="Chose Picture"/>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <s:submit name="upload" key="register.upload-label" theme="simple"/>
+                            </td>
+                        </tr>
+                    </s:form>
+                </div>
             </div>
         </div>
         <%@include file="/WEB-INF/results/open/footer.jsp"%>
