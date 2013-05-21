@@ -44,6 +44,7 @@
                         <s:textfield name="hiperLink" value="%{#session.bookmark.hiperLink}" size="60" maxlength="200" key="new.hiperlink-label"/>
                         <s:textarea name="description" value="%{#session.bookmark.description}" rows="5" cols="60" key="new.bookmark-description-label"/>
                         <tr>
+                            <td></td>
                             <td colspan="2" align="center">
                                 <s:submit align="center" key="new.submit-bookmark-label" theme="simple"/>
                                 <s:reset align="center" key="new.reset-label" theme="simple"/>

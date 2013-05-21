@@ -813,7 +813,7 @@ input#search-button {
     font: 14px Tahoma;
 }
 
-.inline-column-edit-input {
+/*.inline-column-edit-input {
     text-decoration: none;
     font: 14px Tahoma;
     text-align: left;
@@ -894,14 +894,30 @@ input#search-button {
     background-color: yellowgreen;
     z-index: 100;
 }
+*/
 
-input[type=button], input[type=reset]{
+input[type=submit], input[type=button], input[type=reset]{
     border-radius: 2px;
     border: 1px solid black;
-    height: 20px;
+    height: 25px;
 }
 
-input{
+input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover{
+    border-radius: 2px;
+    border: 1px solid black;
+    height: 25px;
+    color: red;
+}
+
+.form-button{
+    border-radius: 2px;
+    border: 1px solid black;
+    height: 25px;
+    background: whitesmoke;
+    padding: 4px;
+}
+
+input, textarea{
     border-radius: 2px;
     border: 1px solid black;
 }
@@ -981,9 +997,3 @@ tbody th.end{
 }
 /* table CSS ends */
 
-.form-button{
-    background: whitesmoke;
-    padding: 5px;
-    margin: 5px;
-    border-radius: 5px;
-}
