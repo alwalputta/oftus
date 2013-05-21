@@ -185,7 +185,7 @@ fieldErrors {
     font: 15px tahoma;
 }
 
-.login-login input, .register-register input, .forgot-password input, .new-element input {
+/*.login-login input, .register-register input, .forgot-password input, .new-element input {
     border-radius: 5px;
     margin: 5px;
     margin-left: 0px;
@@ -224,7 +224,7 @@ fieldErrors {
     padding-bottom: 10px;
     margin: 5px;
     vertical-align: baseline; 
-}
+}*/
 
 /* Top Static Docking bar CSS */
 .dockingBarTop {
@@ -244,7 +244,7 @@ fieldErrors {
 
 /* Main central menu */
 .mainTable {
-    background-color: windowframe;
+    background-color: #9ecbe2;
     border-top: 1px solid goldenrod;
     border-bottom: 2px solid goldenrod;
     width: 100%;
@@ -415,7 +415,7 @@ sup {
     padding: 2px;
     border-radius: 5px;
     color: black;
-    background: #aabbaa;
+    background: #9ecbe2;
     height: 100%;
     position: relative;
     text-align: left;
@@ -538,6 +538,8 @@ p.spacer {
     list-style: none;
     margin: 0px;
     padding: 0px;
+    border-radius: 2px;
+    background: #cccccc;
 }
 
 #middle-column-sortable li {
@@ -550,8 +552,8 @@ p.spacer {
 #middle-row-sortable {
     margin: 0px;
     padding: 0px;
-    /*    overflow-y: scroll;*/
-    /*    height: 1000px;*/
+    /*    overflow-y: scroll;
+        height: 1000px;*/
 }
 
 #middle-row-sortable li {
