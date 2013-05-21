@@ -13,14 +13,17 @@
     <package name="myapp" extends="struts-default" namespace="">
         
         <interceptors>
-            <interceptor name="shiro" class="com.myapp.struts.ShiroInterceptor"></interceptor>
-            <interceptor-stack name="shiroStack">
-                <interceptor-ref name="shiro"/>
+            <interceptor name="login" class="com.myapp.struts.LoginInterceptor"></interceptor>
+            <interceptor name="logging" class="com.myapp.struts.LoggingInterceptor"></interceptor>
+            
+            <interceptor-stack name="customStack">
+                <interceptor-ref name="login"/>
+                <interceptor-ref name="logging"/>
                 <interceptor-ref name="defaultStack"/>
             </interceptor-stack>
         </interceptors>
 
-        <default-interceptor-ref name="shiroStack"></default-interceptor-ref>
+        <default-interceptor-ref name="customStack"></default-interceptor-ref>
 
         <global-results>
             <result name="login_form_redirect">/WEB-INF/results/open/login_form.jsp</result>
@@ -121,7 +124,7 @@
             <result name="fail">/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
 
-        <action name="register_form" class="com.myapp.action.GeneralAction" method="execute">
+        <action name="register_form" class="com.myapp.action.RegisterAction" method="registerForm">
             <result name="success">/WEB-INF/results/open/register_form.jsp</result>
             <result name="input">/WEB-INF/results/open/login_form.jsp</result>
         </action>
@@ -131,7 +134,7 @@
             <result name="input">/WEB-INF/results/open/register_form.jsp</result>
         </action>
 
-        <action name="edit_profile" class="com.myapp.action.GeneralAction" method="editProfile">
+        <action name="edit_profile" class="com.myapp.action.RegisterAction" method="editProfile">
             <result name="success">/WEB-INF/results/secure/edit_profile.jsp</result>
             <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
@@ -139,6 +142,11 @@
         <action name="update_profile" class="com.myapp.action.RegisterAction" method="updateProfile">
             <result name="success">/WEB-INF/results/secure/edit_profile.jsp</result>
             <result name="input">/WEB-INF/results/secure/edit_profile.jsp</result>
+        </action>
+
+        <action name="activate_profile" class="com.myapp.action.RegisterAction" method="activateProfile">
+            <result name="success">/WEB-INF/results/open/login_form.jsp</result>
+            <result name="input">/WEB-INF/results/open/register_form.jsp</result>
         </action>
 
         <action name="list_categories">

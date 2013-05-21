@@ -9,8 +9,12 @@ import com.myapp.admin.Credential;
 import com.myapp.admin.CredentialDAO;
 import com.myapp.admin.Email;
 import com.myapp.admin.EmailDAO;
+import com.myapp.admin.Gender;
+import com.myapp.admin.GenderDAO;
 import com.myapp.admin.Phone;
 import com.myapp.admin.Role;
+import com.myapp.admin.State;
+import com.myapp.admin.StateDAO;
 import com.myapp.admin.User;
 import com.myapp.admin.UserDAO;
 import com.myapp.main.Bookmark;
@@ -20,6 +24,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -50,7 +55,61 @@ public class RegisterAction extends ActionSupport {
     private String userId;
     private String message;
     static final Logger logger = Logger.getLogger(RegisterAction.class);
+    private List<Gender> genders;
+    private List<State> states;
+    User user = null;
+    Set<Category> userCategories = null;
 
+    public String registerForm() {
+        logger.debug("GeneralAction execute!");
+
+        GenderDAO genderDAO = new GenderDAO();
+        genders = genderDAO.listGenders();
+        logger.debug("genders:" + genders.size());
+
+        StateDAO stateDAO = new StateDAO();
+        states = stateDAO.listStates();
+        logger.debug("states:" + states.size());
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        session.setAttribute("genders", genders);
+        session.setAttribute("states", states);
+
+        setMessage("General Action execute");
+        return SUCCESS;
+    }
+
+    @SuppressWarnings("unchecked")
+    public String editProfile() {
+        logger.debug("RegisterAction editProfile!");
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        genders = (List<Gender>) session.getAttribute("genders");
+        states = (List<State>) session.getAttribute("states");
+
+        if (genders == null) {
+            GenderDAO genderDAO = new GenderDAO();
+            genders = genderDAO.listGenders();
+        }
+        logger.debug("before state DAO!");
+
+        if (states == null) {
+            StateDAO stateDAO = new StateDAO();
+            states = stateDAO.listStates();
+        }
+        session.setAttribute("genders", genders);
+        session.setAttribute("states", states);
+
+        User user = (User) session.getAttribute("user");
+        logger.debug("RegisterAction editProfile, userid:" + user.getUserId());
+
+        setMessage("Edit profile and click update.");
+        return SUCCESS;
+    }
+
+    
     //business logic
     //@Override
     public String createProfile() {
@@ -147,9 +206,10 @@ public class RegisterAction extends ActionSupport {
 //        session.setAttribute("user", user);
 
         setMessage("User profile created successfully; "
-                + "Please activate profile by clicking the link in the email, we just sent you.");
+                + "We just sent you an email to your email address."
+                + "Please activate profile by clicking the link in the email.");
 
-        return "success";
+        return SUCCESS;
     }
 
     //Update the user profile
@@ -221,7 +281,7 @@ public class RegisterAction extends ActionSupport {
         logger.debug("userid:" + user.getUserId());
         setMessage("User profile updated successfully.");
 
-        return "success";
+        return SUCCESS;
     }
 
     //Update the user profile
@@ -238,7 +298,7 @@ public class RegisterAction extends ActionSupport {
         userDAO.updateUser(user);
 
         logger.debug("userid:" + user.getUserId());
-        return "success";
+        return SUCCESS;
     }
 
     @Override
@@ -300,6 +360,10 @@ public class RegisterAction extends ActionSupport {
             if (user == null) {
                 addActionMessage("Please check the link, it does not correspond to any profile in the system");
             }
+        } else if ("register_form".equals(getActionName())) {
+            logger.debug("register_form");
+        } else if ("edit_profile".equals(getActionName())) {
+            logger.debug("edit_profile");
         } else {
             logger.debug("Other");
         }
@@ -439,6 +503,38 @@ public class RegisterAction extends ActionSupport {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public List<Gender> getGenders() {
+        return genders;
+    }
+
+    public void setGenders(List<Gender> genders) {
+        this.genders = genders;
+    }
+
+    public List<State> getStates() {
+        return states;
+    }
+
+    public void setStates(List<State> states) {
+        this.states = states;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Set<Category> getUserCategories() {
+        return userCategories;
+    }
+
+    public void setUserCategories(Set<Category> userCategories) {
+        this.userCategories = userCategories;
     }
 
     public String getActionName() {

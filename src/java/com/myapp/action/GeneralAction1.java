@@ -24,16 +24,16 @@ import org.apache.struts2.ServletActionContext;
  *
  * @author palwal
  */
-public class GeneralAction extends ActionSupport {
+public class GeneralAction1 extends ActionSupport {
 
     private List<Gender> genders;
     private List<State> states;
     private String message;
     User user = null;
     Set<Category> userCategories = null;
-    static final Logger logger = Logger.getLogger(GeneralAction.class);
+    static final Logger logger = Logger.getLogger(GeneralAction1.class);
 
-    public GeneralAction() {
+    public GeneralAction1() {
     }
 
     //business logic
