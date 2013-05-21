@@ -898,7 +898,7 @@ input#search-button {
 }
 */
 
-input[type=submit], input[type=button], input[type=reset]{
+input[type=submit], input[type=button], input[type=reset], input[type=text], input[type=password], select{
     border-radius: 2px;
     border: 1px solid black;
     height: 25px;
@@ -954,11 +954,18 @@ th{
     text-align: left;
 }
 
+tr{
+    font-size: 14px;
+    color: black;
+    text-align: left;
+}
+
 td{
     padding: 0px;
     font-size: 14px;
     color: black;
     text-align: left;
+    height: 30px;
 }
 
 tr.rowc{

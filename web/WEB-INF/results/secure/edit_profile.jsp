@@ -77,6 +77,7 @@
                             <s:textfield name="zip" value="%{#address.zip}" size="10" maxlength="20" key="register.zip-label"/>
                         </s:iterator>
                         <tr>
+                            <td></td>
                             <td colspan="2" align="center">
                                 <s:submit name="register" key="register.update-label" theme="simple"/>
                                 <s:reset name="cancel" key="register.cancel-label" theme="simple"/>

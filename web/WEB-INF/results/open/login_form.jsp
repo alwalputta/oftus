@@ -75,6 +75,7 @@
                             <s:password name="password" size="25" maxlength="200" key="index.password-label"/>
                             <s:checkbox name="rememberMe" key="index.rememberme-label"/>
                             <tr>
+                                <td></td>
                                 <td colspan="2" align="center">
                                     <s:submit align="center" key="index.submit-label" theme="simple"/>
                                     <s:reset align="center" key="index.reset-label" theme="simple"/>

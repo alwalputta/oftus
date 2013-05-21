@@ -20,7 +20,7 @@
             <s:property value="%{message}"/>
         </div>
         <div class="mainTable">
-            
+
             <s:if test="hasActionErrors()">
                 <div id="fieldErrors">
                     <s:actionerror/>

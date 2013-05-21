@@ -46,6 +46,7 @@
                         <s:textfield name="categoryName" value="%{#session.category.categoryName}" size="60" maxlength="200" key="new.categoryname-label"/>
                         <s:textarea name="description" value="%{#session.category.description}" rows="5" cols="60" key="new.category-description-label"/>
                         <tr>
+                            <td></td>
                             <td colspan="2" align="center">
                                 <s:submit align="center" key="new.submit-category-label" theme="simple" cssClass="form-button"/>
                                 <s:reset align="center" key="new.reset-label" theme="simple" cssClass="form-button"/>
