@@ -34,72 +34,136 @@
                 </div>
             </s:if>
 
-            <div class="login-login">
-                <div>User Bookmarks
-                    <a href="add_category?">Add Category</a>
-                    <a href="add_bookmark?">Add Bookmark</a>
-                </div>
-                <table summary="List of all bookmarks">
-                    <thead>
-                        <tr class="row">
-                            <!--th class="name">Id</th-->
-                            <th class="name">Category Name</th>
-                            <th class="name">Description</th>
-                            <th class="name">Category Status</th>
-                            <th class="name">Edit</th>
-                            <th class="name">Delete</th>
-                        </tr>
-                    </thead>
+            <s:fielderror/>
 
-                    <tbody>
-                        <s:iterator value="%{#session.user.userCategories}" id="category">
-                            <tr class="rowc">
-                                <!--th><s:property value="#category.categoryId"/></th-->
-                                <th><s:property value="#category.categoryName"/></th>
-                                <th><s:property value="#category.description"/></th>
-                                <th><s:property value="#category.status"/></th>
-                                <th>
-                                    <s:url id="editCategory" action="edit_category_list">
-                                        <s:param name="categoryId" value="#category.categoryId"></s:param>
-                                    </s:url>
-                                    <a href="<s:property value="#editCategory"/>">Edit</a>
-                                </th>
-                                <th>
-                                    <s:url id="deleteCategory" action="delete_category_list">
-                                        <s:param name="categoryId" value="#category.categoryId"></s:param>
-                                    </s:url>
-                                    <a href="<s:property value="#deleteCategory"/>">Delete</a>
-                                </th>
+            <div class="login-login">
+                <div class="page-title">User Bookmarks</div>
+                <div class="login-form">
+                    <a href="add_category?">
+                        Add Category
+                    </a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="add_bookmark?">
+                        Add Bookmark
+                    </a>
+                    <table summary="List of all bookmarks">
+                        <thead>
+                            <tr class="row">
+                                <!--th class="name">Id</th-->
+                                <th class="name">Category Name</th>
+                                <th class="name">Description</th>
+                                <th class="name">Category Status</th>
+                                <th class="name">Edit</th>
+                                <th class="name">Delete</th>
                             </tr>
-                            <s:iterator value="#category.bookmarks" id="bookmark">
-                                <tr class="rowb">
-                                    <!--th class="start"><s:property value="#bookmark.bookmarkId"/></th-->
-                                    <td><s:property value="#bookmark.bookmarkName"/></td>
-                                    <td><s:property value="#bookmark.description"/></td>
-                                    <td><s:property value="#bookmark.status"/></td>
-                                    <td>
-                                        <s:url id="editBookmark" action="edit_bookmark_list" escapeAmp="false">
+                        </thead>
+
+                        <tbody>
+                            <s:iterator value="%{#session.user.userCategories}" id="category">
+                                <tr class="rowc">
+                                    <!--th><s:property value="#category.categoryId"/></th-->
+                                    <th><s:property value="#category.categoryName"/></th>
+                                    <th><s:property value="#category.description"/></th>
+                                    <th><s:property value="#category.status"/></th>
+                                    <th>
+                                        <s:url id="editCategory" action="edit_category_list">
                                             <s:param name="categoryId" value="#category.categoryId"></s:param>
-                                            <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
                                         </s:url>
-                                        <a href="<s:property value="#editBookmark"/>">Edit</a>
-                                    </td>
-                                    <td>
-                                        <s:url id="deleteBookmark" action="delete_bookmark_list">
-                                            <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
+                                        <a href="<s:property value="#editCategory"/>">
+                                            <img class="ui-icon ui-icon-pencil middle-column-element-edit-icon"/>
+                                        </a>
+                                    </th>
+                                    <th>
+                                        <s:url id="deleteCategory" action="delete_category_list">
+                                            <s:param name="categoryId" value="#category.categoryId"></s:param>
                                         </s:url>
-                                        <a href="<s:property value="#deleteBookmark"/>">Delete</a>
-                                    </td>
+                                        <a href="<s:property value="#deleteCategory"/>">
+                                            <img class="ui-icon ui-icon-trash middle-column-element-delete-icon"/>
+                                        </a>
+                                    </th>
                                 </tr>
-                            </s:iterator>
-                        </tbody>
-                    </s:iterator>
-                </table>
+                                <s:iterator value="#category.bookmarks" id="bookmark">
+                                    <tr class="rowb">
+                                        <!--th class="start"><s:property value="#bookmark.bookmarkId"/></th-->
+                                        <td><s:property value="#bookmark.bookmarkName"/></td>
+                                        <td><s:property value="#bookmark.description"/></td>
+                                        <td><s:property value="#bookmark.status"/></td>
+                                        <td>
+                                            <s:url id="editBookmark" action="edit_bookmark_list" escapeAmp="false">
+                                                <s:param name="categoryId" value="#category.categoryId"></s:param>
+                                                <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
+                                            </s:url>
+                                            <a href="<s:property value="#editBookmark"/>">
+                                                <img class="ui-icon ui-icon-pencil middle-row-element-edit-icon"/>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <s:url id="deleteBookmark" action="delete_bookmark_list">
+                                                <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
+                                            </s:url>
+                                            <a href="<s:property value="#deleteBookmark"/>">
+                                                <img class="ui-icon ui-icon-trash middle-row-element-delete-icon"/>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </s:iterator>
+                            </tbody>
+                        </s:iterator>
+                    </table>
+                </div>
             </div>
             <div class="login-register">
-                Note: This lists your Bookmarks.
-                If you want to see the categories, click <a href="list_categories">Manage Categories</a> link.
+                <div class="page-title">Your Bookmarks</div>
+                <div class="login-box">
+                    Note: This lists your Bookmarks.
+                    If you want to see the categories, click <a href="list_categories">Manage Categories</a> link.
+                </div>
             </div>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
         </div>
         <%@include file="/WEB-INF/results/open/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>

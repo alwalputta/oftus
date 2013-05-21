@@ -920,7 +920,7 @@ tr.row:hover, td.start:hover, td.end:hover{
 }
 
 tr.rowc:hover, td.startc:hover, td.endc:hover{
-    background: #FD7;
+    background: #9ecbe2;
     text-align: left;
 }
 
@@ -929,7 +929,14 @@ tr.rowb:hover, td.startb:hover, td.endb:hover{
     text-align: left;
 }
 
-th, td{
+th{
+    padding: 5px;
+    font-size: 16px;
+    color: black;
+    text-align: left;
+}
+
+td{
     padding: 0px;
     font-size: 14px;
     color: black;
@@ -937,11 +944,11 @@ th, td{
 }
 
 tr.rowc{
-    padding: .3em .5em;
+    padding: 5px;;
     font-size: 16px;
     color: black;
     text-align: left;
-    background-color: #007182;
+    background: #9ecbe2;
 }
 
 th{

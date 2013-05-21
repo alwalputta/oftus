@@ -24,6 +24,8 @@ $(document).ready(function() {
     // $('.mask').fadeIn(300);
     $('.loading').fadeIn(300);
     $('.message').fadeOut(10000);
+    $("tr.rowc:even").css("background-color", "#grey");
+    $("tr.rowb:even").css("background-color", "#ABDCFF");
 });
 
 $(".message").hover(function() {

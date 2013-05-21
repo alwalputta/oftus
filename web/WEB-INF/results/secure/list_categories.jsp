@@ -36,47 +36,92 @@
                 </div>
             </s:if>
 
+            <s:fielderror/>
+
             <div class="login-login">
-                User Categories::::: <a href="add_category?">Add Category</a>
-                <table>
-                    <tr class="row">
-                        <!--td>Id</td-->
-                        <td>Category Name</td>
-                        <td>Description</td>
-                        <td>Category Order</td>
-                        <td>Category Status</td>
-                        <td>Edit</td>
-                        <td>Delete</td>
-                    </tr>
-                    <s:iterator value="%{#session.user.userCategories}" id="category">
-                        <tr class="rowc">
-                            <!--td><s:property value="#category.categoryId"/></td-->
-                            <td><s:property value="#category.categoryName"/></td>
-                            <td><s:property value="#category.description"/></td>
-                            <td><s:property value="#category.categoryOrder"/></td>
-                            <td><s:property value="#category.status"/></td>
-                            <td><s:url id="editCategory" action="edit_category">
-                                    <s:param name="categoryId" value="#category.categoryId"></s:param>
-                                </s:url>
-                                <a href="<s:property value="#editCategory"/>">Edit</a>
-                            </td>
-                            <td><s:url id="deleteCategory" action="delete_category">
-                                    <s:param name="categoryId" value="#category.categoryId"></s:param>
-                                </s:url>
-                                <a href="<s:property value="#deleteCategory"/>">Delete</a>
-                            </td>
-                        </tr>
-                    </s:iterator>
-                </table>
+                <div class="page-title">User Categories</div>
+                <div class="login-form">
+                    <a href="add_category?">Add Category</a>
+                    <table summary="List of all categories">
+                        <thead>
+                            <tr class="row">
+                                <!--td>Id</td-->
+                                <th>Category Name</th>
+                                <th>Description</th>
+                                <th>Category Order</th>
+                                <th>Category Status</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <s:iterator value="%{#session.user.userCategories}" id="category">
+                                <tr class="rowc">
+                                    <!--td><s:property value="#category.categoryId"/></td-->
+                                    <td><s:property value="#category.categoryName"/></td>
+                                    <td><s:property value="#category.description"/></td>
+                                    <td><s:property value="#category.categoryOrder"/></td>
+                                    <td><s:property value="#category.status"/></td>
+                                    <td><s:url id="editCategory" action="edit_category">
+                                            <s:param name="categoryId" value="#category.categoryId"></s:param>
+                                        </s:url>
+                                        <a href="<s:property value="#editCategory"/>">
+                                            <img class="ui-icon ui-icon-pencil middle-column-element-edit-icon"/>
+                                        </a>
+                                    </td>
+                                    <td><s:url id="deleteCategory" action="delete_category">
+                                            <s:param name="categoryId" value="#category.categoryId"></s:param>
+                                        </s:url>
+                                        <a href="<s:property value="#deleteCategory"/>">
+                                            <img class="ui-icon ui-icon-trash middle-column-element-delete-icon"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </s:iterator>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="login-register">
-                Note: This lists your categories.
-                If you want to see the bookmarks, click <a href="list_bookmarks">Manage Bookmarks</a> link.
+                <div class="page-title">Your Categories</div>
+                <div class="login-box">
+                    Note: This lists your categories.
+                    If you want to see the bookmarks, click <a href="list_bookmarks">Manage Bookmarks</a> link.
+                </div>
             </div>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
         </div>
         <%@include file="/WEB-INF/results/open/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
 
     </body>
 </html>
-

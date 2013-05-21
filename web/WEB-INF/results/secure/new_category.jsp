@@ -21,25 +21,45 @@
             <s:property value="%{message}"/>
         </div>
         <div class="mainTable">
-            <div class="login-login">
-                <div>New Category</div>
+            
+            <s:if test="hasActionErrors()">
+                <div id="fieldErrors">
+                    <s:actionerror/>
+                </div>
+            </s:if>
 
-                <s:form action="save_category">
-                    <s:textfield name="categoryName" size="60" maxlength="200" key="new.categoryname-label"/>
-                    <s:textarea name="description" rows="5" cols="60" key="new.category-description-label"/>
-                    <tr>
-                        <td colspan="2" align="center">
-                            <s:submit align="center" key="new.submit-category-label" theme="simple"/>
-                            <s:reset align="center" key="new.reset-label" theme="simple"/>
-                        </td>
-                    </tr>
-                </s:form>
-                <s:a href="#new_category_faq" class="new-element-links">Add/Edit Category FAQ</s:a>
+            <s:if test="hasActionMessages()">
+                <div class="welcome">
+                    <s:actionmessage/>
+                </div>
+            </s:if>
+
+            <s:fielderror/>
+            
+            <div class="login-login">
+                <div class="page-title">Add New Category</div>
+                <div class="login-form">
+
+                    <s:form action="save_category">
+                        <s:textfield name="categoryName" size="60" maxlength="200" key="new.categoryname-label"/>
+                        <s:textarea name="description" rows="5" cols="60" key="new.category-description-label"/>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <s:submit align="center" key="new.submit-category-label" theme="simple"/>
+                                <s:reset align="center" key="new.reset-label" theme="simple"/>
+                            </td>
+                        </tr>
+                    </s:form>
+                    <s:a href="#new_category_faq" class="new-element-links">Add/Edit Category FAQ</s:a>
+                    </div>
                 </div>
                 <div class="login-register">
-                    <br>
-                        Don't have an account yet? <s:a href="register_form">Create one</s:a>
-                        <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                    <div class="page-title">Download Bookmarks Template</div>
+                    <div class="login-box">
+                        <br>
+                            Don't have an account yet? <s:a href="register_form">Create one</s:a>
+                            <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                    </div>
                 </div>
             </div>
         <%@include file="/WEB-INF/results/open/footer.jsp"%>

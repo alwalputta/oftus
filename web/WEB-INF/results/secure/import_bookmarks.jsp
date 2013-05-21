@@ -20,6 +20,7 @@
             <s:property value="%{message}"/>
         </div>
         <div class="mainTable">
+            
             <s:if test="hasActionErrors()">
                 <div id="fieldErrors">
                     <s:actionerror/>
@@ -32,19 +33,26 @@
                 </div>
             </s:if>
 
+            <s:fielderror/>
+
             <div class="login-login">
-                <div>Import Bookmarks:</div>
-                <s:form action="import_bookmarks" method="post" enctype="multipart/form-data" >
-                    <s:file name="file" label="Bookmarks Excel File:" />
-                    <s:submit />
-                </s:form>
+                <div class="page-title">Import Bookmarks</div>
+                <div class="login-form">
+                    <s:form action="import_bookmarks" method="post" enctype="multipart/form-data" >
+                        <s:file name="file" label="Bookmarks Bookmarks File" />
+                        <s:submit />
+                    </s:form>
+                </div>
             </div>
             <div class="login-register">
-                Download Bookmarks Template - <s:a href="template/export_bookmarks.xlsx">Template File</s:a>
-                    <br></br>
-                    Note: This lists your categories. You want to see the bookmarks, click Manage Bookmarks link.
-                    <br></br>
-                    <br></br>
+                <div class="page-title">Download Bookmarks Template</div>
+                <div class="login-box">
+                    Download Bookmarks Template - <s:a href="template/export_bookmarks.xlsx">Template File</s:a>
+                        <br></br>
+                        Note: This lists your categories. You want to see the bookmarks, click Manage Bookmarks link.
+                        <br></br>
+                        <br></br>
+                    </div>
                 </div>
             </div>
 

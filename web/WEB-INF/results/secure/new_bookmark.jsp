@@ -20,27 +20,46 @@
             <s:property value="%{message}"/>
         </div>
         <div class="mainTable">
-            <div class="login-login">
-                <div>Add New Bookmark</div>
+            <s:if test="hasActionErrors()">
+                <div id="fieldErrors">
+                    <s:actionerror/>
+                </div>
+            </s:if>
 
-                <s:form action="save_bookmark">
-                    <s:select name="categoryId" list="%{#session.user.userCategories}" listKey="categoryId" listValue="categoryName" headerKey="-1" headerValue="Select Category..." key="new.categoryname-label"/>
-                    <s:textfield name="bookmarkName" size="60" maxlength="200" key="new.bookmark-label"/>
-                    <s:textfield name="hiperLink" size="60" maxlength="200" key="new.hiperlink-label"/>
-                    <s:textarea name="description" rows="5" cols="60" key="new.bookmark-description-label"/>
-                    <tr>
-                        <td colspan="2" align="center">
-                            <s:submit align="center" key="new.submit-bookmark-label" theme="simple"/>
-                            <s:reset align="center" key="new.reset-label" theme="simple"/>
-                        </td>
-                    </tr>
-                </s:form>
-                <a href="new_bookmark_faq" class="new-element-links">Add Bookmark FAQ</a>
+            <s:if test="hasActionMessages()">
+                <div class="welcome">
+                    <s:actionmessage/>
+                </div>
+            </s:if>
+
+            <s:fielderror/>
+
+            <div class="login-login">
+                <div class="page-title">Add New Bookmark</div>
+                <div class="login-form">
+
+                    <s:form action="save_bookmark">
+                        <s:select name="categoryId" list="%{#session.user.userCategories}" listKey="categoryId" listValue="categoryName" headerKey="-1" headerValue="Select Category..." key="new.categoryname-label"/>
+                        <s:textfield name="bookmarkName" size="60" maxlength="200" key="new.bookmark-label"/>
+                        <s:textfield name="hiperLink" size="60" maxlength="200" key="new.hiperlink-label"/>
+                        <s:textarea name="description" rows="5" cols="60" key="new.bookmark-description-label"/>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <s:submit align="center" key="new.submit-bookmark-label" theme="simple"/>
+                                <s:reset align="center" key="new.reset-label" theme="simple"/>
+                            </td>
+                        </tr>
+                    </s:form>
+                    <a href="new_bookmark_faq" class="new-element-links">Add Bookmark FAQ</a>
+                </div>
             </div>
             <div class="login-register">
-                <br>
-                    Don't have an account yet? <s:a href="register_form">Create one</s:a>
-                        <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                <div class="page-title">Download Bookmarks Template</div>
+                <div class="login-box">
+                    <br>
+                        Don't have an account yet? <s:a href="register_form">Create one</s:a>
+                            <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                    </div>
                 </div>
             </div>
         <%@include file="/WEB-INF/results/open/footer.jsp"%>

@@ -46,6 +46,7 @@
             <div class="login-login">
                 <div class="page-title">Edit User Profile</div>
                 <div class="login-form">
+                    
                     <s:form action="update_profile">
                         <s:hidden name="userid" value="%{#session.user.userId}"/>
                         <s:iterator value="%{#session.user.userCredentials}" id="credential">
@@ -75,7 +76,6 @@
                             <s:select name="state"  list="%{#session.states}" headerKey="0" value="%{#address.state}" listKey="stateCode" listValue="stateName" headerValue="Select State..." key="register.state-label"/>
                             <s:textfield name="zip" value="%{#address.zip}" size="10" maxlength="20" key="register.zip-label"/>
                         </s:iterator>
-
                         <tr>
                             <td colspan="2" align="center">
                                 <s:submit name="register" key="register.update-label" theme="simple"/>
@@ -85,7 +85,6 @@
                         </tr>
                     </s:form>
                     <s:a href="register_faq">Register FAQ</s:a>
-                    <br></br>
                 </div>
             </div>
 
