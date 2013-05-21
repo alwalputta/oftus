@@ -39,7 +39,7 @@
                 <div class="page-title">Import Bookmarks</div>
                 <div class="login-form">
                     <s:form action="import_bookmarks" method="post" enctype="multipart/form-data" >
-                        <s:file name="file" label="Bookmarks Bookmarks File" />
+                        <s:file name="file" label="Bookmarks File" />
                         <s:submit />
                     </s:form>
                 </div>

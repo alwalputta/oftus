@@ -71,14 +71,14 @@
                     <div class="page-title">Login</div>
                     <div class="login-form">
                         <s:form action="login">
-                            <s:textfield name="username" size="25" maxlength="200" key="index.username-label"/>
-                            <s:password name="password" size="25" maxlength="200" key="index.password-label"/>
-                            <s:checkbox name="rememberMe" key="index.rememberme-label"/>
+                            <s:textfield name="username" size="25" maxlength="200" key="index.username-label" title="Please enter your username"/>
+                            <s:password name="password" size="25" maxlength="200" key="index.password-label" title="Please enter your password"/>
+                            <s:checkbox name="rememberMe" key="index.rememberme-label" title="Click to be remembered on this machine"/>
                             <tr>
-                                <td></td>
-                                <td colspan="2" align="center">
-                                    <s:submit align="center" key="index.submit-label" theme="simple"/>
-                                    <s:reset align="center" key="index.reset-label" theme="simple"/>
+                                <td width="50%"></td>
+                                <td width="50%" align="left">
+                                    <s:submit align="center" key="index.submit-label" theme="simple" title="Click to Save"/>
+                                    <s:reset align="center" key="index.reset-label" theme="simple" title="Click to Reset"/>
                                 </td>
                             </tr>
                         </s:form>

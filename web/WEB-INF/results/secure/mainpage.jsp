@@ -9,7 +9,7 @@
         <script type="text/javascript">
             function loadData () {
             <s:iterator value="userCategories" id="category">
-                    $('#<s:property value="#category.categoryId"/>').data("category", {colId:"<s:property value="#category.categoryId"/>", title:"<s:property value="#category.categoryName"/>", description:"<s:property value="#category.description:"/>"});
+                    $('#<s:property value="#category.categoryId"/>').data("category", {colId:"<s:property value="#category.categoryId"/>", title:"<s:property value="#category.categoryName"/>", description:"<s:property value="#category.description"/>"});
                 <s:iterator value="#category.bookmarks" id="bookmark">
                         $('#<s:property value="#bookmark.bookmarkId"/>').data("bookmark", {linkId:"<s:property value="#bookmark.bookmarkId"/>", title:"<s:property value="#bookmark.bookmarkName"/>", hiperLink:"<s:property value="#bookmark.hiperLink"/>", description:"<s:property value="#bookmark.description"/>"});
                 </s:iterator>
@@ -33,7 +33,7 @@
             <ul id="middle-column-sortable">
                 <s:iterator value="%{#session.user.userCategories}" id="category">
                     <li>
-                        <div class="middle-column-element" id="<s:property value="#category.categoryId"/>">
+                        <div class="middle-column-element" id="<s:property value="#category.categoryId"/>" title="<s:property value="#category.description"/>">
                             <div class="middle-column-element-text">
                                 <s:property value="#category.categoryName"/>
                             </div>
@@ -55,7 +55,7 @@
                             <ul id="middle-row-sortable" class="connectedSortable">
                                 <s:iterator value="#category.bookmarks" id="bookmark">
                                     <li>
-                                        <div class="middle-row-element" id="<s:property value="#bookmark.bookmarkId"/>">
+                                        <div class="middle-row-element" id="<s:property value="#bookmark.bookmarkId"/>" title="<s:property value="#bookmark.hiperLink"/><br><s:property value="#bookmark.description"/>">
                                             <img class="favicon" src="https://plus.google.com/_/favicon?domain=<s:property value="#bookmark.hiperLink"/>"></img>
                                             <div class="middle-row-element-text">
                                                 <s:property value="#bookmark.bookmarkName"/>

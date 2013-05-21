@@ -1,6 +1,5 @@
 $(document).ready(function() {
     //Message while the page is still being loaded.
-    //comented temporarily
     show_page_loading_message();
  
     element_id = 0;
@@ -28,6 +27,21 @@ $(document).ready(function() {
     $("tr.rowb:even").css("background-color", "#ABDCFF");
 });
 
+$(function() {
+    $(this).tooltip({
+        track: true
+    });
+    $(this).tooltip({
+        tooltipClass: "tooltip"
+    });
+    $(".middle-column-element").tooltip({
+        tooltipClass: "tooltip-category"
+    });
+    $(".middle-row-element").tooltip({
+        tooltipClass: "tooltip-bookmark"
+    });
+});
+  
 $(".message").hover(function() {
     $(this).stop().fadeOut();
     $(this).fadeIn();
