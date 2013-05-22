@@ -103,7 +103,9 @@ $('#search-input').keyup(function(event) {
     search_and_hide(search_text);
 });
 
-$('.ui-icon').hover(function(){$(this).toggleClass('ui-state-highlight')});
+$('.ui-icon').hover(function(){
+    $(this).toggleClass('ui-state-highlight');
+});
 
 //open the page
 $(document).click(function(){
