@@ -932,24 +932,9 @@ tbody th.end{
 
 .tooltip{
     display: inline-block;
-    height: 25px;
-    width: 400px;
+    width: 300px;
     alignment-adjust: central;
     padding: 5px;
+    background-color: red;
 }
 
-.tooltip-category{
-    display: inline-block;
-    height: 150px;
-    width: 400px;
-    alignment-adjust: central;
-    padding: 5px;
-}
-
-.tooltip-bookmark{
-    display: inline-block;
-    height: 250px;
-    width: 400px;
-    alignment-adjust: central;
-    padding: 5px;
-}

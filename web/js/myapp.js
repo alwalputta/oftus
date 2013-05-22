@@ -34,12 +34,6 @@ $(function() {
     $(this).tooltip({
         tooltipClass: "tooltip"
     });
-    $(".middle-column-element").tooltip({
-        tooltipClass: "tooltip-category"
-    });
-    $(".middle-row-element").tooltip({
-        tooltipClass: "tooltip-bookmark"
-    });
 });
   
 $(".message").hover(function() {

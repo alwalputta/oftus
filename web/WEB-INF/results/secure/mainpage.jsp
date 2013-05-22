@@ -55,7 +55,7 @@
                             <ul id="middle-row-sortable" class="connectedSortable">
                                 <s:iterator value="#category.bookmarks" id="bookmark">
                                     <li>
-                                        <div class="middle-row-element" id="<s:property value="#bookmark.bookmarkId"/>" title="<s:property value="#bookmark.hiperLink"/><br><s:property value="#bookmark.description"/>">
+                                        <div class="middle-row-element" id="<s:property value="#bookmark.bookmarkId"/>" title="&hearts;<s:property value="#bookmark.hiperLink"/><br>&diams;<s:property value="#bookmark.description"/>">
                                             <img class="favicon" src="https://plus.google.com/_/favicon?domain=<s:property value="#bookmark.hiperLink"/>"></img>
                                             <div class="middle-row-element-text">
                                                 <s:property value="#bookmark.bookmarkName"/>
