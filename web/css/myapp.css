@@ -185,47 +185,6 @@ fieldErrors {
     font: 15px tahoma;
 }
 
-/*.login-login input, .register-register input, .forgot-password input, .new-element input {
-    border-radius: 5px;
-    margin: 5px;
-    margin-left: 0px;
-    height: 25px;
-}
-
-.new-element textarea {
-    border-radius: 5px;
-    margin: 5px;
-    margin-left: 0px;
-}
-
-.login-button, .new-element-button {
-    border-radius: 5px;
-    padding: 5px;
-    padding-bottom: 10px;
-    margin: 5px;
-    vertical-align: baseline;
-    background:cadetblue;
-    border: 1px black solid;
-}
-
-.login-button:active, .new-element-button:active {
-    border-radius: 5px;
-    padding: 5px;
-    padding-bottom: 10px;
-    margin: 5px;
-    vertical-align: baseline;
-    background: blue;
-    border: 2px black solid;
-}
-
-.login-links, .new-element-links {
-    border-radius: 5px;
-    padding: 5px;
-    padding-bottom: 10px;
-    margin: 5px;
-    vertical-align: baseline; 
-}*/
-
 /* Top Static Docking bar CSS */
 .dockingBarTop {
     background-color: white;
@@ -819,6 +778,8 @@ input[type=submit], input[type=button], input[type=reset]{
     border-radius: 5px;
     border: 1px solid black;
     height: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover{
@@ -827,25 +788,31 @@ input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover{
     height: 30px;
     color: red;
     background: #FB5;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 input[type=text], input[type=password], select{
     border-radius: 5px;
     border: 1px solid black;
     height: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .form-button{
-    border-radius: 2px;
+    border-radius: 5px;
     border: 1px solid black;
     height: 25px;
     background: whitesmoke;
     padding: 4px;
 }
 
-input, textarea{
-    border-radius: 2px;
+textarea{
+    border-radius: 5px;
     border: 1px solid black;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 /* table CSS start */
