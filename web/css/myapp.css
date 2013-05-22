@@ -907,9 +907,17 @@ th{
     padding-left: 15px;
 }
 
-th.name{ width: 12em; }
-th.edit{ width: 12em; }
-th.delete { width: 10em; }
+th.name{
+    width: 12em;
+}
+
+th.edit{
+    width: 12em;
+}
+
+th.delete {
+    width: 10em;
+}
 
 thead th{
     background: #c6ceda;

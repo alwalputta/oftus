@@ -42,20 +42,20 @@
                                     <s:param name="categoryId" value="#category.categoryId"></s:param>
                                 </s:url>
                                 <a href="<s:property value="#editCategory"/>">
-                                    <img class="ui-icon ui-icon-pencil middle-column-element-edit-icon"/>
+                                    <img class="ui-icon ui-icon-pencil middle-column-element-edit-icon" title="Edit Category"/>
                                 </a>
                                 <s:url id="deleteCategory" action="delete_category_mainpage">
                                     <s:param name="categoryId" value="#category.categoryId"></s:param>
                                 </s:url>
                                 <a href="<s:property value="#deleteCategory"/>">
-                                    <img class="ui-icon ui-icon-trash middle-column-element-delete-icon"/>
+                                    <img class="ui-icon ui-icon-trash middle-column-element-delete-icon" title="Delete Category"/>
                                 </a>
-                                <img class="ui-icon ui-icon-plusthick middle-column-element-new-icon"/>
+                                <img class="ui-icon ui-icon-plusthick middle-column-element-new-icon" title="Add New Category"/>
                             </div>
                             <ul id="middle-row-sortable" class="connectedSortable">
                                 <s:iterator value="#category.bookmarks" id="bookmark">
                                     <li>
-                                        <div class="middle-row-element" id="<s:property value="#bookmark.bookmarkId"/>" title="&hearts;<s:property value="#bookmark.hiperLink"/><br>&diams;<s:property value="#bookmark.description"/>">
+                                        <div class="middle-row-element" id="<s:property value="#bookmark.bookmarkId"/>" title="&hearts; <s:property value="#bookmark.hiperLink"/><br></br>&diams; <s:property value="#bookmark.description"/>">
                                             <img class="favicon" src="https://plus.google.com/_/favicon?domain=<s:property value="#bookmark.hiperLink"/>"></img>
                                             <div class="middle-row-element-text">
                                                 <s:property value="#bookmark.bookmarkName"/>
@@ -66,18 +66,18 @@
                                                     <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
                                                 </s:url>
                                                 <a href="<s:property value="#editBookmark"/>">
-                                                    <img class="ui-icon ui-icon-pencil middle-row-element-edit-icon"/>
+                                                    <img class="ui-icon ui-icon-pencil middle-row-element-edit-icon" title="Edit Bookmark"/>
                                                 </a>
 
                                                 <s:url id="deleteBookmark" action="delete_bookmark_mainpage">
                                                     <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
                                                 </s:url>
                                                 <a href="<s:property value="#deleteBookmark"/>">
-                                                    <img class="ui-icon ui-icon-trash middle-row-element-delete-icon"/>
+                                                    <img class="ui-icon ui-icon-trash middle-row-element-delete-icon" title="Delete Bookmark"/>
                                                 </a>
-                                                <img class="ui-icon ui-icon-scissors middle-row-element-bulk-delete-icon"/>
+                                                <img class="ui-icon ui-icon-scissors middle-row-element-bulk-delete-icon" title="Bulk Delete Bookmarks"/>
                                                 <a href="add_bookmark?categoryId=<s:property value="#category.categoryId"/>">
-                                                    <img class="ui-icon ui-icon-plusthick middle-row-element-new-icon"/>
+                                                    <img class="ui-icon ui-icon-plusthick middle-row-element-new-icon" title="Add New Bookmark"/>
                                                 </a>
                                             </div>
                                         </div>
@@ -85,13 +85,13 @@
                                 </s:iterator>
                             </ul>
 
-                            <div class="middle-row-new-element">
+                            <div class="middle-row-new-element" title="Add New Bookmark">
                                 <a href="add_bookmark?categoryId=<s:property value="#category.categoryId"/>">
-                                    <img class="ui-icon ui-icon-plusthick middle-row-new-element-icon-left"/>
-                                    <img class="ui-icon ui-icon-plusthick middle-row-new-element-icon-left"/>
+                                    <img class="ui-icon ui-icon-plusthick middle-row-new-element-icon-left" title="Add New Bookmark"/>
+                                    <img class="ui-icon ui-icon-plusthick middle-row-new-element-icon-left" title="Add New Bookmark"/>
                                     + Add Bookmark +
-                                    <img class="ui-icon ui-icon-plusthick middle-row-new-element-icon-right"/>
-                                    <img class="ui-icon ui-icon-plusthick middle-row-new-element-icon-right"/>
+                                    <img class="ui-icon ui-icon-plusthick middle-row-new-element-icon-right" title="Add New Bookmark"/>
+                                    <img class="ui-icon ui-icon-plusthick middle-row-new-element-icon-right" title="Add New Bookmark"/>
                                 </a>
                             </div>
                             <div class="middle-row-bottom-spacer"></div>

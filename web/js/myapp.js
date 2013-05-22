@@ -103,6 +103,8 @@ $('#search-input').keyup(function(event) {
     search_and_hide(search_text);
 });
 
+$('.ui-icon').hover(function(){$(this).toggleClass('ui-state-highlight')});
+
 //open the page
 $(document).click(function(){
     menu_close();
@@ -157,7 +159,7 @@ $('.middle-row-element-text').mouseenter(function(){
     element.children('.middle-row-element-edit-icons').show();
     element.children('.middle-row-element-edit-icons').css('top', top+10);
     element.children('.middle-row-element-edit-icons').css('left', (left+width-100));
-    element.children('.middle-row-element-edit-icons').css('width', 65);
+    element.children('.middle-row-element-edit-icons').css('width', 70);
 });
 
 //Commented temporarily
