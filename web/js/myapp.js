@@ -1,6 +1,6 @@
 $(document).ready(function() {
     //Message while the page is still being loaded.
-    show_page_loading_message();
+//    show_page_loading_message();
  
     element_id = 0;
     category_from = 0;

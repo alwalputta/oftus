@@ -284,23 +284,6 @@ public class RegisterAction extends ActionSupport {
         return SUCCESS;
     }
 
-    //Update the user profile
-    public String activateProfile() {
-        logger.debug("RegisterAction activateProfile!");
-
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-
-        UserDAO userDAO = new UserDAO();
-        User user = (User) userDAO.selectUser(getUserId());
-        user.setStatus("A");
-
-        userDAO.updateUser(user);
-
-        logger.debug("userid:" + user.getUserId());
-        return SUCCESS;
-    }
-
     @Override
     public void validate() {
         logger.debug("in the validate of RegisterAction:" + getActionName());

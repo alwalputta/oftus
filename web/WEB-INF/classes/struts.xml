@@ -5,8 +5,7 @@
 
 <struts>
 
-    <constant name="struts.action.excludePattern" value="/TestServlet"/>
-    <constant name="struts.action.excludePattern" value="/ImageServlet"/>
+    <constant name="struts.action.excludePattern" value="/ImageServlet,/activate_profile"/>
     <constant name="struts.multipart.maxSize" value="10000000" />
     <constant name="struts.devMode" value="true"/>
 
@@ -115,6 +114,13 @@
         </action>
         
         <action name="login" class="com.myapp.action.LoginAction" method="login">
+            <!--
+            <interceptor-ref name="execAndWait">
+                <param name="delay">20000</param>
+                <param name="delaySleepInterval">500</param>
+            </interceptor-ref>
+            <result name="wait">/WEB-INF/results/secure/wait.jsp</result>
+            -->
             <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/open/login_form.jsp</result>
         </action>
@@ -143,12 +149,12 @@
             <result name="success">/WEB-INF/results/secure/edit_profile.jsp</result>
             <result name="input">/WEB-INF/results/secure/edit_profile.jsp</result>
         </action>
-
+        <!--
         <action name="activate_profile" class="com.myapp.action.RegisterAction" method="activateProfile">
             <result name="success">/WEB-INF/results/open/login_form.jsp</result>
             <result name="input">/WEB-INF/results/open/register_form.jsp</result>
         </action>
-
+        -->
         <action name="list_categories">
             <result>/WEB-INF/results/secure/list_categories.jsp</result>
         </action>

@@ -78,7 +78,7 @@ public class LoginAction extends ActionSupport {
 
     //simple validation
     @Override
-    public void validate() {
+    public void validate() {        
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
