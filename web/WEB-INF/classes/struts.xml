@@ -115,6 +115,7 @@
         
         <action name="login" class="com.myapp.action.LoginAction" method="login">
             <!--
+            <interceptor-ref name="defaultStack"/>
             <interceptor-ref name="execAndWait">
                 <param name="delay">20000</param>
                 <param name="delaySleepInterval">500</param>

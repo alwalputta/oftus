@@ -7,15 +7,6 @@
         <s:head/>
 
         <style type="text/css">
-            .errors {
-                background-color:#FFCCCC;
-                border:1px solid #CC0000;
-                width:400px;
-                margin-bottom:8px;
-            }
-            .errors li{ 
-                list-style: none;
-            }
         </style>
 
         <%@include file="/WEB-INF/results/open/imports.jsp"%>
@@ -71,8 +62,8 @@
                     <div class="page-title">Login</div>
                     <div class="login-form">
                         <s:form action="login">
-                            <s:textfield name="username" size="25" maxlength="200" key="index.username-label" title="Please enter your username"/>
-                            <s:password name="password" size="25" maxlength="200" key="index.password-label" title="Please enter your password"/>
+                            <s:textfield name="username" size="30" maxlength="200" key="index.username-label" title="Please enter your username" cssClass="label"/>
+                            <s:password name="password" size="30" maxlength="200" key="index.password-label" title="Please enter your password"/>
                             <s:checkbox name="rememberMe" key="index.rememberme-label" title="Click to be remembered on this machine"/>
                             <tr>
                                 <td width="50%"></td>
@@ -84,22 +75,22 @@
                         </s:form>
                         <s:a href="forgot_password_form">Forgot Password?</s:a> |
                         <s:a href="login_faq">Login FAQ</s:a>
-                        <br></br>
+                            <br></br>
+                        </div>
                     </div>
-                </div>
-                <div class="login-register">
-                    <div class="login-box">
-                        <br>
-                            <!--
-                            Don't have an account yet? <s:a href="register_form?debug=xml">Create one</s:a>
-                            -->
-                            <br></br><br></br>
-                            Don't have an account yet?<br></br><s:a href="register_form">Create one</s:a>
-                            <br></br><br></br><br></br><br></br>
+                    <div class="login-register">
+                        <div class="login-box">
+                            <br>
+                                <!--
+                                Don't have an account yet? <s:a href="register_form?debug=xml">Create one</s:a>
+                                -->
+                                <br></br><br></br>
+                                Don't have an account yet?<br></br><s:a href="register_form">Create one</s:a>
+                                <br></br><br></br><br></br><br></br>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         <%@include file="/WEB-INF/results/open/footer.jsp"%>
         <script type="text/javascript" src="js/myapp.js"></script>
     </body>

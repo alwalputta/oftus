@@ -19,6 +19,7 @@ import com.myapp.admin.User;
 import com.myapp.admin.UserDAO;
 import com.myapp.main.Bookmark;
 import com.myapp.main.Category;
+import com.myapp.util.SendEmail;
 import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -197,13 +198,8 @@ public class RegisterAction extends ActionSupport {
         userDAO.saveUser(user);
 
         logger.debug("RegisterAction execute, userid:" + user.getUserId());
-
-//        HttpServletRequest request = ServletActionContext.getRequest();
-//        HttpSession session = request.getSession();
-//        session.setAttribute("user", user);
-//
-//        Utils.recordLoginLog(user.getUserId(), request);
-//        session.setAttribute("user", user);
+        
+        SendEmail.sendEmail();
 
         setMessage("User profile created successfully; "
                 + "We just sent you an email to your email address."

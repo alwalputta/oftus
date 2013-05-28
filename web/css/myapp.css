@@ -85,6 +85,22 @@ fieldErrors {
     color: black;
 }
 
+.errors {
+    background-color:#FFCCCC;
+    border:1px solid #CC0000;
+    width:400px;
+    margin-bottom:8px;
+}
+
+.errors li{
+    list-style: none;
+}
+
+.label {
+    text-decoration: bold;
+    font-style: normal;
+}        
+
 .highlight {
     background-color: yellow;
 }
