@@ -29,7 +29,6 @@ import org.apache.shiro.config.ConfigurationException;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
-import org.apache.shiro.web.util.WebUtils;
 import org.apache.struts2.StrutsStatics;
 
 /**
@@ -70,6 +69,7 @@ public class LoginInterceptor extends AbstractInterceptor implements Interceptor
             String username = request.getParameter(USERNAME);
             String password = request.getParameter(PASSWORD);
 
+            //Set login attempt
             if (loginAttempt == null) {
                 session.setAttribute(LOGIN_ATTEMPT, "1");
             } else {
@@ -102,7 +102,6 @@ public class LoginInterceptor extends AbstractInterceptor implements Interceptor
         } else {
             session.setAttribute(LOGIN_ATTEMPT, "1");
         }
-
         return invocation.invoke();
     }
 

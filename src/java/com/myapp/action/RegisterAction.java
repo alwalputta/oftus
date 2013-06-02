@@ -19,7 +19,7 @@ import com.myapp.admin.User;
 import com.myapp.admin.UserDAO;
 import com.myapp.main.Bookmark;
 import com.myapp.main.Category;
-import com.myapp.util.SendEmail;
+import com.myapp.util.SendMail;
 import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -110,7 +110,6 @@ public class RegisterAction extends ActionSupport {
         return SUCCESS;
     }
 
-    
     //business logic
     //@Override
     public String createProfile() {
@@ -198,9 +197,14 @@ public class RegisterAction extends ActionSupport {
         userDAO.saveUser(user);
 
         logger.debug("RegisterAction execute, userid:" + user.getUserId());
-        
-        SendEmail.sendEmail();
 
+        try {
+            HttpServletRequest request = ServletActionContext.getRequest();
+            String serverName = request.getServerName();
+            String contextPath = request.getContextPath();
+            SendMail.sendEmail(serverName + contextPath+"?userId="+user.getUserId(), email.getEmailAddress());
+        } catch (Exception e) {
+        }
         setMessage("User profile created successfully; "
                 + "We just sent you an email to your email address."
                 + "Please activate profile by clicking the link in the email.");

@@ -6,7 +6,7 @@ package com.myapp.servlet;
 
 import com.myapp.admin.User;
 import com.myapp.admin.UserDAO;
-import com.myapp.util.SendEmail;
+import com.myapp.util.SendMail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -36,7 +36,7 @@ public class ActivateServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        SendEmail.sendEmail();
+//        SendEmail.sendEmail();
 
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter po = response.getWriter();

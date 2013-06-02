@@ -14,11 +14,11 @@
         <dispatcher>REQUEST</dispatcher> 
     </filter-mapping>
 
+    <!--
     <listener>
         <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
     </listener>
 
-    <!--
     <filter>
         <filter-name>ShiroFilter</filter-name>
         <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
@@ -57,6 +57,18 @@
         <servlet-name>ActivateServlet</servlet-name>
         <url-pattern>/activate_profile</url-pattern>
     </servlet-mapping>
+    
+    <!--
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.myapp.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register_form</url-pattern>
+    </servlet-mapping>
+    -->
     
     <!--
     Log filer - not fully working
