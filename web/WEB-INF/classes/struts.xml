@@ -5,7 +5,7 @@
 
 <struts>
 
-    <constant name="struts.action.excludePattern" value="/ImageServlet,/activate_profile"/>
+    <constant name="struts.action.excludePattern" value="/ImageServlet"/>
     <constant name="struts.multipart.maxSize" value="10000000" />
     <constant name="struts.devMode" value="true"/>
 
@@ -150,12 +150,12 @@
             <result name="success">/WEB-INF/results/secure/edit_profile.jsp</result>
             <result name="input">/WEB-INF/results/secure/edit_profile.jsp</result>
         </action>
-        <!--
+        
         <action name="activate_profile" class="com.myapp.action.RegisterAction" method="activateProfile">
             <result name="success">/WEB-INF/results/open/login_form.jsp</result>
             <result name="input">/WEB-INF/results/open/register_form.jsp</result>
         </action>
-        -->
+        
         <action name="list_categories">
             <result>/WEB-INF/results/secure/list_categories.jsp</result>
         </action>

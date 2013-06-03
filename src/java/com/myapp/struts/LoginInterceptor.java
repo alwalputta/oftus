@@ -6,7 +6,10 @@ package com.myapp.struts;
 
 import com.myapp.admin.Credential;
 import com.myapp.admin.CredentialDAO;
+import com.myapp.admin.Email;
 import com.myapp.admin.User;
+import com.myapp.admin.UserDAO;
+import com.myapp.util.SendMail;
 import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
@@ -14,10 +17,12 @@ import com.opensymphony.xwork2.ValidationAware;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.mail.EmailException;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -48,13 +53,15 @@ public class LoginInterceptor extends AbstractInterceptor implements Interceptor
 
     @Override
     public String intercept(ActionInvocation invocation) throws Exception {
+        String actionName = invocation.getProxy().getMethod();
         String className = invocation.getAction().getClass().getName();
-        logger.debug("Before action: " + className);
+        logger.debug("Before action1: " + actionName);
+        logger.debug("Before action2: " + className);
 
-//        long startTime = System.currentTimeMillis();
-//        String result = invocation.invoke();
-//        long endTime = System.currentTimeMillis();
-//        logger.debug("After calling action: " + className + " Time taken: " + (endTime - startTime) + " ms");
+        if (actionName.equals("loginForm") || actionName.equals("registerForm") || actionName.equals("createProfile")) {
+            logger.debug("Open actions1: " + actionName);
+            return invocation.invoke();
+        }
 
         final ActionContext context = invocation.getInvocationContext();
         HttpServletRequest request = (HttpServletRequest) context.get(HTTP_REQUEST);
@@ -98,7 +105,15 @@ public class LoginInterceptor extends AbstractInterceptor implements Interceptor
                 ((ValidationAware) action).addActionError("Password is empty.");
                 return "login_form_redirect";
             }
-            login(invocation);
+            boolean b = login(invocation);
+            if (b) {
+                Object action = invocation.getAction();
+                ((ValidationAware) action).addActionMessage("User logged in successfully.");
+            } else {
+                Object action = invocation.getAction();
+                ((ValidationAware) action).addActionError("User does not exist.");
+                return "login_form_redirect";
+            }
         } else {
             session.setAttribute(LOGIN_ATTEMPT, "1");
         }
@@ -115,7 +130,7 @@ public class LoginInterceptor extends AbstractInterceptor implements Interceptor
         logger.debug("Destroying ShiroInterceptor...");
     }
 
-    private void login(ActionInvocation invocation) {
+    private boolean login(ActionInvocation invocation) throws EmailException {
         final ActionContext context = invocation.getInvocationContext();
         HttpServletRequest request = (HttpServletRequest) context.get(HTTP_REQUEST);
         HttpServletResponse response = (HttpServletResponse) context.get(HTTP_RESPONSE);
@@ -125,16 +140,41 @@ public class LoginInterceptor extends AbstractInterceptor implements Interceptor
         if (user == null) {
             logger.debug("User is null");
             if (processLoginAttempt(request, response)) {
-                logger.debug("User loggedin successfully");
+                logger.debug("User logged in successfully");
                 CredentialDAO credentialDAO = new CredentialDAO();
                 Credential credential = credentialDAO.selectCredential(request.getParameter(USERNAME));
 
-                Set<User> users = credential.getUsers();
-                for (Iterator iterator = users.iterator(); iterator.hasNext();) {
-                    user = (User) iterator.next();
+                if (credential == null) {
+                    logger.debug("userId:" + request.getParameter(USERNAME));
+
+                    credential = credentialDAO.selectInactiveCredential(request.getParameter(USERNAME));
+                    Set<User> users = credential.getUsers();
+                    User u = null;
+                    for (Iterator iterator = users.iterator(); iterator.hasNext();) {
+                        u = (User) iterator.next();
+                    }
+
+                    if (u == null) {
+                        return false;
+                    } else {
+                        Set<Email> userEmails = new LinkedHashSet<Email>();
+                        userEmails = u.getUserEmails();
+                        Email email = null;
+                        for (Iterator iterator = userEmails.iterator(); iterator.hasNext();) {
+                            email = (Email) iterator.next();
+                        }
+                        logger.debug("email address:" + email.getEmailAddress());
+                        SendMail.sendActivateEmail(u.getUserId(), email.getEmailAddress());
+                    }
+                    return false;
+                } else {
+                    Set<User> users = credential.getUsers();
+                    for (Iterator iterator = users.iterator(); iterator.hasNext();) {
+                        user = (User) iterator.next();
+                    }
+                    session.setAttribute(USER_HANDLE, user);
+                    Utils.recordLoginLog(user.getUserId(), request);
                 }
-                session.setAttribute(USER_HANDLE, user);
-                Utils.recordLoginLog(user.getUserId(), request);
             } else {
                 Object action = invocation.getAction();
                 logger.debug("User action:" + action);
@@ -147,6 +187,7 @@ public class LoginInterceptor extends AbstractInterceptor implements Interceptor
         } else {
             logger.debug("User not null....");
         }
+        return true;
     }
 
     public boolean processLoginAttempt(HttpServletRequest request, HttpServletResponse response) {
@@ -172,17 +213,15 @@ public class LoginInterceptor extends AbstractInterceptor implements Interceptor
             //WebUtils.redirectToSavedRequest(request, response, LOGIN_PAGE);
 
             if (rememberMe != null && rememberMe.equals("true")) {
-                logger.debug("After Password is null..1111..");
                 token.setRememberMe(true);
             } else {
-                logger.debug("After Password is null..2222..");
+                logger.debug("After remember me is not set");
             }
-            logger.debug("After Password is null....");
+            logger.debug("Before login....");
             token.clear();
             logger.debug("User authenticated:" + subject.isAuthenticated());
 
             if (subject.isAuthenticated()) {
-                logger.debug("After Password is null....");
                 session.setAttribute(LOGGED_IN, "true");
                 logger.debug("user authenticated successfully");
             }

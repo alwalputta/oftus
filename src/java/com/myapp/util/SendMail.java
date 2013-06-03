@@ -30,10 +30,12 @@ public class SendMail {
 
     static final Logger logger = Logger.getLogger(SendMail.class);
 
-    public static void sendEmail(String userId, String to) throws EmailException {
+    public static void sendActivateEmail(String userId, String emailTo) throws EmailException {
         Properties props = Utils.setMailProps();
         String content = "";
 
+        logger.debug("userId:" + userId);
+        logger.debug("emailTo:" + emailTo);
         Session session = Session.getDefaultInstance(props,
                 new javax.mail.Authenticator() {
                     @Override
@@ -47,7 +49,7 @@ public class SendMail {
             message.setReplyTo(new javax.mail.Address[]{
                         new javax.mail.internet.InternetAddress(Constant.EMAIL_REPLYTO_ADDRESS)
                     });
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailTo));
             message.setSubject("OFTUS: Please activate your account");
             //message.setText("Hello this is not spam. This is a JavaMail test...!");
             content = content + "<html><body><h1>Welcome!</h1>";
@@ -57,7 +59,6 @@ public class SendMail {
             content = content + "<h2>OFTUS Team.</h2></body></html>";
             message.setContent(content, "text/html");
 
-            Transport.send(message);
             logger.debug("Sent message successfully....");
             Transport.send(message);
             logger.debug("Done:" + content);

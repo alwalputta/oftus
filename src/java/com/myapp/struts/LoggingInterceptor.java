@@ -34,19 +34,16 @@ public class LoggingInterceptor extends AbstractInterceptor implements StrutsSta
         Object user = session.getAttribute(USER_HANDLE);
         if (user == null) {
             // The user has not logged in yet.
-
-//            if (!StringUtils.isBlank(loginAttempt)) {
-//                return invocation.invoke();
-//            }
-            logger.debug("Logging User Null");
+            logger.debug("User Null");
             Utils.recordClickLog("Not logged in", USER_HANDLE);
-            return "login_form_redirect";
+//            return "login_form_redirect";
         } else {
             String userId = ((User) user).getUserId();
             logger.debug("Logging User not null:" + userId);
             Utils.recordClickLog(userId, context.getName());
             return invocation.invoke();
         }
+        return invocation.invoke();
     }
 
     @Override

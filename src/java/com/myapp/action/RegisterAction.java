@@ -23,11 +23,15 @@ import com.myapp.util.SendMail;
 import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
@@ -110,7 +114,6 @@ public class RegisterAction extends ActionSupport {
         return SUCCESS;
     }
 
-    //business logic
     //@Override
     public String createProfile() {
         logger.debug("RegisterAction execute!");
@@ -202,7 +205,21 @@ public class RegisterAction extends ActionSupport {
             HttpServletRequest request = ServletActionContext.getRequest();
             String serverName = request.getServerName();
             String contextPath = request.getContextPath();
-            SendMail.sendEmail(serverName + contextPath+"?userId="+user.getUserId(), email.getEmailAddress());
+            String requestURL = request.getRequestURL().toString();
+            String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getRequestURI();
+
+            if (request.getQueryString() != null) {
+                requestURL = requestURL + "?" + request.getQueryString();
+            }
+            String completeURL = requestURL.toString();
+
+            logger.debug("serverName:" + serverName);
+            logger.debug("contextPath:" + contextPath);
+            logger.debug("requestURL:" + requestURL);
+            logger.debug("url:" + url);
+            logger.debug("completeURL:" + completeURL);
+
+            SendMail.sendActivateEmail(requestURL + ":" + serverName + contextPath + "/activate_profile?userId=" + user.getUserId(), email.getEmailAddress());
         } catch (Exception e) {
         }
         setMessage("User profile created successfully; "
@@ -282,6 +299,27 @@ public class RegisterAction extends ActionSupport {
         setMessage("User profile updated successfully.");
 
         return SUCCESS;
+    }
+
+    public String activateProfile() {
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpServletResponse response = ServletActionContext.getResponse();
+
+        logger.debug("username:" + request.getParameter("userId"));
+        logger.debug("RegisterAction activateProfile!");
+
+        UserDAO userDAO = new UserDAO();
+        User user = (User) userDAO.selectUser(request.getParameter("userId"));
+
+        if (user == null) {
+            return "input";
+        } else {
+            user.setStatus("A");
+            userDAO.updateUser(user);
+            logger.debug("userid:" + user.getUserId());
+            return SUCCESS;
+        }
     }
 
     @Override
