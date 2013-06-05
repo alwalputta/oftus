@@ -32,10 +32,6 @@
             <result>html/welcome.html</result>
         </action>
 
-        <action name="eula">
-            <result>html/eula.html</result>
-        </action>
-
         <action name="about">
             <result>html/about.html</result>
         </action>

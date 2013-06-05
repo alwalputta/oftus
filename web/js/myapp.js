@@ -1,6 +1,6 @@
 $(document).ready(function() {
     //Message while the page is still being loaded.
-//    show_page_loading_message();
+    //    show_page_loading_message();
  
     element_id = 0;
     category_from = 0;
@@ -21,7 +21,7 @@ $(document).ready(function() {
 
     //locking the page, golden code to mask the page, make non-ediatble
     // $('.mask').fadeIn(300);
-//    $('.loading').fadeIn(300);
+    //    $('.loading').fadeIn(300);
     $('.message').fadeOut(10000);
     $("tr.rowc:even").css("background-color", "#grey");
     $("tr.rowb:even").css("background-color", "#ABDCFF");
@@ -73,7 +73,7 @@ $(document).bind('paste', (function(e){
 $(document).keyup(function(e) {
     if (e.keyCode == 27) { //esc key
         $('.mask').hide();
-//        $('.loading').hide();
+        //        $('.loading').hide();
         $('.message').hide();
         $('.middle-column-element-edit-icons').hide();
         $('.middle-row-element-edit-icons').hide();
@@ -227,7 +227,7 @@ $('.middle-column-element-new-icon').click(function(){
 
 //Load images after the page load is complete
 $(window).load(function () {
-//    $('.loading').hide();
+    //    $('.loading').hide();
     $.each(document.images, function() {
         //alert ('image');
         var this_image = this;
@@ -252,22 +252,22 @@ function set_sortable(){
     // $("#middle-column-sortable").draggable({containment: '.mainTable'});
     $('#middle-column-sortable').sortable({
         start: function(event, ui) {
-        // alert ('start1');
+            //alert ('start1');
         },
         update: function(event, ui) {
-        // alert ('update1');
+            //alert ('update1');
         },
         stop: function(event, ui) {
-            // alert ('stop1');
+            //alert ('stop1');
             update_column_order();
         },
         receive: function(event, ui) {
-        //Run this code whenever an item is dragged and dropped into this list
-        // alert('receive just joined this list1');
+            //Run this code whenever an item is dragged and dropped into this list
+            //alert('receive just joined this list1');
         },
         remove: function(event, ui) {
-        //Run this code whenever an item is dragged and dropped out of this list
-        // alert('remove just left this list1');
+            //Run this code whenever an item is dragged and dropped out of this list
+            //alert('remove just left this list1');
         }
     }).disableSelection();
 
@@ -424,7 +424,7 @@ function menu_canceltimer() {
 //document.onclick = menu_close;
 
 function set_div_dimensions() {
-//    $('.loading').css('top', $('.dockingBarTop').css('height'));
+    //    $('.loading').css('top', $('.dockingBarTop').css('height'));
     $('.mainTable').css('top', $('.dockingBarTop').css('height'));
     $('.login-modal').css('top', $('.dockingBarTop').css('height'));
     $('.new-category-modal').css('top', $('.dockingBarTop').css('height'));

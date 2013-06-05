@@ -8,7 +8,6 @@ import com.myapp.admin.Credential;
 import com.myapp.admin.CredentialDAO;
 import com.myapp.admin.Email;
 import com.myapp.admin.User;
-import com.myapp.admin.UserDAO;
 import com.myapp.util.SendMail;
 import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
@@ -54,11 +53,14 @@ public class LoginInterceptor extends AbstractInterceptor implements Interceptor
     @Override
     public String intercept(ActionInvocation invocation) throws Exception {
         String actionName = invocation.getProxy().getMethod();
-        String className = invocation.getAction().getClass().getName();
+        //String className = invocation.getAction().getClass().getName();
         logger.debug("Before action1: " + actionName);
-        logger.debug("Before action2: " + className);
+        //logger.debug("Before action2: " + className);
 
-        if (actionName.equals("loginForm") || actionName.equals("registerForm") || actionName.equals("createProfile")) {
+        if (actionName.equals("loginForm")
+                || actionName.equals("registerForm")
+                || actionName.equals("createProfile")
+                || actionName.equals("activateProfile")) {
             logger.debug("Open actions1: " + actionName);
             return invocation.invoke();
         }
@@ -164,7 +166,7 @@ public class LoginInterceptor extends AbstractInterceptor implements Interceptor
                             email = (Email) iterator.next();
                         }
                         logger.debug("email address:" + email.getEmailAddress());
-                        SendMail.sendActivateEmail(u.getUserId(), email.getEmailAddress());
+                        SendMail.sendActivateEmail(request, u, email.getEmailAddress());
                     }
                     return false;
                 } else {

@@ -23,13 +23,10 @@ import com.myapp.util.SendMail;
 import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -107,8 +104,8 @@ public class RegisterAction extends ActionSupport {
         session.setAttribute("genders", genders);
         session.setAttribute("states", states);
 
-        User user = (User) session.getAttribute("user");
-        logger.debug("RegisterAction editProfile, userid:" + user.getUserId());
+        User u = (User) session.getAttribute("user");
+        logger.debug("RegisterAction editProfile, userid:" + u.getUserId());
 
         setMessage("Edit profile and click update.");
         return SUCCESS;
@@ -117,65 +114,73 @@ public class RegisterAction extends ActionSupport {
     //@Override
     public String createProfile() {
         logger.debug("RegisterAction execute!");
+        HttpServletRequest request = ServletActionContext.getRequest();
 
-        User user = new User();
-        user.setFirstName(getFirstname());
-        user.setMiddleName(getMiddlename());
-        user.setLastName(getLastname());
-        user.setGender(getGender());
-        user.setStatus("N");
-        user.setDOB("".equals(getDOB()) ? null : getDOB());
+        User u = new User();
+        u.setFirstName(getFirstname());
+        u.setMiddleName(getMiddlename());
+        u.setLastName(getLastname());
+        u.setGender(getGender());
+        u.setStatus("N");
+        u.setDOB("".equals(getDOB()) ? null : getDOB());
+        u.setCreateDate(Utils.getCurrentDate());
 
         logger.debug("RegisterAction execute!2");
         //Address object being created
         Address address = new Address(getAddress1(), getAddress2(), getCity(), getState(), getZip());
         address.setStatus("A");
+        address.setCreateDate(Utils.getCurrentDate());
         Set<Address> userAddresses = new LinkedHashSet<Address>();
         userAddresses.add(address);
 
-        user.setUserAddresses(userAddresses);
+        u.setUserAddresses(userAddresses);
 
         logger.debug("RegisterAction execute!3");
         //Email object being created
         Email email = new Email(getEmailAddress());
         email.setStatus("A");
+        email.setCreateDate(Utils.getCurrentDate());
         Set<Email> userEmails = new LinkedHashSet<Email>();
         userEmails.add(email);
 
-        user.setUserEmails(userEmails);
+        u.setUserEmails(userEmails);
 
         logger.debug("RegisterAction execute!4");
         //Phone object being created
         Phone phone = new Phone(getPhoneNumber());
         phone.setStatus("A");
+        phone.setCreateDate(Utils.getCurrentDate());
         Set<Phone> userPhones = new LinkedHashSet<Phone>();
         userPhones.add(phone);
 
-        user.setUserPhones(userPhones);
+        u.setUserPhones(userPhones);
 
         logger.debug("RegisterAction execute!5");
         //Credential object being created
         Credential credential = new Credential(getUsername(), getPassword());
         credential.setStatus("A");
+        credential.setCreateDate(Utils.getCurrentDate());
         Set<Credential> userCredentials = new LinkedHashSet<Credential>();
         userCredentials.add(credential);
 
-        user.setUserCredentials(userCredentials);
+        u.setUserCredentials(userCredentials);
 
         logger.debug("RegisterAction execute!5.2");
         //Role object being created
         Role role = new Role();
         role.setStatus("A");
+        role.setCreateDate(Utils.getCurrentDate());
         role.setRole("user");
         Set<Role> userRoles = new LinkedHashSet<Role>();
         userRoles.add(role);
 
-        user.setUserRoles(userRoles);
+        u.setUserRoles(userRoles);
 
         logger.debug("RegisterAction execute!6");
         //Credential object being created
         Bookmark bookmark = new Bookmark("OFTUS", "OFTUS bookmark", "http://www.oftus.com/");
         bookmark.setStatus("A");
+        bookmark.setCreateDate(Utils.getCurrentDate());
         Set<Bookmark> userBookmarks = new LinkedHashSet<Bookmark>();
         userBookmarks.add(bookmark);
 
@@ -184,10 +189,11 @@ public class RegisterAction extends ActionSupport {
         Category category = new Category("OFTUS", "OFTUS bookmarks");
         category.setStatus("A");
         category.setBookmarks(userBookmarks);
+        category.setCreateDate(Utils.getCurrentDate());
         Set<Category> userCategories = new LinkedHashSet<Category>();
         userCategories.add(category);
 
-        user.setUserCategories(userCategories);
+        u.setUserCategories(userCategories);
 
         logger.debug("Address Set Size:" + userAddresses.size());
         logger.debug("Email Set Size:" + userEmails.size());
@@ -197,29 +203,12 @@ public class RegisterAction extends ActionSupport {
         logger.debug("Bookmark Set Size:" + userBookmarks.size());
 
         UserDAO userDAO = new UserDAO();
-        userDAO.saveUser(user);
+        userDAO.saveUser(u);
 
-        logger.debug("RegisterAction execute, userid:" + user.getUserId());
+        logger.debug("RegisterAction execute, userid:" + u.getUserId());
 
         try {
-            HttpServletRequest request = ServletActionContext.getRequest();
-            String serverName = request.getServerName();
-            String contextPath = request.getContextPath();
-            String requestURL = request.getRequestURL().toString();
-            String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getRequestURI();
-
-            if (request.getQueryString() != null) {
-                requestURL = requestURL + "?" + request.getQueryString();
-            }
-            String completeURL = requestURL.toString();
-
-            logger.debug("serverName:" + serverName);
-            logger.debug("contextPath:" + contextPath);
-            logger.debug("requestURL:" + requestURL);
-            logger.debug("url:" + url);
-            logger.debug("completeURL:" + completeURL);
-
-            SendMail.sendActivateEmail(requestURL + ":" + serverName + contextPath + "/activate_profile?userId=" + user.getUserId(), email.getEmailAddress());
+            SendMail.sendActivateEmail(request, u, email.getEmailAddress());
         } catch (Exception e) {
         }
         setMessage("User profile created successfully; "
@@ -236,20 +225,20 @@ public class RegisterAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
 
-        User user = (User) session.getAttribute("user");
+        User u = (User) session.getAttribute("user");
 
-        user.setFirstName(getFirstname());
-        user.setMiddleName(getMiddlename());
-        user.setLastName(getLastname());
-        user.setGender(getGender());
-        user.setDOB("".equals(getDOB()) ? null : getDOB());
-        user.setStatus("A");
-        user.setCreateDate(Utils.getCurrentDate());
+        u.setFirstName(getFirstname());
+        u.setMiddleName(getMiddlename());
+        u.setLastName(getLastname());
+        u.setGender(getGender());
+        u.setDOB("".equals(getDOB()) ? null : getDOB());
+        u.setStatus("A");
+        u.setCreateDate(Utils.getCurrentDate());
 
         logger.debug("RegisterAction execute!2");
         //Address object being created
 
-        Set<Address> userAddresses = user.getUserAddresses();
+        Set<Address> userAddresses = u.getUserAddresses();
         Address address = null;
         for (Iterator iterator = userAddresses.iterator(); iterator.hasNext();) {
             address = (Address) iterator.next();
@@ -262,7 +251,7 @@ public class RegisterAction extends ActionSupport {
         address.setStatus("A");
         address.setCreateDate(Utils.getCurrentDate());
 
-        Set<Email> userEmails = user.getUserEmails();
+        Set<Email> userEmails = u.getUserEmails();
         Email email = null;
         for (Iterator iterator = userEmails.iterator(); iterator.hasNext();) {
             email = (Email) iterator.next();
@@ -271,7 +260,7 @@ public class RegisterAction extends ActionSupport {
         email.setStatus("A");
         email.setCreateDate(Utils.getCurrentDate());
 
-        Set<Phone> userPhones = user.getUserPhones();
+        Set<Phone> userPhones = u.getUserPhones();
         Phone phone = null;
         for (Iterator iterator = userPhones.iterator(); iterator.hasNext();) {
             phone = (Phone) iterator.next();
@@ -282,7 +271,7 @@ public class RegisterAction extends ActionSupport {
         phone.setCreateDate(Utils.getCurrentDate());
 
         if (getPassword() != null && !"".equals(getPassword())) {
-            Set<Credential> userCredentials = user.getUserCredentials();
+            Set<Credential> userCredentials = u.getUserCredentials();
             Credential credential = null;
             for (Iterator iterator = userCredentials.iterator(); iterator.hasNext();) {
                 credential = (Credential) iterator.next();
@@ -293,9 +282,9 @@ public class RegisterAction extends ActionSupport {
         }
 
         UserDAO userDAO = new UserDAO();
-        userDAO.updateUser(user);
+        userDAO.updateUser(u);
 
-        logger.debug("userid:" + user.getUserId());
+        logger.debug("userid:" + u.getUserId());
         setMessage("User profile updated successfully.");
 
         return SUCCESS;
@@ -310,14 +299,15 @@ public class RegisterAction extends ActionSupport {
         logger.debug("RegisterAction activateProfile!");
 
         UserDAO userDAO = new UserDAO();
-        User user = (User) userDAO.selectUser(request.getParameter("userId"));
+        User u = (User) userDAO.selectUser(request.getParameter("userId"));
 
-        if (user == null) {
+        if (u == null) {
             return "input";
         } else {
-            user.setStatus("A");
-            userDAO.updateUser(user);
-            logger.debug("userid:" + user.getUserId());
+            u.setStatus("A");
+            userDAO.updateUser(u);
+            logger.debug("userid:" + u.getUserId());
+            setMessage("User activated successfully.");
             return SUCCESS;
         }
     }
@@ -376,8 +366,8 @@ public class RegisterAction extends ActionSupport {
             }
         } else if ("activate_profile".equals(getActionName())) {
             UserDAO userDAO = new UserDAO();
-            User user = (User) userDAO.selectUser(getUserId());
-            if (user == null) {
+            User u = (User) userDAO.selectUser(getUserId());
+            if (u == null) {
                 addActionMessage("Please check the link, it does not correspond to any profile in the system");
             }
         } else if ("register_form".equals(getActionName())) {

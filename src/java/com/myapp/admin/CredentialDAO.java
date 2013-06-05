@@ -52,7 +52,8 @@ public class CredentialDAO {
                 credential = (Credential) iterator.next();
             }
             logger.debug("username:" + username);
-
+            session.flush();
+            session.refresh(credential);
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");
@@ -93,7 +94,8 @@ public class CredentialDAO {
                 credential = (Credential) iterator.next();
             }
             logger.debug("username:" + username);
-
+            session.flush();
+            session.refresh(credential);
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");

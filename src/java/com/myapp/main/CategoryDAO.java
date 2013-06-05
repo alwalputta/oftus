@@ -100,6 +100,7 @@ public class CategoryDAO {
             query.setString(1, categoryId);
             returnVal = query.executeUpdate();
             transaction.commit();
+            logger.debug("right after commit");
         } catch (HibernateException e) {
             logger.debug("HibernateException");
             e.printStackTrace();

@@ -78,6 +78,7 @@ public class CategoryAction extends ActionSupport {
 
         Bookmark bookmark = new Bookmark("OFTUS", "OFTUS bookmark", "http://www.oftus.com/");
         bookmark.setStatus("A");
+        bookmark.setCreateDate(Utils.getCurrentDate());
         Set<Bookmark> userBookmarks = new LinkedHashSet<Bookmark>();
         userBookmarks.add(bookmark);
 
@@ -178,6 +179,7 @@ public class CategoryAction extends ActionSupport {
             updated = categoryDAO.updateCategoryOrder(categoryId, i);
             logger.debug("Records Updated" + updated);
         }
+            logger.debug("Records Updated");
         setMessage("Category order updated.");
         return returnVal;
     }

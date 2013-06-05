@@ -5,10 +5,12 @@
 package com.myapp.action;
 
 import com.myapp.admin.Credential;
+import com.myapp.admin.CredentialDAO;
 import com.myapp.admin.User;
 import com.myapp.main.Category;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.Iterator;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -54,20 +56,20 @@ public class LoginAction extends ActionSupport {
 
         String returnVal = "success";
 
-//        CredentialDAO credentialDAO = new CredentialDAO();
-//        credential = credentialDAO.selectCredential(getUsername());
-//
-//        Set<User> users = credential.getUsers();
-//        for (Iterator iterator = users.iterator(); iterator.hasNext();) {
-//            user = (User) iterator.next();
-//        }
+        CredentialDAO credentialDAO = new CredentialDAO();
+        credential = credentialDAO.selectCredential(getUsername());
 
-        user = (User) session.getAttribute("user");
+        Set<User> users = credential.getUsers();
+        for (Iterator iterator = users.iterator(); iterator.hasNext();) {
+            user = (User) iterator.next();
+        }
+
+        //user = (User) session.getAttribute("user");
         logger.debug("before state DAO1:" + getUsername());
         logger.debug("execute state DAO2:" + user.getFirstName());
 
         //Utils.recordLoginLog(user.getUserId(), request);
-//        session.setAttribute("user", user);
+        session.setAttribute("user", user);
 
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
@@ -78,7 +80,7 @@ public class LoginAction extends ActionSupport {
 
     //simple validation
     @Override
-    public void validate() {        
+    public void validate() {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");

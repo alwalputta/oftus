@@ -60,6 +60,7 @@
 
                 <div class="login-login">
                     <div class="page-title">Login</div>
+                    <br></br>
                     <div class="login-form">
                         <s:form action="login">
                             <s:textfield name="username" size="30" maxlength="200" key="index.username-label" title="Please enter your username" cssClass="label"/>
