@@ -40,9 +40,9 @@ public class LoginAction extends ActionSupport {
         logger.debug("LoginAction execute!");
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
+        User u = (User) session.getAttribute("user");
 
-        if (user == null) {
+        if (u == null) {
             return "input";
         } else {
             setMessage("You have successfully logged in.");
@@ -84,9 +84,9 @@ public class LoginAction extends ActionSupport {
             logger.debug("AAAAAA:" + c.getCategoryName());
 
             Set<Bookmark> bookmarks = c.getBookmarks();
-            for (Iterator<Bookmark> i = bookmarks.iterator(); i.hasNext();) {
-                Bookmark b = i.next();
-                logger.debug("BBBBBBB:" + b.getBookmarkId() + ":" + b.getBookmarkName());
+            for (Iterator i = bookmarks.iterator(); i.hasNext();) {
+                Bookmark b = (Bookmark) i.next();
+                logger.debug("BBBBBBB:" + b.getBookmarkName());
             }
         }
         //Testing the order of items....

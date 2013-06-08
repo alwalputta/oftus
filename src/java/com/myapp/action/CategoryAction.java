@@ -26,12 +26,11 @@ import org.apache.struts2.ServletActionContext;
  * @author palwal
  */
 public class CategoryAction extends ActionSupport {
-    
+
     private String categoryId;
     private String categoryName;
     private String description;
     private String categoryOrder;
-    //private String source;
     private String message;
     Set<Category> userCategories = null;
     public static final long serialVersionUID = 42L;
@@ -41,7 +40,7 @@ public class CategoryAction extends ActionSupport {
     public String addCategory() {
         logger.debug("addCategory!");
         String returnVal = "success";
-        
+
         setMessage("Add your Category details below and click Save.");
         return returnVal;
     }
@@ -50,15 +49,14 @@ public class CategoryAction extends ActionSupport {
     public String editCategory() {
         logger.debug("editCategory!" + getCategoryId());
         String returnVal = "success";
-        
+
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        
+
         CategoryDAO categoryDAO = new CategoryDAO();
         Category category = categoryDAO.selectCategory(categoryId);
-        
+
         session.setAttribute("category", category);
-        
         setMessage("Edit Category and click Save.");
         return returnVal;
     }
@@ -67,39 +65,37 @@ public class CategoryAction extends ActionSupport {
     public String saveCategory() {
         logger.debug("saveCategory!" + getCategoryId());
         String returnVal = "success";
-        
+
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        
+
         User user = (User) session.getAttribute("user");
-        
+
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
-        
+
         Bookmark bookmark = new Bookmark("OFTUS", "OFTUS bookmark", "http://www.oftus.com/");
         bookmark.setStatus("A");
         bookmark.setOrder(0);
         bookmark.setCreateDate(Utils.getCurrentDate());
         Set<Bookmark> userBookmarks = new LinkedHashSet<Bookmark>();
         userBookmarks.add(bookmark);
-        
+
         Category category = new Category();
         category.setCategoryName(getCategoryName());
         category.setDescription(getDescription());
         category.setStatus("A");
         category.setOrder(0);
         category.setCreateDate(Utils.getCurrentDate());
-        
+
         category.setBookmarks(userBookmarks);
-        
         userCategories.add(category);
-        
         user.setUserCategories(userCategories);
-        
+
         UserDAO userDAO = new UserDAO();
         userDAO.updateUser(user);
         setMessage("Your Category saved successfully.");
-        
+
         return returnVal;
     }
 
@@ -107,19 +103,18 @@ public class CategoryAction extends ActionSupport {
     public String updateCategory() {
         logger.debug("updateCategory!" + getCategoryId());
         String returnVal = "success";
-        
+
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        
+
         User user = (User) session.getAttribute("user");
-        
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
-        
+
         for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
             logger.debug("222222222222");
             Category c = (Category) iterator.next();
-            
+
             if (c.getCategoryId().equals(categoryId)) {
                 c.setCategoryName(categoryName);
                 c.setDescription(description);
@@ -127,10 +122,9 @@ public class CategoryAction extends ActionSupport {
             }
         }
         user.setUserCategories(userCategories);
-        
         UserDAO userDAO = new UserDAO();
         userDAO.updateUser(user);
-        
+
         setMessage("Your Category updated successfully.");
         return returnVal;
     }
@@ -139,15 +133,14 @@ public class CategoryAction extends ActionSupport {
     public String deleteCategory() {
         logger.debug("deleteCategory!" + getCategoryId());
         String returnVal = "success";
-        
+
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        
+
         User user = (User) session.getAttribute("user");
-        
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
-        
+
         Category c = null;
         for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
             c = (Category) iterator.next();
@@ -159,10 +152,10 @@ public class CategoryAction extends ActionSupport {
             }
         }
         user.setUserCategories(userCategories);
-        
+
         UserDAO userDAO = new UserDAO();
         userDAO.updateUser(user);
-        
+
         setMessage("Your Category deleted successfully.");
         return returnVal;
     }
@@ -172,7 +165,7 @@ public class CategoryAction extends ActionSupport {
         logger.debug("updateCategoryOrder!" + getCategoryOrder());
         String returnVal = "success";
         int updated = 0;
-        
+
         StringTokenizer st = new StringTokenizer(getCategoryOrder(), ":");
         for (int i = 0; st.hasMoreTokens(); i++) {
             categoryId = st.nextToken();
@@ -192,9 +185,9 @@ public class CategoryAction extends ActionSupport {
         logger.debug("in the validate");
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        
+
         logger.debug("editCategory!" + getCategoryId());
-        
+
         if (getActionName().equals("new_bookmark")) {
             logger.debug("in new_bookmark");
         } else if (getActionName().equals("save_category")) {
@@ -210,39 +203,39 @@ public class CategoryAction extends ActionSupport {
         } else {
         }
     }
-    
+
     public String getCategoryId() {
         return categoryId;
     }
-    
+
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
     }
-    
+
     public String getCategoryName() {
         return categoryName;
     }
-    
+
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
-    
+
     public String getDescription() {
         return description;
     }
-    
+
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
     public String getCategoryOrder() {
         return categoryOrder;
     }
-    
+
     public void setCategoryOrder(String categoryOrder) {
         this.categoryOrder = categoryOrder;
     }
-    
+
     public String getActionName() {
         ActionContext context = ActionContext.getContext();
         return context.getName();
@@ -258,7 +251,7 @@ public class CategoryAction extends ActionSupport {
     public String getMessage() {
         return message;
     }
-    
+
     public void setMessage(String message) {
         this.message = message;
     }
