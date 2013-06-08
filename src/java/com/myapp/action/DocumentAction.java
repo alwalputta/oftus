@@ -170,6 +170,7 @@ public class DocumentAction extends ActionSupport {
                     c.setCategoryName("IMPORTS");
                     c.setDescription("Bookmark Imports");
                     c.setStatus("A");
+                    c.setOrder(100);
                     i++;
                     continue;
                 } else {
@@ -178,8 +179,8 @@ public class DocumentAction extends ActionSupport {
                     bookmark.setHiperLink(row[1]);
                     bookmark.setDescription(row[2]);
                     bookmark.setStatus("A");
+                    bookmark.setOrder(i);
                     bookmark.setCreateDate(Utils.getCurrentDate());
-
                     bookmarks.add(bookmark);
                 }
             }

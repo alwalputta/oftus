@@ -148,8 +148,14 @@ public class LoginInterceptor extends AbstractInterceptor implements Interceptor
 
                 if (credential == null) {
                     logger.debug("userId:" + request.getParameter(USERNAME));
-
                     credential = credentialDAO.selectInactiveCredential(request.getParameter(USERNAME));
+
+                    if (credential == null) {
+                        Object action = invocation.getAction();
+                        ((ValidationAware) action).addActionError("You dont have an active login account.");
+                        return false;
+                    }
+
                     Set<User> users = credential.getUsers();
                     User u = null;
                     for (Iterator iterator = users.iterator(); iterator.hasNext();) {

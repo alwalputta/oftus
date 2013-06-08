@@ -7,6 +7,7 @@ package com.myapp.action;
 import com.myapp.admin.Credential;
 import com.myapp.admin.CredentialDAO;
 import com.myapp.admin.User;
+import com.myapp.main.Bookmark;
 import com.myapp.main.Category;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -73,6 +74,27 @@ public class LoginAction extends ActionSupport {
 
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
+
+
+
+        //Testing the order of items....
+        for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
+            logger.debug("222222222222");
+            Category c = (Category) iterator.next();
+            logger.debug("AAAAAA:" + c.getCategoryName());
+
+            Set<Bookmark> bookmarks = c.getBookmarks();
+            for (Iterator<Bookmark> i = bookmarks.iterator(); i.hasNext();) {
+                Bookmark b = i.next();
+                logger.debug("BBBBBBB:" + b.getBookmarkId() + ":" + b.getBookmarkName());
+            }
+        }
+        //Testing the order of items....
+
+
+
+
+
 
         setMessage("You have successfully logged in.");
         return returnVal;

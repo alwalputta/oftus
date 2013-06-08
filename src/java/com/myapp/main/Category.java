@@ -20,6 +20,7 @@ public class Category implements Serializable {
     private String categoryName;
     private String description;
     private String status;
+    private int order;
     private String createDate;
     private String endDate;
     private String lastModifiedDate;
@@ -105,5 +106,13 @@ public class Category implements Serializable {
 
     public void setBookmarks(Set<Bookmark> bookmarks) {
         this.bookmarks = bookmarks;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
     }
 }

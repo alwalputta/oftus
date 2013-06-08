@@ -93,12 +93,17 @@ public class CategoryDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction;
         int returnVal = 0;
+        Category category;
         try {
             transaction = session.beginTransaction();
-            SQLQuery query = session.createSQLQuery("update usercategory set category_order = ? where category_id = ?");
-            query.setInteger(0, categoryOrder);
-            query.setString(1, categoryId);
-            returnVal = query.executeUpdate();
+//            SQLQuery query = session.createSQLQuery("update usercategory set category_order = ? where category_id = ?");
+//            query.setInteger(0, categoryOrder);
+//            query.setString(1, categoryId);
+//            returnVal = query.executeUpdate();
+
+            category = (Category) session.get(Category.class, categoryId);
+            category.setOrder(categoryOrder);
+            session.update(category);
             transaction.commit();
             logger.debug("right after commit");
         } catch (HibernateException e) {

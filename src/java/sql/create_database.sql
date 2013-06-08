@@ -213,7 +213,8 @@ CREATE TABLE Category (
   category_name varchar(250) NOT NULL,
   description VARCHAR(1000),
   status VARCHAR(10) DEFAULT 'A',
-  create_date DATETIME,
+  category_order int(20) DEFAULT 0,
+  create_date DATETIME DATETIME,
   end_date DATETIME,
   last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (CATEGORY_ID)
@@ -239,6 +240,7 @@ CREATE TABLE Bookmark (
   hiper_link VARCHAR(1000) NOT NULL,
   description VARCHAR(1000),
   status VARCHAR(10) DEFAULT 'A',
+  bookmark_order int(20) DEFAULT 0,
   create_date DATETIME,
   end_date DATETIME,
   last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

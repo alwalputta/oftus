@@ -49,13 +49,21 @@ public class BookmarkDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction;
         int returnVal = 0;
+        Bookmark bookmark;
         try {
             transaction = session.beginTransaction();
-            SQLQuery query = session.createSQLQuery("update categorybookmark set bookmark_order = ? where bookmark_id = ?");
-            query.setInteger(0, bookmarkOrder);
-            query.setString(1, bookmarkId);
-            returnVal = query.executeUpdate();
+//            SQLQuery query = session.createSQLQuery("update categorybookmark set bookmark_order = ? where bookmark_id = ?");
+//            query.setInteger(0, bookmarkOrder);
+//            query.setString(1, bookmarkId);
+//            returnVal = query.executeUpdate();
+//            transaction.commit();
+
+            bookmark = (Bookmark) session.get(Bookmark.class, bookmarkId);
+            bookmark.setOrder(bookmarkOrder);
+            session.update(bookmark);
             transaction.commit();
+            logger.debug("right after commit");
+
         } catch (HibernateException e) {
             logger.debug("HibernateException");
             e.printStackTrace();

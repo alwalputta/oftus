@@ -180,6 +180,7 @@ public class RegisterAction extends ActionSupport {
         //Credential object being created
         Bookmark bookmark = new Bookmark("OFTUS", "OFTUS bookmark", "http://www.oftus.com/");
         bookmark.setStatus("A");
+        bookmark.setOrder(0);
         bookmark.setCreateDate(Utils.getCurrentDate());
         Set<Bookmark> userBookmarks = new LinkedHashSet<Bookmark>();
         userBookmarks.add(bookmark);
@@ -188,6 +189,7 @@ public class RegisterAction extends ActionSupport {
         //Credential object being created
         Category category = new Category("OFTUS", "OFTUS bookmarks");
         category.setStatus("A");
+        category.setOrder(0);
         category.setBookmarks(userBookmarks);
         category.setCreateDate(Utils.getCurrentDate());
         Set<Category> userCategories = new LinkedHashSet<Category>();

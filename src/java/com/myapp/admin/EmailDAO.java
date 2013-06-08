@@ -35,7 +35,6 @@ public class EmailDAO {
                     .setParameter("emailAddress", emailAddress)
                     .list();
             transaction.commit();
-
             logger.debug("emails size:" + emails.size());
         } catch (HibernateException e) {
             logger.debug("HibernateException");

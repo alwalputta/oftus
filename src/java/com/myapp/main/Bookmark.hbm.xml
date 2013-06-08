@@ -10,10 +10,11 @@
         <property name="description" column="description" type="string"></property>
         <property name="hiperLink" column="hiper_link" type="string"></property>
         <property name="status" column="status" type="string"></property>
+        <property name="order" column="bookmark_order" type="int"></property>
         <property name="createDate" column="create_date" type="string"></property>
         <property name="endDate" column="end_date" type="string"></property>
         <property name="lastModifiedDate" column="last_modified_date" type="string"></property>
-        <set name="categories" table="CategoryBookmark" cascade="all" lazy="false" order-by="bookmark_order asc">
+        <set name="categories" table="CategoryBookmark" cascade="all" lazy="false">
             <key column="bookmark_id"/>
             <many-to-many class="com.myapp.main.Category" column="category_id" unique="true"/>
         </set>

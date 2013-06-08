@@ -20,6 +20,7 @@ public class Bookmark implements Serializable {
     private String description;
     private String hiperLink;
     private String status;
+    private int order;
     private String createDate;
     private String endDate;
     private String lastModifiedDate;
@@ -105,5 +106,13 @@ public class Bookmark implements Serializable {
 
     public void setCategories(Set<Category> categories) {
         this.categories = categories;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
     }
 }

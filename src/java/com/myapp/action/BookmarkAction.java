@@ -115,7 +115,7 @@ public class BookmarkAction extends ActionSupport {
         bookmark.setBookmarkName(getBookmarkName());
         bookmark.setHiperLink(hiperLink);
         bookmark.setCreateDate(Utils.getCurrentDate());
-//        bookmark.setBookmarkOrder(10000); //modify this later//
+        bookmark.setOrder(10000); //modify this later//
 
         for (Iterator<Category> iterator = userCategories.iterator(); iterator.hasNext();) {
             Category c = iterator.next();

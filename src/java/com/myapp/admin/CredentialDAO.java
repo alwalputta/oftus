@@ -10,10 +10,12 @@ import java.util.Iterator;
 import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -42,18 +44,21 @@ public class CredentialDAO {
 
             Criteria c = session.createCriteria(Credential.class, "c")
                     .createAlias("c.users", "u")
+                    .createAlias("u.userCategories", "cat")
+                    .createAlias("u.userCategories.bookmarks", "b")
                     .add(Restrictions.eq("c.username", username))
-                    .add(Restrictions.eq("u.status", "A"));
-
-//                    .setMaxResults(1)
+                    .add(Restrictions.eq("u.status", "A"))
+//                    .setFetchMode("c.users", FetchMode.JOIN)
+                    .addOrder(Order.asc("cat.order"))
+                    .addOrder(Order.asc("b.order"));
             List list = c.list();
 
             for (Iterator iterator = list.iterator(); iterator.hasNext();) {
                 credential = (Credential) iterator.next();
             }
             logger.debug("username:" + username);
-            session.flush();
-            session.refresh(credential);
+//            session.flush();
+//            session.refresh(credential);
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");
@@ -94,8 +99,8 @@ public class CredentialDAO {
                 credential = (Credential) iterator.next();
             }
             logger.debug("username:" + username);
-            session.flush();
-            session.refresh(credential);
+//            session.flush();
+//            session.refresh(credential);
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");
