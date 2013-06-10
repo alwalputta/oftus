@@ -4,14 +4,19 @@
  */
 package com.myapp.main;
 
+import com.myapp.admin.Credential;
 import com.myapp.admin.StateDAO;
 import com.myapp.util.HibernateUtil;
 import java.util.ArrayList;
+import java.util.List;
 import org.apache.log4j.Logger;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -19,7 +24,6 @@ import org.hibernate.Transaction;
  */
 public class BookmarkDAO {
 
-    private ArrayList<Bookmark> bookmarks;
     static final Logger logger = Logger.getLogger(StateDAO.class);
 
     @SuppressWarnings("unchecked")
@@ -27,10 +31,22 @@ public class BookmarkDAO {
         logger.debug("listBookmarks()");
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
+        ArrayList<Bookmark> bookmarks = new ArrayList<Bookmark>();
         try {
             transaction = session.beginTransaction();
-            bookmarks = new ArrayList<Bookmark>();
-            bookmarks = (ArrayList<Bookmark>) session.createQuery("from Bookmark where status='A' order by bookmarkName").list();
+//            bookmarks = new ArrayList<Bookmark>();
+//            bookmarks = (ArrayList<Bookmark>) session.createQuery("from Bookmark where status='A'").list();
+
+
+
+            Criteria c = session.createCriteria(Bookmark.class, "b")
+                    .createAlias("b.userCategories", "c")
+                    .add(Restrictions.eq("b.status", "A"))
+                    .addOrder(Order.asc("c.order"))
+                    .addOrder(Order.asc("b.order"));
+            bookmarks = (ArrayList<Bookmark>) c.list();
+
+
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");

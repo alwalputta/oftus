@@ -82,8 +82,10 @@ public class UserDAO {
 //            session.refresh(user);
 
             Criteria c = session.createCriteria(User.class, "u")
-                    .addOrder(Order.asc("u.userCategories.category.order"))
-                    .addOrder(Order.asc("u.userCategories.bookmarks.bookmark.order"));
+                    .createAlias("u.userCategories", "c")
+                    .createAlias("c.bookmarks", "b")
+                    .addOrder(Order.asc("c.order"))
+                    .addOrder(Order.asc("b.order"));
             List list = c.list();
 
             for (Iterator iterator = list.iterator(); iterator.hasNext();) {

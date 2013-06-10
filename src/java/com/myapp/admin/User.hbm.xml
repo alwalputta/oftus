@@ -34,7 +34,7 @@
             <key column="user_id"/>
             <many-to-many class="com.myapp.admin.Role" column="role_id" unique="true"/>
         </set>
-        <set name="userCategories" table="UserCategory" cascade="all" lazy="false" order-by="category_order asc">
+        <set name="userCategories" table="UserCategory" cascade="all" lazy="false">
             <key column="user_id"/>
             <many-to-many class="com.myapp.main.Category" column="category_id" unique="true"/>
         </set>

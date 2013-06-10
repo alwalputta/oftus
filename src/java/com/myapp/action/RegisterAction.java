@@ -214,7 +214,6 @@ public class RegisterAction extends ActionSupport {
         } catch (Exception e) {
         }
         setMessage("User profile created successfully; "
-                + "We just sent you an email to your email address."
                 + "Please activate profile by clicking the link in the email.");
 
         return SUCCESS;

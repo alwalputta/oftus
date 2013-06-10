@@ -47,100 +47,58 @@ public class User implements Serializable {
     public User() {
     }
 
-    /**
-     * @return the userId
-     */
     public String getUserId() {
         return userId;
     }
 
-    /**
-     * @param userId the userId to set
-     */
     public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    /**
-     * @return the firstName
-     */
     public String getFirstName() {
         return firstName;
     }
 
-    /**
-     * @param firstName the firstName to set
-     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    /**
-     * @return the middleName
-     */
     public String getMiddleName() {
         return middleName;
     }
 
-    /**
-     * @param middleName the middleName to set
-     */
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
 
-    /**
-     * @return the lastName
-     */
     public String getLastName() {
         return lastName;
     }
 
-    /**
-     * @param lastName the lastName to set
-     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    /**
-     * @return the gender
-     */
     public String getGender() {
         return gender;
     }
 
-    /**
-     * @param gender the gender to set
-     */
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-    /**
-     * @return the DOB
-     */
     public String getDOB() {
         return DOB;
     }
 
-    /**
-     * @param DOB the DOB to set
-     */
     public void setDOB(String DOB) {
         this.DOB = DOB;
     }
 
-    /**
-     * @return the status
-     */
     public String getStatus() {
         return status;
     }
 
-    /**
-     * @param status the status to set
-     */
     public void setStatus(String status) {
         this.status = status;
     }
@@ -218,7 +176,6 @@ public class User implements Serializable {
     }
 
     public String getUsername() {
-        username = "palwal0";
         return username;
     }
 
@@ -227,7 +184,6 @@ public class User implements Serializable {
     }
 
     public String getPassword() {
-        password = "palwal";
         return password;
     }
 

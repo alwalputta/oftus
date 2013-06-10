@@ -39,17 +39,16 @@ public class CredentialDAO {
         Credential credential = null;
 
         try {
-            logger.debug("username:" + username);
+            logger.debug("usernameAABBCCDDEEFF:" + username);
             transaction = session.beginTransaction();
 
-            Criteria c = session.createCriteria(Credential.class, "c")
-                    .createAlias("c.users", "u")
-                    .createAlias("u.userCategories", "cat")
+            Criteria c = session.createCriteria(Credential.class, "cr")
+                    .createAlias("cr.users", "u")
+                    .createAlias("u.userCategories", "c")
                     .createAlias("u.userCategories.bookmarks", "b")
-                    .add(Restrictions.eq("c.username", username))
+                    .add(Restrictions.eq("cr.username", username))
                     .add(Restrictions.eq("u.status", "A"))
-//                    .setFetchMode("c.users", FetchMode.JOIN)
-                    .addOrder(Order.asc("cat.order"))
+                    .addOrder(Order.asc("c.order"))
                     .addOrder(Order.asc("b.order"));
             List list = c.list();
 
@@ -57,8 +56,8 @@ public class CredentialDAO {
                 credential = (Credential) iterator.next();
             }
             logger.debug("username:" + username);
-//            session.flush();
-//            session.refresh(credential);
+            session.flush();
+            session.refresh(credential);
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");
@@ -92,15 +91,27 @@ public class CredentialDAO {
             transaction = session.beginTransaction();
 
             logger.debug("username:" + username);
-            Query query = session.createQuery("from Credential where username = '" + username + "'");
-            List list = query.list();
+//            Query query = session.createQuery("from Credential where username = '" + username + "'");
+//            List list = query.list();
+
+
+
+            Criteria c = session.createCriteria(Credential.class, "cr")
+                    .createAlias("cr.users", "u")
+                    .createAlias("u.userCategories", "c")
+                    .createAlias("u.userCategories.bookmarks", "b")
+                    .add(Restrictions.eq("cr.username", username))
+                    .add(Restrictions.eq("u.status", "N"))
+                    .addOrder(Order.asc("c.order"))
+                    .addOrder(Order.asc("b.order"));
+            List list = c.list();
 
             for (Iterator iterator = list.iterator(); iterator.hasNext();) {
                 credential = (Credential) iterator.next();
             }
             logger.debug("username:" + username);
-//            session.flush();
-//            session.refresh(credential);
+            session.flush();
+            session.refresh(credential);
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");

@@ -25,72 +25,42 @@ public class Credential implements Serializable {
     private Set<User> users = new LinkedHashSet<User>(0);
     static final Logger logger = Logger.getLogger(Credential.class);
 
-    /**
-     * @return the credentialId
-     */
     public String getCredentialId() {
         return credentialId;
     }
 
-    /**
-     * @param credentialId the credentialId to set
-     */
     public void setCredentialId(String credentialId) {
         this.credentialId = credentialId;
     }
 
-    /**
-     * @return the userName
-     */
     public String getUsername() {
         return username;
     }
 
-    /**
-     * @param username the userName to set
-     */
     public void setUsername(String username) {
         this.username = username;
     }
 
-    /**
-     * @return the password
-     */
     public String getPassword() {
         return password;
     }
 
-    /**
-     * @param password the password to set
-     */
     public void setPassword(String password) {
         this.password = password;
     }
 
-    /**
-     * @return the startDate
-     */
     public String getCreateDate() {
         return createDate;
     }
 
-    /**
-     * @param startDate the startDate to set
-     */
     public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 
-    /**
-     * @return the endDate
-     */
     public String getEndDate() {
         return endDate;
     }
 
-    /**
-     * @param endDate the endDate to set
-     */
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }

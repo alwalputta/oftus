@@ -5,13 +5,19 @@
 package com.myapp.main;
 
 import com.myapp.admin.StateDAO;
+import com.myapp.admin.User;
 import com.myapp.util.HibernateUtil;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import org.apache.log4j.Logger;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -19,7 +25,6 @@ import org.hibernate.Transaction;
  */
 public class CategoryDAO {
 
-    private ArrayList<Category> categories;
     static final Logger logger = Logger.getLogger(StateDAO.class);
 
     @SuppressWarnings("unchecked")
@@ -27,10 +32,22 @@ public class CategoryDAO {
         logger.debug("listCategories()");
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
+        ArrayList<Category> categories = new ArrayList<Category>();
         try {
             transaction = session.beginTransaction();
-            categories = new ArrayList<Category>();
-            categories = (ArrayList<Category>) session.createQuery("from Category where status='A' order by categoryName").list();
+//            categories = new ArrayList<Category>();
+//            categories = (ArrayList<Category>) session.createQuery("from Category where status='A'").list();
+
+            
+            
+            Criteria c = session.createCriteria(Category.class, "c")
+                    .createAlias("c.bookmarks", "b")
+                    .addOrder(Order.asc("c.order"))
+                    .addOrder(Order.asc("b.order"));
+            categories = (ArrayList<Category>)c.list();
+            
+            
+            
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");
@@ -49,9 +66,28 @@ public class CategoryDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
         Category category = new Category();
+        ArrayList<Category> categories = new ArrayList<Category>();
         try {
             transaction = session.beginTransaction();
             category = (Category) session.get(Category.class, categoryId);
+
+            
+            
+            
+            Criteria c = session.createCriteria(Category.class, "c")
+                    .createAlias("c.bookmarks", "b")
+                    .add(Restrictions.eq("c.categoryId", categoryId))
+                    .add(Restrictions.eq("u.status", "A"))
+                    .addOrder(Order.asc("c.order"))
+                    .addOrder(Order.asc("b.order"));
+            categories = (ArrayList<Category>)c.list();
+            
+            
+            for (Iterator iterator = categories.iterator(); iterator.hasNext();) {
+                category = (Category) iterator.next();
+            }
+            
+            
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");
