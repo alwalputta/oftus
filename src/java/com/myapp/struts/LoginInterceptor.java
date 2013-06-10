@@ -15,8 +15,10 @@ import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ValidationAware;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import com.opensymphony.xwork2.interceptor.Interceptor;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -156,7 +158,7 @@ public class LoginInterceptor extends AbstractInterceptor implements Interceptor
                         return false;
                     }
 
-                    Set<User> users = credential.getUsers();
+                    List<User> users = credential.getUsers();
                     User u = null;
                     for (Iterator iterator = users.iterator(); iterator.hasNext();) {
                         u = (User) iterator.next();
@@ -165,7 +167,7 @@ public class LoginInterceptor extends AbstractInterceptor implements Interceptor
                     if (u == null) {
                         return false;
                     } else {
-                        Set<Email> userEmails = new LinkedHashSet<Email>();
+                        List<Email> userEmails = new ArrayList<Email>();
                         userEmails = u.getUserEmails();
                         Email email = null;
                         for (Iterator iterator = userEmails.iterator(); iterator.hasNext();) {
@@ -176,7 +178,7 @@ public class LoginInterceptor extends AbstractInterceptor implements Interceptor
                     }
                     return false;
                 } else {
-                    Set<User> users = credential.getUsers();
+                    List<User> users = credential.getUsers();
                     for (Iterator iterator = users.iterator(); iterator.hasNext();) {
                         user = (User) iterator.next();
                     }

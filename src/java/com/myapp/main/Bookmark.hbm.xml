@@ -14,9 +14,9 @@
         <property name="createDate" column="create_date" type="string"></property>
         <property name="endDate" column="end_date" type="string"></property>
         <property name="lastModifiedDate" column="last_modified_date" type="string"></property>
-        <set name="categories" table="CategoryBookmark" cascade="all" lazy="false">
+        <bag name="categories" table="CategoryBookmark" cascade="all" lazy="false">
             <key column="bookmark_id"/>
             <many-to-many class="com.myapp.main.Category" column="category_id" unique="true"/>
-        </set>
+        </bag>
     </class>
 </hibernate-mapping>

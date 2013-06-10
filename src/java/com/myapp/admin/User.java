@@ -6,7 +6,9 @@ package com.myapp.admin;
 
 import com.myapp.main.Category;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import org.apache.log4j.Logger;
 
@@ -28,12 +30,12 @@ public class User implements Serializable {
     private String lastModifiedDate;
     private String username;
     private String password;
-    private Set<Address> userAddresses = new LinkedHashSet<Address>(0);
-    private Set<Email> userEmails = new LinkedHashSet<Email>(0);
-    private Set<Phone> userPhones = new LinkedHashSet<Phone>(0);
-    private Set<Credential> userCredentials = new LinkedHashSet<Credential>(0);
-    private Set<Role> userRoles = new LinkedHashSet<Role>(0);
-    private Set<Category> userCategories = new LinkedHashSet<Category>(0);
+    private List<Address> userAddresses = new ArrayList<Address>(0);
+    private List<Email> userEmails = new ArrayList<Email>(0);
+    private List<Phone> userPhones = new ArrayList<Phone>(0);
+    private List<Credential> userCredentials = new ArrayList<Credential>(0);
+    private List<Role> userRoles = new ArrayList<Role>(0);
+    private List<Category> userCategories = new ArrayList<Category>(0);
     static final Logger logger = Logger.getLogger(User.class);
 
     public User(String firstName, String middleName, String lastName, String DOB, String gender) {
@@ -127,51 +129,51 @@ public class User implements Serializable {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    public Set<Address> getUserAddresses() {
+    public List<Address> getUserAddresses() {
         return userAddresses;
     }
 
-    public void setUserAddresses(Set<Address> userAddresses) {
+    public void setUserAddresses(List<Address> userAddresses) {
         this.userAddresses = userAddresses;
     }
 
-    public Set<Email> getUserEmails() {
+    public List<Email> getUserEmails() {
         return userEmails;
     }
 
-    public void setUserEmails(Set<Email> userEmails) {
+    public void setUserEmails(List<Email> userEmails) {
         this.userEmails = userEmails;
     }
 
-    public Set<Credential> getUserCredentials() {
+    public List<Credential> getUserCredentials() {
         return userCredentials;
     }
 
-    public void setUserCredentials(Set<Credential> userCredentials) {
+    public void setUserCredentials(List<Credential> userCredentials) {
         this.userCredentials = userCredentials;
     }
 
-    public Set<Role> getUserRoles() {
+    public List<Role> getUserRoles() {
         return userRoles;
     }
 
-    public void setUserRoles(Set<Role> userRoles) {
+    public void setUserRoles(List<Role> userRoles) {
         this.userRoles = userRoles;
     }
 
-    public Set<Phone> getUserPhones() {
+    public List<Phone> getUserPhones() {
         return userPhones;
     }
 
-    public void setUserPhones(Set<Phone> userPhones) {
+    public void setUserPhones(List<Phone> userPhones) {
         this.userPhones = userPhones;
     }
 
-    public Set<Category> getUserCategories() {
+    public List<Category> getUserCategories() {
         return userCategories;
     }
 
-    public void setUserCategories(Set<Category> userCategories) {
+    public void setUserCategories(List<Category> userCategories) {
         this.userCategories = userCategories;
     }
 

@@ -13,30 +13,30 @@
         <property column="status" name="status" type="string"/>
         <property name="createDate" column="create_date" type="string" />
         <property name="endDate" column="end_date" type="string" />
-        <property name="lastModifiedDate" column="last_modified_date" type="string" />
-        <set name="userAddresses" table="UserAddress" cascade="all" lazy="false">
+        <property name="lastModifiedDate" column="last_modified_date" type="string"/>
+        <bag name="userAddresses" table="UserAddress" cascade="all" lazy="false">
             <key column="user_id"/>
             <many-to-many class="com.myapp.admin.Address" column="address_id" unique="true"/>
-        </set>
-        <set name="userEmails" table="UserEmail" cascade="all" lazy="false">
+        </bag>
+        <bag name="userEmails" table="UserEmail" cascade="all" lazy="false">
             <key column="user_id"/>
             <many-to-many class="com.myapp.admin.Email" column="email_id" unique="true"/>
-        </set>
-        <set name="userPhones" table="UserPhone" cascade="all" lazy="false">
+        </bag>
+        <bag name="userPhones" table="UserPhone" cascade="all" lazy="false">
             <key column="user_id"/>
             <many-to-many class="com.myapp.admin.Phone" column="phone_id" unique="true"/>
-        </set>
-        <set name="userCredentials" table="UserCredential" cascade="all" lazy="false">
+        </bag>
+        <bag name="userCredentials" table="UserCredential" cascade="all" lazy="false">
             <key column="user_id"/>
             <many-to-many class="com.myapp.admin.Credential" column="credential_id" unique="true"/>
-        </set>
-        <set name="userRoles" table="UserRole" cascade="all" lazy="false">
+        </bag>
+        <bag name="userRoles" table="UserRole" cascade="all" lazy="false">
             <key column="user_id"/>
             <many-to-many class="com.myapp.admin.Role" column="role_id" unique="true"/>
-        </set>
-        <set name="userCategories" table="UserCategory" cascade="all" lazy="false">
+        </bag>
+        <bag name="userCategories" table="UserCategory" cascade="all" lazy="false">
             <key column="user_id"/>
             <many-to-many class="com.myapp.main.Category" column="category_id" unique="true"/>
-        </set>
+        </bag>
     </class>
 </hibernate-mapping>

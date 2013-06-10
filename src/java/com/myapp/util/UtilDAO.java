@@ -18,15 +18,15 @@ public class UtilDAO {
     static final Logger logger = Logger.getLogger(UtilDAO.class);
 
     @SuppressWarnings("unchecked")
-    public void recordClickLog(ClickLog pageClick) {
-        logger.debug("userId:" + pageClick.getUserId());
-        logger.debug("actionName:" + pageClick.getActionName());
+    public void recordClickLog(ClickLog clickLog) {
+        logger.debug("userId:" + clickLog.getUserId());
+        logger.debug("actionName:" + clickLog.getActionName());
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            session.save(pageClick);
+            session.save(clickLog);
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");

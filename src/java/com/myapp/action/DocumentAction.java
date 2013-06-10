@@ -19,7 +19,9 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -125,8 +127,8 @@ public class DocumentAction extends ActionSupport {
         logger.debug("importBookmarks!");
         String returnVal = "success";
         Blob blob;
-        Set<Category> userCategories;
-        Set<Bookmark> bookmarks = new LinkedHashSet<Bookmark>(0);
+        List<Category> userCategories;
+        List<Bookmark> bookmarks = new ArrayList<Bookmark>(0);
 
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();

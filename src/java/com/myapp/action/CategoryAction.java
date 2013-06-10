@@ -12,8 +12,10 @@ import com.myapp.main.CategoryDAO;
 import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.StringTokenizer;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +34,7 @@ public class CategoryAction extends ActionSupport {
     private String description;
     private String categoryOrder;
     private String message;
-    Set<Category> userCategories = null;
+    List<Category> userCategories = null;
     public static final long serialVersionUID = 42L;
     static final Logger logger = Logger.getLogger(CategoryAction.class);
 
@@ -78,7 +80,7 @@ public class CategoryAction extends ActionSupport {
         bookmark.setStatus("A");
         bookmark.setOrder(0);
         bookmark.setCreateDate(Utils.getCurrentDate());
-        Set<Bookmark> userBookmarks = new LinkedHashSet<Bookmark>();
+        List<Bookmark> userBookmarks = new ArrayList<Bookmark>(1);
         userBookmarks.add(bookmark);
 
         Category category = new Category();

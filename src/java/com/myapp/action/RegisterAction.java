@@ -23,6 +23,7 @@ import com.myapp.util.SendMail;
 import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -60,7 +61,7 @@ public class RegisterAction extends ActionSupport {
     private List<Gender> genders;
     private List<State> states;
     User user = null;
-    Set<Category> userCategories = null;
+    List<Category> userCategories = null;
 
     public String registerForm() {
         logger.debug("GeneralAction execute!");
@@ -130,7 +131,7 @@ public class RegisterAction extends ActionSupport {
         Address address = new Address(getAddress1(), getAddress2(), getCity(), getState(), getZip());
         address.setStatus("A");
         address.setCreateDate(Utils.getCurrentDate());
-        Set<Address> userAddresses = new LinkedHashSet<Address>();
+        List<Address> userAddresses = new ArrayList<Address>();
         userAddresses.add(address);
 
         u.setUserAddresses(userAddresses);
@@ -140,7 +141,7 @@ public class RegisterAction extends ActionSupport {
         Email email = new Email(getEmailAddress());
         email.setStatus("A");
         email.setCreateDate(Utils.getCurrentDate());
-        Set<Email> userEmails = new LinkedHashSet<Email>();
+        List<Email> userEmails = new ArrayList<Email>();
         userEmails.add(email);
 
         u.setUserEmails(userEmails);
@@ -150,7 +151,7 @@ public class RegisterAction extends ActionSupport {
         Phone phone = new Phone(getPhoneNumber());
         phone.setStatus("A");
         phone.setCreateDate(Utils.getCurrentDate());
-        Set<Phone> userPhones = new LinkedHashSet<Phone>();
+        List<Phone> userPhones = new ArrayList<Phone>();
         userPhones.add(phone);
 
         u.setUserPhones(userPhones);
@@ -160,7 +161,7 @@ public class RegisterAction extends ActionSupport {
         Credential credential = new Credential(getUsername(), getPassword());
         credential.setStatus("A");
         credential.setCreateDate(Utils.getCurrentDate());
-        Set<Credential> userCredentials = new LinkedHashSet<Credential>();
+        List<Credential> userCredentials = new ArrayList<Credential>();
         userCredentials.add(credential);
 
         u.setUserCredentials(userCredentials);
@@ -171,7 +172,7 @@ public class RegisterAction extends ActionSupport {
         role.setStatus("A");
         role.setCreateDate(Utils.getCurrentDate());
         role.setRole("user");
-        Set<Role> userRoles = new LinkedHashSet<Role>();
+        List<Role> userRoles = new ArrayList<Role>();
         userRoles.add(role);
 
         u.setUserRoles(userRoles);
@@ -182,7 +183,7 @@ public class RegisterAction extends ActionSupport {
         bookmark.setStatus("A");
         bookmark.setOrder(0);
         bookmark.setCreateDate(Utils.getCurrentDate());
-        Set<Bookmark> userBookmarks = new LinkedHashSet<Bookmark>();
+        List<Bookmark> userBookmarks = new ArrayList<Bookmark>();
         userBookmarks.add(bookmark);
 
         logger.debug("RegisterAction execute!7");
@@ -192,7 +193,7 @@ public class RegisterAction extends ActionSupport {
         category.setOrder(0);
         category.setBookmarks(userBookmarks);
         category.setCreateDate(Utils.getCurrentDate());
-        Set<Category> userCategories = new LinkedHashSet<Category>();
+        List<Category> userCategories = new ArrayList<Category>();
         userCategories.add(category);
 
         u.setUserCategories(userCategories);
@@ -239,7 +240,7 @@ public class RegisterAction extends ActionSupport {
         logger.debug("RegisterAction execute!2");
         //Address object being created
 
-        Set<Address> userAddresses = u.getUserAddresses();
+        List<Address> userAddresses = u.getUserAddresses();
         Address address = null;
         for (Iterator iterator = userAddresses.iterator(); iterator.hasNext();) {
             address = (Address) iterator.next();
@@ -252,7 +253,7 @@ public class RegisterAction extends ActionSupport {
         address.setStatus("A");
         address.setCreateDate(Utils.getCurrentDate());
 
-        Set<Email> userEmails = u.getUserEmails();
+        List<Email> userEmails = u.getUserEmails();
         Email email = null;
         for (Iterator iterator = userEmails.iterator(); iterator.hasNext();) {
             email = (Email) iterator.next();
@@ -261,7 +262,7 @@ public class RegisterAction extends ActionSupport {
         email.setStatus("A");
         email.setCreateDate(Utils.getCurrentDate());
 
-        Set<Phone> userPhones = u.getUserPhones();
+        List<Phone> userPhones = u.getUserPhones();
         Phone phone = null;
         for (Iterator iterator = userPhones.iterator(); iterator.hasNext();) {
             phone = (Phone) iterator.next();
@@ -272,7 +273,7 @@ public class RegisterAction extends ActionSupport {
         phone.setCreateDate(Utils.getCurrentDate());
 
         if (getPassword() != null && !"".equals(getPassword())) {
-            Set<Credential> userCredentials = u.getUserCredentials();
+            List<Credential> userCredentials = u.getUserCredentials();
             Credential credential = null;
             for (Iterator iterator = userCredentials.iterator(); iterator.hasNext();) {
                 credential = (Credential) iterator.next();
@@ -540,11 +541,11 @@ public class RegisterAction extends ActionSupport {
         this.user = user;
     }
 
-    public Set<Category> getUserCategories() {
+    public List<Category> getUserCategories() {
         return userCategories;
     }
 
-    public void setUserCategories(Set<Category> userCategories) {
+    public void setUserCategories(List<Category> userCategories) {
         this.userCategories = userCategories;
     }
 

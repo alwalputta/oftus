@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
@@ -42,7 +43,7 @@ public class BookmarkAction extends ActionSupport {
     User user = null;
     static final Logger logger = Logger.getLogger(BookmarkAction.class);
     public static final long serialVersionUID = 42L;
-    private Set<Category> userCategories;
+    private List<Category> userCategories;
 
     //business logic
     @Override
@@ -79,7 +80,7 @@ public class BookmarkAction extends ActionSupport {
             Category c = iterator.next();
             logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
 
-            Set<Bookmark> bookmarks = c.getBookmarks();
+            List<Bookmark> bookmarks = c.getBookmarks();
 
             for (Iterator<Bookmark> i = bookmarks.iterator(); i.hasNext();) {
                 Bookmark b = i.next();
@@ -122,7 +123,7 @@ public class BookmarkAction extends ActionSupport {
             logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
 
             if (c.getCategoryId().equals(getCategoryId())) {
-                Set<Bookmark> bookmarks = c.getBookmarks();
+                List<Bookmark> bookmarks = c.getBookmarks();
                 logger.debug("bookmarks size1:" + bookmarks.size());
                 bookmarks.add(bookmark);
                 logger.debug("bookmarks size2:" + bookmarks.size());
@@ -159,7 +160,7 @@ public class BookmarkAction extends ActionSupport {
             Category c = iterator.next();
             logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
 
-            Set<Bookmark> bookmarks = c.getBookmarks();
+            List<Bookmark> bookmarks = c.getBookmarks();
 
             for (Iterator<Bookmark> i = bookmarks.iterator(); i.hasNext();) {
                 Bookmark b = i.next();
@@ -227,7 +228,7 @@ public class BookmarkAction extends ActionSupport {
             Category c = iterator.next();
             logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
 
-            Set<Bookmark> bookmarks = c.getBookmarks();
+            List<Bookmark> bookmarks = c.getBookmarks();
 
             Collection<Bookmark> removeBookmarks = new LinkedList<Bookmark>();
             for (Iterator<Bookmark> i = bookmarks.iterator(); i.hasNext();) {
@@ -279,7 +280,7 @@ public class BookmarkAction extends ActionSupport {
             Category c = iterator.next();
             logger.debug("categoryId:" + c.getCategoryId() + ":" + c.getCategoryName());
 
-            Set<Bookmark> bookmarksSet = c.getBookmarks();
+            List<Bookmark> bookmarksSet = c.getBookmarks();
 
             Collection<Bookmark> removeBookmarks = new LinkedList<Bookmark>();
             for (Iterator<Bookmark> i = bookmarksSet.iterator(); i.hasNext();) {

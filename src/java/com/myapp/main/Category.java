@@ -6,7 +6,9 @@ package com.myapp.main;
 
 import com.myapp.admin.User;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import org.apache.log4j.Logger;
 
@@ -24,8 +26,8 @@ public class Category implements Serializable {
     private String createDate;
     private String endDate;
     private String lastModifiedDate;
-    private Set<User> users = new LinkedHashSet<User>(0);
-    private Set<Bookmark> bookmarks = new LinkedHashSet<Bookmark>(0);
+    private List<User> users = new ArrayList<User>(0);
+    private List<Bookmark> bookmarks = new ArrayList<Bookmark>(0);
     static final Logger logger = Logger.getLogger(Category.class);
 
     public Category() {
@@ -92,19 +94,19 @@ public class Category implements Serializable {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    public Set<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 
-    public Set<Bookmark> getBookmarks() {
+    public List<Bookmark> getBookmarks() {
         return bookmarks;
     }
 
-    public void setBookmarks(Set<Bookmark> bookmarks) {
+    public void setBookmarks(List<Bookmark> bookmarks) {
         this.bookmarks = bookmarks;
     }
 

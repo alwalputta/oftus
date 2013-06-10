@@ -5,7 +5,9 @@
 package com.myapp.main;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import org.apache.log4j.Logger;
 
@@ -24,7 +26,7 @@ public class Bookmark implements Serializable {
     private String createDate;
     private String endDate;
     private String lastModifiedDate;
-    private Set<Category> categories = new LinkedHashSet<Category>(0);
+    private List<Category> categories = new ArrayList<Category>(0);
     static final Logger logger = Logger.getLogger(Bookmark.class);
 
     public Bookmark() {
@@ -100,11 +102,11 @@ public class Bookmark implements Serializable {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    public Set<Category> getCategories() {
+    public List<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(Set<Category> categories) {
+    public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
 

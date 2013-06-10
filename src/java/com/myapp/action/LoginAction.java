@@ -12,6 +12,7 @@ import com.myapp.main.Category;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -30,7 +31,7 @@ public class LoginAction extends ActionSupport {
     boolean loggedIn = false;
     Credential credential = null;
     User user = null;
-    Set<Category> userCategories = null;
+    List<Category> userCategories = null;
     private String message;
     static final Logger logger = Logger.getLogger(LoginAction.class);
 
@@ -60,7 +61,7 @@ public class LoginAction extends ActionSupport {
         CredentialDAO credentialDAO = new CredentialDAO();
         credential = credentialDAO.selectCredential(getUsername());
 
-        Set<User> users = credential.getUsers();
+        List<User> users = credential.getUsers();
         for (Iterator iterator = users.iterator(); iterator.hasNext();) {
             user = (User) iterator.next();
         }
@@ -83,7 +84,7 @@ public class LoginAction extends ActionSupport {
             Category c = (Category) iterator.next();
             logger.debug("AAAAAA:" + c.getCategoryName());
 
-            Set<Bookmark> bookmarks = c.getBookmarks();
+            List<Bookmark> bookmarks = c.getBookmarks();
             for (Iterator i = bookmarks.iterator(); i.hasNext();) {
                 Bookmark b = (Bookmark) i.next();
                 logger.debug("BBBBBBB:" + b.getBookmarkName());
@@ -151,11 +152,11 @@ public class LoginAction extends ActionSupport {
         this.username = username;
     }
 
-    public Set<Category> getUserCategories() {
+    public List<Category> getUserCategories() {
         return userCategories;
     }
 
-    public void setUserCategories(Set<Category> userCategories) {
+    public void setUserCategories(List<Category> userCategories) {
         this.userCategories = userCategories;
     }
 
