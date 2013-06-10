@@ -38,16 +38,16 @@ public class CategoryDAO {
 //            categories = new ArrayList<Category>();
 //            categories = (ArrayList<Category>) session.createQuery("from Category where status='A'").list();
 
-            
-            
+
+
             Criteria c = session.createCriteria(Category.class, "c")
                     .createAlias("c.bookmarks", "b")
                     .addOrder(Order.asc("c.order"))
                     .addOrder(Order.asc("b.order"));
-            categories = (ArrayList<Category>)c.list();
-            
-            
-            
+            categories = (ArrayList<Category>) c.list();
+
+
+
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");
@@ -71,23 +71,22 @@ public class CategoryDAO {
             transaction = session.beginTransaction();
             category = (Category) session.get(Category.class, categoryId);
 
-            
-            
-            
+
+
             Criteria c = session.createCriteria(Category.class, "c")
                     .createAlias("c.bookmarks", "b")
                     .add(Restrictions.eq("c.categoryId", categoryId))
                     .add(Restrictions.eq("u.status", "A"))
                     .addOrder(Order.asc("c.order"))
                     .addOrder(Order.asc("b.order"));
-            categories = (ArrayList<Category>)c.list();
-            
-            
+            categories = (ArrayList<Category>) c.list();
+
+
             for (Iterator iterator = categories.iterator(); iterator.hasNext();) {
                 category = (Category) iterator.next();
             }
-            
-            
+
+
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");
