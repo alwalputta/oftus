@@ -390,10 +390,12 @@ sup {
     padding: 2px;
     border-radius: 5px;
     color: black;
-    background: #9ecbe2;
+    background: #abcde6;
     height: 100%;
     position: relative;
     text-align: left;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .middle-row-element:hover {
@@ -724,7 +726,7 @@ input#search-button {
 
 .middle-row-element-text {
     text-decoration: none;
-    font: 14px Tahoma;
+    font: 16px sans-serif;
     text-align: left;
     overflow: auto;
     vertical-align: middle;
