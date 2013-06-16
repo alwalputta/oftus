@@ -36,6 +36,14 @@
             <result>html/about.html</result>
         </action>
         
+        <action name="agreement">
+            <result>html/agreement.html</result>
+        </action>
+        
+        <action name="privacy">
+            <result>html/privacy.html</result>
+        </action>
+        
         <action name="login_faq">
             <result>html/login_faq.html</result>
         </action>

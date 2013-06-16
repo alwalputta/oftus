@@ -298,12 +298,13 @@ public class RegisterAction extends ActionSupport {
         HttpServletResponse response = ServletActionContext.getResponse();
 
         logger.debug("username:" + request.getParameter("userId"));
-        logger.debug("RegisterAction activateProfile!");
+        //logger.debug("RegisterAction activateProfile!");
 
         UserDAO userDAO = new UserDAO();
         User u = (User) userDAO.selectUser(request.getParameter("userId"));
 
         if (u == null) {
+            setMessage("User does not exist.");
             return "input";
         } else {
             u.setStatus("A");

@@ -34,7 +34,7 @@ body {
     padding: 0px;
     vertical-align: middle;
     text-align: center;
-    font: 25px tahoma;
+    font: 25px sans-serif;
     float: right;
     overflow: auto;
     border: 0px black solid;
@@ -52,7 +52,7 @@ body {
     padding: 0px;
     vertical-align: middle;
     text-align: center;
-    font: 20px tahoma;
+    font: 20px sans-serif;
 }
 
 .main {
@@ -67,7 +67,7 @@ body {
     margin-top: 20px;
     vertical-align: middle;
     text-align: left;
-    font: 40px tahoma;
+    font: 40px sans-serif;
 }
 
 .footer {
@@ -83,7 +83,7 @@ body {
     border: 1px solid #20548E;
     vertical-align: middle;
     text-align: center;
-    font: 20px tahoma;
+    font: 20px sans-serif;
 }
 
 #logo {
@@ -96,10 +96,11 @@ body {
 
 .top-block {
     display: inline-block;
-    width: 10%;
+    width: 12%;
     height: 25px;
     margin: 10px;
-    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 5px;
     border-radius: 5px;
     background-color: cadetblue;
     text-align: center;
@@ -131,7 +132,7 @@ h1 {
 }
 
 li {
-    font-size: 30px;
+    font-size: 35px;
 }
 
 a:link {

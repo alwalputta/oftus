@@ -231,20 +231,20 @@ fieldErrors {
 
 /* Bottom Static Menu */
 .dockingBarBottom {
-    background-color: gainsboro;
+    background-color: #0099FF;
     border-top: 3px solid goldenrod;
     border-bottom: 3px solid goldenrod;
     border-left: 0px;
     border-right: 0px;
     left: 0px;	
     bottom: 0px;
-    height: 20px;
+    height: 50px;
     width: 100%;
-    border-radius: 0px;
+    border-radius: 1px;
     position: fixed;
     overflow: hidden;
+    display: inline-block;
     vertical-align: middle;
-    display: table-cell;
 }
 
 .top-column-element-left {
@@ -320,7 +320,7 @@ sup {
     border: 0px solid #0f0f0f;
     text-align: center;
     text-decoration: #3e779d;
-    font: 14px Arial;
+    font: 16px Arial;
     margin-left: 0px;
     border-left: 0px;
     padding-left: 0px;
@@ -397,7 +397,7 @@ sup {
     text-align: left;
     padding-top: 10px;
     padding-bottom: 10px;
-    background: -moz-linear-gradient(top, #D6E0EB, #abcde6);
+    background: -moz-linear-gradient(top, #D6E0EB, #85CECE);
     background: -webkit-gradient(linear, center top, center bottom, from(#D6E0EB), to(#abcde6));
 }
 
@@ -470,17 +470,17 @@ sup {
     margin: 0px;
     padding: 0px;
     padding-top: 0px;
-    vertical-align: middle;
     display: block;
-    text-align: center;
     width: 20%;
-    background: wheat;
+    background: #339966;
     text-decoration: none;
     border: 0px solid #20548E;
     white-space: nowrap;
     border-radius: 5px;
     color: black;
-    font: 16px Tahoma;
+    font: 18px sans-serif;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .bottom-row-item a {
@@ -589,7 +589,6 @@ img.photo-box {
 
 #menu li a:hover {
     background: #1A4473;
-    font-weight: bold;
 }
 
 #menu li ul {
@@ -626,7 +625,6 @@ img.photo-box {
     background: #abdcff;
     padding: 5px;
     padding-right: 10px;
-    font-weight: bold;
     border-radius: 5px;
     border: 1px dashed #42440d;
     margin: 0px;
@@ -716,6 +714,7 @@ input#search-button {
     font: 18px sans-serif;
     text-transform: fullsize-kana;
     margin: 5px;
+    font-weight: bold;
 }
 
 .favicon {

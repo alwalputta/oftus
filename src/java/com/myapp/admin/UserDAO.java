@@ -12,7 +12,9 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -82,6 +84,7 @@ public class UserDAO {
 //            session.refresh(user);
 
             Criteria c = session.createCriteria(User.class, "u")
+                    .add(Expression.eq("userId", userId))
                     .createAlias("u.userCategories", "c")
                     .createAlias("c.bookmarks", "b")
                     .addOrder(Order.asc("c.order"))
