@@ -5,7 +5,7 @@
             <a href="http://www.oftus.com">
                 <img id="logo" src="images/oftus.gif"/>
             </a>
-            <!--OFTUS<sup>&reg;</sup>-->
+            <!--Oftus<sup>&reg;</sup>-->
             <!--div class="company-logo-punchline">
                 Your One Link World.
             </div-->
