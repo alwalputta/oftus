@@ -24,7 +24,7 @@ import org.hibernate.criterion.Restrictions;
  */
 public class BookmarkDAO {
 
-    static final Logger logger = Logger.getLogger(StateDAO.class);
+    static final Logger logger = Logger.getLogger(BookmarkDAO.class);
 
     @SuppressWarnings("unchecked")
     public ArrayList<Bookmark> listBookmarks(String categoryId) {
@@ -129,8 +129,8 @@ public class BookmarkDAO {
 
         try {
             bookmark = (Bookmark) session.get(Bookmark.class, bookmarkId);
-            session.flush();
-            session.refresh(bookmark);
+//            session.flush();
+//            session.refresh(bookmark);
         } catch (HibernateException e) {
             logger.debug("HibernateException");
             e.printStackTrace();
@@ -160,7 +160,7 @@ public class BookmarkDAO {
         try {
             transaction = session.beginTransaction();
             session.save(bookmarkClick);
-            session.flush();
+//            session.flush();
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");

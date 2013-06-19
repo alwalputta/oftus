@@ -25,7 +25,7 @@ import org.hibernate.criterion.Restrictions;
  */
 public class CategoryDAO {
 
-    static final Logger logger = Logger.getLogger(StateDAO.class);
+    static final Logger logger = Logger.getLogger(CategoryDAO.class);
 
     @SuppressWarnings("unchecked")
     public ArrayList<Category> listCategories() {
@@ -38,15 +38,11 @@ public class CategoryDAO {
 //            categories = new ArrayList<Category>();
 //            categories = (ArrayList<Category>) session.createQuery("from Category where status='A'").list();
 
-
-
             Criteria c = session.createCriteria(Category.class, "c")
                     .createAlias("c.bookmarks", "b")
                     .addOrder(Order.asc("c.order"))
                     .addOrder(Order.asc("b.order"));
             categories = (ArrayList<Category>) c.list();
-
-
 
             transaction.commit();
         } catch (HibernateException e) {
@@ -71,8 +67,6 @@ public class CategoryDAO {
             transaction = session.beginTransaction();
             category = (Category) session.get(Category.class, categoryId);
 
-
-
             Criteria c = session.createCriteria(Category.class, "c")
                     .createAlias("c.bookmarks", "b")
                     .add(Restrictions.eq("c.categoryId", categoryId))
@@ -81,11 +75,9 @@ public class CategoryDAO {
                     .addOrder(Order.asc("b.order"));
             categories = (ArrayList<Category>) c.list();
 
-
             for (Iterator iterator = categories.iterator(); iterator.hasNext();) {
                 category = (Category) iterator.next();
             }
-
 
             transaction.commit();
         } catch (HibernateException e) {
