@@ -76,8 +76,6 @@ public class LoginAction extends ActionSupport {
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
 
-
-
         //Testing the order of items....
         for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
             logger.debug("222222222222");
@@ -91,11 +89,6 @@ public class LoginAction extends ActionSupport {
             }
         }
         //Testing the order of items....
-
-
-
-
-
 
         setMessage("You have successfully logged in.");
         return returnVal;

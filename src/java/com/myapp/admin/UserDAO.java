@@ -37,8 +37,8 @@ public class UserDAO {
         try {
             transaction = session.beginTransaction();
             session.save(user);
-//            session.flush();
-//            session.refresh(user);
+            session.flush();
+            session.refresh(user);
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");
@@ -59,8 +59,8 @@ public class UserDAO {
         try {
             transaction = session.beginTransaction();
             session.update(user);
-//            session.flush();
-//            session.refresh(user);
+            session.flush();
+            session.refresh(user);
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");

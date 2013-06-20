@@ -94,8 +94,6 @@ public class CredentialDAO {
 //            Query query = session.createQuery("from Credential where username = '" + username + "'");
 //            List list = query.list();
 
-
-
             Criteria c = session.createCriteria(Credential.class, "cr")
                     .createAlias("cr.users", "u")
                     .createAlias("u.userCategories", "c")

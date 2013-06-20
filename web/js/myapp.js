@@ -348,7 +348,7 @@ function update_column_order(){
     $('.middle-column-element').each(function(){
         column_order = column_order + $(this).attr('id') + ':';
     });
-    //alert ('category_order:'+column_order);
+    alert ('category_order:'+column_order);
     targetUrl = targetUrl + column_order;
     $.ajax(targetUrl);
 }

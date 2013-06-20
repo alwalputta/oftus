@@ -4,11 +4,8 @@
  */
 package com.myapp.main;
 
-import com.myapp.admin.Credential;
-import com.myapp.admin.StateDAO;
 import com.myapp.util.HibernateUtil;
 import java.util.ArrayList;
-import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -37,15 +34,14 @@ public class BookmarkDAO {
 //            bookmarks = new ArrayList<Bookmark>();
 //            bookmarks = (ArrayList<Bookmark>) session.createQuery("from Bookmark where status='A'").list();
 
-
-
             Criteria c = session.createCriteria(Bookmark.class, "b")
                     .createAlias("b.userCategories", "c")
                     .add(Restrictions.eq("b.status", "A"))
+                    .add(Restrictions.eq("c.categoryId", categoryId))
                     .addOrder(Order.asc("c.order"))
                     .addOrder(Order.asc("b.order"));
-            bookmarks = (ArrayList<Bookmark>) c.list();
 
+            bookmarks = (ArrayList<Bookmark>) c.list();
 
             transaction.commit();
         } catch (HibernateException e) {
@@ -129,8 +125,8 @@ public class BookmarkDAO {
 
         try {
             bookmark = (Bookmark) session.get(Bookmark.class, bookmarkId);
-//            session.flush();
-//            session.refresh(bookmark);
+            session.flush();
+            session.refresh(bookmark);
         } catch (HibernateException e) {
             logger.debug("HibernateException");
             e.printStackTrace();
@@ -160,7 +156,7 @@ public class BookmarkDAO {
         try {
             transaction = session.beginTransaction();
             session.save(bookmarkClick);
-//            session.flush();
+            session.flush();
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");

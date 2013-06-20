@@ -170,9 +170,10 @@ public class DocumentAction extends ActionSupport {
                 i++;
                 if (i == 1) {
                     c.setCategoryName("IMPORTS");
-                    c.setDescription("Bookmark Imports");
+                    c.setDescription("Imported Bookmarks Category");
                     c.setStatus("A");
                     c.setOrder(100);
+                    c.setCreateDate(Utils.getCurrentDate());
                     i++;
                     continue;
                 } else {

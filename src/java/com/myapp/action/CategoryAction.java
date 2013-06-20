@@ -171,10 +171,10 @@ public class CategoryAction extends ActionSupport {
         StringTokenizer st = new StringTokenizer(getCategoryOrder(), ":");
         for (int i = 0; st.hasMoreTokens(); i++) {
             categoryId = st.nextToken();
-            logger.debug("category ID" + categoryId);
             CategoryDAO categoryDAO = new CategoryDAO();
             updated = categoryDAO.updateCategoryOrder(categoryId, i);
-            logger.debug("Records Updated" + updated);
+            logger.debug("Category Id:" + categoryId);
+            logger.debug("Category Order:" + i);
         }
         logger.debug("Records Updated");
         setMessage("Category order updated.");
