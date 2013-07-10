@@ -32,6 +32,7 @@
         <!-- Hibernate mapping files -->
         <mapping resource="com/myapp/admin/Gender.hbm.xml"/>
         <mapping resource="com/myapp/admin/State.hbm.xml"/>
+        <mapping resource="com/myapp/admin/Country.hbm.xml"/>
         <mapping resource="com/myapp/admin/Address.hbm.xml"/>
         <mapping resource="com/myapp/admin/Credential.hbm.xml"/>
         <mapping resource="com/myapp/admin/Role.hbm.xml"/>
@@ -44,6 +45,7 @@
         <mapping resource="com/myapp/main/Document.hbm.xml"/>
         <mapping resource="com/myapp/util/ClickLog.hbm.xml"/>
         <mapping resource="com/myapp/util/LoginLog.hbm.xml"/>
+        <mapping resource="com/myapp/util/Feedback.hbm.xml"/>
         <mapping resource="com/myapp/util/Referral.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

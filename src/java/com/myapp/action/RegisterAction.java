@@ -5,6 +5,8 @@
 package com.myapp.action;
 
 import com.myapp.admin.Address;
+import com.myapp.admin.Country;
+import com.myapp.admin.CountryDAO;
 import com.myapp.admin.Credential;
 import com.myapp.admin.CredentialDAO;
 import com.myapp.admin.Email;
@@ -19,15 +21,15 @@ import com.myapp.admin.User;
 import com.myapp.admin.UserDAO;
 import com.myapp.main.Bookmark;
 import com.myapp.main.Category;
+import com.myapp.util.Feedback;
 import com.myapp.util.SendMail;
+import com.myapp.util.UtilDAO;
 import com.myapp.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -60,26 +62,25 @@ public class RegisterAction extends ActionSupport {
     static final Logger logger = Logger.getLogger(RegisterAction.class);
     private List<Gender> genders;
     private List<State> states;
+    private List<Country> countries;
     User user = null;
     List<Category> userCategories = null;
+    private String name;
+    private String email;
+    private String phone;
+    private String country;
+    private String issueType;
+    private String description;
 
     public String registerForm() {
-        logger.debug("GeneralAction execute!");
+        logger.debug("registerForm!");
+        setMessage("registerForm ...");
+        return SUCCESS;
+    }
 
-        GenderDAO genderDAO = new GenderDAO();
-        genders = genderDAO.listGenders();
-        logger.debug("genders:" + genders.size());
-
-        StateDAO stateDAO = new StateDAO();
-        states = stateDAO.listStates();
-        logger.debug("states:" + states.size());
-
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-        session.setAttribute("genders", genders);
-        session.setAttribute("states", states);
-
-        setMessage("General Action execute");
+    public String feedbackForm() {
+        logger.debug("feedbackForm!");
+        setMessage("feedbackForm ...");
         return SUCCESS;
     }
 
@@ -89,22 +90,6 @@ public class RegisterAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
 
-        genders = (List<Gender>) session.getAttribute("genders");
-        states = (List<State>) session.getAttribute("states");
-
-        if (genders == null) {
-            GenderDAO genderDAO = new GenderDAO();
-            genders = genderDAO.listGenders();
-        }
-        logger.debug("before state DAO!");
-
-        if (states == null) {
-            StateDAO stateDAO = new StateDAO();
-            states = stateDAO.listStates();
-        }
-        session.setAttribute("genders", genders);
-        session.setAttribute("states", states);
-
         User u = (User) session.getAttribute("user");
         logger.debug("RegisterAction editProfile, userid:" + u.getUserId());
 
@@ -112,7 +97,6 @@ public class RegisterAction extends ActionSupport {
         return SUCCESS;
     }
 
-    //@Override
     public String createProfile() {
         logger.debug("RegisterAction execute!");
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -293,7 +277,6 @@ public class RegisterAction extends ActionSupport {
     }
 
     public String activateProfile() {
-
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
 
@@ -313,6 +296,26 @@ public class RegisterAction extends ActionSupport {
             setMessage("User activated successfully.");
             return SUCCESS;
         }
+    }
+
+    public String saveFeedback() {
+        logger.debug("RegisterAction saveFeedback!");
+
+        Feedback f = new Feedback();
+        f.setName(getName());
+        f.setEmail(getEmail());
+        f.setPhone(getPhone());
+        f.setCountry(getCountry());
+        f.setIssueType(getIssueType());
+        f.setDescription(getDescription());
+        f.setCreateDate(Utils.getCurrentDate());
+
+        UtilDAO utilDAO = new UtilDAO();
+        utilDAO.recordFeedback(f);
+
+        logger.debug("RegisterAction saveFeedback, feedbackid:" + f.getFeedbackId());
+        setMessage("Your feedback created successfully.");
+        return SUCCESS;
     }
 
     @Override
@@ -377,6 +380,10 @@ public class RegisterAction extends ActionSupport {
             logger.debug("register_form");
         } else if ("edit_profile".equals(getActionName())) {
             logger.debug("edit_profile");
+        } else if ("feedback_form".equals(getActionName())) {
+            logger.debug("feedback_form");
+        } else if ("save_feedback".equals(getActionName())) {
+            logger.debug("save_feedback");
         } else {
             logger.debug("Other");
         }
@@ -519,6 +526,9 @@ public class RegisterAction extends ActionSupport {
     }
 
     public List<Gender> getGenders() {
+        GenderDAO genderDAO = new GenderDAO();
+        genders = genderDAO.listGenders();
+        logger.debug("genders:" + genders.size());
         return genders;
     }
 
@@ -527,11 +537,25 @@ public class RegisterAction extends ActionSupport {
     }
 
     public List<State> getStates() {
+        StateDAO stateDAO = new StateDAO();
+        states = stateDAO.listStates();
+        logger.debug("states:" + states.size());
         return states;
     }
 
     public void setStates(List<State> states) {
         this.states = states;
+    }
+
+    public List<Country> getCountries() {
+        CountryDAO countryDAO = new CountryDAO();
+        countries = countryDAO.listCountries();
+        logger.debug("countries:" + countries.size());
+        return countries;
+    }
+
+    public void setCountries(List<Country> countries) {
+        this.countries = countries;
     }
 
     public User getUser() {
@@ -553,5 +577,53 @@ public class RegisterAction extends ActionSupport {
     public String getActionName() {
         ActionContext context = ActionContext.getContext();
         return context.getName();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getIssueType() {
+        return issueType;
+    }
+
+    public void setIssueType(String issueType) {
+        this.issueType = issueType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

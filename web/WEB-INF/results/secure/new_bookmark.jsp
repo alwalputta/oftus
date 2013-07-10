@@ -38,7 +38,7 @@
                 <div class="page-title">Add New Bookmark</div>
                 <div class="login-form">
 
-                    <s:form action="save_bookmark">
+                    <s:form action="save_bookmark_%{source}">
                         <s:select name="categoryId" list="%{#session.user.userCategories}" listKey="categoryId" listValue="categoryName" headerKey="-1" headerValue="Select Category..." key="new.categoryname-label"/>
                         <s:textfield name="bookmarkName" size="60" maxlength="200" key="new.bookmark-label"/>
                         <s:textfield name="hiperLink" size="60" maxlength="200" key="new.hiperlink-label"/>

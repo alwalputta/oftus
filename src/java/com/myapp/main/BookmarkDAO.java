@@ -5,6 +5,7 @@
 package com.myapp.main;
 
 import com.myapp.util.HibernateUtil;
+import com.myapp.util.Utils;
 import java.util.ArrayList;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
@@ -43,6 +44,8 @@ public class BookmarkDAO {
 
             bookmarks = (ArrayList<Bookmark>) c.list();
 
+            session.flush();
+            session.clear();
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");
@@ -73,6 +76,11 @@ public class BookmarkDAO {
             bookmark = (Bookmark) session.get(Bookmark.class, bookmarkId);
             bookmark.setOrder(bookmarkOrder);
             session.update(bookmark);
+
+            session.flush();
+            session.clear();
+//            session.refresh(bookmark);
+
             transaction.commit();
             logger.debug("right after commit");
 
@@ -102,6 +110,9 @@ public class BookmarkDAO {
             query.setString(0, categoryId);
             query.setString(1, bookmarkId);
             returnVal = query.executeUpdate();
+
+            session.flush();
+            session.clear();
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");
@@ -150,6 +161,8 @@ public class BookmarkDAO {
         BookmarkClick bookmarkClick = new BookmarkClick();
         bookmarkClick.setBookmarkId(bookmark.getBookmarkId());
         bookmarkClick.setHiperLink(bookmark.getHiperLink());
+        bookmarkClick.setCreateDate(Utils.getCurrentDate());
+        bookmarkClick.setLastModifiedDate(Utils.getCurrentDate());
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;

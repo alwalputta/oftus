@@ -14,9 +14,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.StringTokenizer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -34,6 +32,7 @@ public class CategoryAction extends ActionSupport {
     private String description;
     private String categoryOrder;
     private String message;
+    private String source;
     List<Category> userCategories = null;
     public static final long serialVersionUID = 42L;
     static final Logger logger = Logger.getLogger(CategoryAction.class);
@@ -114,7 +113,7 @@ public class CategoryAction extends ActionSupport {
         logger.debug("userCategories size:" + userCategories.size());
 
         for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
-            logger.debug("222222222222");
+            logger.debug("222222222222 inside categories loop");
             Category c = (Category) iterator.next();
 
             if (c.getCategoryId().equals(categoryId)) {
@@ -146,7 +145,7 @@ public class CategoryAction extends ActionSupport {
         Category c = null;
         for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
             c = (Category) iterator.next();
-            logger.debug("222222222222:" + c.getCategoryId());
+            logger.debug("Category Id:" + c.getCategoryId());
             if (c.getCategoryId().equals(categoryId)) {
 //                c.setStatus("D");
                 userCategories.remove(c);
@@ -242,13 +241,14 @@ public class CategoryAction extends ActionSupport {
         ActionContext context = ActionContext.getContext();
         return context.getName();
     }
-//    public String getSource() {
-//        return source;
-//    }
-//
-//    public void setSource(String source) {
-//        this.source = source;
-//    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
 
     public String getMessage() {
         return message;

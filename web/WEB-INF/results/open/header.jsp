@@ -25,12 +25,12 @@
                 <a href="index">Login</a>
             </s:if>
             <s:else>
-                <a href="login">
+                <a href="index">
                     Hi, <s:property value="%{#session.user.firstName}"/>
                 </a>
             </s:else>
             <ul>
-                <li><a href="welcome">Welcome!</a></li>
+                <li><a href="welcome">Welcome to Oftus!</a></li>
                 <li><a href="edit_profile">Manage Profile</a></li>
                 <li><a href="edit_preferences">Manage Preferences</a></li>
                 <li><a href="refer_friends">Refer Friends</a></li>

@@ -26,6 +26,18 @@ CREATE TABLE State (
   PRIMARY KEY (state_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS Country;
+CREATE TABLE Country (
+  country_id varchar(200) DEFAULT NULL,
+  country_code varchar(10) NOT NULL,
+  country_name varchar(45) NOT NULL,
+  status varchar(10) DEFAULT 'A',
+  create_date DATETIME,
+  end_date DATETIME,
+  last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (country_id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 DROP TABLE IF EXISTS User CASCADE;
 CREATE TABLE User (
   user_id varchar(200) NOT NULL,
@@ -321,9 +333,22 @@ CREATE TABLE UserDocument (
   FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS Feedback CASCADE;
+CREATE TABLE Feedback (
+  feedback_id VARCHAR(200) NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  phone VARCHAR(50) NOT NULL,
+  country VARCHAR(50) NOT NULL,
+  issue_type VARCHAR(50) NOT NULL,
+  description VARCHAR(1000) NOT NULL,
+  create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (feedback_id)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
 insert into gender (gender_id, gender_code, gender_name) values ('402881e43e8ccc1b013e8ccc20c80001', 'M', 'Male');
 
-insert into gender (gender_id, gender_code, gender_name) values ('402881e43e8ccc1b013e8ccc20c80002', 'F', 'FemMale');
+insert into gender (gender_id, gender_code, gender_name) values ('402881e43e8ccc1b013e8ccc20c80002', 'F', 'Female');
 
 insert into state (state_id, state_code, state_name) values ('402881e43e8ccc1b013e8ccc20c80003', 'CA', 'California');
 

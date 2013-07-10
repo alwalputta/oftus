@@ -4,16 +4,12 @@
  */
 package com.myapp.main;
 
-import com.myapp.admin.StateDAO;
-import com.myapp.admin.User;
 import com.myapp.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
@@ -44,6 +40,8 @@ public class CategoryDAO {
                     .addOrder(Order.asc("b.order"));
             categories = (ArrayList<Category>) c.list();
 
+            session.flush();
+            session.clear();
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");
@@ -79,6 +77,8 @@ public class CategoryDAO {
                 category = (Category) iterator.next();
             }
 
+            session.flush();
+            session.clear();
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");
@@ -101,6 +101,8 @@ public class CategoryDAO {
         try {
             transaction = session.beginTransaction();
             session.update(category);
+            session.flush();
+            session.clear();
             transaction.commit();
         } catch (HibernateException e) {
             logger.debug("HibernateException");
@@ -131,6 +133,8 @@ public class CategoryDAO {
             category = (Category) session.get(Category.class, categoryId);
             category.setOrder(categoryOrder);
             session.update(category);
+            session.flush();
+            session.clear();
             transaction.commit();
             logger.debug("right after commit");
         } catch (HibernateException e) {

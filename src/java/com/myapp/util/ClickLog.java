@@ -16,6 +16,7 @@ public class ClickLog {
     private String userId;
     private String actionName;
     private String createDate;
+    private String lastModifiedDate;
 
     public String getClickId() {
         return clickId;
@@ -47,5 +48,13 @@ public class ClickLog {
 
     public void setCreateDate(String createDate) {
         this.createDate = createDate;
+    }
+
+    public String getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public void setLastModifiedDate(String lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 }

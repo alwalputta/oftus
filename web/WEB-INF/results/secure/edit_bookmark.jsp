@@ -37,7 +37,7 @@
                 <div class="page-title">Modify Bookmark</div>
                 <div class="login-form">
 
-                    <s:form action="update_bookmark">
+                    <s:form action="update_bookmark_%{source}">
                         <s:hidden name="bookmarkId" value="%{#session.bookmark.bookmarkId}"/>
                         <s:select name="categoryId" list="%{#session.user.userCategories}" listKey="categoryId" listValue="categoryName" value="%{categoryId}" headerKey="-1" headerValue="Select Category..." key="new.categoryname-label"/>
                         <s:textfield name="bookmarkName" value="%{#session.bookmark.bookmarkName}" size="60" maxlength="200" key="new.bookmark-label"/>
@@ -48,7 +48,7 @@
                             <td colspan="2" align="center">
                                 <s:submit align="center" key="new.submit-bookmark-label" theme="simple"/>
                                 <s:reset align="center" key="new.reset-label" theme="simple"/>
-                                <s:url id="deleteBookmark" action="delete_bookmark_mainpage">
+                                <s:url id="deleteBookmark" action="delete_bookmark_%{source}">
                                     <s:param name="bookmarkId" value="%{#session.bookmark.bookmarkId}"></s:param>
                                 </s:url>
                                 <a href="<s:property value="#deleteBookmark"/>" class="form-button">Delete Bookmark</a>

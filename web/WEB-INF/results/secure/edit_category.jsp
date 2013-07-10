@@ -41,7 +41,7 @@
                 <div class="page-title">Modify Category</div>
                 <div class="login-form">
 
-                    <s:form action="update_category">
+                    <s:form action="update_category_%{source}">
                         <s:hidden name="categoryId" value="%{#session.category.categoryId}"/>
                         <s:textfield name="categoryName" value="%{#session.category.categoryName}" size="60" maxlength="200" key="new.categoryname-label"/>
                         <s:textarea name="description" value="%{#session.category.description}" rows="5" cols="60" key="new.category-description-label"/>
@@ -50,7 +50,7 @@
                             <td colspan="2" align="center">
                                 <s:submit align="center" key="new.submit-category-label" theme="simple" cssClass="form-button"/>
                                 <s:reset align="center" key="new.reset-label" theme="simple" cssClass="form-button"/>
-                                <s:url id="deleteCategory" action="delete_category_mainpage">
+                                <s:url id="deleteCategory" action="delete_category_%{source}" escapeAmp="false">
                                     <s:param name="categoryId" value="%{#session.category.categoryId}"></s:param>
                                 </s:url>
                                 <a href="<s:property value="#deleteCategory"/>" class="form-button">Delete Category</a>

@@ -14,7 +14,7 @@
         <interceptors>
             <interceptor name="login" class="com.myapp.struts.LoginInterceptor"></interceptor>
             <interceptor name="logging" class="com.myapp.struts.LoggingInterceptor"></interceptor>
-            
+
             <interceptor-stack name="customStack">
                 <interceptor-ref name="login"/>
                 <interceptor-ref name="logging"/>
@@ -27,7 +27,7 @@
         <global-results>
             <result name="login_form_redirect">/WEB-INF/results/open/login_form.jsp</result>
         </global-results>
-        
+
         <action name="welcome">
             <result>html/welcome.html</result>
         </action>
@@ -35,15 +35,15 @@
         <action name="about">
             <result>html/about.html</result>
         </action>
-        
+
         <action name="agreement">
             <result>html/agreement.html</result>
         </action>
-        
+
         <action name="privacy">
             <result>html/privacy.html</result>
         </action>
-        
+
         <action name="login_faq">
             <result>html/login_faq.html</result>
         </action>
@@ -80,10 +80,6 @@
             <result>html/user_guide.html</result>
         </action>
 
-        <action name="feedback">
-            <result>html/feedback.html</result>
-        </action>
-
         <action name="refer_friends">
             <result>html/refer_friends.html</result>
         </action>
@@ -93,7 +89,7 @@
         </action>
 
         <action name="industry_trends">
-            <result>/WEB-INF/results/industry_trends.html</result>
+            <result>html/industry_trends.html</result>
         </action>
 
         <action name="personal_reports">
@@ -116,7 +112,7 @@
             <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/open/login_form.jsp</result>
         </action>
-        
+
         <action name="login" class="com.myapp.action.LoginAction" method="login">
             <!--
             <interceptor-ref name="defaultStack"/>
@@ -154,50 +150,71 @@
             <result name="success">/WEB-INF/results/secure/edit_profile.jsp</result>
             <result name="input">/WEB-INF/results/secure/edit_profile.jsp</result>
         </action>
-        
+
         <action name="activate_profile" class="com.myapp.action.RegisterAction" method="activateProfile">
             <result name="success">/WEB-INF/results/open/login_form.jsp</result>
             <result name="input">/WEB-INF/results/open/register_form.jsp</result>
         </action>
-        
+
+        <action name="feedback_form" class="com.myapp.action.RegisterAction" method="feedbackForm">
+            <result name="success">/WEB-INF/results/open/feedback_form.jsp</result>
+            <result name="input">/WEB-INF/results/open/login_form.jsp</result>
+        </action>
+
+        <action name="save_feedback" class="com.myapp.action.RegisterAction" method="saveFeedback">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/open/login_form.jsp</result>
+        </action>
+
+        <action name="edit_preferences" class="com.myapp.action.RegisterAction" method="editProfile">
+            <result name="success">/WEB-INF/results/secure/edit_preferences.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
+        </action>
+
         <action name="list_categories">
             <result>/WEB-INF/results/secure/list_categories.jsp</result>
         </action>
 
-        <action name="add_category" class="com.myapp.action.CategoryAction" method="addCategory">
+        <action name="add_category_mainpage" class="com.myapp.action.CategoryAction" method="addCategory">
             <result name="success">/WEB-INF/results/secure/new_category.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
+        </action>
+
+        <action name="add_category_list" class="com.myapp.action.CategoryAction" method="addCategory">
+            <result name="success">/WEB-INF/results/secure/new_category.jsp</result>
+            <result name="input">/WEB-INF/results/secure/list_bookmarks.jsp</result>
+        </action>
+
+        <action name="save_category_mainpage" class="com.myapp.action.CategoryAction" method="saveCategory">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/secure/new_category.jsp</result>
         </action>
 
-        <action name="save_category" class="com.myapp.action.CategoryAction" method="saveCategory">
-            <result name="success">/WEB-INF/results/secure/list_categories.jsp</result>
+        <action name="save_category_list" class="com.myapp.action.CategoryAction" method="saveCategory">
+            <result name="success">/WEB-INF/results/secure/list_bookmarks.jsp</result>
             <result name="input">/WEB-INF/results/secure/new_category.jsp</result>
         </action>
 
-        <action name="edit_category" class="com.myapp.action.CategoryAction" method="editCategory">
+        <action name="edit_category_mainpage" class="com.myapp.action.CategoryAction" method="editCategory">
             <interceptor-ref name="defaultStack"/>
             <result name="success">/WEB-INF/results/secure/edit_category.jsp</result>
             <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
 
-        <action name="update_category" class="com.myapp.action.CategoryAction" method="updateCategory">
-            <result name="success">/WEB-INF/results/secure/list_categories.jsp</result>
-            <result name="input">/WEB-INF/results/secure/edit_category.jsp</result>
+        <action name="edit_category_list" class="com.myapp.action.CategoryAction" method="editCategory">
+            <interceptor-ref name="defaultStack"/>
+            <result name="success">/WEB-INF/results/secure/edit_category.jsp</result>
+            <result name="input">/WEB-INF/results/secure/list_bookmarks.jsp</result>
         </action>
 
-        <action name="edit_category_list" class="com.myapp.action.CategoryAction" method="editCategory">
-            <result name="success">/WEB-INF/results/secure/edit_category.jsp</result>
-            <result name="input">/WEB-INF/results/secure/list_categories.jsp</result>
+        <action name="update_category_mainpage" class="com.myapp.action.CategoryAction" method="updateCategory">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_category.jsp</result>
         </action>
 
         <action name="update_category_list" class="com.myapp.action.CategoryAction" method="updateCategory">
             <result name="success">/WEB-INF/results/secure/list_bookmarks.jsp</result>
             <result name="input">/WEB-INF/results/secure/edit_category.jsp</result>
-        </action>
-
-        <action name="delete_category" class="com.myapp.action.CategoryAction" method="deleteCategory">
-            <result name="success">/WEB-INF/results/secure/list_categories.jsp</result>
-            <result name="input">/WEB-INF/results/secure/list_categories.jsp</result>
         </action>
 
         <action name="delete_category_mainpage" class="com.myapp.action.CategoryAction" method="deleteCategory">
@@ -219,19 +236,29 @@
             <result>/WEB-INF/results/secure/list_bookmarks.jsp</result>
         </action>
 
-        <action name="add_bookmark" class="com.myapp.action.BookmarkAction" method="addBookmark">
+        <action name="add_bookmark_mainpage" class="com.myapp.action.BookmarkAction" method="addBookmark">
             <result name="success">/WEB-INF/results/secure/new_bookmark.jsp</result>
             <result name="input">/WEB-INF/results/secure/new_bookmark.jsp</result>
         </action>
 
-        <action name="save_bookmark" class="com.myapp.action.BookmarkAction" method="saveBookmark">
+        <action name="add_bookmark_list" class="com.myapp.action.BookmarkAction" method="addBookmark">
+            <result name="success">/WEB-INF/results/secure/new_bookmark.jsp</result>
+            <result name="input">/WEB-INF/results/secure/new_bookmark.jsp</result>
+        </action>
+
+        <action name="save_bookmark_mainpage" class="com.myapp.action.BookmarkAction" method="saveBookmark">
             <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/secure/new_bookmark.jsp</result>
         </action>
 
-        <action name="edit_bookmark" class="com.myapp.action.BookmarkAction" method="editBookmark">
+        <action name="save_bookmark_list" class="com.myapp.action.BookmarkAction" method="saveBookmark">
+            <result name="success">/WEB-INF/results/secure/list_bookmarks.jsp</result>
+            <result name="input">/WEB-INF/results/secure/new_bookmark.jsp</result>
+        </action>
+
+        <action name="edit_bookmark_mainpage" class="com.myapp.action.BookmarkAction" method="editBookmark">
             <result name="success">/WEB-INF/results/secure/edit_bookmark.jsp</result>
-            <result name="input">/WEB-INF/results/secure/edit_bookmark.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
 
         <action name="edit_bookmark_list" class="com.myapp.action.BookmarkAction" method="editBookmark">
@@ -239,7 +266,7 @@
             <result name="input">/WEB-INF/results/secure/list_bookmarks.jsp</result>
         </action>
 
-        <action name="update_bookmark" class="com.myapp.action.BookmarkAction" method="updateBookmark">
+        <action name="update_bookmark_mainpage" class="com.myapp.action.BookmarkAction" method="updateBookmark">
             <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
             <result name="input">/WEB-INF/results/secure/edit_bookmark.jsp</result>
         </action>
@@ -308,5 +335,5 @@
             <result>/WEB-INF/results/secure/mainpage.jsp</result>
         </action>
     </package>
-     
+
 </struts>

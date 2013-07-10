@@ -1,7 +1,7 @@
 $(document).ready(function() {
     //Message while the page is still being loaded.
-    //    show_page_loading_message();
- 
+    //show_page_loading_message();
+
     element_id = 0;
     category_from = 0;
     category_to = 0;
@@ -10,7 +10,7 @@ $(document).ready(function() {
     $('#search-input').val(search_box_default_text);
 
     set_sortable();
- 
+
     //menu dropdowns
     $('#menu > li').bind('mouseover', menu_open);
     $('#menu > li').bind('click', menu_open)
@@ -172,13 +172,13 @@ $('.middle-row-element-text').mouseenter(function(){
 
 $('.middle-column-element-text').dblclick(function(){
     // alert ('column');
-    targetUrl = 'edit_category?categoryId='+$(this).parent('.middle-column-element').attr('id');
+    targetUrl = 'edit_category_mainpage?source=mainpage&categoryId='+$(this).parent('.middle-column-element').attr('id');
     window.location=targetUrl;
 });
 
 $('.middle-row-element').dblclick(function(){
     // alert ('row1');
-    targetUrl = 'edit_bookmark?bookmarkId='+$(this).attr('id');
+    targetUrl = 'edit_bookmark_mainpage?source=mainpage&bookmarkId='+$(this).attr('id');
     targetUrl = targetUrl + '&categoryId='+$(this).parents('.middle-column-element').attr('id');
     window.location = targetUrl;
 });
@@ -220,7 +220,7 @@ $('.middle-row-element-bulk-delete-icon').click(function(){
 });
 
 $('.middle-column-element-new-icon').click(function(){
-    var targetUrl = "add_category?source=mainPage";
+    var targetUrl = "add_category_mainpage?source=mainpage";
     //        alert('AAAA' + targetUrl);
     window.location = targetUrl;
 });
@@ -348,8 +348,8 @@ function update_column_order(){
     $('.middle-column-element').each(function(){
         column_order = column_order + $(this).attr('id') + ':';
     });
-    alert ('category_order:'+column_order);
     targetUrl = targetUrl + column_order;
+    alert ('category order url:' + targetUrl);
     $.ajax(targetUrl);
 }
 
@@ -361,17 +361,16 @@ function update_bookmark_order(element){
         bookmark_order = bookmark_order + $(this).attr('id') + ':';
     });
     targetUrl = targetUrl + bookmark_order;
-    // alert ('bookmark order url:' + targetUrl);
+    alert ('bookmark order url:' + targetUrl);
     $.ajax(targetUrl);
 }
-
 
 function move_bookmark(element_id, category_to) {
     bookmark_order = "";
     targetUrl = "move_bookmark?bookmarkId=" + element_id;
     targetUrl = targetUrl + "&categoryId=" + category_to;
 
-    //alert ('URL:' + targetUrl);
+    alert ('URL:' + targetUrl);
     $.ajax(targetUrl);
 }
 

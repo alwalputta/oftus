@@ -9,5 +9,6 @@
         <property name="userId" column="user_id" type="string"></property>
         <property name="actionName" column="action_name" type="string"></property>
         <property name="createDate" column="create_date" type="string"></property>
+        <property name="lastModifiedDate" column="last_modified_date" type="string"></property>
     </class>
 </hibernate-mapping>

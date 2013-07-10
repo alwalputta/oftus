@@ -13,7 +13,6 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
@@ -78,7 +77,7 @@ public class LoginAction extends ActionSupport {
 
         //Testing the order of items....
         for (Iterator iterator = userCategories.iterator(); iterator.hasNext();) {
-            logger.debug("222222222222");
+            logger.debug("inside categories loop.");
             Category c = (Category) iterator.next();
             logger.debug("AAAAAA:" + c.getCategoryName());
 

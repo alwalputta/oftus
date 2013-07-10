@@ -53,13 +53,13 @@
                         <s:textfield name="firstname" size="30" maxlength="200" key="register.firstname-label"/>
                         <s:textfield name="middlename" size="30" maxlength="200" key="register.middlename-label"/>
                         <s:textfield name="lastname" size="30" maxlength="200" key="register.lastname-label"/>
-                        <s:radio name="gender" list="%{#session.genders}" listKey="genderCode" listValue="genderName" key="register.gender-label"/>
+                        <s:radio name="gender" list="%{genders}" listKey="genderCode" listValue="genderName" key="register.gender-label"/>
                         <s:textfield name="DOB" id="datepicker" key="register.DOB-label"/>
 
                         <s:textfield name="address1" size="50" maxlength="200" key="register.address1-label"/>
                         <s:textfield name="address2" size="50" maxlength="200" key="register.address2-label"/>
                         <s:textfield name="city" size="30" maxlength="200" key="register.city-label"/>
-                        <s:select name="state"  list="%{#session.states}" headerKey="-1" headerValue="Select State..." key="register.state-label" listKey="stateCode" listValue="stateName"/>
+                        <s:select name="state"  list="%{states}" headerKey="-1" headerValue="Select State..." key="register.state-label" listKey="stateCode" listValue="stateName"/>
                         <s:textfield name="zip" size="10" maxlength="20" key="register.zip-label"/>
                         <tr>
                             <td></td>

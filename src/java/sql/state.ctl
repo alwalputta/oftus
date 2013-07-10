@@ -1,6 +1,6 @@
-LOAD DATA LOCAL INFILE '/Users/palwal/Documents/NetBeansProjects/myapp/src/java/sql/state.txt'
-INTO TABLE state
+LOAD DATA LOCAL INFILE '/Users/palwal/Documents/NetBeansProjects/myapp/src/java/sql/country.txt'
+INTO TABLE country
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\n'
-(state_id, state_code, state_name);
+(country_id, country_code, country_name);
 

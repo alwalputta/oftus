@@ -19,6 +19,8 @@
         <%@include file="/WEB-INF/results/open/header.jsp"%>
 
         <div class="message">
+            Listed below are all your bookmarks organized by category.
+            You can add, modify and delete them by clicking appropriate links.
             <s:property value="%{message}"/>
         </div>
         <div class="mainTable">
@@ -39,13 +41,12 @@
             <div class="login-login">
                 <div class="page-title">User Bookmarks</div>
                 <div class="login-form">
-                    <a href="add_category?">
-                        Add Category
-                    </a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="add_bookmark?">
-                        Add Bookmark
-                    </a>
+                    <a href="add_category_list?source=list">Add Category</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="add_bookmark_list?source=list">Add Bookmark</a>
                     <table summary="List of all bookmarks">
                         <thead>
                             <tr class="row">
@@ -66,7 +67,7 @@
                                     <th><s:property value="#category.description"/></th>
                                     <th><s:property value="#category.status"/></th>
                                     <th>
-                                        <s:url id="editCategory" action="edit_category_list">
+                                        <s:url id="editCategory" action="edit_category_list?source=list" escapeAmp="false">
                                             <s:param name="categoryId" value="#category.categoryId"></s:param>
                                         </s:url>
                                         <a href="<s:property value="#editCategory"/>">
@@ -74,7 +75,7 @@
                                         </a>
                                     </th>
                                     <th>
-                                        <s:url id="deleteCategory" action="delete_category_list">
+                                        <s:url id="deleteCategory" action="delete_category_list?source=list" escapeAmp="false">
                                             <s:param name="categoryId" value="#category.categoryId"></s:param>
                                         </s:url>
                                         <a href="<s:property value="#deleteCategory"/>">
@@ -89,7 +90,7 @@
                                         <td><s:property value="#bookmark.description"/></td>
                                         <td><s:property value="#bookmark.status"/></td>
                                         <td>
-                                            <s:url id="editBookmark" action="edit_bookmark_list" escapeAmp="false">
+                                            <s:url id="editBookmark" action="edit_bookmark_list?source=list" escapeAmp="false">
                                                 <s:param name="categoryId" value="#category.categoryId"></s:param>
                                                 <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
                                             </s:url>
@@ -98,7 +99,7 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <s:url id="deleteBookmark" action="delete_bookmark_list">
+                                            <s:url id="deleteBookmark" action="delete_bookmark_list?source=list" escapeAmp="false">
                                                 <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
                                             </s:url>
                                             <a href="<s:property value="#deleteBookmark"/>">
@@ -115,7 +116,7 @@
             <div class="login-register">
                 <div class="page-title">Your Bookmarks</div>
                 <div class="login-box">
-                    Note: This lists your Bookmarks.
+                    Note: This lists all your Bookmarks.
                     If you want to see the categories, click <a href="list_categories">Manage Categories</a> link.
                 </div>
             </div>

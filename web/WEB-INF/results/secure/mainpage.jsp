@@ -38,13 +38,13 @@
                                 <s:property value="#category.categoryName"/>
                             </div>
                             <div class="middle-column-element-edit-icons">
-                                <s:url id="editCategory" action="edit_category">
+                                <s:url id="editCategory" action="edit_category_mainpage?source=mainpage" escapeAmp="false">
                                     <s:param name="categoryId" value="#category.categoryId"></s:param>
                                 </s:url>
                                 <a href="<s:property value="#editCategory"/>">
                                     <img class="ui-icon ui-icon-pencil middle-column-element-edit-icon" title="Edit Category"/>
                                 </a>
-                                <s:url id="deleteCategory" action="delete_category_mainpage">
+                                <s:url id="deleteCategory" action="delete_category_mainpage?source=mainpage" escapeAmp="false">
                                     <s:param name="categoryId" value="#category.categoryId"></s:param>
                                 </s:url>
                                 <a href="<s:property value="#deleteCategory"/>">
@@ -61,7 +61,7 @@
                                                 <s:property value="#bookmark.bookmarkName"/>
                                             </div>
                                             <div class="middle-row-element-edit-icons">
-                                                <s:url id="editBookmark" action="edit_bookmark" escapeAmp="false">
+                                                <s:url id="editBookmark" action="edit_bookmark_mainpage?source=mainpage" escapeAmp="false">
                                                     <s:param name="categoryId" value="#category.categoryId"></s:param>
                                                     <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
                                                 </s:url>
@@ -69,14 +69,14 @@
                                                     <img class="ui-icon ui-icon-pencil middle-row-element-edit-icon" title="Edit Bookmark"/>
                                                 </a>
 
-                                                <s:url id="deleteBookmark" action="delete_bookmark_mainpage">
+                                                <s:url id="deleteBookmark" action="delete_bookmark_mainpage?source=mainpage" escapeAmp="false">
                                                     <s:param name="bookmarkId" value="#bookmark.bookmarkId"></s:param>
                                                 </s:url>
                                                 <a href="<s:property value="#deleteBookmark"/>">
                                                     <img class="ui-icon ui-icon-trash middle-row-element-delete-icon" title="Delete Bookmark"/>
                                                 </a>
                                                 <img class="ui-icon ui-icon-scissors middle-row-element-bulk-delete-icon" title="Bulk Delete Bookmarks"/>
-                                                <a href="add_bookmark?categoryId=<s:property value="#category.categoryId"/>">
+                                                <a href="add_bookmark_mainpage?source=mainpage&categoryId=<s:property value="#category.categoryId"/>">
                                                     <img class="ui-icon ui-icon-plusthick middle-row-element-new-icon" title="Add New Bookmark"/>
                                                 </a>
                                             </div>
@@ -86,7 +86,7 @@
                             </ul>
 
                             <div class="middle-row-new-element" title="Add New Bookmark">
-                                <a href="add_bookmark?categoryId=<s:property value="#category.categoryId"/>">
+                                <a href="add_bookmark_mainpage?source=mainpage&categoryId=<s:property value="#category.categoryId"/>">
                                     <img class="ui-icon ui-icon-plusthick middle-row-new-element-icon-left" title="Add New Bookmark"/>
                                     <img class="ui-icon ui-icon-plusthick middle-row-new-element-icon-left" title="Add New Bookmark"/>
                                     + Add Bookmark +

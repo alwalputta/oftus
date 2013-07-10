@@ -18,7 +18,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.StringTokenizer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,6 +39,7 @@ public class BookmarkAction extends ActionSupport {
     private String bookmarkOrder;
     private String bookmarks;
     private String message;
+    private String source;
     User user = null;
     static final Logger logger = Logger.getLogger(BookmarkAction.class);
     public static final long serialVersionUID = 42L;
@@ -79,12 +79,10 @@ public class BookmarkAction extends ActionSupport {
         for (Iterator<Category> iterator = userCategories.iterator(); iterator.hasNext();) {
             Category c = iterator.next();
             logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
-
             List<Bookmark> bookmarks = c.getBookmarks();
 
             for (Iterator<Bookmark> i = bookmarks.iterator(); i.hasNext();) {
                 Bookmark b = i.next();
-
                 if (b.getBookmarkId().equals(getBookmarkId())) {
                     logger.debug("bbbbbbbbbbbbbookmarkId value:" + b.getBookmarkId() + ":" + b.getBookmarkName()
                             + ":" + b.getHiperLink() + ":" + b.getDescription());
@@ -104,17 +102,16 @@ public class BookmarkAction extends ActionSupport {
 
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-
         user = (User) session.getAttribute("user");
 
         logger.debug("category id:" + getCategoryId());
-
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
 
         Bookmark bookmark = new Bookmark();
         bookmark.setBookmarkName(getBookmarkName());
         bookmark.setHiperLink(hiperLink);
+        bookmark.setStatus("A");
         bookmark.setCreateDate(Utils.getCurrentDate());
         bookmark.setOrder(10000); //modify this later//
 
@@ -131,7 +128,6 @@ public class BookmarkAction extends ActionSupport {
             }
         }
         user.setUserCategories(userCategories);
-
         UserDAO userDAO = new UserDAO();
         userDAO.updateUser(user);
 
@@ -152,14 +148,12 @@ public class BookmarkAction extends ActionSupport {
         user = (User) session.getAttribute("user");
 
         logger.debug("category id:" + getCategoryId());
-
         userCategories = user.getUserCategories();
         logger.debug("userCategories size:" + userCategories.size());
 
         for (Iterator<Category> iterator = userCategories.iterator(); iterator.hasNext();) {
             Category c = iterator.next();
             logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
-
             List<Bookmark> bookmarks = c.getBookmarks();
 
             for (Iterator<Bookmark> i = bookmarks.iterator(); i.hasNext();) {
@@ -227,7 +221,6 @@ public class BookmarkAction extends ActionSupport {
         for (Iterator<Category> iterator = userCategories.iterator(); iterator.hasNext();) {
             Category c = iterator.next();
             logger.debug("categoryId value:" + c.getCategoryId() + ":" + c.getCategoryName());
-
             List<Bookmark> bookmarks = c.getBookmarks();
 
             Collection<Bookmark> removeBookmarks = new LinkedList<Bookmark>();
@@ -246,7 +239,6 @@ public class BookmarkAction extends ActionSupport {
             bookmarks.removeAll(removeBookmarks);
         }
         user.setUserCategories(userCategories);
-
         UserDAO userDAO = new UserDAO();
         userDAO.updateUser(user);
         setMessage("Bookmark Deleted Successfully");
@@ -279,7 +271,6 @@ public class BookmarkAction extends ActionSupport {
         for (Iterator<Category> iterator = userCategories.iterator(); iterator.hasNext();) {
             Category c = iterator.next();
             logger.debug("categoryId:" + c.getCategoryId() + ":" + c.getCategoryName());
-
             List<Bookmark> bookmarksSet = c.getBookmarks();
 
             Collection<Bookmark> removeBookmarks = new LinkedList<Bookmark>();
@@ -296,7 +287,6 @@ public class BookmarkAction extends ActionSupport {
             bookmarksSet.removeAll(removeBookmarks);
         }
         user.setUserCategories(userCategories);
-
         UserDAO userDAO = new UserDAO();
         userDAO.updateUser(user);
         setMessage("Bookmarks deleted successfully");
@@ -313,7 +303,7 @@ public class BookmarkAction extends ActionSupport {
         StringTokenizer st = new StringTokenizer(getBookmarkOrder(), ":");
         for (int i = 0; st.hasMoreTokens(); i++) {
             bookmarkId = st.nextToken();
-            logger.debug("bookmark ID" + bookmarkId);
+            logger.debug("Bookmark ID" + bookmarkId);
             BookmarkDAO bookmarkDAO = new BookmarkDAO();
             updated = bookmarkDAO.updateBookmarkOrder(bookmarkId, i);
             logger.debug("Records Updated" + updated);
@@ -331,7 +321,6 @@ public class BookmarkAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
         HttpSession session = request.getSession();
-
         user = (User) session.getAttribute("user");
 
         logger.debug("in open_bookmark:" + getBookmarkId());
@@ -471,5 +460,13 @@ public class BookmarkAction extends ActionSupport {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 }

@@ -62,7 +62,10 @@ public class LoginInterceptor extends AbstractInterceptor implements Interceptor
         if (actionName.equals("loginForm")
                 || actionName.equals("registerForm")
                 || actionName.equals("createProfile")
-                || actionName.equals("activateProfile")) {
+                || actionName.equals("activateProfile")
+                || actionName.equals("feedbackForm")
+                || actionName.equals("saveFeedback")
+                ) {
             logger.debug("Open actions1: " + actionName);
             return invocation.invoke();
         }

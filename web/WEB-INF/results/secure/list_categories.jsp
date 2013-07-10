@@ -41,7 +41,7 @@
             <div class="login-login">
                 <div class="page-title">User Categories</div>
                 <div class="login-form">
-                    <a href="add_category?">Add Category</a>
+                    <a href="add_category_list?source=list">Add Category</a>
                     <table summary="List of all categories">
                         <thead>
                             <tr class="row">
@@ -63,14 +63,14 @@
                                     <td><s:property value="#category.description"/></td>
                                     <td><s:property value="#category.categoryOrder"/></td>
                                     <td><s:property value="#category.status"/></td>
-                                    <td><s:url id="editCategory" action="edit_category">
+                                    <td><s:url id="editCategory" action="edit_category_list?source=list" escapeAmp="false">
                                             <s:param name="categoryId" value="#category.categoryId"></s:param>
                                         </s:url>
                                         <a href="<s:property value="#editCategory"/>">
                                             <img class="ui-icon ui-icon-pencil middle-column-element-edit-icon"/>
                                         </a>
                                     </td>
-                                    <td><s:url id="deleteCategory" action="delete_category">
+                                    <td><s:url id="deleteCategory" action="delete_category_list?source=list" escapeAmp="false">
                                             <s:param name="categoryId" value="#category.categoryId"></s:param>
                                         </s:url>
                                         <a href="<s:property value="#deleteCategory"/>">

@@ -57,4 +57,24 @@ public class UtilDAO {
             session.close();
         }
     }
+
+    @SuppressWarnings("unchecked")
+    public void recordFeedback(Feedback feedback) {
+        logger.debug("recordFeedback");
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            session.save(feedback);
+            transaction.commit();
+        } catch (HibernateException e) {
+            logger.debug("HibernateException");
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            logger.debug("finally block");
+            session.close();
+        }
+    }
 }
