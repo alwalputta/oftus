@@ -49,13 +49,13 @@
                     UNDER CONSTRUCTION...
                     <br></br>
                     <s:a href="register_faq">Edit User Preferences FAQ</s:a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="login-register">
-                <div class="page-title">Upload Picture</div>
-                <div class="login-box">
-                    <img class ="photo-box" src="<s:url action='ImageServlet'/>" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
+                <div class="login-register">
+                    <div class="page-title">Upload Picture</div>
+                    <div class="login-box">
+                        <img class ="photo-box" src="<s:url action='ImageServlet'/>" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
                     <br></br>
                     <br></br>
                     <br></br>

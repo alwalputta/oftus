@@ -27,6 +27,9 @@ $(document).ready(function() {
     $("tr.rowb:even").css("background-color", "#ABDCFF");
 });
 
+
+//Commenting temporarily
+/*
 $(function() {
     $(this).tooltip({
         track: true
@@ -35,6 +38,7 @@ $(function() {
         tooltipClass: "tooltip"
     });
 });
+*/
   
 $(".message").hover(function() {
     $(this).stop().fadeOut();
@@ -252,22 +256,22 @@ function set_sortable(){
     // $("#middle-column-sortable").draggable({containment: '.mainTable'});
     $('#middle-column-sortable').sortable({
         start: function(event, ui) {
-            //alert ('start1');
+        //alert ('start1');
         },
         update: function(event, ui) {
-            //alert ('update1');
+        //alert ('update1');
         },
         stop: function(event, ui) {
             //alert ('stop1');
             update_column_order();
         },
         receive: function(event, ui) {
-            //Run this code whenever an item is dragged and dropped into this list
-            //alert('receive just joined this list1');
+        //Run this code whenever an item is dragged and dropped into this list
+        //alert('receive just joined this list1');
         },
         remove: function(event, ui) {
-            //Run this code whenever an item is dragged and dropped out of this list
-            //alert('remove just left this list1');
+        //Run this code whenever an item is dragged and dropped out of this list
+        //alert('remove just left this list1');
         }
     }).disableSelection();
 

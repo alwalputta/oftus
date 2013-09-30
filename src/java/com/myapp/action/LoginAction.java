@@ -57,12 +57,21 @@ public class LoginAction extends ActionSupport {
 
         String returnVal = "success";
 
+        if (getUsername() == null) {
+            user = (User) session.getAttribute("user");
+            setUsername(user.getUsername());
+        }
+
         CredentialDAO credentialDAO = new CredentialDAO();
         credential = credentialDAO.selectCredential(getUsername());
 
         List<User> users = credential.getUsers();
         for (Iterator iterator = users.iterator(); iterator.hasNext();) {
             user = (User) iterator.next();
+        }
+
+        if (user == null) {
+            user = (User) session.getAttribute("user");
         }
 
         //user = (User) session.getAttribute("user");

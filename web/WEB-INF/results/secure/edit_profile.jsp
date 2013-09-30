@@ -46,7 +46,7 @@
             <div class="login-login">
                 <div class="page-title">Edit User Profile</div>
                 <div class="login-form">
-                    
+
                     <s:form action="update_profile">
                         <s:hidden name="userid" value="%{#session.user.userId}"/>
                         <s:iterator value="%{#session.user.userCredentials}" id="credential">
@@ -86,13 +86,13 @@
                         </tr>
                     </s:form>
                     <s:a href="register_faq">Register FAQ</s:a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="login-register">
-                <div class="page-title">Upload Picture</div>
-                <div class="login-box">
-                    <img class ="photo-box" src="<s:url action='ImageServlet'/>" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
+                <div class="login-register">
+                    <div class="page-title">Upload Picture</div>
+                    <div class="login-box">
+                        <img class ="photo-box" src="<s:url action='ImageServlet'/>" alt="Welcome, <s:property value="%{#session.user.firstName}"/> <s:property value="%{#session.user.lastName}"/>"/>
                     <br></br>
                     <br></br>
                     <br></br>
