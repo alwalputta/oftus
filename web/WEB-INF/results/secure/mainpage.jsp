@@ -7,13 +7,7 @@
     <head>
         <%@include file="/WEB-INF/results/open/imports.jsp"%>
         <script type="text/javascript">
-            function loadData () {
-            <s:iterator value="userCategories" id="category">
-                    $('#<s:property value="#category.categoryId"/>').data("category", {colId:"<s:property value="#category.categoryId"/>", title:"<s:property value="#category.categoryName"/>", description:"<s:property value="#category.description"/>"});
-                <s:iterator value="#category.bookmarks" id="bookmark">
-                        $('#<s:property value="#bookmark.bookmarkId"/>').data("bookmark", {linkId:"<s:property value="#bookmark.bookmarkId"/>", title:"<s:property value="#bookmark.bookmarkName"/>", hiperLink:"<s:property value="#bookmark.hiperLink"/>", description:"<s:property value="#bookmark.description"/>"});
-                </s:iterator>
-            </s:iterator>
+            function loadData() {
                 }
         </script>
     </head>

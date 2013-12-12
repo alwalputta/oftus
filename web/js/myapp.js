@@ -450,3 +450,16 @@ function show_page_loading_message () {
     $('.loading').css('left', $(window).width()/2-$('.loading').width()/2);
 }
 
+
+
+window.onload = setupRefresh;
+
+function setupRefresh() {
+  setTimeout("refreshPage();", 1000);
+}
+
+function refreshPage() {
+   window.location = location.href;
+}
+
+
