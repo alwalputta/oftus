@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "/WEB-INF/classes/struts-2.1.7.dtd">
+
+<struts>
+
+    <constant name="struts.action.excludePattern" value="/ImageServlet"/>
+    <constant name="struts.multipart.maxSize" value="10000000" />
+    <constant name="struts.devMode" value="true"/>
+
+    <package name="myapp" extends="struts-default" namespace="">
+        
+        <interceptors>
+            <interceptor name="login" class="com.myapp.struts.LoginInterceptor"></interceptor>
+            <interceptor name="logging" class="com.myapp.struts.LoggingInterceptor"></interceptor>
+
+            <interceptor-stack name="customStack">
+                <interceptor-ref name="login"/>
+                <interceptor-ref name="logging"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="customStack"></default-interceptor-ref>
+
+        <global-results>
+            <result name="login_form_redirect">/WEB-INF/results/open/login_form.jsp</result>
+        </global-results>
+
+        <action name="welcome">
+            <result>html/welcome.html</result>
+        </action>
+
+        <action name="about">
+            <result>html/about.html</result>
+        </action>
+
+        <action name="agreement">
+            <result>html/agreement.html</result>
+        </action>
+
+        <action name="privacy">
+            <result>html/privacy.html</result>
+        </action>
+
+        <action name="login_faq">
+            <result>html/login_faq.html</result>
+        </action>
+
+        <action name="register_faq">
+            <result>html/register_faq.html</result>
+        </action>
+
+        <action name="forgot_password_faq">
+            <result>html/forgot_password_faq.html</result>
+        </action>
+
+        <action name="reset_password_faq">
+            <result>html/reset_password_faq.html</result>
+        </action>
+
+        <action name="new_bookmark_faq">
+            <result>html/new_bookmark_faq.html</result>
+        </action>
+
+        <action name="forgot_password_form">
+            <result>html/forgot_password.html</result>
+        </action>
+
+        <action name="release_notes">
+            <result>html/release_notes.html</result>
+        </action>
+
+        <action name="quick_guide">
+            <result>html/quick_guide.html</result>
+        </action>
+
+        <action name="user_guide">
+            <result>html/user_guide.html</result>
+        </action>
+
+        <action name="refer_friends">
+            <result>html/refer_friends.html</result>
+        </action>
+
+        <action name="import_bookmarks_page">
+            <result>/WEB-INF/results/secure/import_bookmarks.jsp</result>
+        </action>
+
+        <action name="industry_trends">
+            <result>html/industry_trends.html</result>
+        </action>
+
+        <action name="personal_reports">
+            <result>/WEB-INF/results/secure/personal_reports.html</result>
+        </action>
+
+        <action name="our_recommendations">
+            <result>/WEB-INF/results/secure/our_recommendations.html</result>
+        </action>
+
+        <action name="user_options">
+            <result>/WEB-INF/results/secure/user_options.html</result>
+        </action>
+
+        <action name="user_help">
+            <result>/WEB-INF/results/user_help.html</result>
+        </action>
+
+        <action name="index" class="com.myapp.action.LoginAction" method="loginForm">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/open/login_form.jsp</result>
+        </action>
+
+        <action name="login" class="com.myapp.action.LoginAction" method="login">
+            <!--
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="execAndWait">
+                <param name="delay">20000</param>
+                <param name="delaySleepInterval">500</param>
+            </interceptor-ref>
+            <result name="wait">/WEB-INF/results/secure/wait.jsp</result>
+            -->
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/open/login_form.jsp</result>
+        </action>
+
+        <action name="logout" class="com.myapp.action.LogoutAction" method="execute">
+            <result name="success">/WEB-INF/results/open/login_form.jsp</result>
+            <result name="fail">/WEB-INF/results/secure/mainpage.jsp</result>
+        </action>
+
+        <action name="register_form" class="com.myapp.action.RegisterAction" method="registerForm">
+            <result name="success">/WEB-INF/results/open/register_form.jsp</result>
+            <result name="input">/WEB-INF/results/open/login_form.jsp</result>
+        </action>
+
+        <action name="create_profile" class="com.myapp.action.RegisterAction" method="createProfile">
+            <result name="success">/WEB-INF/results/open/login_form.jsp</result>
+            <result name="input">/WEB-INF/results/open/register_form.jsp</result>
+        </action>
+
+        <action name="edit_profile" class="com.myapp.action.RegisterAction" method="editProfile">
+            <result name="success">/WEB-INF/results/secure/edit_profile.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
+        </action>
+
+        <action name="update_profile" class="com.myapp.action.RegisterAction" method="updateProfile">
+            <result name="success">/WEB-INF/results/secure/edit_profile.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_profile.jsp</result>
+        </action>
+
+        <action name="activate_profile" class="com.myapp.action.RegisterAction" method="activateProfile">
+            <result name="success">/WEB-INF/results/open/login_form.jsp</result>
+            <result name="input">/WEB-INF/results/open/register_form.jsp</result>
+        </action>
+
+        <action name="feedback_form" class="com.myapp.action.RegisterAction" method="feedbackForm">
+            <result name="success">/WEB-INF/results/open/feedback_form.jsp</result>
+            <result name="input">/WEB-INF/results/open/login_form.jsp</result>
+        </action>
+
+        <action name="save_feedback" class="com.myapp.action.RegisterAction" method="saveFeedback">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/open/login_form.jsp</result>
+        </action>
+
+        <action name="edit_preferences" class="com.myapp.action.RegisterAction" method="editProfile">
+            <result name="success">/WEB-INF/results/secure/edit_preferences.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
+        </action>
+
+        <action name="list_categories">
+            <result>/WEB-INF/results/secure/list_categories.jsp</result>
+        </action>
+
+        <action name="add_category_mainpage" class="com.myapp.action.CategoryAction" method="addCategory">
+            <result name="success">/WEB-INF/results/secure/new_category.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
+        </action>
+
+        <action name="add_category_list" class="com.myapp.action.CategoryAction" method="addCategory">
+            <result name="success">/WEB-INF/results/secure/new_category.jsp</result>
+            <result name="input">/WEB-INF/results/secure/list_bookmarks.jsp</result>
+        </action>
+
+        <action name="save_category_mainpage" class="com.myapp.action.CategoryAction" method="saveCategory">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/new_category.jsp</result>
+        </action>
+
+        <action name="save_category_list" class="com.myapp.action.CategoryAction" method="saveCategory">
+            <result name="success">/WEB-INF/results/secure/list_bookmarks.jsp</result>
+            <result name="input">/WEB-INF/results/secure/new_category.jsp</result>
+        </action>
+
+        <action name="edit_category_mainpage" class="com.myapp.action.CategoryAction" method="editCategory">
+            <interceptor-ref name="defaultStack"/>
+            <result name="success">/WEB-INF/results/secure/edit_category.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
+        </action>
+
+        <action name="edit_category_list" class="com.myapp.action.CategoryAction" method="editCategory">
+            <interceptor-ref name="defaultStack"/>
+            <result name="success">/WEB-INF/results/secure/edit_category.jsp</result>
+            <result name="input">/WEB-INF/results/secure/list_bookmarks.jsp</result>
+        </action>
+
+        <action name="update_category_mainpage" class="com.myapp.action.CategoryAction" method="updateCategory">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_category.jsp</result>
+        </action>
+
+        <action name="update_category_list" class="com.myapp.action.CategoryAction" method="updateCategory">
+            <result name="success">/WEB-INF/results/secure/list_bookmarks.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_category.jsp</result>
+        </action>
+
+        <action name="delete_category_mainpage" class="com.myapp.action.CategoryAction" method="deleteCategory">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
+        </action>
+
+        <action name="delete_category_list" class="com.myapp.action.CategoryAction" method="deleteCategory">
+            <result name="success">/WEB-INF/results/secure/list_bookmarks.jsp</result>
+            <result name="input">/WEB-INF/results/secure/list_bookmarks.jsp</result>
+        </action>
+
+        <action name="update_category_order" class="com.myapp.action.CategoryAction" method="updateCategoryOrder">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
+        </action>
+
+        <action name="list_bookmarks">
+            <result>/WEB-INF/results/secure/list_bookmarks.jsp</result>
+        </action>
+
+        <action name="add_bookmark_mainpage" class="com.myapp.action.BookmarkAction" method="addBookmark">
+            <result name="success">/WEB-INF/results/secure/new_bookmark.jsp</result>
+            <result name="input">/WEB-INF/results/secure/new_bookmark.jsp</result>
+        </action>
+
+        <action name="add_bookmark_list" class="com.myapp.action.BookmarkAction" method="addBookmark">
+            <result name="success">/WEB-INF/results/secure/new_bookmark.jsp</result>
+            <result name="input">/WEB-INF/results/secure/new_bookmark.jsp</result>
+        </action>
+
+        <action name="save_bookmark_mainpage" class="com.myapp.action.BookmarkAction" method="saveBookmark">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/new_bookmark.jsp</result>
+        </action>
+
+        <action name="save_bookmark_list" class="com.myapp.action.BookmarkAction" method="saveBookmark">
+            <result name="success">/WEB-INF/results/secure/list_bookmarks.jsp</result>
+            <result name="input">/WEB-INF/results/secure/new_bookmark.jsp</result>
+        </action>
+
+        <action name="edit_bookmark_mainpage" class="com.myapp.action.BookmarkAction" method="editBookmark">
+            <result name="success">/WEB-INF/results/secure/edit_bookmark.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
+        </action>
+
+        <action name="edit_bookmark_list" class="com.myapp.action.BookmarkAction" method="editBookmark">
+            <result name="success">/WEB-INF/results/secure/edit_bookmark.jsp</result>
+            <result name="input">/WEB-INF/results/secure/list_bookmarks.jsp</result>
+        </action>
+
+        <action name="update_bookmark_mainpage" class="com.myapp.action.BookmarkAction" method="updateBookmark">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_bookmark.jsp</result>
+        </action>
+
+        <action name="update_bookmark_list" class="com.myapp.action.BookmarkAction" method="updateBookmark">
+            <result name="success">/WEB-INF/results/secure/list_bookmarks.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_bookmark.jsp</result>
+        </action>
+
+        <action name="delete_bookmark_list" class="com.myapp.action.BookmarkAction" method="deleteBookmark">
+            <result name="success">/WEB-INF/results/secure/list_bookmarks.jsp</result>
+            <result name="input">/WEB-INF/results/secure/list_bookmarks.jsp</result>
+        </action>
+
+        <action name="delete_bookmark_mainpage" class="com.myapp.action.BookmarkAction" method="deleteBookmark">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
+        </action>
+
+        <action name="delete_bookmarks" class="com.myapp.action.BookmarkAction" method="deleteBookmarks">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
+        </action>
+
+        <action name="move_bookmark" class="com.myapp.action.BookmarkAction" method="moveBookmark">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
+        </action>
+
+        <action name="update_bookmark_order" class="com.myapp.action.BookmarkAction" method="updateBookmarkOrder">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/mainpage.jsp</result>
+        </action>
+
+        <action name="open_bookmark" class="com.myapp.action.BookmarkAction" method="openBookmark">
+            <result name="success">/WEB-INF/results/secure/edit_profile.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_profile.jsp</result>
+        </action>
+
+        <action name="upload_picture" class="com.myapp.action.DocumentAction" method="uploadPicture">
+            <interceptor-ref name="exception"/>
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">1000000</param>
+                <param name="allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref> 
+            <result name="success">/WEB-INF/results/secure/edit_profile.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_profile.jsp</result>
+        </action>
+
+        <action name="show_picture" class="com.myapp.action.DocumentAction" method="showPicture">
+            <result name="success">/WEB-INF/results/secure/edit_profile.jsp</result>
+            <result name="input">/WEB-INF/results/secure/edit_profile.jsp</result>
+        </action>
+
+        <action name="import_bookmarks" class="com.myapp.action.DocumentAction" method="importBookmarks">
+            <result name="success">/WEB-INF/results/secure/mainpage.jsp</result>
+            <result name="input">/WEB-INF/results/secure/import_bookmarks.jsp</result>
+        </action>
+
+        <action name="test">
+            <result>/WEB-INF/results/header.jsp</result>
+        </action>
+
+        <action name="test1">
+            <result>/WEB-INF/results/secure/mainpage.jsp</result>
+        </action>
+    </package>
+
+</struts>

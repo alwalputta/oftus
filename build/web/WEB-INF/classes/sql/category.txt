@@ -1,0 +1,11 @@
+1	Builder
+2	Business
+3	Career
+4	Family
+5	General
+6	Home
+7	News
+8	Personal
+9	Shopping
+10	Technical
+11	Utilities

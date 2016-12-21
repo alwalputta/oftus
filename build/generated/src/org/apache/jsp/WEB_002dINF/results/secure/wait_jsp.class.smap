@@ -1,0 +1,10 @@
+SMAP
+wait_jsp.java
+JSP
+*S JSP
+*F
++ 0 wait.jsp
+WEB-INF/results/secure/wait.jsp
+*L
+1:44
+*E

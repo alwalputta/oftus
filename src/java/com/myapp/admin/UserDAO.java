@@ -14,7 +14,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -70,7 +69,6 @@ public class UserDAO {
             logger.debug("finally block");
             session.close();
         }
-        return;
     }
 
     @SuppressWarnings("unchecked")

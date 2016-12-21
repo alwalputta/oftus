@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.myapp.util.LoginLog" table="UserLoginLog">
+        <id column="login_log_id" name="loginLogId" type="string" length="200">
+            <generator class="uuid"/>
+        </id>
+        <property name="userId" column="user_id" type="string"></property>
+        <property name="browser" column="browser" type="string"></property>
+        <property name="ipAddress" column="ip_address" type="string"></property>
+        <property name="machineName" column="machine_name" type="string"></property>
+        <property name="timeZone" column="time_zone" type="string"></property>
+        <property name="sessionId" column="session_id" type="string"></property>
+        <property name="createDate" column="create_date" type="string"></property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.myapp.admin.State" table="State">
+        <id name="stateId" type="string" column="state_id" length="200">
+            <generator class="uuid"/>
+        </id>
+        <property name="stateCode" column="state_code" type="string"/>
+        <property name="stateName" column="state_name" type="string"/>
+        <property name="status" column="status" type="string"/>
+        <property name="createDate" column="create_date" type="string"/>
+        <property name="endDate" column="end_date" type="string"/>
+        <property name="lastModifiedDate" column="last_modified_date" type="string"/>
+    </class>
+</hibernate-mapping>

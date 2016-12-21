@@ -1,0 +1,10 @@
+SMAP
+header_jsp.java
+JSP
+*S JSP
+*F
++ 0 header.jsp
+WEB-INF/results/open/header.jsp
+*L
+1,71:44
+*E

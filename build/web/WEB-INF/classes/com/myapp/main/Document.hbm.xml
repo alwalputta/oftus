@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.myapp.main.Document" table="UserDocument">
+        <id column="document_id" name="documentId" type="string" length="200">
+            <generator class="uuid"/>
+        </id>
+        <property name="userId" column="user_id" type="string"></property>
+        <property name="fileType" column="file_type" type="string"></property>
+        <property name="fileName" column="file_name" type="string"></property>
+        <property name="blob" column="content" type="blob"></property>
+        <property name="contentType" column="content_type" type="string"></property>
+        <property name="status" column="status" type="string"></property>
+        <property name="createDate" column="create_date" type="string"></property>
+        <property name="endDate" column="end_date" type="string"></property>
+        <property name="lastModifiedDate" column="last_modified_date" type="string"></property>
+    </class>
+</hibernate-mapping>

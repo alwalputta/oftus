@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.myapp.admin.Phone" table="Phone">
+        <id name="phoneId" type="string" column="phone_id" length="200">
+            <generator class="uuid"/>
+        </id>
+        <property name="phoneNumber" column="phone_number" type="string"></property>
+        <property name="phoneType" column="phone_type" type="string"></property>
+        <property name="validateFlag" column="validate_flag" type="string"></property>
+        <property name="validateDate" column="validate_date" type="string"></property>
+        <property name="createDate" column="create_date" type="string"></property>
+        <property name="status" column="status" type="string"></property>
+        <property name="endDate" column="end_date" type="string"></property>
+        <property name="lastModifiedDate" column="last_modified_date" type="string"></property>
+        <bag name="users" table="UserPhone" cascade="all" lazy="false">
+            <key column="phone_id" />
+            <many-to-many column="user_id" unique="true" class="com.myapp.admin.User"/>
+        </bag>
+    </class>
+</hibernate-mapping>

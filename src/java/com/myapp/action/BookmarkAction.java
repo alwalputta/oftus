@@ -139,7 +139,7 @@ public class BookmarkAction extends ActionSupport {
     public String updateBookmark() {
         logger.debug("BookmarkAction updateBookmark!");
         String returnVal = "success";
-        String categoryChanged = "no";
+        //String categoryChanged = "no";
         int updated = 0;
 
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -261,7 +261,7 @@ public class BookmarkAction extends ActionSupport {
         logger.debug("userCategories size:" + userCategories.size());
 
         StringTokenizer st = new StringTokenizer(getBookmarks(), ":");
-        for (int i = 0; st.hasMoreTokens(); i++) {
+        while (st.hasMoreTokens()) {
             bookmarkId = st.nextToken();
             bm.put(bookmarkId, bookmarkId);
             logger.debug("bookmark ID1:" + bookmarkId);
@@ -348,8 +348,8 @@ public class BookmarkAction extends ActionSupport {
     @Override
     public void validate() {
         logger.debug("in the validate of BookmarkAction");
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
+//        HttpServletRequest request = ServletActionContext.getRequest();
+//        HttpSession session = request.getSession();
 
         if (getActionName().equals("new_bookmark")) {
             logger.debug("in new_bookmark");

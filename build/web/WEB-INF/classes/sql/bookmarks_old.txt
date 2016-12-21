@@ -1,0 +1,266 @@
+1	Braddock And Logan Homes	1	http://www.braddockandloganhomes.com/
+1	Brookfield Homes	2	http://www.brookfieldhomes.com/
+1	Centex	3	http://www.centex.com/
+1	Greencherry Commons	4	http://www.greencherrycommons.com/
+1	John Laing	5	http://www.JohnLaingHomes.com/
+1	KB Home	6	http://www.kbhomes.com/
+1	Lennar	7	http://www.lennar.com/
+1	Olson Homes	8	http://www.olsonhomes.com/
+1	Pulte	9	http://www.pulte.com/
+1	Richmond American	10	http://www.richmondamerican.com/
+1	Robson Homes	11	http://www.robsonhomes.com/
+1	Shapell Homes	12	http://www.shapellnc.com/
+1	Standard Pacific Homes	13	http://www.standardpacifichomes.com/
+1	Summerhill Homes	14	http://www.summerhillhomes.com/
+1	Taylor Morrison	15	http://www.taylormorrison.com/
+1	Toll Brothers	16	http://www.tollbrothers.com/
+2	AJPM	17	http://www.ajpm.com/
+2	APMEX	18	http://www.apmex.com/
+2	Barrons	19	http://www.barrons.com/
+2	BusinessStandard	20	http://www.businessstandard.com/
+2	Business Week	21	http://www.businessweek.com/
+2	CNN Money	22	http://money.cnn.com/
+2	Economy.com	23	http://www.economy.com/
+2	Economic Times	24	http://economictimes.indiatimes.com/
+2	Financial Times	25	http://www.ft.com/
+2	Forbes	26	http://www.forbes.com/
+2	Forrester	27	http://www.forrester.com/
+2	Fortune	28	http://www.fortune.com/
+2	Gartner	29	http://www.gartner.com/
+2	Google Finance	30	http://finance.google.com/
+2	Hindu Business	31	http://www.thehindubusinessline.com/
+2	Hoovers	32	http://www.hoovers.com/
+2	Investopedia	33	http://www.investopedia.com/
+2	Kitco	34	http://www.kitco.com/
+2	Market Watch	35	http://www.marketwatch.com/
+2	Money Central	36	http://www.moneycentral.com/
+2	Money Control	37	http://www.moneycontrol.com/
+2	Moneypore	38	http://www.moneypore.com/
+2	Rediff Money	39	http://money.rediff.com/
+2	Reuters	40	http://www.reuters.com/
+2	Salary	41	http://www.salary.com/
+2	Seeking Alpha	42	http://www.seekingalpha.com/
+2	The Street	43	http://www.thestreet.com/
+2	Wallstreet	44	http://online.wsj.com/public/us
+2	Yahoo!Quote	45	http://finance.yahoo.com/
+3	BPMI	46	http://www.bpmi.org/
+3	Biospace	47	http://www.biospace.com/
+3	Burton Group	48	http://www.burtongroup.com/
+3	Career Builder	49	http://www.careerbuilder.com/
+3	CIO	50	http://www.cio.com/
+3	Computer World	51	http://www.computerworld.com/
+3	Dataquest	52	http://dqindia.ciol.com/
+3	Dice	53	http://www.dice.com/
+3	Elance	54	http://www.elance.com/
+3	eWeek	55	http://www.eweek.com/
+3	Information Week	56	http://www.informationweek.com/
+3	Infotoday	57	http://www.infotoday.com/
+3	Infoworld	58	http://www.infoworld.com/
+3	Job.com	59	http://www.job.com/
+3	Meetup	60	http://www.meetup.com/
+3	Monster	61	http://www.monster.com/
+3	Net Temps	62	http://www.nettemps.com/
+3	Oracle Magazine	63	http://www.oracle.com/oramag/index.html
+3	PCMagazine	64	http://www.pcmag.com/
+3	PCWorld	65	http://www.pcworld.com/
+3	Tradepub	66	http://www.tradepub.com/
+3	UML	67	http://www.omg.org/UML
+3	WVDL	68	http://www.wvdl.com/
+3	XML	69	http://www.xml.com/
+4	Andhra Vilas	70	http://www.andhravilas.com/
+4	Chimata Music	71	http://www.chimatamusic.com/
+4	CineLux	72	http://www.cineluxtheatres.com/
+4	Concord Temple	73	https://www.shivamurugantemple.org/
+4	Evite	74	http://www.evite.com/
+4	Fremont Temple	75	http://fremonttemple.org/
+4	Great Andhra	76	http://www.greatandhra.com/
+4	Idlebrain	77	http://www.idlebrain.com/
+4	Indiaglitz	78	http://www.indiaglitz.com/
+4	LivermoreTemple	79	http://www.livermoretemple.org/
+4	MSN Maps	80	http://virtualearth.msn.com/
+4	Riella Farms	81	http://riellafarms.com/
+4	San Jose Temple	82	http://www.vvgc.org/
+4	Sunlight Travel	83	http://www.sunlighttravel.com/
+4	SunnyvaleTemple	84	http://www.sunnyvaletemple.org/
+4	Suntrips	85	http://www.suntrips.com/
+4	Teluguone	86	http://www.teluguone.com/
+4	Telugu Pictures	87	http://www.telugupictures.com/
+4	Tupaki	88	http://www.tupaki.com/
+4	Wikia	89	http://www.wikia.com/
+4	Wikimapia	90	http://www.wikimapia.org/
+4	Wikimedia	91	http://www.wikimedia.org/
+4	Wikipedia	92	http://www.wikipedia.com/
+5	About	93	http://www.about.com/
+5	AILA	94	http://www.aila.org/
+5	Ask	95	http://www.ask.com/
+5	Annex Ventures	96	http://www.annexventures.com/
+5	CricInfo	97	http://www.cricinfo.com/
+5	Infobrain	98	http://www.infobraintech.com/
+5	Fare Compare	99	http://www.farecompare.com/
+5	Google	100	http://www.google.com/
+5	Hollywood	101	http://www.hollywoodvideo.com/
+5	ILW	102	http://www.ilw.org/
+5	ImmigrationPortal	103	http://www.immigrationportal.com/
+5	Jetblue	104	http://www.jetblue.com/
+5	Linkz	105	http://www.linkz.com/
+5	MSN	106	http://www.msn.com/
+5	NASA	107	http://www.nasa.gov/
+5	Path2USA	108	http://www.path2usa.com/
+5	Register	109	http://www.register.com/
+5	Savethis	110	http://www.savethis.com/
+5	SutiSoft	111	http://www.sutisoft.com/
+5	TTVISA	112	http://www.ttsvisas.com/
+5	USCIS	113	https://egov.uscis.gov/cris/jsps/login.jsp
+5	Yahoo!	114	http://www.yahoo.com/
+5	YouTube	115	http://www.youtube.com/
+5	Zaba Search	116	http://zabasearch.com/
+6	Alliance Title	117	http://www.alliancetitleco.com/
+6	Bayarea Realtor	118	http://www.realtor.com/california/nbselbay.asp?st=ca&amp;poe=realtor
+6	CA DOE	119	http://www.cde.ca.gov/ta/ac/ap/
+6	CA Realtor	120	http://ca.realtor.com/
+6	Coldwell Banker	121	http://www.coldwellbanker.com/
+6	ERA	122	http://www.era.com/
+6	Foreclosures	123	http://www.foreclosures.com/
+6	Great Schools	124	http://www.greatschools.net/
+6	Home Gain	125	http://www.homegain.com/
+6	MLSListings	126	http://www.mlslistings.com/
+6	Move	127	http://www.move.com/
+6	Movoto	128	http://www.movoto.com/
+6	Murray Realty	129	http://www.murraykyrealestate.com/
+6	NCES	130	http://nces.ed.gov/
+6	Newhome Source	131	http://www.newhomesource.com/
+6	Nextag	132	http://www.nextag.com/
+6	Pacific Union	133	http://www.pacunion.com/
+6	Realtor	134	http://www.realtor.com/
+6	Redfin	135	http://www.redfin.com/
+6	REIL	136	http://www.reil.com/
+6	Remax	137	http://www.remax.com/
+6	Rent	138	http://www.rent.com/
+6	Sanramon Online	139	http://www.sanramononline.com/
+6	Trulia	140	http://www.trulia.com/
+6	Yahoo!Realestate	141	http://realestate.yahoo.com/
+6	Zillow	142	http://www.zillow.com/
+6	ZIP Reality	143	http://www.ziprealty.com/
+7	Andhra Bhoomi	144	http://www.andhrabhoomi.net/
+7	Andhra Guyz	145	http://www.andhraguyz.com/
+7	Andhra Jyothi	146	http://www.andhrajyothy.com/
+7	Andhra Prabha	147	http://www.andhraprabha.com/
+7	BBC	148	http://news.bbc.co.uk/
+7	CNN	149	http://www.cnn.com/
+7	Deccan	150	http://www.deccan.com/
+7	Eenadu	151	http://www.eenadu.net/
+7	Eenadu Info	152	http://www.eenaduinfo.com/links.htm
+7	Fox News	153	http://www.foxnews.com/
+7	Google News	154	http://news.google.com/
+7	The Hindu	155	http://www.thehindu.com/
+7	Hindustan Times	156	http://www.hindustantimes.com/
+7	Mercury News	157	http://www.mercurynews.com/
+7	NBC	158	http://www.nbc.com/
+7	NDTV	159	http://www.ndtv.com/
+7	Namaste Telangana	160	http://www.namasthetelangaana.com/
+7	Prajashakti	161	http://www.prajasakti.com/
+7	Pramukhandhra	162	http://www.pramukhandhra.org/
+7	Rediff	163	http://www.rediff.com/
+7	Sakshi	164	http://www.sakshi.com/
+7	Samachar	165	http://www.samachar.com/
+7	Times of India	166	http://timesofindia.indiatimes.com/
+7	Vaartha	167	http://www.vaarttha.com/
+7	Vaarthalu	168	http://www.vaartalu.com/
+7	Washingtonpost	169	http://www.washingtonpost.com/
+7	Yahoo!News	170	http://news.yahoo.com/
+8	American Express	171	http://www.americanexpress.com/
+8	Ameritrade	172	http://www.tdameritrade.com/
+8	Bank of America	173	http://www.bankofamerica.com/
+8	Cisco 401(k)	174	http://www.mycisco401k.com/
+8	Citibank Cards	175	http://www.citicards.com/
+8	DCU	176	http://www.dcu.org/
+8	Discover Card	177	http://www.discovercard.com/
+8	Experian	178	https://partner.experiandirect.com/Premium/Login.aspx
+8	Fidelity	179	http://www.fidelity.com/
+8	Fremont Bank	180	http://www.fremontbank.com/
+8	ICICI Bank	181	http://www.icicibank.com/
+8	ING Direct	182	http://www.ingdirect.com/
+8	ING Vysya	183	https://online.ingvysyabank.com/
+8	JCPenny	184	http://www.jcpenny.com/
+8	Macys	185	http://www.macys.com/
+8	Mervyns	186	http://www.mervyns.com/
+8	Money2India	187	http://www.icicibank.com/pfsuser/icicibank/ibank-nri/nrinewversion/money_transfer/index.html
+8	PayPal	188	http://www.paypal.com/
+8	Smith Barney	189	https://www.benefitaccess.com/
+8	T Rowe Price	190	http://www.troweprice.com/
+8	Wamu	191	http://www.wamu.com/
+9	A9	192	http://www.a9.com/
+9	Amazon	193	http://www.amazon.com/
+9	Best Buy	194	http://www.bestbuy.com/
+9	Biz Rate	195	http://www.bizrate.com/
+9	Buy	196	http://www.buy.com/
+9	Circuit City	197	http://www.circuitcity.com/
+9	Costco	198	http://www.costco.com/
+9	Craigs List	199	http://www.craigslist.com/
+9	Deals2Buy	200	http://www.deals2buy.com/
+9	eBay	201	http://www.ebay.com/
+9	Froogle	202	http://www.froogle.com/
+9	Frys/Outpost	203	http://www.outpost.com/
+9	JCPenny	204	http://www.jcpenny.com/
+9	Macys	205	http://www.macys.com/
+9	MySimon	206	http://www.mysimon.com/
+9	Overstock	207	http://www.overstock.com/
+9	Penny Saver	208	http://www.pennysaverusa.com/
+9	Pricegrabber	209	http://www.pricegrabber.com/
+9	Sears	210	http://www.sears.com/
+9	Shutterfly	211	http://www.shutterfly.com/
+9	Snapfish	212	http://www.snapfish.com/
+9	Sony Style	213	http://www.sonystyle.com/
+9	Target	214	http://www.target.com/
+9	Walmart	215	http://www.walmart.com/
+9	Wirefly	216	http://www.wirefly.com/
+9	Woot!	217	http://www.woot.com/
+9	Yelp	218	http://www.yelp.com/
+10	CIO Insight	219	http://www.cioinsight.com/
+10	CNET News	220	http://news.cnet.com/
+10	Google Code	221	http://code.google.com/
+10	Hibernate	222	http://www.hibernate.org/
+10	Internet	223	http://www.internet.com/
+10	J2EE Patterns	224	http://www.corej2eepatterns.com/
+10	Jakarta	225	http://jakarta.apache.org/
+10	Java.About	226	http://java.about.com/
+10	Java Boutique	227	http://javaboutique.internet.com/
+10	Javadev Journal	228	http://java.sys-con.com/
+10	Java Ranch	229	http://www.javaranch.com/
+10	JavaScript.com	230	http://javascript.com/
+10	JS@Internet.com	231	http://javascript.internet.com/
+10	Java World	232	http://www.javaworld.com/
+10	Lazy DBA	233	http://www.lazydba.com/
+10	MySQL	234	http://www.mysql.com/
+10	OnJava	235	http://www.onjava.com/
+10	Oracle	236	http://www.oracle.com/
+10	Orafaq	237	http://www.orafaq.com/
+10	PSOUG	238	http://www.psoug.org/
+10	QA Test	239	http://www.softwareqatest.com/
+10	Technology Review	240	http://www.technologyreview.com/
+10	The Serverside	241	http://www.theserverside.com/
+10	Spring	242	http://www.springframework.org/
+10	Sun Java	243	http://java.sun.com/
+10	W3 Schools	244	http://www.w3schools.com/
+10	Yahoo!Developer	245	http://developer.yahoo.com/
+10	Mind Tools	246	http://www.mindtools.com/
+10	Quick MBA	247	http://www.quickmba.com/
+11	AC Library	248	http://www.aclibrary.org/
+11	AT&T	249	http://www.wireless.att.com/
+11	Cisco Mail	250	http://email.cisco.com/
+11	Comcast	251	http://www.comcast.com/
+11	Facebook	252	https://www.facebook.com/
+11	Farmers	253	http://www.farmers.com/
+11	Fastrak	254	https://www.bayareafastrak.org/
+11	Gmail	255	http://www.gmail.com/
+11	Hotmail	256	http://www.hotmail.com/
+11	LinkedIn	257	http://www.linkedin.com/
+11	Pacificare	258	http://www.pacificare.com/
+11	PAMFOnline	259	http://www.pamfonline.org/
+11	PG&E	260	http://www.pge.com/
+11	Reliance Call	261	http://www.relianceindiacall.com/US/Index.asp
+11	SutiSoft Mail	262	http://mail.sutisoft.com/
+11	United Healthcare	263	http://www.myuhc.com/
+11	Vonage	264	http://www.vonage.com/
+11	Yahoo!Mail	265	http://mail.yahoo.com/
+
